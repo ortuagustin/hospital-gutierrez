@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-
-// use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Tests\CreatesApplication;
 
 abstract class TestCase extends BaseTestCase
 {
