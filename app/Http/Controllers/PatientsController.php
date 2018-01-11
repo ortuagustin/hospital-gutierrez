@@ -10,12 +10,11 @@ use Illuminate\Http\Request;
  */
 class PatientsController extends Controller
 {
-
-  /**
-   * Display a listing of patient
-   *
-   * @return Response
-   */
+    /**
+     * Display a listing of patient
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $patients = Patient::all();
@@ -26,7 +25,7 @@ class PatientsController extends Controller
     /**
      * Show the form for creating a new Patient
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -36,19 +35,13 @@ class PatientsController extends Controller
     /**
      * Store a newly created Patient in storage.
      *
-     * @param  Request  $request
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $validator = validator($data, Patient::$rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        Patient::create($data);
+        $this->validateRequest($request);
+        Patient::create($request->all());
 
         return redirect()->route('patients.index');
     }
@@ -57,7 +50,7 @@ class PatientsController extends Controller
      * Display the specified Patient
      *
      * @param  Patient  $patient
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show(Patient $patient)
     {
@@ -68,7 +61,7 @@ class PatientsController extends Controller
      * Show the form for editing the specified Patient
      *
      * @param  Patient  $patient
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit(Patient $patient)
     {
@@ -78,20 +71,14 @@ class PatientsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  Patient  $patient
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Patient $patient)
     {
-        $data = $request->all();
-        $validator = validator($data, Patient::$rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $patient->update($data);
+        $this->validateRequest($request);
+        $patient->update($request->all());
 
         return redirect()->route('patients.index');
     }
@@ -100,12 +87,49 @@ class PatientsController extends Controller
      * Remove the specified Patient from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Patient::destroy($id);
 
         return redirect()->route('patients.index');
+    }
+
+    /**
+     * Runs the validation rules agains the given Request
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateRequest(Request $request)
+    {
+        return $this->validate($request, $this->getValidationRules());
+    }
+
+    /**
+     * Returns an array with the rules that the validator should use when executed
+     *
+     * @return array
+     */
+    protected function getValidationRules()
+    {
+        return [
+          'doc_type_id'          => 'required|',
+          'home_type_id'         => 'required|',
+          'heating_type_id'      => 'required|',
+          'water_type_id'        => 'required|',
+          'medical_insurance_id' => 'required|',
+          'name'                 => 'required|',
+          'last_name'            => 'required|',
+          'dni'                  => 'required|',
+          'birth_date'           => 'required|',
+          'gender'               => 'required|',
+          'address'              => 'required|',
+          'phone'                => 'required|',
+          'has_refrigerator'     => 'required|',
+          'has_electricity'      => 'required|',
+          'has_pet'              => 'required|',
+        ];
     }
 }
