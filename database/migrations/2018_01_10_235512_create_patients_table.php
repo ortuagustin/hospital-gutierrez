@@ -18,11 +18,11 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('doc_type_id');
-            $table->integer('home_type_id');
-            $table->integer('heating_type_id');
-            $table->integer('water_type_id');
-            $table->integer('medical_insurance_id');
+            $table->integer('doc_type_id')->unsigned();
+            $table->integer('home_type_id')->unsigned();
+            $table->integer('heating_type_id')->unsigned();
+            $table->integer('water_type_id')->unsigned();
+            $table->integer('medical_insurance_id')->unsigned();
             $table->string('name');
             $table->string('last_name');
             $table->string('dni')->unique();
