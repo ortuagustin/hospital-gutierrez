@@ -29,7 +29,7 @@ class CreatePatientsTable extends Migration
             $table->date('birth_date');
             $table->enum('gender', ['male', 'female', 'unknown']);
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->boolean('has_refrigerator');
             $table->boolean('has_electricity');
             $table->boolean('has_pet');

@@ -22,3 +22,23 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Patient::class, function (Faker\Generator $faker) {
+    return [
+      'doc_type_id'          => 1,
+      'home_type_id'         => 1,
+      'heating_type_id'      => 1,
+      'water_type_id'        => 1,
+      'medical_insurance_id' => 1,
+      'name'                 => $faker->unique()->name,
+      'last_name'            => $faker->unique()->name,
+      'dni'                  => $faker->unique()->numerify('########'),
+      'birth_date'           => $faker->dateTimeInInterval(),
+      'gender'               => $faker->randomElement(['male', 'female']),
+      'address'              => $faker->address(),
+      'phone'                => $faker->e164PhoneNumber(),
+      'has_refrigerator'     => $faker->boolean(),
+      'has_electricity'      => $faker->boolean(),
+      'has_pet'              => $faker->boolean(),
+    ];
+});
