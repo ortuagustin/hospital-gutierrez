@@ -42,3 +42,10 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
       'has_pet'              => $faker->boolean(),
     ];
 });
+
+$factory->define(App\Appointment::class, function (Faker\Generator $faker) {
+    return [
+        'patient_id'     => factory(App\Patient::class)->create()->id,
+        'date'           => $faker->dateTime(),
+    ];
+});
