@@ -99,7 +99,7 @@ class StorePatientRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_does_allows_all_validBooleanValues_on_boolean_fields()
+    public function it_does_allows_all_valid_bolean_values_on_boolean_fields()
     {
         foreach ($this->modelBooleanFields() as $field) {
             foreach ($this->validBooleanValues() as $value) {
@@ -112,7 +112,7 @@ class StorePatientRequestTest extends TestCase
     /** @test */
     public function it_does_not_allow_non_numeric_values_for_id_fields()
     {
-        foreach ($this->modelIdfields() as $each) {
+        foreach ($this->modelIdFields() as $each) {
             $validator = $this->passingValidator([$each => 'any-string']);
             $this->assertValidationRuleFailed($validator, $each, 'any-string', 'Numeric');
         }
@@ -121,7 +121,7 @@ class StorePatientRequestTest extends TestCase
     /** @test */
     public function it_does_allows_numeric_values_for_id_fields()
     {
-        foreach ($this->modelIdfields() as $each) {
+        foreach ($this->modelIdFields() as $each) {
             $validator = $this->passingValidator([$each => rand(1, 10)]);
             $this->assertValidationPasses($validator);
         }
