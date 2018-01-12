@@ -5,7 +5,8 @@ namespace Tests\Unit;
 use App\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
 use Tests\Unit\FormRequestTestCase;
-use Tests\Unit\Helpers\AppointmentTestHelper;
+use Tests\Helpers\AppointmentTestHelper;
+use Tests\Helpers\PatientTestHelper;
 
 /**
  * Tests the StoreAppointmentRequest FormRequest class
@@ -13,6 +14,7 @@ use Tests\Unit\Helpers\AppointmentTestHelper;
 class StoreAppointmentRequestTest extends FormRequestTestCase
 {
     use AppointmentTestHelper;
+    use PatientTestHelper;
 
     /** @test */
     public function it_does_not_allow_empty_fields()

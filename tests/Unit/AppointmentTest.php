@@ -3,12 +3,14 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Tests\Unit\Helpers\AppointmentTestHelper;
+use Tests\Helpers\AppointmentTestHelper;
+use Tests\Helpers\PatientTestHelper;
 use Tests\Unit\TestCase;
 
 class AppointmentTest extends TestCase
 {
     use AppointmentTestHelper;
+    use PatientTestHelper;
 
     /** @test */
     public function it_returns_carbon_date()
