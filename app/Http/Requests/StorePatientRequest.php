@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Patient;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -9,6 +10,18 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class StorePatientRequest extends FormRequest
 {
+    /**
+     * This will hold the persisted Patient Moel instance only if the saved property is true
+     * @var Patient
+     */
+    private $patient = null;
+
+    /**
+     * True if the save method was succesful
+     * @var bool
+     */
+    private $saved = false;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -43,5 +56,43 @@ class StorePatientRequest extends FormRequest
           'has_electricity'      => 'required|boolean',
           'has_pet'              => 'required|boolean',
         ];
+    }
+
+    /**
+     * Saves the Patient to the Database with the inputs from the Request
+     * @return bool
+     */
+    public function save()
+    {
+        $this->patient = Patient::updateOrCreate(
+            ['id' => $this->id],
+            $this->except('id')
+        );
+
+        $this->saved = true;
+
+        return $this->saved();
+    }
+
+    /**
+     * True if the save method was succesful
+     * @return bool
+     */
+    public function saved()
+    {
+        return $this->saved;
+    }
+
+    /**
+     * The saved Patient instance
+     * @return Patient
+     */
+    public function patient()
+    {
+        if ($this->saved()) {
+            return $this->patient;
+        }
+
+        throw new \InvalidArgumentException("Patient is not saved");
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Http\Requests\StorePatientRequest;
 use App\Patient;
+use Illuminate\Validation\ValidationException;
 use Tests\Unit\FormRequestTestCase;
 
 /**
@@ -140,6 +141,46 @@ class StorePatientRequestTest extends FormRequestTestCase
             $validator = $this->passingValidator(['address' => $each]);
             $this->assertValidationRuleFailed($validator, 'address', $each, 'String');
         }
+    }
+
+    /** @test */
+    public function it_stores_new_patient_in_the_database()
+    {
+        $input = $this->modelFields();
+        $this->assertTrue($this->createFormRequest($input)->save());
+        $this->assertDatabaseHas('patients', $input);
+        $this->assertEquals(Patient::count(), 1);
+    }
+
+    /** @test */
+    public function it_stores_updated_patient_in_the_database()
+    {
+        $patient = $this->createModel();
+        $patient->name = 'changed the name';
+        $patient->last_name = 'changed the last_name';
+        $patient->phone = '123-456-7890';
+        $changed_fields = $patient->toArray();
+        $this->assertTrue($this->createFormRequest($changed_fields)->save());
+        $this->assertDatabaseHas('patients', $changed_fields);
+        $this->assertEquals(Patient::count(), 1);
+    }
+
+    /** @test */
+    public function it_returns_the_saved_patient_when_saved()
+    {
+        $input = $this->modelFields();
+        $request = $this->createFormRequest($input);
+        $request->save();
+        $this->assertDatabaseHas('patients', $request->patient()->toArray());
+    }
+
+    /** @test */
+    public function it_raises_exception_when_calling_patient_and_it_was_not_saved()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $input = $this->modelFields();
+        $request = $this->createFormRequest($input);
+        $request->patient();
     }
 
     /** @test */
