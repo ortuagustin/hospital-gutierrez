@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Validator;
 use Tests\Unit\TestCase;
 
@@ -131,9 +132,7 @@ abstract class FormRequestTestCase extends TestCase
      */
     protected function validationRules()
     {
-        $formRequestClass = $this->formRequestUnderTestClass();
-
-        return (new $formRequestClass())->rules();
+        return $this->createFormRequest()->rules();
     }
 
     /**
@@ -155,6 +154,22 @@ abstract class FormRequestTestCase extends TestCase
      * Returns the class of the FormRequest that is beign tested
      */
     abstract protected function formRequestUnderTestClass();
+
+    /**
+     * Creates an instance of formRequestUnderTestClass
+     * @param array $input
+     * @return FormRequest
+     */
+    protected function createFormRequest(array $input = [])
+    {
+        $formRequestClass = $this->formRequestUnderTestClass();
+        $request = new $formRequestClass();
+        $request->setContainer($this->app);
+        $request->setRedirector(app(Redirector::class));
+        $request->replace($input);
+
+        return $request;
+    }
 
     /**
      * Returns a Model Factory for the Model
