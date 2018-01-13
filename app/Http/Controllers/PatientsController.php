@@ -40,7 +40,7 @@ class PatientsController extends Controller
      */
     public function store(StorePatientRequest $request)
     {
-        Patient::create($request->all());
+        $request->save();
 
         return redirect()->route('patients.index');
     }
@@ -71,12 +71,11 @@ class PatientsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  StorePatientRequest  $request
-     * @param  Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePatientRequest $request, Patient $patient)
+    public function update(StorePatientRequest $request)
     {
-        $patient->update($request->all());
+        $request->save();
 
         return redirect()->route('patients.index');
     }
@@ -84,12 +83,12 @@ class PatientsController extends Controller
     /**
      * Remove the specified Patient from storage.
      *
-     * @param  int  $id
+     * @param  Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patient  $patient)
     {
-        Patient::destroy($id);
+        $patient->delete();
 
         return redirect()->route('patients.index');
     }
