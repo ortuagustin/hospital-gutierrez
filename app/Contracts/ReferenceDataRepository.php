@@ -62,6 +62,6 @@ interface WaterTypesRepositoryInterface extends ReferenceDataRepositoryInterface
 /**
  * Interface for a Repository that handles MedicalInsuranceType Models
  */
-interface MedicalInsuranceRepositoryInterface extends ReferenceDataRepositoryInterface
+interface MedicalInsurancesRepositoryInterface extends ReferenceDataRepositoryInterface
 {
 }

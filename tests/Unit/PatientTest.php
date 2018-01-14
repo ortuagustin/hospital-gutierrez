@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Contracts\DocTypesRepositoryInterface;
 use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
-use App\Contracts\MedicalInsuranceRepositoryInterface;
+use App\Contracts\MedicalInsurancesRepositoryInterface;
 use Tests\Fakes\FakeReferenceDataRepository;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\PatientTestHelper;
@@ -56,7 +56,7 @@ class PatientTest extends TestCase
     public function it_returns_related_social_insurance_type()
     {
         $model = $this->makeReferenceModel(rand(), 'IOMA');
-        $this->swapRepository(MedicalInsuranceRepositoryInterface::class, [$model]);
+        $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$model]);
         $patient = $this->createPatient(['medical_insurance_id' => $model->id()]);
         $this->assertNotNull($patient->medicalInsurance);
     }
@@ -111,7 +111,7 @@ class PatientTest extends TestCase
         $old_medical_insurance = $this->makeReferenceModel(rand(), 'OSDE');
         $new_medical_insurance = $this->makeReferenceModel(rand(), 'IOMA');
         $patient = $this->createPatient(['medical_insurance_id' => $old_medical_insurance->id()]);
-        $this->swapRepository(MedicalInsuranceRepositoryInterface::class, [$old_medical_insurance, $new_medical_insurance]);
+        $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$old_medical_insurance, $new_medical_insurance]);
         $patient->medicalInsurance = $new_medical_insurance;
         $this->assertNotSame($patient->medicalInsurance, $new_medical_insurance);
     }

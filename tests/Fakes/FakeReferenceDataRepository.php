@@ -5,7 +5,8 @@ namespace Tests\Fakes;
 use App\Contracts\DocTypesRepositoryInterface;
 use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
-use App\Contracts\MedicalInsuranceRepositoryInterface;
+use App\Contracts\MedicalInsurancesRepositoryInterface;
+use App\Contracts\ReferenceDataRepository\HandlesReferenceDataCollection;
 use App\Contracts\ReferenceDataRepositoryInterface;
 use App\Contracts\WaterTypesRepositoryInterface;
 
@@ -15,8 +16,10 @@ class FakeReferenceDataRepository implements
     HomeTypesRepositoryInterface,
     HeatingTypesRepositoryInterface,
     WaterTypesRepositoryInterface,
-    MedicalInsuranceRepositoryInterface
+    MedicalInsurancesRepositoryInterface
 {
+    use HandlesReferenceDataCollection;
+
     /**
      * @var Collection
      */
@@ -28,16 +31,6 @@ class FakeReferenceDataRepository implements
     public function __construct(array $models = [])
     {
         $this->models = $this->makeCollection($models);
-    }
-
-    public function contains($key)
-    {
-        return $this->all()->has($key);
-    }
-
-    public function get($key)
-    {
-        return $this->all()->get($key);
     }
 
     public function all()

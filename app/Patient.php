@@ -48,11 +48,11 @@ class Patient extends Model
 
     /**
      * Repository for MedicalInsurance Models
-     * @return \App\Contracts\MedicalInsuranceRepositoryInterface
+     * @return \App\Contracts\MedicalInsurancesRepositoryInterface
      */
     private function medicalInsurances()
     {
-        return resolve(\App\Contracts\MedicalInsuranceRepositoryInterface::class);
+        return resolve(\App\Contracts\MedicalInsurancesRepositoryInterface::class);
     }
 
     /**
