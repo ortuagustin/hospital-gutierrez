@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\TestResponse;
+use Illuminate\Support\Facades\Event;
 
 /**
  * Check if an item or items does NOT exist in an array using "dot" notation.
@@ -31,6 +33,26 @@ class AuthenticationTest extends FeatureTest
         $this->submitRegistrationForm($user_attributes);
         $this->seeUserInDatabase($user_attributes)
              ->assertEquals(User::count(), 1);
+    }
+
+    /** @test */
+    public function it_dispatches_event_when_user_is_registered()
+    {
+        Event::fake();
+        $user_attributes = $this->getRegistrationFields();
+        $this->submitRegistrationForm($user_attributes);
+        Event::assertDispatched(Registered::class, function ($event) {
+            return $event->user->is(User::first());
+        });
+    }
+
+    /** @test */
+    public function it_does_not_dispatch_event_if_registration_fails()
+    {
+        Event::fake();
+        $user_attributes = $this->getRegistrationFields(['email' => 'invalid-email']);
+        $this->submitRegistrationForm($user_attributes);
+        Event::assertNotDispatched(Registered::class);
     }
 
     /** @test */
