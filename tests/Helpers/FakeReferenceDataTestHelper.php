@@ -10,6 +10,7 @@ trait FakeReferenceDataTestHelper
      * Creates an instance of ReferenceModel with the given values
      * @param int $key
      * @param string $value
+     * @return ReferenceModel
      */
     public function makeReferenceModel($key, $value)
     {
