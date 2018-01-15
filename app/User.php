@@ -45,15 +45,16 @@ class User extends Authenticatable
 
     /**
      * Returns True if the User has the given Permission
-     * @param Permission|int $permission Can be a Permission Model or the Permission Id
+     * @param Permission|int|string $permission Can be a Permission Model, Permission Name, or the Permission Id
+     * @return bool
      */
     public function hasPermission($permission)
     {
-        $permission_id = $this->permissionId($permission);
-
-        return $this->permissions()->contains(function ($value, $key) use ($permission_id) {
-            return $value->id === $permission_id;
-        });
+        if (is_string($permission)) {
+            return $this->hasPermissionByName($permission);
+        } else {
+            return $this->hasPermissionById($this->permissionId($permission));
+        }
     }
 
     /**
@@ -99,5 +100,29 @@ class User extends Authenticatable
     protected function permissionId($permission)
     {
         return ($permission instanceof Permission) ? $permission->id : $permission;
+    }
+
+    /**
+     * Returns True if the User has the given Permission
+     * @param int $permission_id
+     * @return bool
+     */
+    protected function hasPermissionById($permission_id)
+    {
+        return $this->permissions()->contains(function ($value, $key) use ($permission_id) {
+            return $value->id === $permission_id;
+        });
+    }
+
+    /**
+     * Returns True if the User has the given Permission
+     * @param string $permission_name
+     * @return bool
+     */
+    protected function hasPermissionByName($permission_name)
+    {
+        return $this->permissions()->contains(function ($value, $key) use ($permission_name) {
+            return $value->name === $permission_name;
+        });
     }
 }

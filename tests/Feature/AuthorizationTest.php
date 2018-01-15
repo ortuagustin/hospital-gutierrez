@@ -72,4 +72,67 @@ class UserAuthorizationTest extends FeatureTest
         $guest_role->permissions()->attach($permission_to_view);
         $this->assertTrue($user->hasNotPermission($permission_to_create), 'It should not have permission to create');
     }
+
+    /** @test */
+    public function it_has_permission_when_received_permission_model()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $role->permissions()->attach($permission);
+        $this->assertTrue($user->hasPermission($permission), 'It should have permission');
+    }
+
+    /** @test */
+    public function it_has_not_permission_when_received_permission_model()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $this->assertTrue($user->hasNotPermission($permission), 'It should not have permission');
+    }
+
+    /** @test */
+    public function it_has_permission_when_received_permission_id()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $role->permissions()->attach($permission);
+        $this->assertTrue($user->hasPermission($permission->id), 'It should have permission');
+    }
+
+    /** @test */
+    public function it_has_not_permission_when_received_permission_id()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $this->assertTrue($user->hasNotPermission($permission->id), 'It should not have permission');
+    }
+
+    /** @test */
+    public function it_has_permission_when_received_permission_name()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $role->permissions()->attach($permission);
+        $this->assertTrue($user->hasPermission($permission->name), 'It should have permission');
+    }
+
+    /** @test */
+    public function it_has_not_permission_when_received_permission_name()
+    {
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'create']);
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role);
+        $this->assertTrue($user->hasNotPermission($permission->name), 'It should not have permission');
+    }
 }
