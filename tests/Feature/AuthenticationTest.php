@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Support\Facades\Event;
+use Tests\Helpers\TestsModel;
 
 /**
  * Check if an item or items does NOT exist in an array using "dot" notation.
@@ -26,6 +27,8 @@ function array_has_not($array, $keys)
  */
 class AuthenticationTest extends FeatureTest
 {
+    use TestsModel;
+
     /** @test */
     public function it_registers_a_user_when_all_fields_are_supplied()
     {
@@ -168,30 +171,31 @@ class AuthenticationTest extends FeatureTest
     }
 
     /**
-     * returns a model factory for the User model
+     * @inheritDoc
      */
-    protected function getUserFactory()
+    protected function modelUnderTestClass()
     {
-        return factory(User::class);
+        return User::class;
     }
 
     /**
      * creates and saves a new User model
      * @param array $overrides
-     * @return App\User
+     * @return \App\User
      */
     protected function createUser(array $overrides = [])
     {
-        return $this->getUserFactory()->create($overrides);
+        return $this->createModel($overrides);
     }
 
     /**
      * returns the fields that the registration form requires
      * @param array $overrides
+     * @return array
      */
     protected function getRegistrationFields(array $overrides = [])
     {
-        return $this->getUserFactory()->raw($overrides);
+        return $this->modelFields($overrides);
     }
 
     /**

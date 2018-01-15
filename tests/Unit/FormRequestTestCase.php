@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Validator;
+use Tests\Helpers\TestsModel;
 use Tests\Unit\TestCase;
 
 /**
@@ -11,6 +12,8 @@ use Tests\Unit\TestCase;
  */
 abstract class FormRequestTestCase extends TestCase
 {
+    use TestsModel;
+
     /**
      * Asserts that the validator fails when the given field contains special characters
      * @param string $field
@@ -136,16 +139,6 @@ abstract class FormRequestTestCase extends TestCase
     }
 
     /**
-     * Saves a new Model that the FormRequest handles to the database and returns it
-     * @param array $overrides
-     * @return Illuminate\Database\Eloquent\Model
-     */
-    protected function createModel(array $overrides = [])
-    {
-        return $this->modelFactory()->create($overrides);
-    }
-
-    /**
      * Returns the class of the Eloquent Model that is beign tested
      */
     abstract protected function modelUnderTestClass();
@@ -169,27 +162,6 @@ abstract class FormRequestTestCase extends TestCase
         $request->replace($input);
 
         return $request;
-    }
-
-    /**
-     * Returns a Model Factory for the Model
-     * @return Illuminate\Database\Eloquent\Factory
-     */
-    protected function modelFactory()
-    {
-        return factory($this->modelUnderTestClass());
-    }
-
-    /**
-     * Returns an associative array with the fields of the Model
-     * The array will contain the field name as the key, and random data as the value
-     * You can override the values of a field passing an associative array, ie ['name' => 'your-value', 'last_name', => 'other-value', ...]
-     * @param array $overrides
-     * @return array
-     */
-    protected function modelFields(array $overrides = [])
-    {
-        return $this->modelFactory()->raw($overrides);
     }
 
     /**
