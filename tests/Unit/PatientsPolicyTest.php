@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use App\Permission;
 use App\Policies\PatientsPolicy;
@@ -8,7 +8,7 @@ use App\Role;
 use App\User;
 use Tests\Helpers\PatientTestHelper;
 
-class PatientsPolicyTest extends FeatureTest
+class PatientsPolicyTest extends TestCase
 {
     use PatientTestHelper;
 
