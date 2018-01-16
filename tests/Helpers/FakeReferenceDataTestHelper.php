@@ -32,6 +32,27 @@ trait FakeReferenceDataTestHelper
     }
 
     /**
+     * Injects a FakeRepository for the given contract that contains the specified models
+     * @param string $contract
+     * @param array  $models
+     * @return $this
+     */
+    protected function injectRepository($contract, array $models = [])
+    {
+        return $this->swapRepository($contract, $models);
+    }
+
+    /**
+     * Injects a FakeRepository for the given contract that contains no models
+     * @param string $contract
+     * @return $this
+     */
+    protected function injectEmptyRepository($contract)
+    {
+        return $this->injectRepository($contract, []);
+    }
+
+    /**
      * Creates an instance of a FakeReferenceDataRepository that contains the specified models
      * @param array $models
      * @return FakeReferenceDataRepository
