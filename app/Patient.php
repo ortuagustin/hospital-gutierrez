@@ -11,51 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     /**
-     * Repository for DocType Models
-     * @return \App\Contracts\DocTypesRepositoryInterface
-     */
-    private function docTypes()
-    {
-        return resolve(\App\Contracts\DocTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for HomeType Models
-     * @return \App\Contracts\HomeTypesRepositoryInterface
-     */
-    private function homeTypes()
-    {
-        return resolve(\App\Contracts\HomeTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for HeatingType Models
-     * @return \App\Contracts\HeatingTypesRepositoryInterface
-     */
-    private function heatingsTypes()
-    {
-        return resolve(\App\Contracts\HeatingTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for WaterType Models
-     * @return \App\Contracts\WaterTypesRepositoryInterface
-     */
-    private function waterTypes()
-    {
-        return resolve(\App\Contracts\WaterTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for MedicalInsurance Models
-     * @return \App\Contracts\MedicalInsurancesRepositoryInterface
-     */
-    private function medicalInsurances()
-    {
-        return resolve(\App\Contracts\MedicalInsurancesRepositoryInterface::class);
-    }
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -66,6 +21,22 @@ class Patient extends Model
       'gender', 'address', 'phone', 'has_refrigerator', 'has_electricity',
       'has_pet',
     ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['medical_records'];
+
+    /**
+     * The Medical Records assigned to the Patient
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function medicalRecords()
+    {
+        return $this->hasMany(MedicalRecord::class);
+    }
 
     /**
      * Returns the associated Document Type
@@ -114,7 +85,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param $value ReferenceModel
+     * @param ReferenceModel $value
      */
     public function setDocTypeAttribute(ReferenceModel $value)
     {
@@ -123,7 +94,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param $value ReferenceModel
+     * @param ReferenceModel $value
      */
     public function setHomeTypeAttribute(ReferenceModel $value)
     {
@@ -132,7 +103,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param $value ReferenceModel
+     * @param ReferenceModel $value
      */
     public function setHeatingTypeAttribute(ReferenceModel $value)
     {
@@ -141,7 +112,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param $value ReferenceModel
+     * @param ReferenceModel $value
      */
     public function setWaterTypeAttribute(ReferenceModel $value)
     {
@@ -150,10 +121,55 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param $value ReferenceModel
+     * @param ReferenceModel $value
      */
     public function setMedicalInsuranceAttribute(ReferenceModel $value)
     {
         $this->medical_insurance_id = $value->id();
+    }
+
+    /**
+     * Repository for DocType Models
+     * @return \App\Contracts\DocTypesRepositoryInterface
+     */
+    private function docTypes()
+    {
+        return resolve(\App\Contracts\DocTypesRepositoryInterface::class);
+    }
+
+    /**
+     * Repository for HomeType Models
+     * @return \App\Contracts\HomeTypesRepositoryInterface
+     */
+    private function homeTypes()
+    {
+        return resolve(\App\Contracts\HomeTypesRepositoryInterface::class);
+    }
+
+    /**
+     * Repository for HeatingType Models
+     * @return \App\Contracts\HeatingTypesRepositoryInterface
+     */
+    private function heatingsTypes()
+    {
+        return resolve(\App\Contracts\HeatingTypesRepositoryInterface::class);
+    }
+
+    /**
+     * Repository for WaterType Models
+     * @return \App\Contracts\WaterTypesRepositoryInterface
+     */
+    private function waterTypes()
+    {
+        return resolve(\App\Contracts\WaterTypesRepositoryInterface::class);
+    }
+
+    /**
+     * Repository for MedicalInsurance Models
+     * @return \App\Contracts\MedicalInsurancesRepositoryInterface
+     */
+    private function medicalInsurances()
+    {
+        return resolve(\App\Contracts\MedicalInsurancesRepositoryInterface::class);
     }
 }

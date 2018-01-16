@@ -36,6 +36,15 @@ class User extends Authenticatable
     protected $with = ['roles'];
 
     /**
+     * The Medical Records created by this User
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function medicalRecords()
+    {
+        return $this->hasMany(MedicalRecord::class);
+    }
+
+    /**
      * The roles that belong to the User.
      */
     public function roles()
