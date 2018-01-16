@@ -103,7 +103,7 @@ class StorePatientRequestTest extends FormRequestTestCase
     }
 
     /** @test */
-    public function it_does_allows_all_valid_bolean_values_on_boolean_fields()
+    public function it_allows_all_valid_bolean_values_on_boolean_fields()
     {
         foreach ($this->modelBooleanFields() as $field) {
             foreach ($this->validBooleanValues() as $value) {
