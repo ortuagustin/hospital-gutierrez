@@ -6,7 +6,6 @@ use App\Contracts\DocTypesRepositoryInterface;
 use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
 use App\Contracts\MedicalInsurancesRepositoryInterface;
-use Tests\Fakes\FakeReferenceDataRepository;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\PatientTestHelper;
 use Tests\Unit\TestCase;
@@ -89,7 +88,7 @@ class PatientTest extends TestCase
         $old_doc_type = $this->makeReferenceModel(rand(), 'Electrical');
         $new_doc_type = $this->makeReferenceModel(rand(), 'Gas');
         $patient = $this->createPatient(['doc_type_id' => $old_doc_type->id()]);
-        $this->swapRepository(docTypesRepositoryInterface::class, [$old_doc_type, $new_doc_type]);
+        $this->swapRepository(DocTypesRepositoryInterface::class, [$old_doc_type, $new_doc_type]);
         $patient->docType = $new_doc_type;
         $this->assertNotSame($patient->docType, $new_doc_type);
     }
@@ -114,28 +113,5 @@ class PatientTest extends TestCase
         $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$old_medical_insurance, $new_medical_insurance]);
         $patient->medicalInsurance = $new_medical_insurance;
         $this->assertNotSame($patient->medicalInsurance, $new_medical_insurance);
-    }
-
-    /**
-     * Injects a FakeRepository for the given contract that contains the specified models
-     * @param string $contract
-     * @param array  $models
-     * @return $this
-     */
-    protected function swapRepository($contract, array $models = [])
-    {
-        app()->instance($contract, $this->fakeRepository($models));
-
-        return $this;
-    }
-
-    /**
-     * Creates an instance of a FakeReferenceDataRepository that contains the specified models
-     * @param array $models
-     * @return FakeReferenceDataRepository
-     */
-    protected function fakeRepository(array $models = [])
-    {
-        return new FakeReferenceDataRepository($models);
     }
 }
