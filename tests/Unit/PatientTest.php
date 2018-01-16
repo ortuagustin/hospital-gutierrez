@@ -7,14 +7,46 @@ use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
 use App\Contracts\MedicalInsurancesRepositoryInterface;
 use App\Contracts\WaterTypesRepositoryInterface;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\Helpers\FakeReferenceDataTestHelper;
+use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
 use Tests\Unit\TestCase;
 
 class PatientTest extends TestCase
 {
     use PatientTestHelper;
+    use MedicalRecordTestHelper;
     use FakeReferenceDataTestHelper;
+
+    /** @test */
+    public function it_has_many_relation_with_medical_record()
+    {
+        $patient = $this->createPatient();
+        $this->assertNotNull($patient->medicalRecords());
+        $this->assertInstanceOf(HasMany::class, $patient->medicalRecords());
+    }
+
+    /** @test */
+    public function it_has_empty_medical_record_collection_when_created()
+    {
+        $patient = $this->createPatient();
+        $this->assertEquals(0, $patient->medicalRecords()->count());
+    }
+
+    /** @test */
+    public function it_can_add_many_medical_records()
+    {
+        $patient = $this->createPatient();
+        $first_medical_record = $this->createMedicalRecord();
+        $second_medical_record = $this->createMedicalRecord();
+
+        $patient->medicalRecords()->save($first_medical_record);
+        $this->assertEquals(1, $patient->medicalRecords()->count());
+
+        $patient->medicalRecords()->save($second_medical_record);
+        $this->assertEquals(2, $patient->medicalRecords()->count());
+    }
 
     /** @test */
     public function it_returns_related_document_type()

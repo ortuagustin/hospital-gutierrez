@@ -29,7 +29,7 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $with = ['medical_records'];
+    protected $with = ['medicalRecords'];
 
     /**
      * The Medical Records assigned to the Patient
