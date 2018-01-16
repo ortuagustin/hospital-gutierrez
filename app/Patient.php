@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\ReferenceModel;
+use App\Contracts\InteractsWithReferenceModels;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Patient extends Model
 {
+    use InteractsWithReferenceModels;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,7 +42,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Document Type
-     * @return ReferenceModel
+     * @return \App\Models\ReferenceModel
      */
     public function getDocTypeAttribute()
     {
@@ -49,7 +51,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Home Type
-     * @return ReferenceModel
+     * @return \App\Models\ReferenceModel
      */
     public function getHomeTypeAttribute()
     {
@@ -58,7 +60,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Heating Type
-     * @return ReferenceModel
+     * @return \App\Models\ReferenceModel
      */
     public function getHeatingTypeAttribute()
     {
@@ -67,7 +69,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Water Type
-     * @return ReferenceModel
+     * @return \App\Models\ReferenceModel
      */
     public function getWaterTypeAttribute()
     {
@@ -76,7 +78,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Medical Insurance
-     * @return ReferenceModel
+     * @return \App\Models\ReferenceModel
      */
     public function getMedicalInsuranceAttribute()
     {
@@ -85,91 +87,46 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
-     * @param ReferenceModel $value
+     * @param \App\Models\ReferenceModel $value
      */
-    public function setDocTypeAttribute(ReferenceModel $value)
+    public function setDocTypeAttribute(\App\Models\ReferenceModel $value)
     {
         $this->doc_type_id = $value->id();
     }
 
     /**
      * Sets the associated Medical Insurance
-     * @param ReferenceModel $value
+     * @param \App\Models\ReferenceModel $value
      */
-    public function setHomeTypeAttribute(ReferenceModel $value)
+    public function setHomeTypeAttribute(\App\Models\ReferenceModel $value)
     {
         $this->home_type_id = $value->id();
     }
 
     /**
      * Sets the associated Medical Insurance
-     * @param ReferenceModel $value
+     * @param \App\Models\ReferenceModel $value
      */
-    public function setHeatingTypeAttribute(ReferenceModel $value)
+    public function setHeatingTypeAttribute(\App\Models\ReferenceModel $value)
     {
         $this->heating_type_id = $value->id();
     }
 
     /**
      * Sets the associated Medical Insurance
-     * @param ReferenceModel $value
+     * @param \App\Models\ReferenceModel $value
      */
-    public function setWaterTypeAttribute(ReferenceModel $value)
+    public function setWaterTypeAttribute(\App\Models\ReferenceModel $value)
     {
         $this->water_type_id = $value->id();
     }
 
     /**
      * Sets the associated Medical Insurance
-     * @param ReferenceModel $value
+     * @param \App\Models\ReferenceModel $value
      */
-    public function setMedicalInsuranceAttribute(ReferenceModel $value)
+    public function setMedicalInsuranceAttribute(\App\Models\ReferenceModel $value)
     {
         $this->medical_insurance_id = $value->id();
-    }
-
-    /**
-     * Repository for DocType Models
-     * @return \App\Contracts\DocTypesRepositoryInterface
-     */
-    private function docTypes()
-    {
-        return resolve(\App\Contracts\DocTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for HomeType Models
-     * @return \App\Contracts\HomeTypesRepositoryInterface
-     */
-    private function homeTypes()
-    {
-        return resolve(\App\Contracts\HomeTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for HeatingType Models
-     * @return \App\Contracts\HeatingTypesRepositoryInterface
-     */
-    private function heatingsTypes()
-    {
-        return resolve(\App\Contracts\HeatingTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for WaterType Models
-     * @return \App\Contracts\WaterTypesRepositoryInterface
-     */
-    private function waterTypes()
-    {
-        return resolve(\App\Contracts\WaterTypesRepositoryInterface::class);
-    }
-
-    /**
-     * Repository for MedicalInsurance Models
-     * @return \App\Contracts\MedicalInsurancesRepositoryInterface
-     */
-    private function medicalInsurances()
-    {
-        return resolve(\App\Contracts\MedicalInsurancesRepositoryInterface::class);
     }
 }
