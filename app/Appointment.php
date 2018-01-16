@@ -30,6 +30,7 @@ class Appointment extends Model
 
     /**
      * Returns the time portion of the Appointment
+     * @return string
      */
     public function getTimeAttribute()
     {

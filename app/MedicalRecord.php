@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * A Model that represents a Medical History Record of a Patient
+ */
 class MedicalRecord extends Model
 {
     /**

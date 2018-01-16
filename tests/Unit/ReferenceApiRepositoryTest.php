@@ -26,7 +26,7 @@ class ReferenceApiRepository extends TestCase
     }
 
     /** @before */
-    protected function setUpRepository()
+    protected function setUpEnviroment()
     {
         $this->repositories[] = new DocTypesRepository();
         $this->repositories[] = new HomeTypesRepository();

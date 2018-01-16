@@ -5,6 +5,10 @@ namespace Tests\Helpers;
 use App\Models\ReferenceModel;
 use Tests\Fakes\FakeReferenceDataRepository;
 
+/**
+ * Add convenient methods to make it easier to work with fakes for ReferenceModels
+ * and ReferenceDatarepositories in tests
+ */
 trait FakeReferenceDataTestHelper
 {
     /**

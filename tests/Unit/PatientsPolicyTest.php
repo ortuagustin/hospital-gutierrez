@@ -49,28 +49,32 @@ class PatientsPolicyTest extends TestCase
     }
 
     /** @before */
-    protected function setupWorld()
+    protected function setUpTestEnviroment()
     {
         $this->policy = new PatientsPolicy();
         $this->patient = $this->createPatient();
-        $this->createGuestUser();
-        $this->createMedicUser();
+        $this->setUpGuestUser()
+             ->setUpMedicUser();
     }
 
     /**
      * Initializes the guestUser with a User that does not have any Permission
+     * @return $this
      */
-    protected function createGuestUser()
+    protected function setUpGuestUser()
     {
         $role = Role::create(['name' => 'Guest']);
         $this->guestUser = factory(User::class)->create();
         $this->guestUser->roles()->attach($role);
+
+        return $this;
     }
 
     /**
      * Initializes the medicUser with a User that has all the Permissions
+     * @return $this
      */
-    protected function createMedicUser()
+    protected function setUpMedicUser()
     {
         $role = Role::create(['name' => 'Medic']);
         foreach ($this->actions() as $action) {
@@ -80,6 +84,8 @@ class PatientsPolicyTest extends TestCase
 
         $this->medicUser = factory(User::class)->create();
         $this->medicUser->roles()->attach($role);
+
+        return $this;
     }
 
     /**

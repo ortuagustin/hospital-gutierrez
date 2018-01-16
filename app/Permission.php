@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * A Model that represents a User Permission
+ */
 class Permission extends Model
 {
     /**
@@ -15,6 +18,7 @@ class Permission extends Model
 
     /**
      * A Permission may be assigned to many Roles
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
     {
@@ -23,6 +27,7 @@ class Permission extends Model
 
     /**
      * A Permission may be assigned to many Users
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
     {

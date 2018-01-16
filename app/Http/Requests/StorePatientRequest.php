@@ -60,6 +60,7 @@ class StorePatientRequest extends FormRequest
 
     /**
      * Saves the Patient to the Database with the inputs from the Request
+     *
      * @return bool
      */
     public function save()
@@ -76,6 +77,7 @@ class StorePatientRequest extends FormRequest
 
     /**
      * True if the save method was succesful
+     *
      * @return bool
      */
     public function saved()
@@ -85,6 +87,7 @@ class StorePatientRequest extends FormRequest
 
     /**
      * The saved Patient instance
+     *
      * @return Patient
      */
     public function patient()

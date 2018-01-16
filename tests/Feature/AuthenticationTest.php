@@ -181,7 +181,7 @@ class AuthenticationTest extends FeatureTest
     /**
      * creates and saves a new User model
      * @param array $overrides
-     * @return \App\User
+     * @return User
      */
     protected function createUser(array $overrides = [])
     {
@@ -201,6 +201,7 @@ class AuthenticationTest extends FeatureTest
     /**
      * simulates that the User Registration Form was submitted by sending a POST request
      * @param array $user_attributes
+     * @return TestResponse
      */
     protected function submitRegistrationForm(array $user_attributes)
     {
@@ -215,17 +216,19 @@ class AuthenticationTest extends FeatureTest
     /**
      * simulates that the User Login Form was submitted by sending a POST request
      * @param array $credentials
+     * @return TestResponse
      */
-    protected function submitLoginForm($credentials)
+    protected function submitLoginForm(array $credentials)
     {
         return $this->post('login', $credentials);
     }
 
     /**
      * checks wether the given user is found in the database
-     * @param mixed $user_attributes
+     * @param array $user_attributes
+     * @return $this
      */
-    protected function seeUserInDatabase($user_attributes)
+    protected function seeUserInDatabase(array $user_attributes)
     {
         $database_fields = array_intersect_key($user_attributes, array_flip(['name', 'email']));
 
@@ -234,41 +237,47 @@ class AuthenticationTest extends FeatureTest
 
     /**
      * attempts to login; returns true if succesful, false otherwise
-     * @param mixed $credentials
+     * @param array $credentials
+     * @return bool
      */
-    protected function attemptLogin($credentials)
+    protected function attemptLogin(array $credentials)
     {
         return auth()->attempt($credentials);
     }
 
     /**
-     * asserts that it is possible to login with the given credentials
-     * @param mixed $credentials
+     * Asserts that it is possible to login with the given credentials
+     * @param array $credentials
+     * @return $this
      */
-    protected function assertLogin($credentials)
+    protected function assertLogin(array $credentials)
     {
         return $this->seeCredentials($credentials)
                     ->assertTrue($this->attemptLogin($credentials));
     }
 
     /**
-     * asserts that it is NOT possible to login with the given credentials
-     * @param mixed $credentials
+     * Asserts that it is NOT possible to login with the given credentials
+     * @param array $credentials
+     * @return $this
      */
-    protected function refuteLogin($credentials)
+    protected function refuteLogin(array $credentials)
     {
         return $this->dontSeeCredentials($credentials)
                     ->assertFalse($this->attemptLogin($credentials));
     }
 
     /**
-     * asserts that there are validation errors in the session and that no changes to the User table were made
+     * Asserts that there are validation errors in the session and that no changes to the User table were made
      * @param \Illuminate\Foundation\Testing\TestResponse $response
      * @param int $expectedUserCount
+     * @return $this
      */
     protected function assertRegistrationFailed(TestResponse $response, $expectedUserCount = 0)
     {
         $response->assertSessionHasErrors();
         $this->assertEquals(User::count(), $expectedUserCount);
+
+        return $this;
     }
 }

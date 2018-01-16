@@ -4,6 +4,9 @@ namespace Tests\Helpers;
 
 use App\Patient;
 
+/**
+ * Add convenient methods to make it easier to work with the Patient Model in tests
+ */
 trait PatientTestHelper
 {
     /**

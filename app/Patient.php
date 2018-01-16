@@ -6,7 +6,7 @@ use App\Contracts\InteractsWithReferenceModels;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * a Model that represents a Patient
+ * A Model that represents a Patient
  */
 class Patient extends Model
 {
