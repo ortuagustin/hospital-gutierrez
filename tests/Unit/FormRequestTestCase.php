@@ -151,7 +151,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Creates an instance of formRequestUnderTestClass
      * @param array $input
-     * @return FormRequest
+     * @return \Illuminate\Foundation\Http\FormRequest
      */
     protected function createFormRequest(array $input = [])
     {
