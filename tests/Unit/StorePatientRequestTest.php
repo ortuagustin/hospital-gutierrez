@@ -123,7 +123,7 @@ class StorePatientRequestTest extends FormRequestTestCase
     }
 
     /** @test */
-    public function it_does_allows_numeric_values_for_id_fields()
+    public function it_allows_numeric_values_for_id_fields()
     {
         foreach ($this->modelIdFields() as $each) {
             $validator = $this->passingValidator([$each => 1]);
