@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Patient;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -17,10 +16,9 @@ class PatientsPolicy
      * Determine whether the user can view the patient.
      *
      * @param  \App\User  $user
-     * @param  \App\Patient  $patient
      * @return bool
      */
-    public function view(User $user, Patient $patient)
+    public function view(User $user)
     {
         return $user->hasPermission('Patient-View');
     }
@@ -40,10 +38,9 @@ class PatientsPolicy
      * Determine whether the user can update the patient.
      *
      * @param  \App\User  $user
-     * @param  \App\Patient  $patient
      * @return bool
      */
-    public function update(User $user, Patient $patient)
+    public function update(User $user)
     {
         return $user->hasPermission('Patient-Update');
     }
@@ -52,10 +49,9 @@ class PatientsPolicy
      * Determine whether the user can delete the patient.
      *
      * @param  \App\User  $user
-     * @param  \App\Patient  $patient
      * @return bool
      */
-    public function delete(User $user, Patient $patient)
+    public function delete(User $user)
     {
         return $user->hasPermission('Patient-Delete');
     }
