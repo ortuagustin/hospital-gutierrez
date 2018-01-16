@@ -10,7 +10,6 @@ use App\Contracts\WaterTypesRepositoryInterface;
 use App\Http\Requests\StorePatientRequest;
 use App\Patient;
 use Tests\Helpers\FakeReferenceDataTestHelper;
-use Tests\Unit\FormRequestTestCase;
 
 /**
  * Tests the StorePatientRequest FormRequest class
