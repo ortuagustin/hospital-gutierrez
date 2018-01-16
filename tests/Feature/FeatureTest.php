@@ -14,7 +14,6 @@ abstract class FeatureTest extends BaseTestCase
     use CreatesApplication;
     use DatabaseTransactions;
 
-
     /**
      * runs the migrations, if needed, before executing the test suite
      */
