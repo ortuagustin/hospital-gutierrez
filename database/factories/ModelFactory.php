@@ -49,3 +49,10 @@ $factory->define(App\Appointment::class, function (Faker\Generator $faker) {
         'date'           => $faker->dateTime(),
     ];
 });
+
+$factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker) {
+    return [
+        'key'   => $faker->unique()->slug,
+        'value' => $faker->unique()->isbn10,
+    ];
+});
