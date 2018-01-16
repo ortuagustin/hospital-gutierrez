@@ -2,9 +2,14 @@
 
 namespace Tests\Unit;
 
+use App\Contracts\DocTypesRepositoryInterface;
+use App\Contracts\HeatingTypesRepositoryInterface;
+use App\Contracts\HomeTypesRepositoryInterface;
+use App\Contracts\MedicalInsurancesRepositoryInterface;
+use App\Contracts\WaterTypesRepositoryInterface;
 use App\Http\Requests\StorePatientRequest;
 use App\Patient;
-use Illuminate\Validation\ValidationException;
+use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Unit\FormRequestTestCase;
 
 /**
@@ -12,6 +17,8 @@ use Tests\Unit\FormRequestTestCase;
  */
 class StorePatientRequestTest extends FormRequestTestCase
 {
+    use FakeReferenceDataTestHelper;
+
     /** @test */
     public function it_does_not_allow_empty_fields()
     {
@@ -120,7 +127,7 @@ class StorePatientRequestTest extends FormRequestTestCase
     public function it_does_allows_numeric_values_for_id_fields()
     {
         foreach ($this->modelIdFields() as $each) {
-            $validator = $this->passingValidator([$each => rand(1, 10)]);
+            $validator = $this->passingValidator([$each => 1]);
             $this->assertValidationPasses($validator);
         }
     }
@@ -200,36 +207,51 @@ class StorePatientRequestTest extends FormRequestTestCase
     /** @test */
     public function it_does_not_allow_non_existent_doc_type_id()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        $this->injectEmptyRepository(DocTypesRepositoryInterface::class);
+        $validator = $this->passingValidator(['doc_type_id' => 1234]);
+        $this->assertValidationRuleFailed($validator, 'doc_type_id', 1234, 'ForeignDocType');
     }
 
     /** @test */
     public function it_does_not_allow_non_existent_home_type_id()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        $this->injectEmptyRepository(HomeTypesRepositoryInterface::class);
+        $validator = $this->passingValidator(['home_type_id' => 1234]);
+        $this->assertValidationRuleFailed($validator, 'home_type_id', 1234, 'ForeignHomeType');
     }
 
     /** @test */
     public function it_does_not_allow_non_existent_heating_type_id()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        $this->injectEmptyRepository(HeatingTypesRepositoryInterface::class);
+        $validator = $this->passingValidator(['heating_type_id' => 1234]);
+        $this->assertValidationRuleFailed($validator, 'heating_type_id', 1234, 'ForeignHeatingType');
     }
 
     /** @test */
     public function it_does_not_allow_non_existent_water_type_id()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        $this->injectEmptyRepository(WaterTypesRepositoryInterface::class);
+        $validator = $this->passingValidator(['water_type_id' => 1234]);
+        $this->assertValidationRuleFailed($validator, 'water_type_id', 1234, 'ForeignWaterType');
     }
 
     /** @test */
     public function it_does_not_allow_non_existent_medical_insurance_id()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        $this->injectEmptyRepository(MedicalInsurancesRepositoryInterface::class);
+        $validator = $this->passingValidator(['medical_insurance_id' => 1234]);
+        $this->assertValidationRuleFailed($validator, 'medical_insurance_id', 1234, 'ForeignMedicalInsurance');
+    }
+
+    /** @before */
+    protected function setupReferenceDataRepositories()
+    {
+        $this->injectRepository(DocTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'DNI')]);
+        $this->injectRepository(HomeTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Flat')]);
+        $this->injectRepository(WaterTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Water Well')]);
+        $this->injectRepository(HeatingTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Electrical')]);
+        $this->injectRepository(MedicalInsurancesRepositoryInterface::class, [$this->makeReferenceModel(1, 'IOMA')]);
     }
 
     /**

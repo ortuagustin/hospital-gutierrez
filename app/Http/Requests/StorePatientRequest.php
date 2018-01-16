@@ -40,11 +40,11 @@ class StorePatientRequest extends FormRequest
     public function rules()
     {
         return [
-          'doc_type_id'          => 'required|numeric',
-          'home_type_id'         => 'required|numeric',
-          'heating_type_id'      => 'required|numeric',
-          'water_type_id'        => 'required|numeric',
-          'medical_insurance_id' => 'required|numeric',
+          'doc_type_id'          => 'required|numeric|foreign_doc_type',
+          'home_type_id'         => 'required|numeric|foreign_home_type',
+          'heating_type_id'      => 'required|numeric|foreign_heating_type',
+          'water_type_id'        => 'required|numeric|foreign_water_type',
+          'medical_insurance_id' => 'required|numeric|foreign_medical_insurance',
           'name'                 => 'required|regex:/[\w\. \-\,]+$/',
           'last_name'            => 'required|regex:/[\w\. \-\,]+$/',
           'dni'                  => 'required|unique:patients',
