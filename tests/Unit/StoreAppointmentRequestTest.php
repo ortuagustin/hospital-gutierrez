@@ -31,7 +31,7 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
     /** @test */
     public function it_doest_not_allow_non_existent_patient_id()
     {
-        $validator = $this->validator(['patient_id' => 1234]);
+        $validator = $this->passingValidator(['patient_id' => 1234]);
         $this->assertValidationRuleFailed($validator, 'patient_id', 1234, 'Exists');
     }
 

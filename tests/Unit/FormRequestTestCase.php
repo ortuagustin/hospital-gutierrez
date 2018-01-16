@@ -23,7 +23,7 @@ abstract class FormRequestTestCase extends TestCase
     {
         foreach ($this->blacklistedCharacters() as $each) {
             $each = "test_this.value1234{$each}";
-            $validator = $this->validator([$field => $each]);
+            $validator = $this->passingValidator([$field => $each]);
             $this->assertValidationRuleFailed($validator, $field, $each, 'Regex');
         }
 
@@ -52,7 +52,7 @@ abstract class FormRequestTestCase extends TestCase
      */
     protected function assertFieldRequired($field)
     {
-        $validator = $this->validator([$field => '']);
+        $validator = $this->passingValidator([$field => '']);
         $this->assertValidationRuleFailed($validator, $field, '', 'Required');
 
         return $this;
@@ -111,7 +111,7 @@ abstract class FormRequestTestCase extends TestCase
      * @param array $input
      * @return Validator
      */
-    protected function validator(array $input = [])
+    private function validator(array $input = [])
     {
         return validator($input, $this->validationRules());
     }
