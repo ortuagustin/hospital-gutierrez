@@ -22,6 +22,13 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
     }
 
     /** @test */
+    public function it_passes_validations_when_all_fields_are_correct()
+    {
+        $validator = $this->passingValidator();
+        $this->assertValidationPasses($validator);
+    }
+
+    /** @test */
     public function it_doest_not_allow_non_existent_patient_id()
     {
         $validator = $this->validator(['patient_id' => 1234]);
@@ -32,8 +39,8 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
     public function it_allows_existent_patient_id()
     {
         $patient = $this->createPatient();
-        $validator = $this->validator(['patient_id' => $patient->id]);
-        $this->assertValidationRuleFailed($validator, 'patient_id', $patient->id, 'Exists');
+        $validator = $this->passingValidator(['patient_id' => $patient->id]);
+        $this->assertValidationPasses($validator);
     }
 
     /** @test */

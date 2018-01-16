@@ -27,7 +27,7 @@ class StoreAppointmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_id' => 'required|exists:patients',
+            'patient_id' => 'required|exists:patients,id',
             'date'       => 'required|unique:appointments',
         ];
     }
