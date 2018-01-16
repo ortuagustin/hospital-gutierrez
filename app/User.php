@@ -44,6 +44,52 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns True if the User has the 'Admin' Role
+     * @param string $adminRoleName
+     * @return bool
+     */
+    public function isAdmin($adminRoleName = null)
+    {
+        $role = is_null($adminRoleName) ? 'Admin' : $adminRoleName;
+
+        return $this->hasRole($role);
+    }
+
+    /**
+     * Returns True if the User does not have the 'Admin' Role
+     * @param string $adminRoleName
+     * @return bool
+     */
+    public function isNotAdmin($adminRoleName = null)
+    {
+        return ! $this->isAdmin($adminRoleName);
+    }
+
+    /**
+     * Returns True if the User has the given Role
+     * @param Role|int|string $role Can be a Role Model, Role Name, or the Role Id
+     * @return bool
+     */
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            return $this->hasRoleByName($role);
+        } else {
+            return $this->hasRoleById($this->roleId($role));
+        }
+    }
+
+    /**
+     * Returns True if the User hasn't the given Role
+     * @param Role|int|string $role Can be a Role Model, Role Name, or the Role Id
+     * @return bool
+     */
+    public function hasNotRole($role)
+    {
+        return ! $this->hasRole($role);
+    }
+
+    /**
      * Returns True if the User has the given Permission
      * @param Permission|int|string $permission Can be a Permission Model, Permission Name, or the Permission Id
      * @return bool
@@ -124,5 +170,34 @@ class User extends Authenticatable
         return $this->permissions()->contains(function ($value, $key) use ($permission_name) {
             return $value->name === $permission_name;
         });
+    }
+
+    /**
+     * Returns the Id of the given Role
+     * @param Role|int $role Can be a Role Model or the Role Id
+     */
+    protected function roleId($role)
+    {
+        return ($role instanceof Role) ? $role->id : $role;
+    }
+
+    /**
+     * Returns True if the User has the given Role
+     * @param int $role_id
+     * @return bool
+     */
+    protected function hasRoleById($role_id)
+    {
+        return $this->roles()->where('id', $role_id)->count() > 0;
+    }
+
+    /**
+     * Returns True if the User has the given Role
+     * @param string $role_name
+     * @return bool
+     */
+    protected function hasRoleByName($role_name)
+    {
+        return $this->roles()->where('name', $role_name)->count() > 0;
     }
 }
