@@ -6,6 +6,7 @@ use App\Contracts\DocTypesRepositoryInterface;
 use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
 use App\Contracts\MedicalInsurancesRepositoryInterface;
+use App\Contracts\WaterTypesRepositoryInterface;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\PatientTestHelper;
 use Tests\Unit\TestCase;
@@ -34,12 +35,12 @@ class PatientTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_related_doc_type()
+    public function it_returns_related_water_type()
     {
-        $model = $this->makeReferenceModel(rand(), 'doc Well');
-        $this->swapRepository(DocTypesRepositoryInterface::class, [$model]);
-        $patient = $this->createPatient(['doc_type_id' => $model->id()]);
-        $this->assertNotNull($patient->docType);
+        $model = $this->makeReferenceModel(rand(), 'Water Well');
+        $this->swapRepository(WaterTypesRepositoryInterface::class, [$model]);
+        $patient = $this->createPatient(['water_type_id' => $model->id()]);
+        $this->assertNotNull($patient->waterType);
     }
 
     /** @test */
@@ -52,7 +53,7 @@ class PatientTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_related_social_insurance_type()
+    public function it_returns_related_medical_insurance_type()
     {
         $model = $this->makeReferenceModel(rand(), 'IOMA');
         $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$model]);
@@ -63,8 +64,8 @@ class PatientTest extends TestCase
     /** @test */
     public function its_related_document_type_can_be_changed()
     {
-        $old_doc_type = $this->makeReferenceModel(rand(), 'Electrical');
-        $new_doc_type = $this->makeReferenceModel(rand(), 'Gas');
+        $old_doc_type = $this->makeReferenceModel(10, 'DNI');
+        $new_doc_type = $this->makeReferenceModel(20, 'LC');
         $patient = $this->createPatient(['doc_type_id' => $old_doc_type->id()]);
         $this->swapRepository(DocTypesRepositoryInterface::class, [$old_doc_type, $new_doc_type]);
         $patient->docType = $new_doc_type;
@@ -74,8 +75,8 @@ class PatientTest extends TestCase
     /** @test */
     public function its_related_home_type_can_be_changed()
     {
-        $old_home_type = $this->makeReferenceModel(rand(), 'Electrical');
-        $new_home_type = $this->makeReferenceModel(rand(), 'Gas');
+        $old_home_type = $this->makeReferenceModel(10, 'Flat');
+        $new_home_type = $this->makeReferenceModel(20, 'House');
         $patient = $this->createPatient(['home_type_id' => $old_home_type->id()]);
         $this->swapRepository(HomeTypesRepositoryInterface::class, [$old_home_type, $new_home_type]);
         $patient->homeType = $new_home_type;
@@ -83,21 +84,21 @@ class PatientTest extends TestCase
     }
 
     /** @test */
-    public function its_related_doc_type_can_be_changed()
+    public function its_related_water_type_can_be_changed()
     {
-        $old_doc_type = $this->makeReferenceModel(rand(), 'Electrical');
-        $new_doc_type = $this->makeReferenceModel(rand(), 'Gas');
-        $patient = $this->createPatient(['doc_type_id' => $old_doc_type->id()]);
-        $this->swapRepository(DocTypesRepositoryInterface::class, [$old_doc_type, $new_doc_type]);
-        $patient->docType = $new_doc_type;
-        $this->assertNotSame($patient->docType, $new_doc_type);
+        $old_water_type = $this->makeReferenceModel(10, 'Water Well');
+        $new_water_type = $this->makeReferenceModel(20, 'Some Water Provisioning System');
+        $patient = $this->createPatient(['doc_type_id' => $old_water_type->id()]);
+        $this->swapRepository(WaterTypesRepositoryInterface::class, [$old_water_type, $new_water_type]);
+        $patient->docType = $new_water_type;
+        $this->assertNotSame($patient->waterType, $new_water_type);
     }
 
     /** @test */
     public function its_related_heating_type_can_be_changed()
     {
-        $old_heating_type = $this->makeReferenceModel(rand(), 'Electrical');
-        $new_heating_type = $this->makeReferenceModel(rand(), 'Gas');
+        $old_heating_type = $this->makeReferenceModel(10, 'Electrical');
+        $new_heating_type = $this->makeReferenceModel(20, 'Gas');
         $patient = $this->createPatient(['heating_type_id' => $old_heating_type->id()]);
         $this->swapRepository(HeatingTypesRepositoryInterface::class, [$old_heating_type, $new_heating_type]);
         $patient->heatingType = $new_heating_type;
@@ -105,10 +106,10 @@ class PatientTest extends TestCase
     }
 
     /** @test */
-    public function its_related_social_insurance_type_can_be_changed()
+    public function its_related_medical_insurance_type_can_be_changed()
     {
-        $old_medical_insurance = $this->makeReferenceModel(rand(), 'OSDE');
-        $new_medical_insurance = $this->makeReferenceModel(rand(), 'IOMA');
+        $old_medical_insurance = $this->makeReferenceModel(10, 'OSDE');
+        $new_medical_insurance = $this->makeReferenceModel(20, 'IOMA');
         $patient = $this->createPatient(['medical_insurance_id' => $old_medical_insurance->id()]);
         $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$old_medical_insurance, $new_medical_insurance]);
         $patient->medicalInsurance = $new_medical_insurance;
