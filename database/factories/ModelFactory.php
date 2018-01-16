@@ -56,3 +56,23 @@ $factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker
         'value' => $faker->unique()->isbn10,
     ];
 });
+
+$factory->define(App\MedicalRecord::class, function (Faker\Generator $faker) {
+    return [
+            'patient_id'                    => factory(App\Patient::class)->create()->id,
+            'user_id'                       => factory(App\User::class)->create()->id,
+            'fecha'                         => $faker->dateTimeThisDecade(),
+            'peso'                          => $faker->randomFloat(),
+            'talla'                         => $faker->randomFloat(),
+            'percentilo_cefalico'           => $faker->randomFloat(),
+            'percentilo_perimetro_cefalico' => $faker->randomFloat(),
+            'alimentacion_observaciones'    => $faker->paragraph(),
+            'vacunas_completas'             => $faker->boolean(),
+            'vacunas_observaciones'         => $faker->paragraph(),
+            'maduracion_acorde'             => $faker->boolean(),
+            'maduracion_observaciones'      => $faker->paragraph(),
+            'examen_fisico_normal'          => $faker->boolean(),
+            'examen_fisico_observaciones'   => $faker->paragraph(),
+            'observaciones'                 => $faker->paragraph(),
+    ];
+});
