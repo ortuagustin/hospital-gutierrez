@@ -19,9 +19,9 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
-        $medical_records = $patient->medicalRecords();
+        $medicalRecords = $patient->medicalRecords;
 
-        return view('medical_records/index', compact('medical_records'));
+        return view('medical_records/index', compact('medicalRecords'));
     }
 
     /**
@@ -38,49 +38,53 @@ class MedicalRecordsController extends Controller
     /**
      * Store a newly created Medical Record in storage
      *
+     * @param int $patient_id
      * @param  \App\Http\Requests\StoreMedicalRecordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMedicalRecordRequest $request)
+    public function store($patient_id, StoreMedicalRecordRequest $request)
     {
         $request->save();
 
-        return redirect()->route('medical_records.index');
+        return redirect()->route('medical_records.index', $patient_id);
     }
 
     /**
      * Display the specified Medical Record
      *
+     * @param int $patient_id
      * @param  MedicalRecord  $medicalRecord
      * @return \Illuminate\Http\Response
      */
-    public function show(MedicalRecord $medicalRecord)
+    public function show($patient_id, MedicalRecord $medicalRecord)
     {
-        return view('medical_records/show', compact('medical_record'));
+        return view('medical_records/show', compact('medicalRecord'));
     }
 
     /**
      * Show the form for editing the specified Medical Record
      *
+     * @param int $patient_id
      * @param  MedicalRecord  $medicalRecord
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedicalRecord $medicalRecord)
+    public function edit($patient_id, MedicalRecord $medicalRecord)
     {
-        return view('medical_records/edit', compact('medical_record'));
+        return view('medical_records/edit', compact('medicalRecord'));
     }
 
     /**
      * Update the specified Medical Record in storage
      *
+     * @param int $patient_id
      * @param  \App\Http\Requests\StoreMedicalRecordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreMedicalRecordRequest $request)
+    public function update($patient_id, StoreMedicalRecordRequest $request)
     {
         $request->save();
 
-        return redirect()->route('medical_records.index');
+        return redirect()->route('medical_records.index', $patient_id);
     }
 
     /**
