@@ -115,7 +115,7 @@ class PermissionsController extends Controller
     protected function getValidationRules()
     {
         return [
-            'name' => 'required|unique:permissions',
+            'name' => 'required|string|unique:permissions',
         ];
     }
 }

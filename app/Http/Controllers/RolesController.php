@@ -115,7 +115,7 @@ class RolesController extends Controller
     protected function getValidationRules()
     {
         return [
-            'name' => 'required|unique:roles',
+            'name' => 'required|string|unique:roles',
         ];
     }
 }
