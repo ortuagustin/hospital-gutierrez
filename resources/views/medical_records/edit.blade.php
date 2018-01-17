@@ -1,1 +1,1 @@
-Edit the medical record {{ $medicalRecord }}
+Edit the medical record {{ $medical_record }}

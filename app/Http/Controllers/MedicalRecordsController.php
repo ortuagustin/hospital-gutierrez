@@ -19,9 +19,9 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
-        $medicalRecords = $patient->medicalRecords;
+        $medical_records = $patient->medicalRecords;
 
-        return view('medical_records/index', compact('medicalRecords'));
+        return view('medical_records/index', compact('medical_records'));
     }
 
     /**
@@ -53,24 +53,24 @@ class MedicalRecordsController extends Controller
      * Display the specified Medical Record
      *
      * @param int $patient_id
-     * @param  MedicalRecord  $medicalRecord
+     * @param  MedicalRecord  $medical_record
      * @return \Illuminate\Http\Response
      */
-    public function show($patient_id, MedicalRecord $medicalRecord)
+    public function show($patient_id, MedicalRecord $medical_record)
     {
-        return view('medical_records/show', compact('medicalRecord'));
+        return view('medical_records/show', compact('medical_record'));
     }
 
     /**
      * Show the form for editing the specified Medical Record
      *
      * @param int $patient_id
-     * @param  MedicalRecord  $medicalRecord
+     * @param  MedicalRecord  $medical_record
      * @return \Illuminate\Http\Response
      */
-    public function edit($patient_id, MedicalRecord $medicalRecord)
+    public function edit($patient_id, MedicalRecord $medical_record)
     {
-        return view('medical_records/edit', compact('medicalRecord'));
+        return view('medical_records/edit', compact('medical_record'));
     }
 
     /**
@@ -91,12 +91,12 @@ class MedicalRecordsController extends Controller
      * Remove the specified MedicalRecord from storage.
      *
      * @param int $patient_id
-     * @param  MedicalRecord  $medicalRecord
+     * @param  MedicalRecord  $medical_record
      * @return \Illuminate\Http\Response
      */
-    public function destroy($patient_id, MedicalRecord $medicalRecord)
+    public function destroy($patient_id, MedicalRecord $medical_record)
     {
-        $medicalRecord->delete();
+        $medical_record->delete();
 
         return redirect()->route('medical_records.index', $patient_id);
     }

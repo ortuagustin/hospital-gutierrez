@@ -1,5 +1,5 @@
 <ul>
-    @foreach ($medicalRecords as $medicalRecord)
-        <li> {{ $medicalRecord }} </li>
+    @foreach ($medical_records as $medical_record)
+        <li> {{ $medical_record }} </li>
     @endforeach
 </ul>
