@@ -34,26 +34,31 @@ class PoliciesTest extends FeatureTest
     protected $actionDelete = 'Delete';
 
     /**
+     * The application policies under test
      * @var array
      */
     protected $policies = [];
 
     /**
+     * A User with the Guest Role, that hasn't any Permission at all
      * @var \App\User
      */
     protected $guestUser;
 
     /**
-     * @var \App\User
-     */
-    protected $medicUser;
-
-    /**
+     * A User with the Admin Role, that has full access to every Action on any Resource
      * @var \App\User
      */
     protected $adminUser;
 
     /**
+     * A User with the Medic Role, that has limited access privileges
+     * @var \App\User
+     */
+    protected $medicUser;
+
+    /**
+     * A User with the Recepcionist Role, that has limited access privileges
      * @var \App\User
      */
     protected $receptionistUser;
@@ -139,32 +144,20 @@ class PoliciesTest extends FeatureTest
     }
 
     /** @before */
-    protected function setUpTestEnviroment()
+    protected function setUpPolicies()
     {
         $this->policies[] = new PatientsPolicy();
-        $this->setUpGuestUser()
-             ->setUpReceptionistUser()
-             ->setUpAdminUser()
-             ->setUpMedicUser();
     }
 
-    /**
-     * Initializes the guestUser with a User that does not have any Permission
-     * @return $this
-     */
+    /** @before */
     protected function setUpGuestUser()
     {
         $role = $this->createRole('Guest');
         $this->guestUser = $this->createUser();
         $this->guestUser->roles()->attach($role);
-
-        return $this;
     }
 
-    /**
-     * Initializes the medicUser with a User according the system specs
-     * @return $this
-     */
+    /** @before */
     protected function setUpMedicUser()
     {
         $role = $this->createRole('Medic');
@@ -174,14 +167,9 @@ class PoliciesTest extends FeatureTest
 
         $this->medicUser = $this->createUser();
         $this->medicUser->roles()->attach($role);
-
-        return $this;
     }
 
-    /**
-     * Initializes the receptionistUser with a User according the system specs
-     * @return $this
-     */
+    /** @before */
     protected function setUpReceptionistUser()
     {
         $role = $this->createRole('Receptionist');
@@ -191,53 +179,13 @@ class PoliciesTest extends FeatureTest
 
         $this->receptionistUser = $this->createUser();
         $this->receptionistUser->roles()->attach($role);
-
-        return $this;
     }
 
-    /**
-     * Initializes the adminUser with a User that has all the Permissions
-     * @return $this
-     */
+    /** @before */
     protected function setUpAdminUser()
     {
         $role = $this->createRole('Admin');
-        foreach ($this->resources() as $resource) {
-            foreach ($this->actions($resource) as $action) {
-                $permission = $this->createPermission($action);
-                $role->permissions()->attach($permission);
-            }
-        }
-
         $this->adminUser = $this->createUser();
         $this->adminUser->roles()->attach($role);
-
-        return $this;
-    }
-
-    /**
-     * All the resources names (singularized, capitalized) with policies under test
-     * @return array
-     */
-    protected function resources()
-    {
-        return [
-            'Patient',
-        ];
-    }
-
-    /**
-     * The available actions on the resource, or the name of the Permissions on the resource
-     * @param string $resource
-     * @return array
-     */
-    protected function actions($resource)
-    {
-        return [
-            "{$resource}-{$this->actionView}",
-            "{$resource}-{$this->actionUpdate}",
-            "{$resource}-{$this->actionDelete}",
-            "{$resource}-{$this->actionCreate}",
-        ];
     }
 }
