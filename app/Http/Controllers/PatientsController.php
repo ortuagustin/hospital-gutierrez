@@ -86,7 +86,7 @@ class PatientsController extends Controller
      * @param  Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient  $patient)
+    public function destroy(Patient $patient)
     {
         $patient->delete();
 
