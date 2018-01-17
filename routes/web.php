@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('patients', 'PatientsController');
+Route::resource('patients.medical_records', 'MedicalRecordsController');
