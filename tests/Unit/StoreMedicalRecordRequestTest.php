@@ -94,6 +94,46 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
         }
     }
 
+    /** @test */
+    public function it_stores_new_medical_record_in_the_database()
+    {
+        $input = $this->modelFields();
+        $this->assertTrue($this->createFormRequest($input)->save());
+        $this->assertDatabaseHas('medical_records', $input);
+        $this->assertEquals(MedicalRecord::count(), 1);
+    }
+
+    /** @test */
+    public function it_stores_updated_medical_record_in_the_database()
+    {
+        $medical_record = $this->createModel();
+        $medical_record->peso = 123.45;
+        $medical_record->observaciones = 'bla bla bla';
+        $medical_record->vacunas_completas = ! $medical_record->vacunas_completas;
+        $changed_fields = $medical_record->toArray();
+        $this->assertTrue($this->createFormRequest($changed_fields)->save());
+        $this->assertDatabaseHas('medical_records', $changed_fields);
+        $this->assertEquals(MedicalRecord::count(), 1);
+    }
+
+    /** @test */
+    public function it_returns_the_medical_record_when_saved()
+    {
+        $input = $this->modelFields();
+        $request = $this->createFormRequest($input);
+        $request->save();
+        $this->assertDatabaseHas('medical_records', $request->medicalRecord()->toArray());
+    }
+
+    /** @test */
+    public function it_raises_exception_when_calling_medical_record_and_it_was_not_saved()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $input = $this->modelFields();
+        $request = $this->createFormRequest($input);
+        $request->medicalRecord();
+    }
+
     /**
      * Returns boolean fields of the Medical Record Model
      * @return array

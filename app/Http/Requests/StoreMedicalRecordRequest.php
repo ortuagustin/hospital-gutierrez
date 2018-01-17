@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\MedicalRecord;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -9,6 +10,18 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class StoreMedicalRecordRequest extends FormRequest
 {
+    /**
+     * This will hold the persisted MedicalRecord Moel instance only if the saved property is true
+     * @var MedicalRecord
+     */
+    private $medicalRecord = null;
+
+    /**
+     * True if the save method was succesful
+     * @var bool
+     */
+    private $saved = false;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -43,5 +56,46 @@ class StoreMedicalRecordRequest extends FormRequest
             'examen_fisico_observaciones'   => 'required|string',
             'observaciones'                 => 'required|string',
         ];
+    }
+
+    /**
+     * Saves the MedicalRecord to the Database with the inputs from the Request
+     *
+     * @return bool
+     */
+    public function save()
+    {
+        $this->medicalRecord = MedicalRecord::updateOrCreate(
+            ['id' => $this->id],
+            $this->except('id')
+        );
+
+        $this->saved = true;
+
+        return $this->saved();
+    }
+
+    /**
+     * True if the save method was succesful
+     *
+     * @return bool
+     */
+    public function saved()
+    {
+        return $this->saved;
+    }
+
+    /**
+     * The saved MedicalRecord instance
+     *
+     * @return MedicalRecord
+     */
+    public function medicalRecord()
+    {
+        if ($this->saved()) {
+            return $this->medicalRecord;
+        }
+
+        throw new \InvalidArgumentException("MedicalRecord is not saved");
     }
 }
