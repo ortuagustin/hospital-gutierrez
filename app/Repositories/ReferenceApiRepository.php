@@ -7,9 +7,9 @@ use App\Contracts\HeatingTypesRepositoryInterface;
 use App\Contracts\HomeTypesRepositoryInterface;
 use App\Contracts\MedicalInsurancesRepositoryInterface;
 use App\Contracts\ReferenceDataRepository\HandlesReferenceDataCollection;
+use App\Contracts\ReferenceDataRepository\ParsesJsonIntoReferenceModel;
 use App\Contracts\ReferenceDataRepositoryInterface;
 use App\Contracts\WaterTypesRepositoryInterface;
-use App\Models\ReferenceModel;
 
 /**
  * Repository implementation that consumes a REST web-service
@@ -17,6 +17,7 @@ use App\Models\ReferenceModel;
 abstract class ReferenceApiRepository implements ReferenceDataRepositoryInterface
 {
     use HandlesReferenceDataCollection;
+    use ParsesJsonIntoReferenceModel;
 
     /**
      * @var string
@@ -45,24 +46,9 @@ abstract class ReferenceApiRepository implements ReferenceDataRepositoryInterfac
 
     public function all()
     {
-        $response = file_get_contents("{$this->url}{$this->resource()}");
+        $body = file_get_contents("{$this->url}{$this->resource()}");
 
-        return collect($this->parseResponse(json_decode($response)));
-    }
-
-    /**
-     * Parses the response, returning an array with the ReferenceModels
-     * @param array $items
-     * @return array
-     */
-    protected function parseResponse(array $items)
-    {
-        $answer = [];
-        foreach ($items as $each) {
-            $answer[] = new ReferenceModel($each->{'id'}, $each->{'nombre'});
-        }
-
-        return $answer;
+        return collect($this->parseResponse($body));
     }
 
     /**
