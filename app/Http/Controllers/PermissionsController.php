@@ -29,7 +29,9 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('permissions/create');
+        $permission = new Permission();
+
+        return view('permissions/create', compact('permission'));
     }
 
     /**
