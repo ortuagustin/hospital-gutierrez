@@ -2,7 +2,10 @@
 
 @section('content')
     <h1 class="title is-3"> Role List </h1>
-    <table class="table is-striped">
+
+    {!! link_to_with_icon('fas fa-plus fa-lg', 'roles.create', [], 'Create a new Role', 'has-text-success') !!}
+
+    <table class="table is-striped is-fullwidth">
         <thead>
             <tr>
                 <th><abbr title="Number">#</abbr></th>
