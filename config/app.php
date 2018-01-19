@@ -181,6 +181,7 @@ return [
          * Custom Service Providers...
          */
         App\Providers\ValidationRulesProvider::class,
+        App\Providers\HelperServiceProvider::class,
 
     ],
 

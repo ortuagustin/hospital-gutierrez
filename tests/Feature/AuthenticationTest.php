@@ -9,20 +9,6 @@ use Illuminate\Support\Facades\Event;
 use Tests\Helpers\TestsModel;
 
 /**
- * Check if an item or items does NOT exist in an array using "dot" notation.
- * Inverse of Laravel helpers\array_has
- *
- * @param  array  $array
- * @param  string|array  $keys
- * @return bool
- */
-function array_has_not($array, $keys)
-{
-    // TODO: move to a helpers file?
-    return ! array_has($array, $keys);
-}
-
-/**
  * Tests user registration and login
  */
 class AuthenticationTest extends FeatureTest
