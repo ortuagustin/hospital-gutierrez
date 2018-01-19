@@ -1,9 +1,11 @@
+{{-- Will display all validation errors --}}
+
 @if (count($errors))
-  <div class="form-group">
-    <div class="alert alert-danger">
+  <div class="notification is-danger">
+    <div class="container">
       <ul>
         @foreach ($errors->all() as $error)
-          <li>{{ $errorr }}</li>
+          <li>{{ $error }}</li>
         @endforeach
       </ul>
     </div>
