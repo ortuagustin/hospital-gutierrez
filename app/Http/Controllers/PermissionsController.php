@@ -47,17 +47,6 @@ class PermissionsController extends Controller
     }
 
     /**
-     * Display the specified Permission
-     *
-     * @param  Permission  $permission
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Permission $permission)
-    {
-        return view('permissions/show', compact('permission'));
-    }
-
-    /**
      * Show the form for editing the specified Permission
      *
      * @param  Permission  $permission
