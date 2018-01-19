@@ -29,7 +29,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('roles/create');
+        $role = new Role();
+
+        return view('roles/create', compact('role'));
     }
 
     /**
