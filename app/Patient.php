@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Contracts\InteractsWithReferenceModels;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,11 +26,56 @@ class Patient extends Model
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['birth_date'];
+
+    /**
      * The relations to eager load on every query.
      *
      * @var array
      */
     protected $with = ['medicalRecords'];
+
+    /**
+     * Returns the Patient's Age
+     * @return int
+     */
+    public function age()
+    {
+        $today = Carbon::today();
+
+        return ($this->birth_date->diff($today)->y);
+    }
+
+    /**
+     * Returns the Patient's Age
+     * @return int
+     */
+    public function getAgeAttribute()
+    {
+        return $this->age();
+    }
+
+    /**
+     * Returns the birth day followed by the Patient's age
+     * @return string
+     */
+    public function birth_date_with_age()
+    {
+        return "{$this->birth_date->toDateString()} ($this->age years)";
+    }
+
+    /**
+     * Returns the birth day followed by the Patient's age
+     * @return string
+     */
+    public function getBirthDateWithAgeAttribute()
+    {
+        return $this->birth_date_with_age();
+    }
 
     /**
      * @return string
@@ -44,9 +90,25 @@ class Patient extends Model
     /**
      * @return string
      */
+    public function getDocumentAttribute()
+    {
+        return $this->document();
+    }
+
+    /**
+     * @return string
+     */
     public function full_name()
     {
         return "$this->last_name, $this->name";
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->full_name();
     }
 
     /**

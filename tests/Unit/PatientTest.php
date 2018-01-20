@@ -8,6 +8,7 @@ use App\Contracts\HomeTypesRepositoryInterface;
 use App\Contracts\MedicalInsurancesRepositoryInterface;
 use App\Contracts\WaterTypesRepositoryInterface;
 use App\Models\ReferenceModel;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\MedicalRecordTestHelper;
@@ -21,10 +22,44 @@ class PatientTest extends TestCase
     use FakeReferenceDataTestHelper;
 
     /** @test */
+    public function it_has_birth_day_with_age()
+    {
+        $birth_date = Carbon::createFromDate(1992, 11, 1);
+        $patient = $this->createPatient(['birth_date' => $birth_date]);
+        $this->assertEquals($patient->birth_date_with_age(), '1992-11-01 (25 years)');
+        $this->assertEquals($patient->birth_date_with_age, '1992-11-01 (25 years)');
+    }
+
+    /** @test */
+    public function it_has_an_age()
+    {
+        $birth_date = Carbon::createFromDate(1992, 11, 1);
+        $patient = $this->createPatient(['birth_date' => $birth_date]);
+        $this->assertEquals($patient->age(), 25);
+        $this->assertEquals($patient->age, 25);
+    }
+
+    /** @test */
+    public function its_date_of_birth_should_be_a_carbon_datetime_instance()
+    {
+        $patient = $this->createPatient();
+        $this->assertInstanceOf(Carbon::class, $patient->birth_date);
+    }
+
+    /** @test */
+    public function its_timestamps_should_be_carbon_datetime_instances()
+    {
+        $patient = $this->createPatient();
+        $this->assertInstanceOf(Carbon::class, $patient->created_at);
+        $this->assertInstanceOf(Carbon::class, $patient->updated_at);
+    }
+
+    /** @test */
     public function its_full_name_is_its_last_name_followed_by_the_name_separated_by_comma()
     {
         $patient = $this->createPatient(['name' => 'Agustin', 'last_name' => 'Ortu']);
         $this->assertEquals('Ortu, Agustin', $patient->full_name());
+        $this->assertEquals('Ortu, Agustin', $patient->full_name);
     }
 
     /** @test */
@@ -63,6 +98,7 @@ class PatientTest extends TestCase
         $this->swapRepository(DocTypesRepositoryInterface::class, [$doc_type]);
         $patient = $this->createPatient(['dni' => '37058719', 'doc_type_id' => $doc_type->id()]);
         $this->assertEquals('37058719 (DNI)', $patient->document());
+        $this->assertEquals('37058719 (DNI)', $patient->document);
     }
 
     /** @test */
