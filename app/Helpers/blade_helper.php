@@ -137,20 +137,24 @@ function delete_link_with_icon($icon, $route_name, $route_args, $text = '')
  * The icon parameter specifies the icon to display
  * The Text is optional
  *
- * @param  string  $icon           the icon to display
- * @param  string  $route_name     a named route
- * @param  string  $route_args     arguments for the named route
- * @param  string  $text           display value of the link
+ * @param  string  $icon          the icon to display
+ * @param  string  $route_name    a named route
+ * @param  string  $route_args    arguments for the named route
+ * @param  string  $text          display value of the link
+ * @param  string  $icon_class    additional classes for the icon itself
+ * @param  string  $button_class  additional classes for the icon container
  * @return string
  */
-function delete_button_with_icon($icon, $route_name, $route_args, $text = '')
+function delete_button_with_icon($icon, $route_name, $route_args, $text = '', $icon_class = '', $button_class = 'has-text-danger')
 {
     $url = route($route_name, $route_args);
+    $button_class = 'button ' . $button_class;
+    $icon_class = 'icon ' . $icon_class;
 
     $button =
     "<p class='field'>
-        <button class='button has-text-danger'>
-            <span class='icon'>
+        <button class='$button_class'>
+            <span class='$icon_class'>
                 <i class='$icon'></i>
             </span>
             <span>$text</span>
