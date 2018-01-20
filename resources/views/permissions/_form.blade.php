@@ -5,7 +5,7 @@
     <label class="label">Permission</label>
 
     <div class="control">
-        <input class="input" type="text" name="name" value="{{ old('name', $permission->name) }}" placeholder="The Permission name">
+        <input class="input" type="text" name="name" value="{{ old('name', $permission->name) }}" placeholder="The Permission name" autofocus>
 
         @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'name'])
     </div>
