@@ -5,7 +5,7 @@
     <label class="label">Role</label>
 
     <div class="control">
-        <input class="input" type="text" name="name" value="{{ old('name', $role->name) }}" placeholder="The Role name">
+        <input class="input" type="text" name="name" value="{{ old('name', $role->name) }}" placeholder="The Role name" autofocus>
 
         @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'name'])
     </div>
