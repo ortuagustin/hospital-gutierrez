@@ -20,6 +20,13 @@ class PatientTest extends TestCase
     use FakeReferenceDataTestHelper;
 
     /** @test */
+    public function its_full_name_is_its_last_name_followed_by_the_name_separated_by_comma()
+    {
+        $patient = $this->createPatient(['name' => 'Agustin', 'last_name' => 'Ortu']);
+        $this->assertEquals('Ortu, Agustin', $patient->full_name());
+    }
+
+    /** @test */
     public function it_has_many_relation_with_medical_record()
     {
         $patient = $this->createPatient();

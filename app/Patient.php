@@ -32,6 +32,14 @@ class Patient extends Model
     protected $with = ['medicalRecords'];
 
     /**
+     * @return string
+     */
+    public function full_name()
+    {
+        return "$this->last_name, $this->name";
+    }
+
+    /**
      * The Medical Records assigned to the Patient
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
