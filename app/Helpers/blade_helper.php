@@ -24,13 +24,14 @@ function icon($icon, $icon_class = '')
  * @param  string  $route_name  a named route
  * @param  string  $route_args  arguments for the named route
  * @param  string  $text        display value of the link
+ * @param  string  $class       class of the "a" tag
  * @return string
  */
-function link_to($text, $route_name, $route_args)
+function link_to($text, $route_name, $route_args, $class = '')
 {
     $url = route($route_name, $route_args);
 
-    return "<a href=$url>$text</a>";
+    return "<a class='$class' href='$url'>$text</a>";
 }
 
 /**
