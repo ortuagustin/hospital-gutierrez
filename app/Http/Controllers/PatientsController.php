@@ -29,7 +29,9 @@ class PatientsController extends Controller
      */
     public function create()
     {
-        return view('patients/create');
+        $patient = new Patient();
+
+        return view('patients/create', compact('patient'));
     }
 
     /**
