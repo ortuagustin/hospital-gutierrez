@@ -21,7 +21,7 @@ class FakeReferenceDataRepository implements
     use HandlesReferenceDataCollection;
 
     /**
-     * @var Collection
+     * @var \Illuminate\Support\Collection
      */
     protected $models;
 
@@ -30,24 +30,11 @@ class FakeReferenceDataRepository implements
      */
     public function __construct(array $models = [])
     {
-        $this->models = $this->makeCollection($models);
+        $this->models = collect($models);
     }
 
     public function all()
     {
         return $this->models;
-    }
-
-    /**
-     * @param array $values
-     */
-    protected function makeCollection(array $values)
-    {
-        $results = [];
-        foreach ($values as $each) {
-            $results[$each->key()] = $each->value();
-        }
-
-        return collect($results);
     }
 }
