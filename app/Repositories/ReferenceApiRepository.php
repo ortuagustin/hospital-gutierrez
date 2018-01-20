@@ -31,6 +31,12 @@ abstract class ReferenceApiRepository implements ReferenceDataRepositoryInterfac
     protected $url;
 
     /**
+     * Collection of all items
+     * @var Collection
+     */
+    protected $items;
+
+    /**
      * @param string $url The base url of the API that the Repository will send HTTP requests to
      * Must include final slash
      * Will default to self::$default_url if empty
@@ -46,9 +52,12 @@ abstract class ReferenceApiRepository implements ReferenceDataRepositoryInterfac
 
     public function all()
     {
-        $body = file_get_contents("{$this->url}{$this->resource()}");
+        if (is_null($this->items)) {
+            $body = file_get_contents("{$this->url}{$this->resource()}");
+            $this->items = collect($this->parseResponse($body));
+        }
 
-        return collect($this->parseResponse($body));
+        return $this->items;
     }
 
     /**
