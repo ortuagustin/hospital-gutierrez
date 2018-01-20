@@ -32,7 +32,7 @@ abstract class ReferenceApiRepository implements ReferenceDataRepositoryInterfac
 
     /**
      * Collection of all items
-     * @var Collection
+     * @var \Illuminate\Support\Collection
      */
     protected $items;
 
