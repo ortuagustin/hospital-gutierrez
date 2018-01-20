@@ -11,9 +11,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css">
+
+    @yield('styles')
 </head>
+
 <body>
     <section class="section">
       <div class="container">
@@ -23,4 +27,5 @@
 
     <!-- Scripts -->
 </body>
+
 </html>
