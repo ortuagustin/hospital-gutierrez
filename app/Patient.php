@@ -34,6 +34,16 @@ class Patient extends Model
     /**
      * @return string
      */
+    public function document()
+    {
+        $doc_type = $this->docType->value();
+
+        return "$this->dni ($doc_type)";
+    }
+
+    /**
+     * @return string
+     */
     public function full_name()
     {
         return "$this->last_name, $this->name";
