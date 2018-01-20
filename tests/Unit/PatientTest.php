@@ -22,6 +22,39 @@ class PatientTest extends TestCase
     use FakeReferenceDataTestHelper;
 
     /** @test */
+    public function it_returns_boolean_for_field_has_refrigerator()
+    {
+        $he_has_refrigerator = $this->createPatient(['has_refrigerator' => '1']);
+        $he_has_not_refrigerator = $this->createPatient(['has_refrigerator' => '0']);
+        $this->assertTrue(is_bool($he_has_refrigerator->has_refrigerator), "has_refrigerator should be boolean type!");
+        $this->assertTrue(is_bool($he_has_not_refrigerator->has_refrigerator), "has_refrigerator should be boolean type!");
+        $this->assertTrue($he_has_refrigerator->has_refrigerator, "this patient should have refrigerator");
+        $this->assertFalse($he_has_not_refrigerator->has_refrigerator, "this patient shouldn't have refrigerator");
+    }
+
+    /** @test */
+    public function it_returns_boolean_for_field_has_pet()
+    {
+        $he_has_pet = $this->createPatient(['has_pet' => '1']);
+        $he_has_not_pet = $this->createPatient(['has_pet' => '0']);
+        $this->assertTrue(is_bool($he_has_pet->has_pet), "has_pet should be boolean type!");
+        $this->assertTrue(is_bool($he_has_not_pet->has_pet), "has_pet should be boolean type!");
+        $this->assertTrue($he_has_pet->has_pet, "this patient should have pet");
+        $this->assertFalse($he_has_not_pet->has_pet, "this patient shouldn't have pet");
+    }
+
+    /** @test */
+    public function it_returns_boolean_for_field_has_electricity()
+    {
+        $he_has_electricity = $this->createPatient(['has_electricity' => '1']);
+        $he_has_not_electricity = $this->createPatient(['has_electricity' => '0']);
+        $this->assertTrue(is_bool($he_has_electricity->has_electricity), "has_electricity should be boolean type!");
+        $this->assertTrue(is_bool($he_has_not_electricity->has_electricity), "has_electricity should be boolean type!");
+        $this->assertTrue($he_has_electricity->has_electricity, "this patient should have electricity");
+        $this->assertFalse($he_has_not_electricity->has_electricity, "this patient shouldn't have electricity");
+    }
+
+    /** @test */
     public function it_has_birth_day_with_age()
     {
         $birth_date = Carbon::createFromDate(1992, 11, 1);

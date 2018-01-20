@@ -19,10 +19,21 @@ class Patient extends Model
      * @var array
      */
     protected $fillable = [
-      'doc_type_id', 'home_type_id', 'heating_type_id', 'water_type_id',
-      'medical_insurance_id', 'name', 'last_name', 'dni', 'birth_date',
-      'gender', 'address', 'phone', 'has_refrigerator', 'has_electricity',
-      'has_pet',
+        'doc_type_id', 'home_type_id', 'heating_type_id', 'water_type_id',
+        'medical_insurance_id', 'name', 'last_name', 'dni', 'birth_date',
+        'gender', 'address', 'phone', 'has_refrigerator', 'has_electricity',
+        'has_pet',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'has_refrigerator' => 'boolean',
+        'has_electricity'  => 'boolean',
+        'has_pet'          => 'boolean',
     ];
 
     /**
@@ -30,14 +41,18 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $dates = ['birth_date'];
+    protected $dates = [
+        'birth_date',
+    ];
 
     /**
      * The relations to eager load on every query.
      *
      * @var array
      */
-    protected $with = ['medicalRecords'];
+    protected $with = [
+        'medicalRecords',
+    ];
 
     /**
      * Returns the Patient's Age
