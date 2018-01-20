@@ -5,7 +5,7 @@
 
     {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.create', [], 'Create a new Patient', 'has-text-success') !!}
 
-    <table class="table is-striped">
+    <table class="table is-striped is-narrow">
         <thead>
             <tr>
                 <th><abbr title="Number">#</abbr></th>
