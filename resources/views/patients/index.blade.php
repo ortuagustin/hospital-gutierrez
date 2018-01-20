@@ -11,13 +11,12 @@
                 <th><abbr title="Number">#</abbr></th>
                 <th>Name</th>
                 <th>Last Name</th>
-                <th>Doc Type</th>
                 <th>DNI</th>
                 <th>Birth Date</th>
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Phone</th>
-                <th>Social Insurance</th>
+                <th>Medical Insurance</th>
                 <th>Home Type</th>
                 <th>Heating Type</th>
                 <th>Water Type</th>
@@ -35,9 +34,8 @@
                     <th>{{ $patient->id }}</th>
                     <td>{{ $patient->name }}</td>
                     <td>{{ $patient->last_name }}</td>
-                    <td>{{ $patient->docType->value() }}</td>
-                    <td>{{ $patient->dni }}</td>
-                    <th>{{ $patient->birth_date }}</th>
+                    <td>{{ $patient->document }}</td>
+                    <th>{{ $patient->birth_date->toDateString() }}</th>
                     <td>{{ $patient->gender }}</td>
                     <td>{{ $patient->address }}</td>
                     <td>{{ $patient->phone }}</td>
