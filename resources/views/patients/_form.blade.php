@@ -11,7 +11,7 @@
 
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="text" name="last_name" value="{{ old('last_name', $patient->last_name) }}" placeholder="The Patient's last name">
+                    <input class="input" type="text" name="last_name" value="{{ old('last_name', $patient->last_name) }}" placeholder="The Patient's last name" autofocus>
                     {!! icon('fas fa-user', 'is-small is-left') !!}
                 </p>
 
