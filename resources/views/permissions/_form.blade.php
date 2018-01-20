@@ -15,8 +15,6 @@
     </button>
   </div>
   <div class="control">
-    <a class="button is-danger is-outlined " href={{ route('permissions.index') }}>
-        {{ isset($cancelButtonText) ?: 'Cancel' }}
-    </a>
+      {!! link_to('Cancel', 'patients.index', [], 'button is-danger is-outlined') !!}
   </div>
 </div>
