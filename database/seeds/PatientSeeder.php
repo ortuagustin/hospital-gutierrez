@@ -3,8 +3,9 @@
 namespace Database\Seeds;
 
 use App\Patient;
+use Illuminate\Database\Seeder;
 
-class PatientSeeder extends ApplicationSeeder
+class PatientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
