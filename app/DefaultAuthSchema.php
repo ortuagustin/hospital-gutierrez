@@ -1,38 +1,18 @@
 <?php
 
-namespace App\Providers;
+namespace App;
 
-use App\Contracts\DefaultAuthorizationSchemProviderInterface;
+use App\Contracts\DefaultAuthSchemaInterface;
 use App\Permission;
 use App\Role;
-use Illuminate\Support\ServiceProvider;
 
 /**
  * Generates the default authorization schema for the application;
  * that is, it can create all the required Roles, Permissions and grant access to
  * each role accordingly
  */
-class DefaultAuthorizationSchemaProvider extends ServiceProvider implements DefaultAuthorizationSchemProviderInterface
+class DefaultAuthSchema implements DefaultAuthSchemaInterface
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-    }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->singleton(DefaultAuthorizationSchemProviderInterface::class, DefaultAuthorizationSchemaProvider::class);
-    }
-
     /**
      * Clears all Roles and Permissions
      * Creates the default set of Roles
@@ -102,8 +82,8 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
      */
     protected function grantAccessToMedics(Role $role)
     {
-        return $this->seedActions($role, 'Patients')
-                    ->seedActions($role, 'ClinicalRecords');
+        return $this->grantPermissions($role, 'Patients')
+                    ->grantPermissions($role, 'ClinicalRecords');
     }
 
     /**
@@ -113,7 +93,7 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
      */
     protected function grantAccessToRecepcionist(Role $role)
     {
-        return $this->seedActions($role, 'Patients');
+        return $this->grantPermissions($role, 'Patients');
     }
 
     /**
@@ -122,7 +102,7 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
      * @param string    $resource
      * @return $this
      */
-    protected function seedActions(Role $role, $resource)
+    protected function grantPermissions(Role $role, $resource)
     {
         $permissions = Permission::where('name', 'like', "$resource%")->get()
         ->reject(function ($value, $key) {

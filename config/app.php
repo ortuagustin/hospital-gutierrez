@@ -183,7 +183,7 @@ return [
         App\Providers\ValidationRulesProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\ReferenceDataProvider::class,
-        App\Providers\DefaultAuthorizationSchemaProvider::class,
+        App\Providers\DefaultAuthSchemaProvider::class,
 
     ],
 

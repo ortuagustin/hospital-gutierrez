@@ -7,7 +7,7 @@ namespace App\Contracts;
  * that is, it can create all the required Roles, Permissions and grant access to
  * each role accordingly
  */
-interface DefaultAuthorizationSchemProviderInterface
+interface DefaultAuthSchemaInterface
 {
     /**
      * Clears all Roles and Permissions

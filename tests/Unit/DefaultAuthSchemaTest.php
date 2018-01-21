@@ -2,34 +2,34 @@
 
 namespace Tests\Unit;
 
+use App\DefaultAuthSchema;
 use App\Permission;
-use App\Providers\DefaultAuthorizationSchemaProvider;
 use App\Role;
 use Tests\Helpers\PermissionTestHelper;
 use Tests\Helpers\RoleTestHelper;
 use Tests\Unit\TestCase;
 
-class DefaultAuthorizationSchemaProviderTest extends TestCase
+class DefaultAuthSchemaTest extends TestCase
 {
     use PermissionTestHelper;
     use RoleTestHelper;
 
     /**
-     * @var \App\Providers\DefaultAuthorizationSchemaProvider
+     * @var \App\DefaultAuthSchema
      */
-    protected $provider;
+    protected $auth_schema;
 
     /** @test */
     public function it_creates_default_roles_for_the_system()
     {
-        $this->provider->createDefaultRoles();
+        $this->auth_schema->createDefaultRoles();
         $this->assertDefaultRoles();
     }
 
     /** @test */
     public function it_creates_default_permissions_for_the_system()
     {
-        $this->provider->createDefaultPermissions();
+        $this->auth_schema->createDefaultPermissions();
         $this->assertDefaultPermissions();
     }
 
@@ -37,7 +37,7 @@ class DefaultAuthorizationSchemaProviderTest extends TestCase
     public function it_does_not_try_to_create_role_if_it_already_exists()
     {
         $this->createRole('Admin');
-        $this->provider->createDefaultRoles();
+        $this->auth_schema->createDefaultRoles();
         $this->assertDefaultRoles();
     }
 
@@ -45,7 +45,7 @@ class DefaultAuthorizationSchemaProviderTest extends TestCase
     public function it_does_not_try_to_create_permission_if_it_already_exists()
     {
         $this->createPermission('Patients-View');
-        $this->provider->createDefaultPermissions();
+        $this->auth_schema->createDefaultPermissions();
         $this->assertDefaultPermissions();
     }
 
@@ -56,7 +56,7 @@ class DefaultAuthorizationSchemaProviderTest extends TestCase
         $this->createRole('Guest');
         $this->createRole('Some Role');
 
-        $this->provider->resetToDefault();
+        $this->auth_schema->resetToDefault();
         $this->assertDefaultRoles();
     }
 
@@ -66,35 +66,35 @@ class DefaultAuthorizationSchemaProviderTest extends TestCase
         $this->createPermission('Patients-View');
         $this->createPermission('Patients-Create');
 
-        $this->provider->resetToDefault();
+        $this->auth_schema->resetToDefault();
         $this->assertDefaultPermissions();
     }
 
     /** @test */
     public function it_creates_default_roles_when_resetting_to_default()
     {
-        $this->provider->resetToDefault();
+        $this->auth_schema->resetToDefault();
         $this->assertDefaultRoles();
     }
 
     /** @test */
     public function it_creates_default_permissions_when_resetting_to_default()
     {
-        $this->provider->resetToDefault();
+        $this->auth_schema->resetToDefault();
         $this->assertDefaultPermissions();
     }
 
     /** @test */
     public function it_creates_default_permissions_schema_when_resetting_to_default()
     {
-        $this->provider->resetToDefault();
+        $this->auth_schema->resetToDefault();
         $this->assertDefaultPermissionSchema();
     }
 
     /** @before */
     public function setUpEnviroment()
     {
-        $this->provider = new DefaultAuthorizationSchemaProvider($this->app);
+        $this->auth_schema = new DefaultAuthSchema();
     }
 
     /**
