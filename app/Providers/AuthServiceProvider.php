@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\MedicalRecord;
 use App\Patient;
+use App\Policies\MedicalRecordsPolicy;
 use App\Policies\PatientsPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -17,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Patient::class => PatientsPolicy::class,
+        Patient::class       => PatientsPolicy::class,
+        MedicalRecord::class => MedicalRecordsPolicy::class,
     ];
 
     /**
