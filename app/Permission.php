@@ -10,6 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     /**
+     * @var array
+     */
+    const actions = ['View', 'Create', 'Update', 'Delete'];
+
+    /**
+     * @var array
+     */
+    const resources = ['Patients', 'Roles', 'Permissions', 'ClinicalRecords'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
