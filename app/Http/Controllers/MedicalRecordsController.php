@@ -12,6 +12,14 @@ use App\Patient;
 class MedicalRecordsController extends Controller
 {
     /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(MedicalRecord::class);
+    }
+
+    /**
      * Display a listing of the Medical Records of the given Patient
      *
      * @param Patient $patient
