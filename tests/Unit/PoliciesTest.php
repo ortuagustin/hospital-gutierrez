@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Policies\ClinicalRecordsPolicy;
+use App\Policies\MedicalRecordsPolicy;
 use App\Policies\PatientsPolicy;
 use Tests\Helpers\PermissionTestHelper;
 use Tests\Helpers\RoleTestHelper;
@@ -117,31 +117,31 @@ class PoliciesTest extends TestCase
     }
 
     /** @test */
-    public function medic_role_can_view_clinical_records()
+    public function medic_role_can_view_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertTrue($policy->view($this->medicUser), 'It should be able to View Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertTrue($policy->view($this->medicUser), 'It should be able to View Medical Records');
     }
 
     /** @test */
-    public function medic_role_can_create_clinical_records()
+    public function medic_role_can_create_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertTrue($policy->create($this->medicUser), 'It should be able to Create Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertTrue($policy->create($this->medicUser), 'It should be able to Create Medical Records');
     }
 
     /** @test */
-    public function medic_role_can_update_clinical_records()
+    public function medic_role_can_update_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertTrue($policy->update($this->medicUser), 'It should be able to Update Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertTrue($policy->update($this->medicUser), 'It should be able to Update Medical Records');
     }
 
     /** @test */
-    public function medic_role_cannot_delete_clinical_records()
+    public function medic_role_cannot_delete_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertFalse($policy->delete($this->medicUser), 'It should not be able to Delete Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertFalse($policy->delete($this->medicUser), 'It should not be able to Delete Medical Records');
     }
 
     /** @test */
@@ -173,38 +173,38 @@ class PoliciesTest extends TestCase
     }
 
     /** @test */
-    public function receptionist_role_can_view_clinical_records()
+    public function receptionist_role_can_view_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertFalse($policy->view($this->receptionistUser), 'It should not be able to View Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertFalse($policy->view($this->receptionistUser), 'It should not be able to View Medical Records');
     }
 
     /** @test */
-    public function receptionist_role_can_create_clinical_records()
+    public function receptionist_role_can_create_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertFalse($policy->create($this->receptionistUser), 'It should not be able to Create Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertFalse($policy->create($this->receptionistUser), 'It should not be able to Create Medical Records');
     }
 
     /** @test */
-    public function receptionist_role_can_update_clinical_records()
+    public function receptionist_role_can_update_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertFalse($policy->update($this->receptionistUser), 'It should not be able to Update Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertFalse($policy->update($this->receptionistUser), 'It should not be able to Update Medical Records');
     }
 
     /** @test */
-    public function receptionist_role_cannot_delete_clinical_records()
+    public function receptionist_role_cannot_delete_medical_records()
     {
-        $policy = new ClinicalRecordsPolicy();
-        $this->assertFalse($policy->delete($this->receptionistUser), 'It should not be able to Delete Clinical Records');
+        $policy = new MedicalRecordsPolicy();
+        $this->assertFalse($policy->delete($this->receptionistUser), 'It should not be able to Delete Medical Records');
     }
 
     /** @before */
     protected function setUpPolicies()
     {
         $this->policies[] = new PatientsPolicy();
-        $this->policies[] = new ClinicalRecordsPolicy();
+        $this->policies[] = new MedicalRecordsPolicy();
     }
 
     /** @before */
@@ -224,9 +224,9 @@ class PoliciesTest extends TestCase
         $role->permissions()->attach($this->createPermission("Patient-{$this->actionUpdate}"));
         $role->permissions()->attach($this->createPermission("Patient-{$this->actionCreate}"));
 
-        $role->permissions()->attach($this->createPermission("ClinicalRecord-{$this->actionView}"));
-        $role->permissions()->attach($this->createPermission("ClinicalRecord-{$this->actionUpdate}"));
-        $role->permissions()->attach($this->createPermission("ClinicalRecord-{$this->actionCreate}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionView}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionUpdate}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionCreate}"));
 
         $this->medicUser = $this->createUser();
         $this->medicUser->roles()->attach($role);

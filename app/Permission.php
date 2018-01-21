@@ -17,7 +17,7 @@ class Permission extends Model
     /**
      * @var array
      */
-    const resources = ['Patients', 'Roles', 'Permissions', 'ClinicalRecords'];
+    const resources = ['Patients', 'Roles', 'Permissions', 'MedicalRecords'];
 
     /**
      * The attributes that are mass assignable.

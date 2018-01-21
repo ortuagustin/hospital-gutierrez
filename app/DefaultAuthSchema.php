@@ -76,14 +76,14 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     }
 
     /**
-     * Medics can create, update and view Patients and ClinicalRecords
+     * Medics can create, update and view Patients and MedicalRecords
      * @param \App\Role $role
      * @return $this
      */
     protected function grantAccessToMedics(Role $role)
     {
         return $this->grantPermissions($role, 'Patients')
-                    ->grantPermissions($role, 'ClinicalRecords');
+                    ->grantPermissions($role, 'MedicalRecords');
     }
 
     /**
