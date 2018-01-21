@@ -13,8 +13,6 @@ class PermissionSeeder extends ApplicationSeeder
      */
     public function run()
     {
-        Permission::truncate();
-
         foreach ($this->resources as $resource) {
             foreach ($this->actions as $action) {
                 Permission::create(['name' => "$resource-$action"]);

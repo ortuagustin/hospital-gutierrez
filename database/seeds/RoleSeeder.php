@@ -13,8 +13,6 @@ class RoleSeeder extends ApplicationSeeder
      */
     public function run()
     {
-        Role::truncate();
-
         Role::create(['name' => 'Admin']);
         Role::create(['name' => 'Guest']);
         Role::create(['name' => 'Medic']);

@@ -4,7 +4,6 @@ namespace Database\Seeds;
 
 use App\Permission;
 use App\Role;
-use Illuminate\Support\Facades\DB;
 
 class PermissionRoleSeeder extends ApplicationSeeder
 {
@@ -64,8 +63,6 @@ class PermissionRoleSeeder extends ApplicationSeeder
      */
     public function run()
     {
-        DB::table('permission_role')->truncate();
-
         $this->seedAdminRole(Role::where('name', 'Admin')->first())
              ->seedMedicRole(Role::where('name', 'Medic')->first())
              ->seedRecepcionistRole(Role::where('name', 'Recepcionist')->first());
