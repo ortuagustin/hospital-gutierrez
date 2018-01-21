@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\DefaultAuthSchemaInterface;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -94,6 +95,19 @@ class RolesController extends Controller
     public function destroy($id)
     {
         Role::destroy($id);
+
+        return redirect()->route('roles.index');
+    }
+
+    /**
+     * Resets all roles and permissions to default
+     *
+     * @param DefaultAuthSchemaInterface $auth_schema
+     * @return \Illuminate\Http\Response
+     */
+    public function reset(DefaultAuthSchemaInterface $auth_schema)
+    {
+        $auth_schema->resetToDefault();
 
         return redirect()->route('roles.index');
     }

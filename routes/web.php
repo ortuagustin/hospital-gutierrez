@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('patients', 'PatientsController');
+Route::get('/roles/reset', 'RolesController@reset')->name('roles.reset');
 Route::resource('roles', 'RolesController');
 Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
 Route::resource('patients.medical_records', 'MedicalRecordsController');
