@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Contracts\DefaultAuthorizationSchemProviderInterface;
 use App\Permission;
 use App\Role;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -22,9 +21,6 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
      */
     public function boot()
     {
-        if (app('env') != 'testing') {
-            $this->resetToDefaultIfAbsent();
-        }
     }
 
     /**
@@ -51,13 +47,6 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
         $this->createDefaultRoles();
         $this->createDefaultPermissions();
         $this->createDefaultPermissionSchema();
-    }
-
-    public function resetToDefaultIfAbsent()
-    {
-        if ($this->schemaAbsent()) {
-            $this->resetToDefault();
-        }
     }
 
     /**
@@ -144,26 +133,5 @@ class DefaultAuthorizationSchemaProvider extends ServiceProvider implements Defa
 
 
         return $this;
-    }
-
-    /**
-     * Returns true if there isn't an authentication schema created
-     * @return bool
-     */
-    protected function schemaAbsent()
-    {
-        if (! Schema::hasTable('roles')) {
-            return true;
-        }
-
-        if (! Schema::hasTable('permissions')) {
-            return true;
-        }
-
-        if (! Schema::hasTable('permission_role')) {
-            return true;
-        }
-
-        return Role::count() == 0;
     }
 }

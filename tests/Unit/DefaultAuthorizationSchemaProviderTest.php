@@ -91,22 +91,6 @@ class DefaultAuthorizationSchemaProviderTest extends TestCase
         $this->assertDefaultPermissionSchema();
     }
 
-    /** @test */
-    public function it_creates_default_permissions_schema_when_resetToDefaultIfAbsenting_and_schema_absent()
-    {
-        $this->provider->resetToDefaultIfAbsent();
-        $this->assertDefaultPermissionSchema();
-    }
-
-    /** @test */
-    public function it_doest_not_create_default_permissions_schema_when_resetToDefaultIfAbsenting_and_there_a_schema_is_present()
-    {
-        $this->createRole('Testing');
-        $this->provider->resetToDefaultIfAbsent();
-        $this->assertEquals(1, Role::count());
-        $this->assertEquals(0, Permission::count());
-    }
-
     /** @before */
     public function setUpEnviroment()
     {
