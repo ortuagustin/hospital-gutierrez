@@ -25,3 +25,7 @@ Entre sus características, se encuentran:
 1. Aplicación web [PHP](http://php.net/) **versión 5.6.30**
 2. Desarrollada con el framework [Laravel](https://laravel.com/) **versión 5.4**
 3. **Independiente de la base de datos**: gracias a la abstracción brindada por el framework, se puede configurar para utilizar cualquiera de las [bases de datos soportadas por Laravel](https://laravel.com/docs/5.4/database#introduction)
+
+#### Demo
+
+Ésta aplicación fue desplegada a la plataforma [Heroku](http://heroku.com), podés verla siguiendo [este link](https://ortu-agustin-proyecto.herokuapp.com/). Esta precargada con algunos datos ficticios para poder probar la aplicación.
