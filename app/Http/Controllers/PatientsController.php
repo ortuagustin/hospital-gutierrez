@@ -11,6 +11,14 @@ use App\Patient;
 class PatientsController extends Controller
 {
     /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Patient::class);
+    }
+
+    /**
      * Display a listing of patient
      *
      * @return \Illuminate\Http\Response
