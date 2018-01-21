@@ -1,51 +1,27 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Proyecto de Software - Cursada 2017
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+### Hospital Gutiérrez - Consultorio del Niño Sano
 
-## About Laravel
+### Trabajo de promoción
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Aplicación web desarrollada para el Hospital Gutiérrez
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Entre sus características, se encuentran:
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+  1. Administrar los **usuarios** que acceden al sistema. Se pueden definir niveles de acceso personalizados utilizando un esquema de **roles** y **permisos** que se asignan a los diferentes usuarios  
+  2. Administrar los **pacientes** del hospital
+  3. Administrar las **historias clínicas** de los pacientes
+  4. **Reportes gráficos** de los pacientes, basados en los controles clínicos:
+		- Curva de crecimiento
+		- Curva de talla
+		- Curva de percentil perímetro cefálico
+  5.  **Gráficos estadísticos** de los pacientes, de acuerdo a sus datos demográficos
+  6. Las curvas y los gráficos se pueden **exportar a PDF**
+  7. Ofrece una API RESTful para administrar **turnos médicos**
+  8. Posee integración con [Telegram](https://telegram.org/), a través de un [bot](https://core.telegram.org/bots), para **consultar** y **reservar** turnos médicos
 
-## Learning Laravel
+### Características técnicas
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+1. Aplicación web [PHP](http://php.net/) **versión 5.6.30**
+2. Desarrollada con el framework [Laravel](https://laravel.com/) **versión 5.4**
+3. **Independiente de la base de datos**: gracias a la abstracción brindada por el framework, se puede configurar para utilizar cualquiera de las [bases de datos soportadas por Laravel](https://laravel.com/docs/5.4/database#introduction)
