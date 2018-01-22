@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="title is-3"> Role: {{ $role->name }} </h1>
+    <h1 class="title is-3">Role: {{ $role->name }}</h1>
     <h2 class="subtitle">Permissions</h2>
 
     {!! link_to_with_icon('fas fa-plus fa-lg', 'permissions.create', [], 'Create a new Permission', 'has-text-success') !!}
@@ -19,7 +19,7 @@
                 <tr>
                     <th>{{ $permission->id }}</th>
                     <td>{{ $permission->name }}</td>
-                    <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', '') !!} </td>
+                    <td> {!! icon('fas fa-trash-alt fa-2x', 'has-text-danger') !!} </td>
                 </tr>
             @endforeach
         </tbody>

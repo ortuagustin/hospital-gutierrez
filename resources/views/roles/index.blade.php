@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="title is-3"> Role List </h1>
+    <h1 class="title is-3">Role List</h1>
 
     {!! link_to_with_icon('fas fa-plus fa-lg', 'roles.create', [], 'Create a new Role', 'has-text-success') !!}
 

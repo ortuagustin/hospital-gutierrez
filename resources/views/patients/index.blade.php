@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="title is-3"> Patient List </h1>
+    <h1 class="title is-3">Patient List</h1>
 
     {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.create', [], 'Create a new Patient', 'has-text-success') !!}
 
