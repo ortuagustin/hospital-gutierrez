@@ -17,13 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('patients', 'PatientsController');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('patients', 'PatientsController');
 
-Route::middleware('can:admin')->group(function () {
-    Route::get('/roles/reset', 'RolesController@reset')->name('roles.reset');
-    Route::resource('roles', 'RolesController');
-    Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
+    Route::middleware('can:admin')->group(function () {
+        Route::get('/roles/reset', 'RolesController@reset')->name('roles.reset');
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
+    });
+
+    Route::resource('patients.medical_records', 'MedicalRecordsController');
 });
-
-Route::resource('patients.medical_records', 'MedicalRecordsController');
