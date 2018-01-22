@@ -19,11 +19,7 @@
 </head>
 
 <body>
-    <section class="section">
-      <div class="container">
-        @yield('content')
-      </div>
-    </section>
+    @yield('content')
 
     <!-- Scripts -->
 </body>
