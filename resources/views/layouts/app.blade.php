@@ -42,6 +42,10 @@
         @yield('content')
     </section>
 
+    <footer class="footer" style="padding-bottom: 0; padding-top: 1em;">
+        @include('layouts._footer')
+    </footer>
+
     <!-- Scripts -->
     @yield('scripts')
 </body>

@@ -13,7 +13,7 @@ function icon($icon, $icon_class = '')
 
     return
         "<span class='$icon_class'>
-          <i class='fas $icon'></i>
+          <i class='$icon'></i>
         </span>";
 }
 
