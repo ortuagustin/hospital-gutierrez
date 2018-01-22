@@ -33,7 +33,7 @@
         @endif
 
         <div class="hero-foot">
-            <nav class="tabs">
+            <nav class="tabs is-centered is-large">
               <ul>
                  <li><a>Overview</a></li>
                  <li><a>Modifiers</a></li>
