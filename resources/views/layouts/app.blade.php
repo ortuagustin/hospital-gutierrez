@@ -19,9 +19,39 @@
 </head>
 
 <body>
-    @yield('content')
+    <section class="hero is-primary is-small">
+        <div class="hero-head">
+            @include('nav.navbar')
+        </div>
+
+        @hasSection('hero-body-content')
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    @yield('hero-body-content')
+                </div>
+            </div>
+        @endif
+
+        <div class="hero-foot">
+            <nav class="tabs">
+              <ul>
+                 <li><a>Overview</a></li>
+                 <li><a>Modifiers</a></li>
+                 <li><a>Grid</a></li>
+                 <li><a>Elements</a></li>
+                 <li><a>Components</a></li>
+                 <li><a>Layout</a></li>
+              </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section">
+        @yield('content')
+    </section>
 
     <!-- Scripts -->
+    @yield('scripts')
 </body>
 
 </html>
