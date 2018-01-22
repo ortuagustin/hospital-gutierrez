@@ -5,7 +5,7 @@
         <input id="email" name="email" class="input is-large" type="text" value="{{ old('email') }}" placeholder="Username / E-Mail" autofocus>
         {!! icon('fas fa-user', 'is-left') !!}
 
-        @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'email'])
+        @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'email'])
     </div>
 </div>
 
@@ -14,7 +14,7 @@
         <input id="password" name="password" class="input is-large" type="password" placeholder="Password">
         {!! icon('fas fa-key', 'is-left') !!}
 
-        @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'password'])
+        @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'password'])
     </div>
 </div>
 

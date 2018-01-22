@@ -7,7 +7,7 @@
     <div class="control">
         <input class="input" type="text" name="name" value="{{ old('name', $role->name) }}" placeholder="The Role name" autofocus>
 
-        @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'name'])
+        @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'name'])
     </div>
 
 </div>

@@ -15,7 +15,7 @@
                     {!! icon('fas fa-user', 'is-small is-left') !!}
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'last_name'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'last_name'])
             </div>
 
             <div class="field">
@@ -24,7 +24,7 @@
                     {!! icon('fas fa-user', 'is-small is-left') !!}
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'name'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'name'])
             </div>
 
             <div class="field is-narrow">
@@ -39,7 +39,7 @@
                     </div>
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'gender'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'gender'])
             </div>
 
         </div>
@@ -57,7 +57,7 @@
                     {!! icon('fas fa-address-card', 'is-small is-left') !!}
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'address'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'address'])
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
                     {!! icon('fas fa-phone', 'is-small is-left') !!}
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'phone'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'phone'])
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                     </div>
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'doc_type_id'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'doc_type_id'])
             </div>
 
             <div class="field">
@@ -107,7 +107,7 @@
                     {!! icon('fas fa-id-badge', 'is-small is-left') !!}
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'dni'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'dni'])
             </div>
 
         </div>
@@ -126,7 +126,7 @@
                     <input class="input" type="date" name="birth_date" value="{{ old('phone', $patient->birth_date) }}" placeholder="Birth Date">
                 </p>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'birth_date'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'birth_date'])
             </div>
         </div>
     </div>
@@ -161,7 +161,7 @@
                         </div>
                     </p>
 
-                    @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'medical_insurance_id'])
+                    @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'medical_insurance_id'])
                 </div>
 
             </div>
@@ -181,7 +181,7 @@
                         </div>
                     </p>
 
-                    @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'home_type_id'])
+                    @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'home_type_id'])
                 </div>
 
             </div>
@@ -201,7 +201,7 @@
                         </div>
                     </p>
 
-                    @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'water_type_id'])
+                    @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'water_type_id'])
                 </div>
 
             </div>
@@ -221,7 +221,7 @@
                         </div>
                     </p>
 
-                    @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'heating_type_id'])
+                    @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'heating_type_id'])
                 </div>
 
             </div>
@@ -249,7 +249,7 @@
                     <input type="checkbox" name='has_pet' value="{{ old('has_pet', $patient->has_pet) }}"> Has Pets?
                 </div>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'has_pet'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_pet'])
             </div>
 
             <div class="field">
@@ -257,7 +257,7 @@
                     <input type="checkbox" name='has_electricity' value="{{ old('has_electricity', $patient->has_electricity) }}"> Has Electricity?
                 </div>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'has_electricity'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_electricity'])
             </div>
 
             <div class="field">
@@ -265,7 +265,7 @@
                     <input type="checkbox" name='has_refrigerator' value="{{ old('has_refrigerator', $patient->has_refrigerator) }}"> Has Refrigerator?
                 </div>
 
-                @include('layouts.field_errors', ['errors,' => 'errors', 'field' => 'has_refrigerator'])
+                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_refrigerator'])
             </div>
 
         </div>
