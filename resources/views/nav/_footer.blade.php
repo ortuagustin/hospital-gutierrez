@@ -5,7 +5,7 @@
                 <li> {!! link_to('Patients', 'patients.index', []) !!} </li>
             @endcan
 
-            @can ('admin', \App\Role::class)
+            @can ('admin')
                 <li> {!! link_to('Roles', 'roles.index', []) !!} </li>
                 <li> {!! link_to('Permissions', 'permissions.index', []) !!} </li>
             @endcan
