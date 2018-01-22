@@ -42,7 +42,7 @@
         @yield('content')
     </section>
 
-    <footer class="footer" style="padding-bottom: 0; padding-top: 1em;">
+    <footer class="footer" style="padding-bottom: 0;">
         @include('layouts._footer')
     </footer>
 
