@@ -21,7 +21,7 @@
 <body>
     <section class="hero is-primary is-small">
         <div class="hero-head">
-            @include('nav.navbar')
+            @include('nav._navbar')
         </div>
 
         @hasSection('hero-body-content')
@@ -32,18 +32,7 @@
             </div>
         @endif
 
-        <div class="hero-foot">
-            <nav class="tabs is-centered is-large">
-              <ul>
-                 <li><a>Overview</a></li>
-                 <li><a>Modifiers</a></li>
-                 <li><a>Grid</a></li>
-                 <li><a>Elements</a></li>
-                 <li><a>Components</a></li>
-                 <li><a>Layout</a></li>
-              </ul>
-            </nav>
-        </div>
+        @includeWhen(Auth::check(), 'nav._footer')
     </section>
 
     <section class="section">
