@@ -7,6 +7,7 @@ use App\Patient;
 use App\Policies\MedicalRecordsPolicy;
 use App\Policies\PatientsPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Provides Authorization Policies for the Applications Models
@@ -31,5 +32,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define('admin', function ($user) {
+            return $user->isAdmin();
+        });
     }
 }
