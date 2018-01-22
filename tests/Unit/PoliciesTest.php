@@ -92,28 +92,28 @@ class PoliciesTest extends TestCase
     public function medic_role_can_view_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->view($this->medicUser), 'It should be able to View Patients');
+        $this->assertTrue($policy->view($this->medicUser), 'It should be able to View Patientss');
     }
 
     /** @test */
     public function medic_role_can_create_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->create($this->medicUser), 'It should be able to Create Patients');
+        $this->assertTrue($policy->create($this->medicUser), 'It should be able to Create Patientss');
     }
 
     /** @test */
     public function medic_role_can_update_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->update($this->medicUser), 'It should be able to Update Patients');
+        $this->assertTrue($policy->update($this->medicUser), 'It should be able to Update Patientss');
     }
 
     /** @test */
     public function medic_role_cannot_delete_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertFalse($policy->delete($this->medicUser), 'It should not be able to Delete Patients');
+        $this->assertFalse($policy->delete($this->medicUser), 'It should not be able to Delete Patientss');
     }
 
     /** @test */
@@ -148,28 +148,28 @@ class PoliciesTest extends TestCase
     public function receptionist_role_can_view_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->view($this->receptionistUser), 'It should be able to View Patients');
+        $this->assertTrue($policy->view($this->receptionistUser), 'It should be able to View Patientss');
     }
 
     /** @test */
     public function receptionist_role_can_create_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->create($this->receptionistUser), 'It should be able to Create Patients');
+        $this->assertTrue($policy->create($this->receptionistUser), 'It should be able to Create Patientss');
     }
 
     /** @test */
     public function receptionist_role_can_update_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertTrue($policy->update($this->receptionistUser), 'It should be able to Update Patients');
+        $this->assertTrue($policy->update($this->receptionistUser), 'It should be able to Update Patientss');
     }
 
     /** @test */
     public function receptionist_role_cannot_delete_patients()
     {
         $policy = new PatientsPolicy();
-        $this->assertFalse($policy->delete($this->receptionistUser), 'It should not be able to Delete Patients');
+        $this->assertFalse($policy->delete($this->receptionistUser), 'It should not be able to Delete Patientss');
     }
 
     /** @test */
@@ -220,13 +220,13 @@ class PoliciesTest extends TestCase
     {
         $role = $this->createRole('Medic');
 
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionView}"));
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionUpdate}"));
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionCreate}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionView}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionUpdate}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionCreate}"));
 
-        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionView}"));
-        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionUpdate}"));
-        $role->permissions()->attach($this->createPermission("MedicalRecord-{$this->actionCreate}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecords-{$this->actionView}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecords-{$this->actionUpdate}"));
+        $role->permissions()->attach($this->createPermission("MedicalRecords-{$this->actionCreate}"));
 
         $this->medicUser = $this->createUser();
         $this->medicUser->roles()->attach($role);
@@ -236,9 +236,9 @@ class PoliciesTest extends TestCase
     protected function setUpReceptionistUser()
     {
         $role = $this->createRole('Receptionist');
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionView}"));
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionUpdate}"));
-        $role->permissions()->attach($this->createPermission("Patient-{$this->actionCreate}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionView}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionUpdate}"));
+        $role->permissions()->attach($this->createPermission("Patients-{$this->actionCreate}"));
 
         $this->receptionistUser = $this->createUser();
         $this->receptionistUser->roles()->attach($role);

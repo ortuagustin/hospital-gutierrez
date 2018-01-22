@@ -30,8 +30,8 @@ abstract class ModelPolicy
     {
         if (is_null($this->modelName)) {
             $reflect = new \ReflectionClass($this);
-            $temp = str_replace('Policy', '', $reflect->getShortName());
-            $this->modelName = Str::singular($temp);
+            $model = str_replace('Policy', '', $reflect->getShortName());
+            $this->modelName = Str::plural($model);
         }
 
         return $this->modelName;
