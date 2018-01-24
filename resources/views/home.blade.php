@@ -51,8 +51,16 @@
             @slot('url') # @endslot
         @endcomponent
 
+    </div>
+
+</div>
+
+<div class="tile is-ancestor">
+
+    <div class="tile">
+
         @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
-            @slot('type') is-light @endslot
+            @slot('type') is-primary @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Users @endslot
             @slot('subtitle') Manage Users and their access level to the system @endslot
@@ -73,6 +81,14 @@
             @slot('title') Permissions @endslot
             @slot('subtitle') Manage system User Permissions @endslot
             @slot('url') {{ route('permissions.index') }} @endslot
+        @endcomponent
+
+        @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
+            @slot('type') is-gray @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Admin Area @endslot
+            @slot('subtitle') Manage system settings @endslot
+            @slot('url') {{-- route('settings.index') --}} # @endslot
         @endcomponent
 
     </div>
