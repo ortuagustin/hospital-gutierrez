@@ -16,8 +16,8 @@ class Appointment extends Model
      * @var array
      */
     protected $fillable = [
-            'patient_id', 'date',
-        ];
+        'patient_id', 'date',
+    ];
 
     /**
      * The attributes that should be parsed as Carbon Dates
@@ -26,7 +26,7 @@ class Appointment extends Model
      */
     protected $dates = [
             'date', 'created_at', 'updated_at',
-        ];
+    ];
 
     /**
      * Returns the time portion of the Appointment
