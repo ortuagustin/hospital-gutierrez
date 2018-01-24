@@ -58,6 +58,8 @@ $factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker
 });
 
 $factory->define(App\MedicalRecord::class, function (Faker\Generator $faker) {
+    $paragraph = $faker->paragraph();
+
     return [
             'patient_id'                    => factory(App\Patient::class)->create()->id,
             'user_id'                       => factory(App\User::class)->create()->id,
@@ -66,13 +68,13 @@ $factory->define(App\MedicalRecord::class, function (Faker\Generator $faker) {
             'talla'                         => $faker->randomFloat(),
             'percentilo_cefalico'           => $faker->randomFloat(),
             'percentilo_perimetro_cefalico' => $faker->randomFloat(),
-            'alimentacion_observaciones'    => $faker->paragraph(),
+            'alimentacion_observaciones'    => $paragraph,
             'vacunas_completas'             => $faker->boolean(),
-            'vacunas_observaciones'         => $faker->paragraph(),
+            'vacunas_observaciones'         => $paragraph,
             'maduracion_acorde'             => $faker->boolean(),
-            'maduracion_observaciones'      => $faker->paragraph(),
+            'maduracion_observaciones'      => $paragraph,
             'examen_fisico_normal'          => $faker->boolean(),
-            'examen_fisico_observaciones'   => $faker->paragraph(),
-            'observaciones'                 => $faker->paragraph(),
+            'examen_fisico_observaciones'   => $paragraph,
+            'observaciones'                 => $paragraph,
     ];
 });
