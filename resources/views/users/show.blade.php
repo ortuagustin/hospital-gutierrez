@@ -41,8 +41,8 @@
     </div>
 
     <div class="box">
-        {{-- TODO: here you can assign rles to the user --}}
-        TODO: here you can assign rles to the user 
+        {{-- TODO: here you can assign roles to the user --}}
+        TODO: here you can assign roles to the user
     </div>
 
 @endsection
