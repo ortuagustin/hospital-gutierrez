@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/roles/reset', 'RolesController@reset')->name('roles.reset');
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
+        Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
     });
 
     Route::resource('patients.medical_records', 'MedicalRecordsController');
