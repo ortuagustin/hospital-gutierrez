@@ -53,6 +53,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns a comma separated list of the User Roles
+     * If there are more than 3 Roles, it will append ', ...'
+     * @return string
+     */
+    public function roles_names()
+    {
+        $chunk_of_roles = $this->roles->take(3);
+        $list = $chunk_of_roles->implode('name', ', ');
+        if ($this->roles->count() > 3) {
+            $list .= ', ...';
+        }
+
+        return $list;
+    }
+
+    /**
      * Returns True if the User has the 'Admin' Role
      * @param string $adminRoleName
      * @return bool
@@ -108,7 +124,7 @@ class User extends Authenticatable
         if ($this->isAdmin()) {
             return true;
         }
-            
+
         if (is_string($permission)) {
             return $this->hasPermissionByName($permission);
         } else {
