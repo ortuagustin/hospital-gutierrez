@@ -24,6 +24,15 @@ class MedicalRecord extends Model
     ];
 
     /**
+     * The attributes that should be parsed as Carbon Dates
+     *
+     * @var array
+     */
+    protected $dates = [
+            'fecha', 'created_at', 'updated_at',
+        ];
+
+    /**
      * The User that created this Medical Record
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
