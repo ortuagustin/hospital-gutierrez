@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
     <p class="title is-3 has-text-weight-light has-text-grey"> {{ $patient->full_name }} </p>
