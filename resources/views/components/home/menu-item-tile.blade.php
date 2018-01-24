@@ -1,27 +1,22 @@
 <div class="tile is-parent">
-    <article class="tile is-child box notification has-text-centered {{ $type or '' }}">
-        @isset($url)
-            <a href="{{ $url }}" style="text-decoration: none;">
-        @endisset
+    <article class="tile is-child box notification {{ $class or 'has-text-centered'  }} {{ $type or '' }}">
 
-            @isset($icon)
-                <div class="content">
-                    <span class="icon is-large">
-                      <i class="{{ $icon }}"></i>
-                    </span>
-                </div>
-            @endisset
+        <a href="{{ $url }}" style="text-decoration: none;">
 
-            <p class="title">{{ $title }}</p>
-            <p class="subtitle">{{ $subtitle or '' }}</p>
+        <div class="content">
+            <span class="icon is-large">
+              <i class="{{ $icon }}"></i>
+            </span>
+        </div>
 
-            <div class="content">
-                {{ $slot }}
-            </div>
+        <p class="title">{{ $title }}</p>
+        <p class="subtitle">{{ $subtitle or '' }}</p>
 
-        @isset($url)
-            </a>
-        @endisset
+        <div class="content">
+            {{ $slot }}
+        </div>
+
+        </a>
 
     </article>
 </div>
