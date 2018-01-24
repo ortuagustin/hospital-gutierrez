@@ -35,7 +35,7 @@
 
     <div class="tile">
 
-        @component('components.home.menu-item-tile')
+        @component('components.home.auth-menu-item-tile', ['ability' => 'view', 'args' => \App\Patient::class ])
             @slot('type') is-success @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Patients @endslot
@@ -51,7 +51,7 @@
             @slot('url') # @endslot
         @endcomponent
 
-        @component('components.home.menu-item-tile')
+        @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
             @slot('type') is-warning @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Roles @endslot
@@ -59,7 +59,7 @@
             @slot('url') {{ route('roles.index') }} @endslot
         @endcomponent
 
-        @component('components.home.menu-item-tile')
+        @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
             @slot('type') is-danger @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Permissions @endslot
