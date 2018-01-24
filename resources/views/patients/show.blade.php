@@ -17,9 +17,9 @@
         <p> <strong>Home Type:</strong> {{ $patient->homeType->value() }} </p>
         <p> <strong>Water Type:</strong> {{ $patient->waterType->value() }} </p>
         <p> <strong>Heating Type:</strong> {{ $patient->heatingType->value() }} </p>
-        <p> <strong>Has Pets?:</strong> @include('patients._check', ['value' => $patient->has_pet]) </p>
-        <p> <strong>Has Electricity?:</strong> @include('patients._check', ['value' => $patient->has_electricity]) </p>
-        <p> <strong>Has Refrigerator?:</strong> @include('patients._check', ['value' => $patient->has_refrigerator]) </p>
+        <p> <strong>Has Pets?:</strong> @include('layouts._check', ['value' => $patient->has_pet]) </p>
+        <p> <strong>Has Electricity?:</strong> @include('layouts._check', ['value' => $patient->has_electricity]) </p>
+        <p> <strong>Has Refrigerator?:</strong> @include('layouts._check', ['value' => $patient->has_refrigerator]) </p>
     </div>
 
     <div class="box">
