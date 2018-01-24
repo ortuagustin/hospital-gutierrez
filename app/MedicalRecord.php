@@ -29,8 +29,8 @@ class MedicalRecord extends Model
      * @var array
      */
     protected $dates = [
-            'fecha', 'created_at', 'updated_at',
-        ];
+        'fecha', 'created_at', 'updated_at',
+    ];
 
     /**
      * The User that created this Medical Record
@@ -48,5 +48,23 @@ class MedicalRecord extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * Returns the name of the User who created the record
+     * @return string
+     */
+    public function user_name()
+    {
+        return ucfirst($this->user->name);
+    }
+
+    /**
+     * Returns the name of the User who created the record
+     * @return string
+     */
+    public function getUserNameAttribute()
+    {
+        return $this->user_name();
     }
 }
