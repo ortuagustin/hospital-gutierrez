@@ -39,7 +39,7 @@
             @slot('type') is-success @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Patients @endslot
-            @slot('subtitle') Manage the Hospital's Patients @endslot
+            @slot('subtitle') Manage the Hospital's Patients and their Medical Records @endslot
             @slot('url') {{ route('patients.index') }} @endslot
         @endcomponent
 
@@ -52,10 +52,18 @@
         @endcomponent
 
         @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
+            @slot('type') is-light @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Users @endslot
+            @slot('subtitle') Manage Users and their access level to the system @endslot
+            @slot('url') {{ route('users.index') }} @endslot
+        @endcomponent
+
+        @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
             @slot('type') is-warning @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Roles @endslot
-            @slot('subtitle') Manage Users Roles @endslot
+            @slot('subtitle') Manage system Users Roles @endslot
             @slot('url') {{ route('roles.index') }} @endslot
         @endcomponent
 
@@ -63,7 +71,7 @@
             @slot('type') is-danger @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Permissions @endslot
-            @slot('subtitle') Manage User Permissions @endslot
+            @slot('subtitle') Manage system User Permissions @endslot
             @slot('url') {{ route('permissions.index') }} @endslot
         @endcomponent
 

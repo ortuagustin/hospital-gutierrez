@@ -6,6 +6,7 @@
             @endcan
 
             @can ('admin')
+                <li> {!! link_to('Users', 'users.index', []) !!} </li>
                 <li> {!! link_to('Roles', 'roles.index', []) !!} </li>
                 <li> {!! link_to('Permissions', 'permissions.index', []) !!} </li>
             @endcan
