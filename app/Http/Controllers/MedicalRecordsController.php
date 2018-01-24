@@ -29,7 +29,7 @@ class MedicalRecordsController extends Controller
     {
         $medical_records = $patient->medicalRecords;
 
-        return view('medical_records/index', compact('medical_records'));
+        return view('medical_records/index', compact('medical_records', 'patient'));
     }
 
     /**
