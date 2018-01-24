@@ -5,31 +5,28 @@
 <div class="tile is-ancestor">
 
     <div class="tile is-vertical">
-        <div class="tile is-parent">
-            <article class="tile is-child box notification is-white">
 
-                <p class="title">Wide column</p>
-                <p class="subtitle">With some content</p>
+        @component('components.home.child-tile')
+            @slot('type') is-white @endslot
+            @slot('title') Wide Column @endslot
+            @slot('subtitle') With Some Content @endslot
+            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+        @endcomponent
 
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
+        @component('components.home.child-tile')
+            @slot('type') is-light @endslot
+            @slot('title') Wide Column @endslot
+            @slot('subtitle') With Some Content @endslot
+            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+        @endcomponent
 
-            </article>
-        </div>
+        @component('components.home.child-tile')
+            @slot('type') is-white @endslot
+            @slot('title') Wide Column @endslot
+            @slot('subtitle') With Some Content @endslot
+            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+        @endcomponent
 
-        <div class="tile is-parent">
-            <article class="tile is-child box notification is-light">
-
-                <p class="title">Wide column</p>
-                <p class="subtitle">With some content</p>
-
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-
-            </article>
-        </div>
     </div>
 
 </div>
@@ -38,56 +35,37 @@
 
     <div class="tile">
 
-        <div class="tile is-parent">
-            <article class="tile is-child box notification is-danger has-text-centered">
+        @component('components.home.menu-item-tile')
+            @slot('type') is-success @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Patients @endslot
+            @slot('subtitle') Manage the Hospital's Patients @endslot
+            @slot('url') {{ route('patients.index') }} @endslot
+        @endcomponent
 
-                <div class="content">
-                    {!! icon('fas fa-user fa-5x', 'is-large') !!}
-                </div>
+        @component('components.home.menu-item-tile')
+            @slot('type') is-info @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Reports @endslot
+            @slot('subtitle') View the Hospital statistics @endslot
+            @slot('url') # @endslot
+        @endcomponent
 
-                <p class="title">First column</p>
-                <p class="subtitle">With some content</p>
+        @component('components.home.menu-item-tile')
+            @slot('type') is-warning @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Roles @endslot
+            @slot('subtitle') Manage Users Roles @endslot
+            @slot('url') {{ route('roles.index') }} @endslot
+        @endcomponent
 
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-
-            </article>
-        </div>
-
-        <div class="tile is-parent">
-            <article class="tile is-child box notification is-info has-text-centered">
-
-                <div class="content">
-                    {!! icon('fas fa-user fa-5x', 'is-large') !!}
-                </div>
-
-                <p class="title">Second column</p>
-                <p class="subtitle">With some content</p>
-
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-
-            </article>
-        </div>
-
-        <div class="tile is-parent">
-            <article class="tile is-child box notification is-success has-text-centered">
-
-                <div class="content">
-                    {!! icon('fas fa-user fa-5x', 'is-large') !!}
-                </div>
-
-                <p class="title">Third column</p>
-                <p class="subtitle">With some content</p>
-
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-
-            </article>
-        </div>
+        @component('components.home.menu-item-tile')
+            @slot('type') is-danger @endslot
+            @slot('icon') fas fa-user fa-5x @endslot
+            @slot('title') Permissions @endslot
+            @slot('subtitle') Manage User Permissions @endslot
+            @slot('url') {{ route('permissions.index') }} @endslot
+        @endcomponent
 
     </div>
 
