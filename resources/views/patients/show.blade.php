@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    
+
     <p class="title is-3 has-text-weight-light has-text-grey"> {{ $patient->full_name }} </p>
 
     <div class="box">
@@ -25,11 +25,11 @@
     <div class="box">
         <div class="field is-grouped is-grouped-centered">
             <p class="control">
-                {!! link_button_with_icon('fas fa-clock fa-lg', 'patients.medical_records.index', $patient->id, 'View Medical Records', 'has-text-info', 'is-medium') !!}
+                {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient->id, 'View Medical Records', 'has-text-info') !!}
             </p>
 
             <p class="control">
-                {!! delete_button_with_icon('fas fa-trash-alt fa-lg', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger', 'is-medium') !!}
+                {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger') !!}
             </p>
         </div>
     </div>

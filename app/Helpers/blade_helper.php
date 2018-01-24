@@ -60,7 +60,7 @@ function link_to_with_icon($icon, $route_name, $route_args = [], $text = '', $ic
                 <span class='$icon_class'>
                     <i class='$icon'></i>
                 </span>
-                <span>$text</span>
+                <span>&nbsp;$text</span>
             </a>
         </p>";
 }
