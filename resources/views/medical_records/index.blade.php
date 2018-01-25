@@ -6,7 +6,7 @@
 
 
     <div class="box">
-        {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.create', [], 'Create a new Medical Record', 'has-text-success') !!}
+        {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.medical_records.create', $patient, 'Create a new Medical Record', 'has-text-success') !!}
     </div>
 
     <div class="box">
