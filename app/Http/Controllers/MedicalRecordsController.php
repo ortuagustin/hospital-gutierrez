@@ -27,8 +27,6 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
-        $this->authorize('index', MedicalRecord::class);
-
         $medical_records = $patient->medicalRecords;
 
         return view('medical_records/index', compact('medical_records', 'patient'));
