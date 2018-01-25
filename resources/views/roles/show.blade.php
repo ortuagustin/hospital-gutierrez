@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="title is-3">Role: {{ $role->name }}</h1>
+    <h1 class="title is-3 has-text-grey">Role: {{ $role->name }}</h1>
     <h2 class="subtitle">Permissions</h2>
 
     <div class="box">

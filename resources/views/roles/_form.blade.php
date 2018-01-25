@@ -2,7 +2,7 @@
 
 <div class="field">
 
-    <label class="label">Role</label>
+    <label class="label has-text-grey">Role</label>
 
     <div class="control">
         <input class="input" type="text" name="name" value="{{ old('name', $role->name) }}" placeholder="The Role name" autofocus>
