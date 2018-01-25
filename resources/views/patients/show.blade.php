@@ -22,6 +22,10 @@
             </p>
 
             <p class="control">
+                {!! link_to_with_icon('fas fa-edit fa-2x', 'patients.edit', $patient, 'Edit Patient') !!}
+            </p>
+
+            <p class="control">
                 {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger') !!}
             </p>
         </div>
