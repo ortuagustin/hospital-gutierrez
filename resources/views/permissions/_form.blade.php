@@ -2,7 +2,7 @@
 
 <div class="field">
 
-    <label class="label">Permission</label>
+    <label class="label has-text-grey">Permission</label>
 
     <div class="control">
         <input class="input" type="text" name="name" value="{{ old('name', $permission->name) }}" placeholder="The Permission name" autofocus>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="title is-3">Permissions List</h1>
+    <h1 class="title is-3 has-text-grey">Permissions List</h1>
 
     <div class="box">
         {!! link_to_with_icon('fas fa-plus fa-lg', 'permissions.create', [], 'Create a new Permission', 'has-text-success') !!}
