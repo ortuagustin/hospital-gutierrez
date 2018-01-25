@@ -56,7 +56,7 @@ class MedicalRecordsController extends Controller
     {
         $request->save();
 
-        return redirect()->route('medical_records.index', $patient_id);
+        return redirect()->route('patients.medical_records.index', $patient_id);
     }
 
     /**
@@ -82,6 +82,6 @@ class MedicalRecordsController extends Controller
     {
         $medical_record->delete();
 
-        return redirect()->route('medical_records.index', $patient_id);
+        return redirect()->route('patients.medical_records.index', $patient_id);
     }
 }
