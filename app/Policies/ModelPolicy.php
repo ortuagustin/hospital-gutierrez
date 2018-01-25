@@ -38,7 +38,18 @@ abstract class ModelPolicy
     }
 
     /**
-     * Determine whether the User can view the patient.
+     * Determine whether the User can view the resource.
+     *
+     * @param  \App\User  $user
+     * @return bool
+     */
+    public function index(User $user)
+    {
+        return $this->view($user);
+    }
+
+    /**
+     * Determine whether the User can view the resource.
      *
      * @param  \App\User  $user
      * @return bool
@@ -49,7 +60,7 @@ abstract class ModelPolicy
     }
 
     /**
-     * Determine whether the User can create patients.
+     * Determine whether the User can create resources.
      *
      * @param  \App\User  $user
      * @return bool
@@ -60,7 +71,7 @@ abstract class ModelPolicy
     }
 
     /**
-     * Determine whether the User can update the patient.
+     * Determine whether the User can update the resource.
      *
      * @param  \App\User  $user
      * @return bool
@@ -71,7 +82,7 @@ abstract class ModelPolicy
     }
 
     /**
-     * Determine whether the User can delete the patient.
+     * Determine whether the User can delete the resource.
      *
      * @param  \App\User  $user
      * @return bool

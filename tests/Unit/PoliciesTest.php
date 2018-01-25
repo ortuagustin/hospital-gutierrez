@@ -69,6 +69,7 @@ class PoliciesTest extends TestCase
     {
         foreach ($this->policies as $policy) {
             $policyClass = get_class($policy);
+            $this->assertTrue($policy->index($this->adminUser), "It should be able to Index --> {$policyClass}");
             $this->assertTrue($policy->view($this->adminUser), "It should be able to View --> {$policyClass}");
             $this->assertTrue($policy->create($this->adminUser), "It should be able to Create --> {$policyClass}");
             $this->assertTrue($policy->update($this->adminUser), "It should be able to Update --> {$policyClass}");
@@ -81,6 +82,7 @@ class PoliciesTest extends TestCase
     {
         foreach ($this->policies as $policy) {
             $policyClass = get_class($policy);
+            $this->assertFalse($policy->index($this->guestUser), "It should not be able to Index --> {$policyClass}");
             $this->assertFalse($policy->view($this->guestUser), "It should not be able to View --> {$policyClass}");
             $this->assertFalse($policy->create($this->guestUser), "It should not be able to Create --> {$policyClass}");
             $this->assertFalse($policy->update($this->guestUser), "It should not be able to Update --> {$policyClass}");
