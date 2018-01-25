@@ -16,7 +16,9 @@ class MedicalRecordsController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(MedicalRecord::class);
+        // need to pass the snake_cased class name
+        // see https://github.com/laravel/framework/issues/18432
+        $this->authorizeResource(MedicalRecord::class, 'medical_record');
     }
 
     /**
