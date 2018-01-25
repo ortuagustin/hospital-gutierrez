@@ -16,6 +16,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::resource('patients', 'PatientsController');
+    Route::resource('patients.medical_records', 'MedicalRecordsController', ['except' => ['edit', 'update']]);
 
     Route::middleware('can:admin')->group(function () {
         Route::get('/roles/reset', 'RolesController@reset')->name('roles.reset');
@@ -23,6 +24,4 @@ Route::middleware('auth')->group(function () {
         Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
         Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
     });
-
-    Route::resource('patients.medical_records', 'MedicalRecordsController');
 });
