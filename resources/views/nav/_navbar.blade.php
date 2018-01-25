@@ -19,6 +19,12 @@
                 {!! link_to('Login', 'login', [], 'navbar-item') !!}
                 {!! link_to('Register', 'register', [], 'navbar-item') !!}
             @else
+                <div class="navbar-item">
+                    <p>
+                        {!! icon('fas fa-user fa-lg') !!}
+                         Welcome, {{ Auth::user()->name }}
+                    </p>
+                </div>
                 {!! link_to('Home', 'home', [], 'navbar-item is-active') !!}
                 @include('nav._logout_form')
             @endif
