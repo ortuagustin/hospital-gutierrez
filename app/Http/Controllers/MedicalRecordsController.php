@@ -27,6 +27,8 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
+        $this->authorize('index', MedicalRecord::class);
+
         $medical_records = $patient->medicalRecords;
 
         return view('medical_records/index', compact('medical_records', 'patient'));
@@ -35,12 +37,12 @@ class MedicalRecordsController extends Controller
     /**
      * Show the form for creating a new Medical Record for the given Patient
      *
-     * @param int $patient_id
+     * @param  Patient $patient
      * @return \Illuminate\Http\Response
      */
-    public function create($patient_id)
+    public function create(Patient $patient)
     {
-        return view('medical_records/create', compact('patient_id'));
+        return view('medical_records/create', compact('patient'));
     }
 
     /**
@@ -60,39 +62,13 @@ class MedicalRecordsController extends Controller
     /**
      * Display the specified Medical Record
      *
-     * @param int $patient_id
+     * @param  Patient $patient
      * @param  MedicalRecord  $medical_record
      * @return \Illuminate\Http\Response
      */
-    public function show($patient_id, MedicalRecord $medical_record)
+    public function show(Patient $patient, MedicalRecord $medical_record)
     {
-        return view('medical_records/show', compact('medical_record'));
-    }
-
-    /**
-     * Show the form for editing the specified Medical Record
-     *
-     * @param int $patient_id
-     * @param  MedicalRecord  $medical_record
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($patient_id, MedicalRecord $medical_record)
-    {
-        return view('medical_records/edit', compact('medical_record'));
-    }
-
-    /**
-     * Update the specified Medical Record in storage
-     *
-     * @param int $patient_id
-     * @param  \App\Http\Requests\StoreMedicalRecordRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update($patient_id, StoreMedicalRecordRequest $request)
-    {
-        $request->save();
-
-        return redirect()->route('medical_records.index', $patient_id);
+        return view('medical_records/show', compact('medical_record', 'patient'));
     }
 
     /**
