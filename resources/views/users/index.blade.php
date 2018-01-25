@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="title is-3">User List</h1>
+    <h1 class="title is-3 has-text-grey">User List</h1>
 
     <div class="box">
 
