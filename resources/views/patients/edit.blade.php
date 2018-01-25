@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="title is-3">Edit Patient</h1>
+    <h1 class="title is-3 has-text-grey">Edit Patient</h1>
 
     <form method="POST" action={{ route('patients.update', $patient) }}>
 

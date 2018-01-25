@@ -4,7 +4,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label">Last Name / Name / Gender</label>
+            <label class="field-label has-text-weight-bold has-text-grey">Names / Gender</label>
         </div>
 
         <div class="field-body">
@@ -47,7 +47,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label">Address</label>
+            <label class="field-label has-text-weight-bold has-text-grey">Address</label>
         </div>
 
         <div class="field-body">
@@ -64,7 +64,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label">Phone</label>
+            <label class="field-label has-text-weight-bold has-text-grey">Phone</label>
         </div>
 
         <div class="field-body">
@@ -81,7 +81,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label">Identification</label>
+            <label class="field-label has-text-weight-bold has-text-grey">Identification</label>
         </div>
 
         <div class="field-body">
@@ -116,7 +116,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label">Birth Date</label>
+            <label class="field-label has-text-weight-bold has-text-grey">Birth Date</label>
         </div>
 
         <div class="field-body">
@@ -134,14 +134,14 @@
     {{-- adds spacing, do NOT remove --}}
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label"></label>
+            <label class="field-label has-text-weight-bold has-text-grey"></label>
         </div>
     </div>
 
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label"></label>
+            <label class="field-label has-text-weight-bold has-text-grey"></label>
         </div>
 
         <div class="field-body">
@@ -150,7 +150,7 @@
 
                 <div class="field is-narrow">
                     <p class="control">
-                        <label class="label">Medical Insurance</label>
+                        <label class="label has-text-weight-bold has-text-grey">Medical Insurance</label>
                         <div class="select">
                             <select name="medical_insurance_id" value="{{ old('medical_insurance_id', $patient->medical_insurance_id) }}">
                                 {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
@@ -170,7 +170,7 @@
 
                 <div class="field is-narrow">
                     <p class="control">
-                        <label class="label">Home Type</label>
+                        <label class="label has-text-weight-bold has-text-grey">Home Type</label>
                         <div class="select">
                             <select name="home_type_id" value="{{ old('home_type_id', $patient->home_type_id) }}">
                                 {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
@@ -190,7 +190,7 @@
 
                 <div class="field is-narrow">
                     <p class="control">
-                        <label class="label">Water Type</label>
+                        <label class="label has-text-weight-bold has-text-grey">Water Type</label>
                         <div class="select">
                             <select name="water_type_id" value="{{ old('water_type_id', $patient->water_type_id) }}">
                                 {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
@@ -210,7 +210,7 @@
 
                 <div class="field is-narrow">
                     <p class="control">
-                        <label class="label">Heating Type</label>
+                        <label class="label has-text-weight-bold has-text-grey">Heating Type</label>
                         <div class="select">
                             <select name="heating_type_id" value="{{ old('heating_type_id', $patient->heating_type_id) }}">
                                 {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
@@ -233,13 +233,13 @@
     {{-- adds spacing, do NOT remove --}}
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label"></label>
+            <label class="field-label has-text-weight-bold has-text-grey"></label>
         </div>
     </div>
 
     <div class="field is-horizontal">
         <div class="field-label">
-            <label class="field-label"></label>
+            <label class="field-label has-text-weight-bold has-text-grey"></label>
         </div>
 
         <div class="field-body">
