@@ -25,6 +25,8 @@ class PatientsController extends Controller
      */
     public function index()
     {
+        $this->authorize('index', Patient::class);
+
         $patients = Patient::all();
 
         return view('patients/index', compact('patients'));
