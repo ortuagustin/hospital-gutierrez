@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeds\ApplicationSettingSeeder;
 use Database\Seeds\MedicalRecordSeeder;
 use Database\Seeds\PatientSeeder;
 use Database\Seeds\UserSeeder;
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(PatientSeeder::class);
         $this->call(MedicalRecordSeeder::class);
+        $this->call(ApplicationSettingSeeder::class);
     }
 }
