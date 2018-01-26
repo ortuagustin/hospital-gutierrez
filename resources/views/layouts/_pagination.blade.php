@@ -11,7 +11,7 @@
         @if ($paginator->hasMorePages())
             <a class="pagination-next" href="{{ $paginator->nextPageUrl() }}" rel="next">Next</a>
         @else
-            <a class="pagination-next" disabled>Next page</a>
+            <a class="pagination-next" disabled>Next</a>
         @endif
 
         <ul class="pagination-list">

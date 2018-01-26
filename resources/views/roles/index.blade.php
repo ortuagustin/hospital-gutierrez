@@ -1,11 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
     <h1 class="title is-3 has-text-grey">Role List</h1>
 
     <div class="box">
         {!! link_to_with_icon('fas fa-plus fa-lg', 'roles.create', [], 'Create a new Role', 'has-text-success') !!}
     </div>
+
+    {{ $roles->links('layouts._pagination') }}
 
     <div class="box">
 
@@ -36,4 +39,7 @@
         </table>
 
     </div>
+
+    {{ $roles->links('layouts._pagination') }}
+
 @endsection

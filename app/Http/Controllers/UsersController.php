@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ApplicationSetting;
 use App\User;
 
 /**
@@ -16,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(ApplicationSetting::value('records_per_page', '15'));
 
         return view('users/index', compact('users'));
     }

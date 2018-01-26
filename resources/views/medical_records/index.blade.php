@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     <h1 class="title is-3 has-text-grey"> Medical Records </h1>
     <h3 class="subtitle is-5 has-text-grey"> {{ $patient->full_name }} </h3>
 
@@ -8,6 +9,8 @@
     <div class="box">
         {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.medical_records.create', $patient, 'Create a new Medical Record', 'has-text-success') !!}
     </div>
+
+    {{ $medical_records->links('layouts._pagination') }}
 
     <div class="box">
 
@@ -52,4 +55,7 @@
         </table>
 
     </div>
+
+    {{ $medical_records->links('layouts._pagination') }}
+
 @endsection

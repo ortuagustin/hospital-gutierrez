@@ -1,11 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
     <h1 class="title is-3 has-text-grey">Permissions List</h1>
 
     <div class="box">
         {!! link_to_with_icon('fas fa-plus fa-lg', 'permissions.create', [], 'Create a new Permission', 'has-text-success') !!}
     </div>
+
+    {{ $permissions->links('layouts._pagination') }}
 
     <div class="box">
 
@@ -21,10 +24,10 @@
             </thead>
 
             <tbody>
-                @foreach ($permissions as $permissions)
+                @foreach ($permissions as $permission)
                     <tr>
-                        <th>{{ $permissions->id }}</th>
-                        <td>{{ $permissions->name }}</td>
+                        <th>{{ $permission->id }}</th>
+                        <td>{{ $permission->name }}</td>
                         <td> {!! link_to_with_icon('fas fa-edit fa-2x', 'permissions.edit', $permissions, '', 'has-text-dark') !!} </td>
                         <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'permissions.destroy', $permissions) !!} </td>
                     </tr>
@@ -34,4 +37,7 @@
         </table>
 
     </div>
+
+    {{ $permissions->links('layouts._pagination') }}
+
 @endsection

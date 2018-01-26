@@ -5,6 +5,8 @@
 
     <div class="box">
 
+        {{ $users->links('layouts._pagination') }}
+
         <table class="table is-striped is-narrow">
 
             <thead>
@@ -36,5 +38,7 @@
         </table>
 
     </div>
+    
+    {{ $users->links('layouts._pagination') }}
 
 @endsection

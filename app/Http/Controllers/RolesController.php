@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ApplicationSetting;
 use App\Contracts\DefaultAuthSchemaInterface;
 use App\Role;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('name')->get();
+        $roles = Role::orderBy('name')->paginate(ApplicationSetting::value('records_per_page', '15'));
 
         return view('roles/index', compact('roles'));
     }
