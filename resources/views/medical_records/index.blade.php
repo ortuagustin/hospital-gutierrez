@@ -10,7 +10,7 @@
         {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.medical_records.create', $patient, 'Create a new Medical Record', 'has-text-success') !!}
     </div>
 
-    {{ $medical_records->links('layouts._pagination') }}
+    {{ $medical_records->links('pagination._header') }}
 
     <div class="box">
 
@@ -56,6 +56,6 @@
 
     </div>
 
-    {{ $medical_records->links('layouts._pagination') }}
+    {{ $medical_records->links('pagination._footer') }}
 
 @endsection

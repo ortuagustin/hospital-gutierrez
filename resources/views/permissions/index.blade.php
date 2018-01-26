@@ -8,7 +8,7 @@
         {!! link_to_with_icon('fas fa-plus fa-lg', 'permissions.create', [], 'Create a new Permission', 'has-text-success') !!}
     </div>
 
-    {{ $permissions->links('layouts._pagination') }}
+    {{ $permissions->links('pagination._header') }}
 
     <div class="box">
 
@@ -38,6 +38,6 @@
 
     </div>
 
-    {{ $permissions->links('layouts._pagination') }}
+    {{ $permissions->links('pagination._footer') }}
 
 @endsection

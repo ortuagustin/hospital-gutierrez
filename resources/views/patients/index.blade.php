@@ -9,7 +9,7 @@
 
     <div class="box">
 
-        {{ $patients->links('layouts._pagination') }}
+        {{ $patients->links('pagination._header') }}
 
         <table class="table is-striped is-narrow">
 
@@ -51,7 +51,7 @@
 
         </table>
 
-        {{ $patients->links('layouts._pagination') }}
+        {{ $patients->links('pagination._footer') }}
 
     </div>
 @endsection

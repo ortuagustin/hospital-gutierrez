@@ -8,7 +8,7 @@
         {!! link_to_with_icon('fas fa-plus fa-lg', 'roles.create', [], 'Create a new Role', 'has-text-success') !!}
     </div>
 
-    {{ $roles->links('layouts._pagination') }}
+    {{ $roles->links('pagination._header') }}
 
     <div class="box">
 
@@ -40,6 +40,6 @@
 
     </div>
 
-    {{ $roles->links('layouts._pagination') }}
+    {{ $roles->links('pagination._header') }}
 
 @endsection

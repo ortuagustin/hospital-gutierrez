@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+
     <h1 class="title is-3 has-text-grey">User List</h1>
 
     <div class="box">
 
-        {{ $users->links('layouts._pagination') }}
+        {{ $users->links('pagination._header') }}
 
         <table class="table is-striped is-narrow">
 
@@ -38,7 +39,7 @@
         </table>
 
     </div>
-    
-    {{ $users->links('layouts._pagination') }}
+
+    {{ $users->links('pagination._footer') }}
 
 @endsection
