@@ -51,6 +51,19 @@ class ApplicationSettingTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_true_when_missing_key()
+    {
+        $this->assertTrue(ApplicationSetting::missing('key'));
+    }
+
+    /** @test */
+    public function it_returns_false_when_key_is_not_missing()
+    {
+        $this->createSetting('key', 'value');
+        $this->assertFalse(ApplicationSetting::missing('key'));
+    }
+
+    /** @test */
     public function it_returns_value_by_key()
     {
         $this->createSetting('key', 'value');

@@ -64,4 +64,14 @@ class ApplicationSetting extends Model
             ['key' => $key, 'value' => $value]
         );
     }
+
+    /**
+     * Inverse of ::exists(). Returns true if the key does NOT exist; false otherwise
+     * @param string $key
+     * @return bool
+     */
+    public static function missing($key)
+    {
+        return ! (static::exists($key));
+    }
 }
