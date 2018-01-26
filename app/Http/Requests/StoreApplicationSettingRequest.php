@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\ApplicationSetting;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -30,5 +31,15 @@ class StoreApplicationSettingRequest extends FormRequest
             'key'         => 'required|string|unique:application_settings',
             'value'       => 'required|string',
         ];
+    }
+
+    /**
+     * Saves the ApplicationSetting to the Database with the inputs from the Request
+     *
+     * @return ApplicationSetting
+     */
+    public function save()
+    {
+        return ApplicationSetting::put($this->key, $this->value);
     }
 }

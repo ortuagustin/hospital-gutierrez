@@ -49,6 +49,30 @@ class StoreApplicationSettingRequestTest extends FormRequestTestCase
         $this->assertValidationPasses($validator);
     }
 
+    /** @test */
+    public function it_stores_new_setting_in_the_database()
+    {
+        $input = $this->modelFields(['key' => 'key', 'value' => 'value']);
+        $setting = $this->createFormRequest($input)->save();
+        $this->assertDatabaseHas('application_settings', $input);
+        $this->assertEquals(ApplicationSetting::count(), 1);
+        $this->assertEquals('key', $setting->key);
+        $this->assertEquals('value', $setting->value);
+    }
+
+    /** @test */
+    public function it_stores_updated_setting_in_the_database()
+    {
+        $setting = $this->createModel(['key' => 'key', 'value' => 'value']);
+        $setting->value = 'updated-value';
+        $changed_fields = $setting->toArray();
+        $this->createFormRequest($changed_fields)->save();
+        $this->assertDatabaseHas('application_settings', $changed_fields);
+        $this->assertEquals(ApplicationSetting::count(), 1);
+        $this->assertEquals('key', $setting->key);
+        $this->assertEquals('updated-value', $setting->value);
+    }
+
     /**
      * @inheritDoc
      */
