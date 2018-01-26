@@ -88,7 +88,7 @@
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Admin Area @endslot
             @slot('subtitle') Manage system settings @endslot
-            @slot('url') {{-- route('settings.index') --}} # @endslot
+            @slot('url') {{ route('settings.index') }} @endslot
         @endcomponent
 
     </div>
