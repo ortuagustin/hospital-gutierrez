@@ -184,6 +184,7 @@ return [
         App\Providers\HelperServiceProvider::class,
         App\Providers\ReferenceDataProvider::class,
         App\Providers\DefaultAuthSchemaProvider::class,
+        App\Providers\DefaultApplicationSettingsProvider::class,
 
     ],
 
