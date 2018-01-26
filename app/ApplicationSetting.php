@@ -12,7 +12,7 @@ class ApplicationSetting extends Model
      * @var array
      */
     protected $fillable = [
-          'key', 'value',
+        'key', 'value',
     ];
 
     /**
@@ -48,5 +48,20 @@ class ApplicationSetting extends Model
         $setting = static::find($key);
 
         return is_null($setting) ? $default : $setting->value;
+    }
+
+    /**
+     * Creates the ApplicationSetting if it does not exist; otherwise, updates the value
+     *
+     * @param string $key
+     * @param string $value
+     * @return \App\ApplicationSetting
+     */
+    public static function put($key, $value)
+    {
+        return static::updateOrCreate(
+            ['key' => $key],
+            ['key' => $key, 'value' => $value]
+        );
     }
 }

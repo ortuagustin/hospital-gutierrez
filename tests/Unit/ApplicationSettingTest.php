@@ -20,6 +20,24 @@ class ApplicationSettingTest extends TestCase
     }
 
     /** @test */
+    public function it_creates_app_setting_when_key_does_not_exit()
+    {
+        $setting = ApplicationSetting::put('key', 'value');
+        $this->assertEquals('value', $setting->value);
+        $this->assertTrue(ApplicationSetting::exists('key'));
+        $this->assertEquals('value', ApplicationSetting::value('key'));
+    }
+
+    /** @test */
+    public function it_updates_app_setting_when_key_exists()
+    {
+        $this->createSetting('key', 'value');
+        $setting = ApplicationSetting::put('key', 'updated-value');
+        $this->assertEquals('updated-value', $setting->value);
+        $this->assertEquals('updated-value', ApplicationSetting::value('key'));
+    }
+
+    /** @test */
     public function it_returns_true_when_existing_key()
     {
         $this->createSetting('key', 'value');
