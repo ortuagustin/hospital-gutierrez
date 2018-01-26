@@ -9,6 +9,8 @@
 
     <div class="box">
 
+        {{ $patients->links('layouts._pagination') }}
+
         <table class="table is-striped is-narrow">
 
             <thead>
@@ -48,6 +50,8 @@
             </tbody>
 
         </table>
+
+        {{ $patients->links('layouts._pagination') }}
 
     </div>
 @endsection
