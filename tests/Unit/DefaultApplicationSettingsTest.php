@@ -36,7 +36,7 @@ class DefaultApplicationSettingsTest extends TestCase
         $this->assertEquals(ApplicationSetting::value('description'), 'test-description');
         $this->assertEquals(ApplicationSetting::value('contact_email'), 'test-contact_email');
         $this->assertEquals(ApplicationSetting::value('records_per_page'), '10');
-        $this->assertEquals(ApplicationSetting::value('maintenance'), 'false');
+        $this->assertEquals(ApplicationSetting::value('maintenance'), '0');
     }
 
     /** @before */
