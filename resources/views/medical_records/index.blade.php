@@ -6,8 +6,28 @@
     <h3 class="subtitle is-5 has-text-grey"> {{ $patient->full_name }} </h3>
 
 
-    <div class="box">
-        {!! link_to_with_icon('fas fa-plus fa-lg', 'patients.medical_records.create', $patient, 'Create a new Medical Record', 'has-text-success') !!}
+    <div class="box level">
+
+        <div class="level-left">
+
+            <div class="level-item">
+                {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.index', $patient, 'Back to Patients', 'has-text-info') !!}
+            </div>
+
+            <div class="level-item">
+                {!! link_to_with_icon('fas fa-user fa-2x', 'patients.index', $patient, "Back to $patient->full_name", 'has-text-primary') !!}
+            </div>
+
+        </div>
+
+        <div class="level-right">
+
+            <div class="level-item">
+                {!! link_to_with_icon('fas fa-plus fa-2x', 'patients.medical_records.create', $patient, 'Add Medical Record', 'has-text-success') !!}
+            </div>
+
+        </div>
+
     </div>
 
     {{ $medical_records->links('pagination._header') }}

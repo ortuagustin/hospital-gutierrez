@@ -4,6 +4,8 @@
 
     <p class="title is-3 has-text-grey"> {{ $patient->full_name }} </p>
 
+    {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.medical_records.index', $patient, 'Back to Medical Records', 'has-text-info') !!}
+
     @component('components.patients.details', ['patient' => $patient])
         <p class='title is-6 has-text-grey'>Patient Details</p>
     @endcomponent
@@ -23,7 +25,7 @@
     <div class="box">
         <div class="field is-grouped is-grouped-centered">
             <p class="control">
-                {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient, 'Back to Medical Records', 'has-text-info') !!}
+                {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.medical_records.index', $patient, 'Back to Medical Records', 'has-text-info') !!}
             </p>
 
             <p class="control">
