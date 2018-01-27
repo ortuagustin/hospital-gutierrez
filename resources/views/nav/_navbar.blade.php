@@ -1,7 +1,8 @@
 <nav class="navbar">
     <div class="navbar-brand">
-        <a class="navbar-item">
-            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+        <a class="navbar-item is-active" href="{{ route('home') }}">
+            {!! icon('fas fa-home fa-2x') !!}
+            &nbsp;&nbsp; Home
         </a>
 
         <span class="navbar-burger" data-target="navbar-menu">
@@ -25,7 +26,6 @@
                          Welcome, {{ Auth::user()->name }}
                     </p>
                 </div>
-                {!! link_to('Home', 'home', [], 'navbar-item is-active') !!}
                 @include('nav._logout_form')
             @endif
         </div>
