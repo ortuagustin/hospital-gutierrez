@@ -14,7 +14,7 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
-        $records = factory(Patient::class, 50)->raw();
+        $records = factory(Patient::class, rand(50, 100))->raw();
         Patient::insert($records);
     }
 }

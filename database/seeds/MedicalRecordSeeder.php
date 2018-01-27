@@ -24,13 +24,15 @@ class MedicalRecordSeeder extends Seeder
 
         $patients = Patient::pluck('id');
 
-        foreach ($patients as $id) {
-            $records = factory(MedicalRecord::class, 30)->raw([
-                'patient_id' => $id,
-                'user_id'    => array_random($users),
-            ]);
+        foreach ($patients as $patient_id) {
+            foreach ($users as $user_id) {
+                $records = factory(MedicalRecord::class, rand(1, 10))->raw([
+                    'patient_id' => $patient_id,
+                    'user_id'    => $user_id,
+                ]);
 
-            MedicalRecord::insert($records);
+                MedicalRecord::insert($records);
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Seeds;
 use App\Contracts\DefaultAuthSchemaInterface;
 use App\Role;
 use App\User;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -15,10 +16,17 @@ class UserSeeder extends Seeder
     private $auth_schema;
 
     /**
+     * @var Generator
+     */
+    private $faker;
+
+    /**
+     * @param Generator                  $faker
      * @param DefaultAuthSchemaInterface $auth_schema
      */
-    public function __construct(DefaultAuthSchemaInterface $auth_schema)
+    public function __construct(Generator $faker, DefaultAuthSchemaInterface $auth_schema)
     {
+        $this->faker = $faker;
         $this->auth_schema = $auth_schema;
     }
 
@@ -30,12 +38,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         $this->auth_schema->resetToDefault();
-        $this->createUser('admin')
-             ->createUser('medic')
-             ->createUser('recepcionist');
+        $this->createUser('admin', 'Admin')
+             ->createUser('medic', 'Medic')
+             ->createUser($this->faker->name, 'Medic')
+             ->createUser($this->faker->name, 'Medic')
+             ->createUser('recepcionist', 'Recepcionist')
+             ->createUser($this->faker->name, 'Recepcionist');
     }
 
-    protected function createUser($name)
+    /**
+     * @param string $name
+     * @param string $role
+     * @return $this
+     */
+    protected function createUser($name, $role)
     {
         $user = User::create([
             'name'           => $name,
@@ -44,7 +60,7 @@ class UserSeeder extends Seeder
             'remember_token' => str_random(10),
         ]);
 
-        if ($role = Role::where('name', ucfirst($name))->first()) {
+        if ($role = Role::where('name', $role)->first()) {
             $user->roles()->attach($role);
         }
 
