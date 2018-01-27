@@ -2,7 +2,7 @@
 
 <div class="field">
     <div class="control has-icons-left">
-        <input id="email" name="email" class="input is-large" type="text" value="{{ old('email') }}" placeholder="Username / E-Mail" autofocus>
+        <input id="email" name="email" class="input is-medium" type="text" value="{{ old('email') }}" placeholder="Username / E-Mail" autofocus>
         {!! icon('fas fa-user', 'is-left') !!}
 
         @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'email'])
@@ -11,7 +11,7 @@
 
 <div class="field">
     <div class="control has-icons-left">
-        <input id="password" name="password" class="input is-large" type="password" placeholder="Password">
+        <input id="password" name="password" class="input is-medium" type="password" placeholder="Password">
         {!! icon('fas fa-key', 'is-left') !!}
 
         @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'password'])

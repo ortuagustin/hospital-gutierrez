@@ -22,8 +22,8 @@
             </div>
 
             <p class="field">
-                {!! link_to('Register', 'register', [], 'has-text-grey') !!}&nbsp;·&nbsp;
-                {!! link_to('Forgot Password?', 'password.request', [], 'has-text-grey') !!}
+                {!! link_to('Register', 'register', [], 'has-text-grey has-text-weight-bold') !!}&nbsp;·&nbsp;
+                {!! link_to('Forgot Password?', 'password.request', [], 'has-text-grey has-text-weight-bold') !!}
             </p>
         </div>
     </div>
