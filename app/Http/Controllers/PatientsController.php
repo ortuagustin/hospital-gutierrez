@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ApplicationSetting;
 use App\Http\Requests\StorePatientRequest;
 use App\Patient;
 
@@ -26,7 +25,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        $patients = Patient::paginate(ApplicationSetting::value('records_per_page', '15'));
+        $patients = Patient::paginate(setting('records_per_page', '15'));
 
         return view('patients/index', compact('patients'));
     }

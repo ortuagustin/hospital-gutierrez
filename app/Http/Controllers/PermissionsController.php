@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ApplicationSetting;
 use App\Permission;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,7 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::orderBy('name')->paginate(ApplicationSetting::value('records_per_page', '15'));
+        $permissions = Permission::orderBy('name')->paginate(setting('records_per_page', '15'));
 
         return view('permissions/index', compact('permissions'));
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ApplicationSetting;
 use App\Http\Requests\StoreMedicalRecordRequest;
 use App\MedicalRecord;
 use App\Patient;
@@ -30,7 +29,7 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
-        $medical_records = $patient->medicalRecords()->paginate(ApplicationSetting::value('records_per_page', '15'));
+        $medical_records = $patient->medicalRecords()->paginate(setting('records_per_page', '15'));
 
         return view('medical_records/index', compact('medical_records', 'patient'));
     }
