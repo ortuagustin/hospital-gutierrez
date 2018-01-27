@@ -7,24 +7,25 @@
     <div class="tile is-vertical">
 
         @component('components.home.child-tile')
-            @slot('type') is-white @endslot
-            @slot('title') Wide Column @endslot
-            @slot('subtitle') With Some Content @endslot
-            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+            @slot('type') is-success @endslot
+            @slot('title') Need assistance? @endslot
+            @slot('subtitle') <a href="mailto:{{ setting('contact_email') }}">Send us an email</a> @endslot
         @endcomponent
 
         @component('components.home.child-tile')
             @slot('type') is-light @endslot
             @slot('title') Wide Column @endslot
             @slot('subtitle') With Some Content @endslot
-            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p>
         @endcomponent
 
         @component('components.home.child-tile')
             @slot('type') is-white @endslot
             @slot('title') Wide Column @endslot
             @slot('subtitle') With Some Content @endslot
-            @slot('content') <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p> @endslot
+
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p>
         @endcomponent
 
     </div>

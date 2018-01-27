@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ setting('title') }}</title>
 
     <!-- Styles -->
      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -29,8 +29,8 @@
                 @hasSection('hero-body-content')
                     @yield('hero-body-content')
                 @else
-                    <h1 class="title">Hospital Dr. Ricardo Gutiérrez</h1>
-                    <h2 class="subtitle">Consultorio del Niño Sano</h2>
+                    <h1 class="title">{{ setting('title') }}</h1>
+                    <h2 class="subtitle">{{ setting('description') }}</h2>
                 @endif
             </div>
         </div>
