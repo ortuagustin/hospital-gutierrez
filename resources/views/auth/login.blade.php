@@ -14,7 +14,7 @@
             <p class="subtitle has-text-grey">Please login to proceed.</p>
 
             <div class="box">
-                <figure class="avatar"> <img src="https://placehold.it/128x128"> </figure>
+                <figure class="avatar"> <img src="logo.png"> </figure>
 
                 <form method="POST" action="{{ route('login') }}">
                     @include('auth._login_form')
