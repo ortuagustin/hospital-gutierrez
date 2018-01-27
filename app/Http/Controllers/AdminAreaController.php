@@ -30,9 +30,8 @@ class AdminAreaController extends Controller
      */
     public function store(StoreApplicationSettingRequest $request)
     {
-        dd($request);
         $request->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('settings.index');
     }
 }
