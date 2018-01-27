@@ -18,18 +18,8 @@ class AdminAreaController extends Controller
     public function index()
     {
         $settings = ApplicationSetting::all();
-        
-        return view('admin/index', compact('settings'));
-    }
 
-    /**
-     * Show the form for creating a new ApplicationSetting
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin/create');
+        return view('admin/index', compact('settings'));
     }
 
     /**
@@ -40,6 +30,7 @@ class AdminAreaController extends Controller
      */
     public function store(StoreApplicationSettingRequest $request)
     {
+        dd($request);
         $request->save();
 
         return redirect()->route('admin.index');

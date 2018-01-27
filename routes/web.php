@@ -23,6 +23,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController', ['except' => ['show']]);
         Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
-        Route::resource('settings', 'AdminAreaController', ['only' => ['index', 'create', 'store']]);
+        Route::resource('settings', 'AdminAreaController', ['only' => ['index', 'store']]);
     });
 });
