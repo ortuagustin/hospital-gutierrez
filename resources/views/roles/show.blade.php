@@ -2,6 +2,9 @@
 
 @section('content')
     <h1 class="title is-3 has-text-grey">Role: {{ $role->name }}</h1>
+
+    {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'roles.index', [], 'Back to Roles', 'has-text-info') !!}<br>
+
     <h2 class="subtitle">Permissions</h2>
 
     <div class="box">
