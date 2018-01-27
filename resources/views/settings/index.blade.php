@@ -31,7 +31,7 @@
 
         </table>
 
-        {!! link_to('Reset ALL to default values', 'settings.reset', [], 'has-text-danger') !!}
+        {!! link_to('Reset ALL to default values', 'settings.reset', [], 'button is-danger') !!}
     </div>
 
 
