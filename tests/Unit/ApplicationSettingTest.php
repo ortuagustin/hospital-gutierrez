@@ -83,4 +83,15 @@ class ApplicationSettingTest extends TestCase
     {
         $this->assertNull(ApplicationSetting::value('key'));
     }
+
+    /** @test */
+    public function it_returns_human_name()
+    {
+        $title = $this->createSetting('title', 'value');
+        $contact_email = $this->createSetting('contact-email', 'value');
+        $records_per_page = $this->createSetting('records_per_page', 'value');
+        $this->assertEquals('Title', $title->human_name);
+        $this->assertEquals('Contact Email', $contact_email->human_name);
+        $this->assertEquals('Records Per Page', $records_per_page->human_name());
+    }
 }

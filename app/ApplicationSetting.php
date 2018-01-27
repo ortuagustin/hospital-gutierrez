@@ -78,11 +78,34 @@ class ApplicationSetting extends Model
 
     /**
      * Returns true if a setting with the given key does NOT exists; false otherwise
+     *
      * @param string $key
      * @return bool
      */
     public static function missing($key)
     {
         return is_null(static::find($key));
+    }
+
+    /**
+     * Returns the humanized name of the setting.
+     * It will remove underscores, and dashes, and capitalize the key
+     *
+     * @return string
+     */
+    public function human_name()
+    {
+        return str_replace(['_', '-'], ' ', title_case($this->key));
+    }
+
+    /**
+     * Returns the humanized name of the setting.
+     * It will remove underscores, and dashes, and capitalize the key
+     *
+     * @return string
+     */
+    public function getHumanNameAttribute()
+    {
+        return $this->human_name();
     }
 }
