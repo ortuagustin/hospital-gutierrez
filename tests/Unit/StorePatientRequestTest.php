@@ -40,6 +40,7 @@ class StorePatientRequestTest extends FormRequestTestCase
     public function it_passes_validations_when_all_fields_are_correct()
     {
         $validator = $this->passingValidator();
+
         $this->assertValidationPasses($validator);
     }
 
@@ -251,6 +252,28 @@ class StorePatientRequestTest extends FormRequestTestCase
         $this->injectRepository(WaterTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Water Well')]);
         $this->injectRepository(HeatingTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Electrical')]);
         $this->injectRepository(MedicalInsurancesRepositoryInterface::class, [$this->makeReferenceModel(1, 'IOMA')]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function passingValidator(array $overrides = [])
+    {
+        $reference_keys = [
+          'doc_type_id',
+          'home_type_id',
+          'heating_type_id',
+          'water_type_id',
+          'medical_insurance_id',
+        ];
+
+        foreach ($reference_keys as $reference_id) {
+            if (! isset($overrides[$reference_id])) {
+                $overrides[$reference_id] = 1;
+            }
+        }
+
+        return parent::passingValidator($overrides);
     }
 
     /**

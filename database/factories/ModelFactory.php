@@ -25,11 +25,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
-      'doc_type_id'          => 1,
-      'home_type_id'         => 1,
-      'heating_type_id'      => 1,
-      'water_type_id'        => 1,
-      'medical_insurance_id' => 1,
+      'doc_type_id'          => $faker->numberBetween(1, 4),
+      'home_type_id'         => $faker->numberBetween(1, 3),
+      'heating_type_id'      => $faker->numberBetween(1, 3),
+      'water_type_id'        => $faker->numberBetween(1, 2),
+      'medical_insurance_id' => $faker->numberBetween(1, 3),
       'name'                 => $faker->unique()->name,
       'last_name'            => $faker->unique()->name,
       'dni'                  => $faker->unique()->numerify('########'),
@@ -43,9 +43,11 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Appointment::class, function (Faker\Generator $faker) {
+$factory->define(App\Appointment::class, function (Faker\Generator $faker, $attributes) {
+    $patient_id = isset($attributes['patient_id']) ? $attributes['patient_id']: factory(App\Patient::class)->create()->id;
+
     return [
-        'patient_id'     => factory(App\Patient::class)->create()->id,
+        'patient_id'     => $patient_id,
         'date'           => $faker->dateTime(),
     ];
 });
@@ -58,12 +60,14 @@ $factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker
     ];
 });
 
-$factory->define(App\MedicalRecord::class, function (Faker\Generator $faker) {
+$factory->define(App\MedicalRecord::class, function (Faker\Generator $faker, $attributes) {
     $paragraph = $faker->paragraph();
+    $patient_id = isset($attributes['patient_id']) ? $attributes['patient_id']: factory(App\Patient::class)->create()->id;
+    $user_id = isset($attributes['user_id']) ? $attributes['user_id']: factory(App\User::class)->create()->id;
 
     return [
-            'patient_id'                    => factory(App\Patient::class)->create()->id,
-            'user_id'                       => factory(App\User::class)->create()->id,
+            'patient_id'                    => $patient_id,
+            'user_id'                       => $user_id,
             'fecha'                         => $faker->dateTimeThisDecade(),
             'peso'                          => $faker->randomFloat(),
             'talla'                         => $faker->randomFloat(),
