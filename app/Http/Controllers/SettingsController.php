@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ApplicationSetting;
+use App\Contracts\DefaultApplicationSettingsInterface;
 use App\Http\Requests\StoreApplicationSettingRequest;
 
 /**
@@ -31,6 +32,19 @@ class SettingsController extends Controller
     public function store(StoreApplicationSettingRequest $request)
     {
         $request->save();
+
+        return redirect()->route('settings.index');
+    }
+
+    /**
+     * Resets all settings to default values
+     *
+     * @param DefaultApplicationSettingsInterface $default_settings
+     * @return \Illuminate\Http\Response
+     */
+    public function reset(DefaultApplicationSettingsInterface $default_settings)
+    {
+        $default_settings->resetToDefault();
 
         return redirect()->route('settings.index');
     }

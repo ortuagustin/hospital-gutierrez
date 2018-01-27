@@ -29,6 +29,8 @@
 
         </table>
 
+        {!! link_to('Reset ALL to default values', 'settings.reset', [], 'has-text-danger') !!}
     </div>
+
 
 @endsection
