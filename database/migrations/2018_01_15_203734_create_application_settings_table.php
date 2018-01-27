@@ -19,6 +19,7 @@ class CreateApplicationSettingsTable extends Migration
         Schema::create('application_settings', function (Blueprint $table) {
             $table->string('key');
             $table->string('value');
+            $table->string('input_type');
             $table->primary('key');
             $table->timestamps();
         });

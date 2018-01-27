@@ -22,19 +22,31 @@ class ApplicationSettingTest extends TestCase
     /** @test */
     public function it_creates_app_setting_when_key_does_not_exit()
     {
-        $setting = ApplicationSetting::put('key', 'value');
+        $setting = ApplicationSetting::put('key', 'value', 'number');
         $this->assertEquals('value', $setting->value);
         $this->assertTrue(ApplicationSetting::exists('key'));
         $this->assertEquals('value', ApplicationSetting::value('key'));
+        $this->assertEquals('number', $setting->input_type);
     }
 
     /** @test */
-    public function it_updates_app_setting_when_key_exists()
+    public function it_updates_app_setting_value_when_key_exists()
     {
         $this->createSetting('key', 'value');
         $setting = ApplicationSetting::put('key', 'updated-value');
+        $this->assertEquals('key', $setting->key);
         $this->assertEquals('updated-value', $setting->value);
-        $this->assertEquals('updated-value', ApplicationSetting::value('key'));
+        $this->assertEquals('text', $setting->input_type);
+    }
+
+    /** @test */
+    public function it_does_not_update_input_type_when_key_exists()
+    {
+        $this->createSetting('key', 'value', 'number');
+        $setting = ApplicationSetting::put('key', 'updated-value');
+        $this->assertEquals('key', $setting->key);
+        $this->assertEquals('updated-value', $setting->value);
+        $this->assertEquals('number', $setting->input_type);
     }
 
     /** @test */

@@ -12,7 +12,7 @@ class ApplicationSetting extends Model
      * @var array
      */
     protected $fillable = [
-        'key', 'value',
+        'key', 'value', 'input_type',
     ];
 
     /**
@@ -55,14 +55,22 @@ class ApplicationSetting extends Model
      *
      * @param string $key
      * @param string $value
+     * @param string $input_type
      * @return \App\ApplicationSetting
      */
-    public static function put($key, $value)
+    public static function put($key, $value, $input_type = 'text')
     {
-        return static::updateOrCreate(
-            ['key' => $key],
-            ['key' => $key, 'value' => $value]
-        );
+        if (static::exists($key)) {
+            $setting = ApplicationSetting::find($key);
+            $setting->value = $value;
+            $setting->save();
+
+            return $setting;
+        }
+
+        return static::create([
+            'key' => $key, 'value' => $value, 'input_type' => $input_type,
+        ]);
     }
 
     /**

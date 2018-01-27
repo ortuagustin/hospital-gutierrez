@@ -52,8 +52,9 @@ $factory->define(App\Appointment::class, function (Faker\Generator $faker) {
 
 $factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker) {
     return [
-        'key'   => $faker->unique()->slug,
-        'value' => $faker->unique()->isbn10,
+        'key'        => $faker->unique()->slug,
+        'value'      => $faker->unique()->isbn10,
+        'input_type' => 'text',
     ];
 });
 

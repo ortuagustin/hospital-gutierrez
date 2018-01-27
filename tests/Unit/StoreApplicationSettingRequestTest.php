@@ -10,7 +10,7 @@ class StoreApplicationSettingRequestTest extends FormRequestTestCase
     /** @test */
     public function it_does_not_allow_empty_fields()
     {
-        $this->assertFieldsRequired();
+        $this->assertFieldsRequired(['key' => 'test-key', 'value' => 'test-value']);
     }
 
     /** @test */
