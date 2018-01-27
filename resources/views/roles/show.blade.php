@@ -5,10 +5,6 @@
     <h2 class="subtitle">Permissions</h2>
 
     <div class="box">
-        {!! link_to_with_icon('fas fa-plus fa-lg', 'permissions.create', [], 'Create a new Permission', 'has-text-success') !!}
-    </div>
-
-    <div class="box">
 
         <table class="table is-striped is-narrow">
 
