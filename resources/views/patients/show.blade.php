@@ -4,6 +4,8 @@
 
     <p class="title is-3 has-text-grey"> {{ $patient->full_name }} </p>
 
+    {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.index', [], 'Back to Patients', 'has-text-info') !!}
+
     @component('components.patients.details', ['patient' => $patient]) @endcomponent
 
     <div class="box">
