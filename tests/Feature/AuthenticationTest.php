@@ -122,7 +122,7 @@ class AuthenticationTest extends FeatureTest
     {
         $user_attributes = $this->getRegistrationFields();
         $this->submitRegistrationForm($user_attributes)
-             ->assertRedirect('home');
+             ->assertRedirect('/');
     }
 
     /** @test */
