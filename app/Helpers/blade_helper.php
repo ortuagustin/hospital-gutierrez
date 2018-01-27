@@ -1,5 +1,19 @@
 <?php
 
+use App\ApplicationSetting;
+
+/**
+ * Returns the value for the given ApplicationSetting key
+ *
+ * @param  string  $key
+ * @param  string  $default
+ * @return string
+ */
+function setting($key, $default = null)
+{
+    return ApplicationSetting::value($key, $default);
+}
+
 /**
  * Returns an icon element
  *
