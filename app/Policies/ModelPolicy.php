@@ -38,6 +38,21 @@ abstract class ModelPolicy
     }
 
     /**
+     * Policy filter that will block every resource action when the application
+     * is on maintenance mode, except for admin users
+     *
+     * @param  \App\User  $user
+     * @param string $ability
+     * @return bool
+     */
+    public function before($user, $ability)
+    {
+        if (app()->isDownForMaintenance()) {
+            return $user->isAdmin();
+        }
+    }
+
+    /**
      * Determine whether the User can view the resource.
      *
      * @param  \App\User  $user
