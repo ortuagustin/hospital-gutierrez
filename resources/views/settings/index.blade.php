@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="title is-3 has-text-grey">Systen Settings</h1>
+    <h1 class="title is-3 has-text-grey">System Settings</h1>
 
     {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
 
