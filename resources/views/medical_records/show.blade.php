@@ -23,7 +23,7 @@
     <div class="box">
         <div class="field is-grouped is-grouped-centered">
             <p class="control">
-                {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient, 'View Medical Records', 'has-text-info') !!}
+                {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient, 'Back to Medical Records', 'has-text-info') !!}
             </p>
 
             <p class="control">
