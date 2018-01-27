@@ -8,7 +8,7 @@ use App\Http\Requests\StoreApplicationSettingRequest;
 /**
  * Handles request related to ApplicationSetting model.
  */
-class AdminAreaController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Show the settings page view
@@ -19,7 +19,7 @@ class AdminAreaController extends Controller
     {
         $settings = ApplicationSetting::all();
 
-        return view('admin/index', compact('settings'));
+        return view('settings/index', compact('settings'));
     }
 
     /**
