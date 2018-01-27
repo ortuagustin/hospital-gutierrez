@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\ApplicationSetting;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * A Request that is sent when we need to persist an ApplicationSetting model
@@ -17,7 +18,7 @@ class StoreApplicationSettingRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user->isAdmin();
+        return $this->user()->isAdmin();
     }
 
     /**
@@ -27,10 +28,10 @@ class StoreApplicationSettingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'key'         => 'required|string|unique:application_settings',
+        return ([
+            'key'         => 'required|string|' . Rule::unique('application_settings')->ignore($this->key, 'key'),
             'value'       => 'required|string',
-        ];
+        ]);
     }
 
     /**
