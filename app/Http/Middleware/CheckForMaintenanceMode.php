@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Replaces built-in \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode with
@@ -49,6 +50,8 @@ class CheckForMaintenanceMode
      */
     public function handle($request, Closure $next)
     {
+        $this->checkMaintenanceModeSetting();
+
         if ($this->shouldPassThrough($request)) {
             return $next($request);
         }
@@ -56,6 +59,40 @@ class CheckForMaintenanceMode
         $data = json_decode(file_get_contents($this->app->storagePath().'/framework/down'), true);
 
         throw new MaintenanceModeException($data['time'], $data['retry'], $data['message']);
+    }
+
+    /**
+     * Puts the site in maintenance mode if specified in the system settings
+     *
+     * @return void
+     */
+    protected function checkMaintenanceModeSetting()
+    {
+        setting('maintenance', '0')? $this->ensureDown() : $this->ensureUp();
+    }
+
+    /**
+     * Puts the site in maintenance mode if needed
+     *
+     * @return void
+     */
+    protected function ensureDown()
+    {
+        if (! $this->isDownForMaintenance()) {
+            Artisan::call('down');
+        }
+    }
+
+    /**
+     * Takes the site out of maintenance mode if needed
+     *
+     * @return void
+     */
+    protected function ensureUp()
+    {
+        if ($this->isDownForMaintenance()) {
+            Artisan::call('up');
+        }
     }
 
     /**
@@ -67,7 +104,7 @@ class CheckForMaintenanceMode
     protected function shouldPassThrough($request)
     {
         return (
-                ! $this->isDownForMaintenance($request) ||
+                ! $this->isDownForMaintenance() ||
                   $this->inExceptArray($request) ||
                   $this->isWhitelisted($request)
         );
@@ -77,10 +114,9 @@ class CheckForMaintenanceMode
      * Wrapper for app->isDownForMaintenance()
      * Returns wether the application is in maintenance mode
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function isDownForMaintenance($request)
+    protected function isDownForMaintenance()
     {
         return $this->app->isDownForMaintenance();
     }
