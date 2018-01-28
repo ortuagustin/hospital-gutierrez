@@ -30,11 +30,10 @@
             <div class="field is-narrow">
                 <p class="control">
                     <div class="select">
-                        <select name="gender" value="{{ old('gender', $patient->gender) }}">
+                        <select class="is-capitalized" name="gender" value="{{ old('gender', $patient->gender) }}">
                             {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                            <option>Business development</option>
-                            <option>Marketing</option>
-                            <option>Sales</option>
+                            <option>male</option>
+                            <option>female</option>
                         </select>
                     </div>
                 </p>
@@ -123,7 +122,8 @@
             <div class="field">
                 <p class="control has-icons-left">
                     {{-- TODO: date format and validation --}}
-                    <input class="input" type="date" name="birth_date" value="{{ old('phone', $patient->birth_date) }}" placeholder="Birth Date">
+                    <input class="input" type="date" name="birth_date" value="{{ old('birth_date', $patient->birth_date) }}" placeholder="Birth Date">
+                    {!! icon('fas fa-clock', 'is-small is-left') !!}
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'birth_date'])
