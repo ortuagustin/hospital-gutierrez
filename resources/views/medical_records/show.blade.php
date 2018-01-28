@@ -12,15 +12,35 @@
 
     <div class="box">
         <p> <strong>User:</strong> {{ $medical_record->user_name }} </p>
-        <p> <strong>Date:</strong> {{ $medical_record->fecha->toDateString() }} </p>
+        <p> <strong>Control date:</strong> {{ $medical_record->fecha->toDateString() }} </p>
         <p> <strong>Age when took this control:</strong> {{ "$medical_record->patient_age years" }} </p>
         <p> <strong>Weight:</strong> {{ $medical_record->peso }} </p>
         <p> <strong>Height:</strong> {{ $medical_record->talla }} </p>
         <p> <strong>Cefalic Percentil:</strong> {{ $medical_record->percentilo_cefalico }} </p>
         <p> <strong>Perimeter Cefalic Percentil:</strong> {{ $medical_record->percentilo_perimetro_cefalico }} </p>
-        <p> <strong>Vaccines OK?:</strong> @include('layouts._check', ['value' => $medical_record->vacunas_completas]) </p>
-        <p> <strong>Rippening OK?:</strong> @include('layouts._check', ['value' => $medical_record->maduracion_acorde]) </p>
-        <p> <strong>Physical Test OK?:</strong> @include('layouts._check', ['value' => $medical_record->examen_fisico_normal]) </p>
+    </div>
+
+    <div class="box">
+        <div> <strong>Vaccines OK?:</strong> @include('layouts._check', ['value' => $medical_record->vacunas_completas])</div>
+        <div> <strong>Vaccines Observations:</strong> {{ $medical_record->vacunas_observaciones }} </div>
+    </div>
+
+    <div class="box">
+        <strong>Rippening OK?:</strong> @include('layouts._check', ['value' => $medical_record->maduracion_acorde])
+        <p> <strong>Rippening Observations:</strong> {{ $medical_record->maduracion_observaciones }} </p>
+    </div>
+
+    <div class="box">
+        <strong>Physical Test OK?:</strong> @include('layouts._check', ['value' => $medical_record->examen_fisico_normal])
+        <p> <strong>Physical Test Observations:</strong> {{ $medical_record->examen_fisico_observaciones }} </p>
+    </div>
+
+    <div class="box">
+        <p> <strong>Feeding Observations:</strong> {{ $medical_record->maduracion_observaciones }} </p>
+    </div>
+
+    <div class="box">
+        <p> <strong>General Observations:</strong> {{ $medical_record->observaciones }} </p>
     </div>
 
     <div class="box">
