@@ -47,14 +47,14 @@ class StoreMedicalRecordRequest extends FormRequest
             'talla'                         => 'required|numeric',
             'percentilo_cefalico'           => 'required|numeric',
             'percentilo_perimetro_cefalico' => 'required|numeric',
-            'alimentacion_observaciones'    => 'required|string',
+            'alimentacion_observaciones'    => 'required',
             'vacunas_completas'             => 'required|boolean',
-            'vacunas_observaciones'         => 'required|string',
+            'vacunas_observaciones'         => 'present',
             'maduracion_acorde'             => 'required|boolean',
-            'maduracion_observaciones'      => 'required|string',
+            'maduracion_observaciones'      => 'present',
             'examen_fisico_normal'          => 'required|boolean',
-            'examen_fisico_observaciones'   => 'required|string',
-            'observaciones'                 => 'required|string',
+            'examen_fisico_observaciones'   => 'present',
+            'observaciones'                 => 'present',
         ];
     }
 

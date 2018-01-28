@@ -16,7 +16,13 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
     /** @test */
     public function it_does_not_allow_empty_fields()
     {
-        $this->assertFieldsRequired();
+        $this->assertFieldsRequired([
+            'alimentacion_observaciones',
+            'vacunas_observaciones',
+            'maduracion_observaciones',
+            'examen_fisico_observaciones',
+            'observaciones',
+        ]);
     }
 
     /** @test */
@@ -86,15 +92,6 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
     }
 
     /** @test */
-    public function it_does_not_allow_non_string_values_on_string_fields()
-    {
-        foreach ($this->modelStringFields() as $each) {
-            $validator = $this->passingValidator([$each => 1]);
-            $this->assertValidationRuleFailed($validator, $each, 1, 'String');
-        }
-    }
-
-    /** @test */
     public function it_stores_new_medical_record_in_the_database()
     {
         $input = $this->modelFields();
@@ -141,18 +138,6 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
     protected function modelBooleanFields()
     {
         return ['vacunas_completas', 'maduracion_acorde', 'examen_fisico_normal'];
-    }
-
-    /**
-     * Returns string fields of the Medical Record Model
-     * @return array
-     */
-    protected function modelStringFields()
-    {
-        return [
-            'alimentacion_observaciones', 'vacunas_observaciones', 'maduracion_observaciones',
-            'examen_fisico_observaciones', 'observaciones',
-        ];
     }
 
     /**
