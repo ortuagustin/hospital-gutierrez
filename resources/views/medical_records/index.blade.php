@@ -57,7 +57,7 @@
                 @foreach ($medical_records as $medical_record)
                     <tr>
                         <th> {{ $medical_record->fecha ->toDateString() }}</th>
-                        <td> {{ $patient->age }} </td>
+                        <td> {{ $medical_record->patient_age }} </td>
                         <td> {{ $medical_record->peso }} </td>
                         <td> {{ $medical_record->talla }} </td>
                         <th> {{ $medical_record->percentilo_cefalico }} </th>

@@ -13,6 +13,7 @@
     <div class="box">
         <p> <strong>User:</strong> {{ $medical_record->user_name }} </p>
         <p> <strong>Date:</strong> {{ $medical_record->fecha->toDateString() }} </p>
+        <p> <strong>Age when took this control:</strong> {{ "$medical_record->patient_age years" }} </p>
         <p> <strong>Weight:</strong> {{ $medical_record->peso }} </p>
         <p> <strong>Height:</strong> {{ $medical_record->talla }} </p>
         <p> <strong>Cefalic Percentil:</strong> {{ $medical_record->percentilo_cefalico }} </p>
