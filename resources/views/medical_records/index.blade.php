@@ -20,13 +20,15 @@
 
         </div>
 
-        <div class="level-right">
+        @can ('create', \App\MedicalRecord::class)
+            <div class="level-right">
 
-            <div class="level-item">
-                {!! link_to_with_icon('fas fa-plus fa-2x', 'patients.medical_records.create', $patient, 'Add Medical Record', 'has-text-success') !!}
+                <div class="level-item">
+                    {!! link_to_with_icon('fas fa-plus fa-2x', 'patients.medical_records.create', $patient, 'Add Medical Record', 'has-text-success') !!}
+                </div>
+
             </div>
-
-        </div>
+        @endcan
 
     </div>
 
@@ -48,8 +50,14 @@
                     <th>Ripening?</th>
                     <th>Physical Test?</th>
                     <th>User</th>
-                    <th>Details</th>
-                    <th>Delete</th>
+
+                    @can ('view', \App\MedicalRecord::class)
+                        <th>Details</th>
+                    @endcan
+
+                    @can ('delete', \App\MedicalRecord::class)
+                        <th>Delete</th>
+                    @endcan
                 </tr>
             </thead>
 
@@ -66,8 +74,14 @@
                         <td> @include ('layouts._centered-check', ['value' => $medical_record->maduracion_acorde ]) </td>
                         <td> @include ('layouts._centered-check', ['value' => $medical_record->examen_fisico_normal ]) </td>
                         <td> {{ $medical_record->user_name }} </td>
-                        <td> {!! link_to_with_icon('fas fa-info-circle fa-2x', 'patients.medical_records.show', [$patient, $medical_record], '', 'has-text-info') !!} </td>
-                        <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.medical_records.destroy', [$patient, $medical_record]) !!} </td>
+
+                        @can ('view', $medical_record)
+                            <td> {!! link_to_with_icon('fas fa-info-circle fa-2x', 'patients.medical_records.show', [$patient, $medical_record], '', 'has-text-info') !!} </td>
+                        @endcan
+
+                        @can ('delete', $medical_record)
+                            <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.medical_records.destroy', [$patient, $medical_record]) !!} </td>
+                        @endcan
                     </tr>
                 @endforeach
             </tbody>
