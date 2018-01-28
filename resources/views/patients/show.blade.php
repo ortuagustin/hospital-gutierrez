@@ -19,17 +19,23 @@
 
     <div class="box">
         <div class="field is-grouped is-grouped-centered">
-            <p class="control">
-                {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient->id, 'View Medical Records', 'has-text-info') !!}
-            </p>
+            @can ('view', \App\MedicalRecord::class)
+                <p class="control">
+                    {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient->id, 'View Medical Records', 'has-text-info') !!}
+                </p>
+            @endcan
 
-            <p class="control">
-                {!! link_to_with_icon('fas fa-edit fa-2x', 'patients.edit', $patient, 'Edit Patient') !!}
-            </p>
+            @can ('update', $patient)
+                <p class="control">
+                    {!! link_to_with_icon('fas fa-edit fa-2x', 'patients.edit', $patient, 'Edit Patient') !!}
+                </p>
+            @endcan
 
-            <p class="control">
-                {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger') !!}
-            </p>
+            @can ('delete', $patient)
+                <p class="control">
+                    {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger') !!}
+                </p>
+            @endcan
         </div>
     </div>
 
