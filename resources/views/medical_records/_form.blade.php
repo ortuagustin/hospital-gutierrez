@@ -1,5 +1,8 @@
 {{ csrf_field() }}
 
+<input type="hidden" name="patient_id" value="{{ $patient->id }}">
+<input type="hidden" name="user_id" value="{{ Auth::id() }}">
+
 <div class="box">
 
     <div class="field is-horizontal">
@@ -179,6 +182,24 @@
     <div class="field is-horizontal">
 
         <div class="field-label">
+            <label class="field-label has-text-weight-bold has-text-grey">Feeding Observations</label>
+        </div>
+
+        <div class="field-body">
+
+            <div class="field">
+                <p class="control">
+                    <textarea name="alimentacion_observaciones" rows="10" cols="81">{{ old('alimentacion_observaciones') }}</textarea>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="field is-horizontal">
+
+        <div class="field-label">
             <label class="field-label has-text-weight-bold has-text-grey">General Observations</label>
         </div>
 
@@ -188,8 +209,6 @@
                 <p class="control">
                     <textarea name="observaciones" rows="10" cols="81">{{ old('observaciones') }}</textarea>
                 </p>
-
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'observaciones'])
             </div>
 
         </div>
@@ -199,8 +218,11 @@
 </div>
 
 <div class="box">
+
     <div class="field">
+
         <div class="field is-grouped">
+
             <div class="control">
                 <button type="submit" class="button is-primary">
                     {{ $submitButtonText }}
@@ -210,6 +232,9 @@
             <div class="control">
                 {!! link_to('Cancel', 'patients.medical_records.index', [$patient], 'button is-danger is-outlined') !!}
             </div>
+
         </div>
+
     </div>
+
 </div>
