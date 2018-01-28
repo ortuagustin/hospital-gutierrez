@@ -103,39 +103,37 @@
         <div class="field-body">
 
             <div class="field">
-                <p class="control">
-                    <label class="checkbox has-text-weight-bold has-text-grey">
-                        <input type="checkbox" name="vacunas_completas" value="{{ old('vacunas_completas') }}">
-                        Vaccines OK?
-                    </label>
-                </p>
+                @component('components.inputs.checkbox', [
+                        'name' => 'vacunas_completas',
+                        'value' => old('vacunas_completas'),
+                        'label_class' => 'has-text-grey has-text-weight-bold'
+                    ])
 
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'vacunas_completas'])
+                     Vaccines OK?
+                @endcomponent
             </div>
 
             <div class="field">
-                <p class="control">
-                    <label class="checkbox has-text-weight-bold has-text-grey">
-                        <input type="checkbox" name="maduracion_acorde" value="{{ old('maduracion_acorde') }}">
-                        Rippening OK?
-                    </label>
-                </p>
+                @component('components.inputs.checkbox', [
+                        'name' => 'maduracion_acorde',
+                        'value' => old('maduracion_acorde'),
+                        'label_class' => 'has-text-grey has-text-weight-bold'
+                    ])
 
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'maduracion_acorde'])
+                     Rippening OK?
+                @endcomponent
             </div>
-
 
             <div class="field">
-                <p class="control">
-                    <label class="checkbox has-text-weight-bold has-text-grey">
-                        <input type="checkbox" name="examen_fisico_normal" value="{{ old('examen_fisico_normal') }}">
-                        Physical Test OK?
-                    </label>
-                </p>
+                @component('components.inputs.checkbox', [
+                        'name' => 'examen_fisico_normal',
+                        'value' => old('examen_fisico_normal'),
+                        'label_class' => 'has-text-grey has-text-weight-bold'
+                    ])
 
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'examen_fisico_normal'])
+                     Physical Test OK?
+                @endcomponent
             </div>
-
 
         </div>
 
