@@ -25,7 +25,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        $patients = Patient::paginate(setting('records_per_page', '15'));
+        $patients = Patient::orderBy('name')->paginate(setting('records_per_page', '15'));
 
         return view('patients/index', compact('patients'));
     }
