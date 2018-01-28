@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="title is-3">Add a Medical Record</h1>
+    <h1 class="title is-3 has-text-grey">Add a Medical Record</h1>
 
     <form method="POST" action={{ route('patients.medical_records.store', [$patient]) }}>
 
