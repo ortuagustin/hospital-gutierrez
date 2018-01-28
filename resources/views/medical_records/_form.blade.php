@@ -21,7 +21,7 @@
 
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="date" name="fecha" value="{{ old('fecha', \Carbon\Carbon::today()->toDateString()) }}" autofocus>
+                    <input class="input" type="date" name="fecha" value="{{ old('fecha', \Carbon\Carbon::today()->toDateString()) }}">
                     {!! icon('fas fa-clock', 'is-small is-left') !!}
                 </p>
 
@@ -42,7 +42,7 @@
 
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="number" name="peso" value="{{ old('peso') }}" placeholder="The Patient's Weight">
+                    <input class="input" type="number" name="peso" value="{{ old('peso') }}" placeholder="The Patient's Weight" autofocus>
                     {!! icon('fas fa-sort-numeric-up', 'is-small is-left') !!}
                 </p>
 
