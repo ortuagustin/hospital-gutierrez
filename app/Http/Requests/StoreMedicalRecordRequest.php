@@ -47,7 +47,7 @@ class StoreMedicalRecordRequest extends FormRequest
             'talla'                         => 'required|numeric',
             'percentilo_cefalico'           => 'required|numeric',
             'percentilo_perimetro_cefalico' => 'required|numeric',
-            'alimentacion_observaciones'    => 'required',
+            'alimentacion_observaciones'    => 'present',
             'vacunas_completas'             => 'required|boolean',
             'vacunas_observaciones'         => 'present',
             'maduracion_acorde'             => 'required|boolean',
