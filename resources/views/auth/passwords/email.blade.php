@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('styles')
+    @parent
+
     <link rel="stylesheet" href="/css/passwords.email.css">
 @endsection
 

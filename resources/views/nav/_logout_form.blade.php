@@ -7,5 +7,7 @@
 </form>
 
 @section('scripts')
+    @parent
+
     <script src="/js/logout_form.js"></script>
 @endsection

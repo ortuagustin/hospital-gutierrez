@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('styles')
+    @parent
+
     <link rel="stylesheet" href="/css/503.css">
 @endsection
 

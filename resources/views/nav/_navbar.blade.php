@@ -34,5 +34,7 @@
 </nav>
 
 @section('scripts')
+    @parent
+    
     <script src="/js/navbar.js"></script>
 @endsection
