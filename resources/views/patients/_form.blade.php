@@ -245,27 +245,21 @@
         <div class="field-body">
 
             <div class="field">
-                <div class="control">
-                    <input type="checkbox" name='has_pet' value="{{ old('has_pet', $patient->has_pet) }}"> Has Pets?
-                </div>
-
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_pet'])
+                @component('components.inputs.checkbox', ['name' => 'has_pet', 'value' => old('has_pet', $patient->has_pet)])
+                     Has Pets?
+                @endcomponent
             </div>
 
             <div class="field">
-                <div class="control">
-                    <input type="checkbox" name='has_electricity' value="{{ old('has_electricity', $patient->has_electricity) }}"> Has Electricity?
-                </div>
-
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_electricity'])
+                @component('components.inputs.checkbox', ['name' => 'has_electricity', 'value' => old('has_electricity', $patient->has_electricity)])
+                    Has Electricity?
+                @endcomponent
             </div>
 
             <div class="field">
-                <div class="control">
-                    <input type="checkbox" name='has_refrigerator' value="{{ old('has_refrigerator', $patient->has_refrigerator) }}"> Has Refrigerator?
-                </div>
-
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'has_refrigerator'])
+                @component('components.inputs.checkbox', ['name' => 'has_refrigerator', 'value' => old('has_refrigerator', $patient->has_refrigerator)])
+                     Has Refrigerator?
+                @endcomponent
             </div>
 
         </div>
