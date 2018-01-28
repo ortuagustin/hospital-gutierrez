@@ -29,7 +29,7 @@ class MedicalRecordsController extends Controller
      */
     public function index(Patient $patient)
     {
-        $medical_records = $patient->medicalRecords()->paginate(setting('records_per_page', '15'));
+        $medical_records = $patient->medicalRecords()->orderBy('fecha', 'desc')->paginate(setting('records_per_page', '15'));
 
         return view('medical_records/index', compact('medical_records', 'patient'));
     }
