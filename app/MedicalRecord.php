@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\CalculatesAge;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MedicalRecord extends Model
 {
+    use CalculatesAge;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -66,5 +69,23 @@ class MedicalRecord extends Model
     public function getUserNameAttribute()
     {
         return $this->user_name();
+    }
+
+    /**
+     * Returns the age of the Patient when the control took place
+     * @return int
+     */
+    public function patient_age()
+    {
+        return $this->age($this->patient->birth_date, $this->fecha);
+    }
+
+    /**
+     * Returns the age of the Patient when the control took place
+     * @return int
+     */
+    public function getPatientAgeAttribute()
+    {
+        return $this->patient_age();
     }
 }
