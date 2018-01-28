@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Contracts\InteractsWithReferenceModels;
-use Carbon\Carbon;
+use App\Helpers\CalculatesAge;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use InteractsWithReferenceModels;
+    use CalculatesAge { age as calculate_age; }
+
 
     /**
      * The attributes that are mass assignable.
@@ -60,9 +62,7 @@ class Patient extends Model
      */
     public function age()
     {
-        $today = Carbon::today();
-
-        return ($this->birth_date->diff($today)->y);
+        return $this->calculate_age($this->birth_date);
     }
 
     /**
