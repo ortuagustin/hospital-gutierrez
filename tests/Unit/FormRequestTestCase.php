@@ -32,14 +32,15 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Asserts that the validator fails when the given fields are empty
-     * @param array $fields if empty array given, will check all fields
+     * @param array $except fields that should not be checked
      * @return $this
      */
-    protected function assertFieldsRequired(array $fields = [])
+    protected function assertFieldsRequired(array $except = [])
     {
-        $fields = empty($fields) ? $this->modelFields() : $fields;
-        foreach ($fields as $field => $value) {
-            $this->assertFieldRequired($field);
+        foreach ($this->modelFields() as $field => $value) {
+            if (! in_array($field, $except)) {
+                $this->assertFieldRequired($field);
+            }
         }
 
         return $this;
