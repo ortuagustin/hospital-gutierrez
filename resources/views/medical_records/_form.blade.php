@@ -149,7 +149,7 @@
 
             <div class="field">
                 <p class="control">
-                    <textarea name="vacunas_observaciones" rows="5" cols="22" placeholder="Vaccines observations"></textarea> {{ old('vacunas_observaciones') }}
+                    <textarea name="vacunas_observaciones" rows="5" placeholder="Vaccines observations">{{ old('vacunas_observaciones') }}</textarea>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'vacunas_observaciones'])
@@ -157,7 +157,7 @@
 
             <div class="field">
                 <p class="control">
-                    <textarea name="maduracion_observaciones" rows="5" cols="22" placeholder="Rippening observations"></textarea> {{ old('maduracion_observaciones') }}
+                    <textarea name="maduracion_observaciones" rows="5" cols="22" placeholder="Rippening observations">{{ old('maduracion_observaciones') }}</textarea>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'maduracion_observaciones'])
@@ -166,7 +166,7 @@
 
             <div class="field">
                 <p class="control">
-                    <textarea name="examen_fisico_observaciones" rows="5" cols="22" placeholder="Physical exam observations"></textarea> {{ old('examen_fisico_observaciones') }}
+                    <textarea name="examen_fisico_observaciones" rows="5" cols="22" placeholder="Physical exam observations">{{ old('examen_fisico_observaciones') }}</textarea>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'examen_fisico_observaciones'])
@@ -186,7 +186,7 @@
 
             <div class="field">
                 <p class="control">
-                    <textarea name="observaciones" rows="10" cols="81"></textarea> {{ old('observaciones') }}
+                    <textarea name="observaciones" rows="10" cols="81">{{ old('observaciones') }}</textarea>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'observaciones'])
