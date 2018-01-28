@@ -4,8 +4,8 @@
 
 <div class="control">
     <input type="hidden" name={{ $name }} value="0">
-    <label class="checkbox">
-        <input class="{{ $class or '' }}" type="checkbox" name={{ $name }} value="1" @if ($value) checked @endif>
+    <label class="checkbox {{ $label_class or '' }}">
+        <input class="{{ $input_class or '' }}" type="checkbox" name={{ $name }} value="1" @if ($value) checked @endif>
 
         {{ $slot }}
     </label>
