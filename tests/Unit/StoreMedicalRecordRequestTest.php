@@ -16,13 +16,16 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
     /** @test */
     public function it_does_not_allow_empty_fields()
     {
-        $this->assertFieldsRequired([
-            'alimentacion_observaciones',
-            'vacunas_observaciones',
-            'maduracion_observaciones',
-            'examen_fisico_observaciones',
-            'observaciones',
-        ]);
+        $this->assertFieldsRequired($this->observationFields());
+    }
+
+    /** @test */
+    public function it_allows_null_on_observations_fields()
+    {
+        foreach ($this->observationFields() as $field) {
+            $validator = $this->passingValidator([$field => null]);
+            $this->assertValidationPasses($validator);
+        }
     }
 
     /** @test */
@@ -137,7 +140,11 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
      */
     protected function modelBooleanFields()
     {
-        return ['vacunas_completas', 'maduracion_acorde', 'examen_fisico_normal'];
+        return [
+            'vacunas_completas',
+            'maduracion_acorde',
+            'examen_fisico_normal',
+        ];
     }
 
     /**
@@ -146,7 +153,27 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
      */
     protected function modelNumericFields()
     {
-        return ['peso', 'talla', 'percentilo_cefalico', 'percentilo_perimetro_cefalico'];
+        return [
+            'peso',
+            'talla',
+            'percentilo_cefalico',
+            'percentilo_perimetro_cefalico',
+        ];
+    }
+
+    /**
+     * Returns observation fields of the Medical Record Model
+     * @return array
+     */
+    protected function observationFields()
+    {
+        return [
+            'alimentacion_observaciones',
+            'vacunas_observaciones',
+            'maduracion_observaciones',
+            'examen_fisico_observaciones',
+            'observaciones',
+        ];
     }
 
     /**
