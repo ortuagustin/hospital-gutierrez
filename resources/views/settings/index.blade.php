@@ -10,7 +10,7 @@
 
     <div class="box">
 
-        <table class="table is-striped is-narrow">
+        <table class="table is-striped is-narrow is-fullwidth">
 
             <thead>
                 <tr>

@@ -16,13 +16,9 @@
                 <input class="input" type="{{ $setting->input_type }}" name="value" value="{{ $setting->value }}">
             </div>
         @else
-            <div class="control">
-                {{--  trick for handling checkboxes --}}
-                {{-- when uncheked, no value is sent to the server --}}
-                {{-- see https://github.com/laravel/framework/issues/14226 --}}
-                <input type="hidden" name="value" value="0">
-                <input type="checkbox" name="value" value="1" @if ($setting->value) checked @endif>
-            </div>
+            @component('components.inputs.checkbox', ['name' => 'value', 'value' => $setting->value])
+                Check to put site on maintenance mode; only Admins will be allowed to browse.
+            @endcomponent
         @endunless
     </th>
 
