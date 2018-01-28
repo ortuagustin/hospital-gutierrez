@@ -15,7 +15,7 @@
             </div>
 
             <div class="level-item">
-                {!! link_to_with_icon('fas fa-user fa-2x', 'patients.index', $patient, "Back to $patient->full_name", 'has-text-primary') !!}
+                {!! link_to_with_icon('fas fa-user fa-2x', 'patients.show', $patient, "Back to $patient->full_name", 'has-text-primary') !!}
             </div>
 
         </div>
