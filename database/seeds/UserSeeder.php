@@ -40,6 +40,7 @@ class UserSeeder extends Seeder
         $this->auth_schema->resetToDefault();
         $this->createUser('admin', 'Admin')
              ->createUser('medic', 'Medic')
+             ->createUser('guest', 'Guest')
              ->createUser($this->faker->name, 'Medic')
              ->createUser($this->faker->name, 'Medic')
              ->createUser('recepcionist', 'Recepcionist')
