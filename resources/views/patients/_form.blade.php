@@ -32,10 +32,9 @@
             <div class="field is-narrow">
                 <p class="control">
                     <div class="select">
-                        <select class="is-capitalized" name="gender" value="{{ old('gender', $patient->gender) }}">
-                            {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                            <option>male</option>
-                            <option>female</option>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
                     </div>
                 </p>
@@ -90,12 +89,10 @@
             <div class="field is-narrow">
                 <p class="control">
                     <div class="select">
-                        <select name="doc_type_id" value="{{ old('doc_type_id', $patient->doc_type_id) }}">
-                            {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                            <option>Business development</option>
-                            <option>Marketing</option>
-                            <option>Sales</option>
-                        </select>
+                        @include('patients.inputs.select', [
+                            'name' => "doc_type_id",
+                            'values' => $doc_types
+                        ])
                     </div>
                 </p>
 
@@ -154,12 +151,10 @@
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Medical Insurance</label>
                         <div class="select">
-                            <select name="medical_insurance_id" value="{{ old('medical_insurance_id', $patient->medical_insurance_id) }}">
-                                {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                                <option>Business development</option>
-                                <option>Marketing</option>
-                                <option>Sales</option>
-                            </select>
+                            @include('patients.inputs.select', [
+                                'name' => "medical_insurance_id",
+                                'values' => $medical_insurances
+                            ])
                         </div>
                     </p>
 
@@ -174,12 +169,10 @@
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Home Type</label>
                         <div class="select">
-                            <select name="home_type_id" value="{{ old('home_type_id', $patient->home_type_id) }}">
-                                {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                                <option>Business development</option>
-                                <option>Marketing</option>
-                                <option>Sales</option>
-                            </select>
+                            @include('patients.inputs.select', [
+                                'name' => "home_type_id",
+                                'values' => $home_types
+                            ])
                         </div>
                     </p>
 
@@ -194,12 +187,10 @@
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Water Type</label>
                         <div class="select">
-                            <select name="water_type_id" value="{{ old('water_type_id', $patient->water_type_id) }}">
-                                {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                                <option>Business development</option>
-                                <option>Marketing</option>
-                                <option>Sales</option>
-                            </select>
+                            @include('patients.inputs.select', [
+                                'name' => "water_type_id",
+                                'values' => $water_types
+                            ])
                         </div>
                     </p>
 
@@ -214,12 +205,10 @@
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Heating Type</label>
                         <div class="select">
-                            <select name="heating_type_id" value="{{ old('heating_type_id', $patient->heating_type_id) }}">
-                                {{-- TODO: populate select, check if "old" value is setted properly, check sent value to server --}}
-                                <option>Business development</option>
-                                <option>Marketing</option>
-                                <option>Sales</option>
-                            </select>
+                            @include('patients.inputs.select', [
+                                'name' => "heating_type_id",
+                                'values' => $heating_types
+                            ])
                         </div>
                     </p>
 
@@ -285,3 +274,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+      document.getElementById('gender').value = "{{ old('gender', $patient->gender) }}";
+      document.getElementById('doc_type_id').value = "{{ old('doc_type_id', $patient->doc_type_id) }}";
+      document.getElementById('medical_insurance_id').value = "{{ old('medical_insurance_id', $patient->medical_insurance_id) }}";
+      document.getElementById('home_type_id').value = "{{ old('home_type_id', $patient->home_type_id) }}";
+      document.getElementById('heating_type_id').value = "{{ old('heating_type_id', $patient->heating_type_id) }}";
+      document.getElementById('water_type_id').value = "{{ old('water_type_id', $patient->water_type_id) }}";
+    });
+</script>
