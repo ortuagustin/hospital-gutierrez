@@ -68,7 +68,7 @@ class PatientsFormComposer
      */
     public function compose(View $view)
     {
-        $view->with([
+        return $view->with([
             'doc_types'          => $this->doc_types_repository->all(),
             'heating_types'      => $this->heating_types_repository->all(),
             'home_types'         => $this->home_types_repository->all(),
