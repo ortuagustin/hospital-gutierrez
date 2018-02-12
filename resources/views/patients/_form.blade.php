@@ -1,3 +1,5 @@
+<input type="hidden" name="id" value="{{ $patient->id }}">
+
 {{ csrf_field() }}
 
 <div class="box">
