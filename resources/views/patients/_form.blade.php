@@ -120,8 +120,7 @@
         <div class="field-body">
             <div class="field">
                 <p class="control has-icons-left">
-                    {{-- TODO: date format and validation --}}
-                    <input class="input" type="date" name="birth_date" value="{{ old('birth_date', $patient->birth_date) }}" placeholder="Birth Date">
+                    <input id="birth_date" name="birth_date" class="input" type="date" placeholder="Birth Date">
                     {!! icon('fas fa-clock', 'is-small is-left') !!}
                 </p>
 
@@ -276,12 +275,14 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-      document.getElementById('gender').value = "{{ old('gender', $patient->gender) }}";
-      document.getElementById('doc_type_id').value = "{{ old('doc_type_id', $patient->doc_type_id) }}";
-      document.getElementById('medical_insurance_id').value = "{{ old('medical_insurance_id', $patient->medical_insurance_id) }}";
-      document.getElementById('home_type_id').value = "{{ old('home_type_id', $patient->home_type_id) }}";
-      document.getElementById('heating_type_id').value = "{{ old('heating_type_id', $patient->heating_type_id) }}";
-      document.getElementById('water_type_id').value = "{{ old('water_type_id', $patient->water_type_id) }}";
-    });
+$(document).ready(function(){
+    var date = "{{ old('birth_date', $patient->birth_date) }}";
+    document.getElementById('birth_date').value = moment(date).format('YYYY-MM-DD');
+    document.getElementById('gender').value = "{{ old('gender', $patient->gender) }}";
+    document.getElementById('doc_type_id').value = "{{ old('doc_type_id', $patient->doc_type_id) }}";
+    document.getElementById('medical_insurance_id').value = "{{ old('medical_insurance_id', $patient->medical_insurance_id) }}";
+    document.getElementById('home_type_id').value = "{{ old('home_type_id', $patient->home_type_id) }}";
+    document.getElementById('heating_type_id').value = "{{ old('heating_type_id', $patient->heating_type_id) }}";
+    document.getElementById('water_type_id').value = "{{ old('water_type_id', $patient->water_type_id) }}";
+});
 </script>
