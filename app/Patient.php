@@ -14,7 +14,6 @@ class Patient extends Model
     use InteractsWithReferenceModels;
     use CalculatesAge { age as calculate_age; }
 
-
     /**
      * The attributes that are mass assignable.
      *
