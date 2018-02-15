@@ -44,27 +44,6 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
     }
 
     /** @test */
-    public function it_does_not_allow_incorrectly_formatted_date()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function it_does_not_allow_past_date()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function it_does_not_allow_incorrectly_formatted_time()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
     public function it_prevents_duplicated_appointments()
     {
         $appointment = $this->createAppointment();
@@ -75,20 +54,6 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
 
     /** @test */
     public function it_does_not_allow_out_of_range_time()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function it_allows_correctly_formatted_date()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function it_allows_correctly_formatted_time()
     {
         // TODO: write this test
         $this->markTestIncomplete();

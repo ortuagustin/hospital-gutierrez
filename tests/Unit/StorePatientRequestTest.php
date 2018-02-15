@@ -191,20 +191,6 @@ class StorePatientRequestTest extends FormRequestTestCase
     }
 
     /** @test */
-    public function it_does_not_allow_invalid_birth_date()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function it_allows_valid_birth_date()
-    {
-        // TODO: write this test
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
     public function it_does_not_allow_non_existent_doc_type_id()
     {
         $this->injectEmptyRepository(DocTypesRepositoryInterface::class);
