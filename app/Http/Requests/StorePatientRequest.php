@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Patient;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * A Request that is sent when we need to persist a Patient model
@@ -47,7 +48,7 @@ class StorePatientRequest extends FormRequest
           'medical_insurance_id' => 'required|numeric|foreign_medical_insurance',
           'name'                 => 'required|regex:/[\w\. \-\,]+$/',
           'last_name'            => 'required|regex:/[\w\. \-\,]+$/',
-          'dni'                  => 'required|unique:patients',
+          'dni'                  => 'required|' . Rule::unique('patients')->ignore($this->id),
           'birth_date'           => 'required|',
           'gender'               => 'required|in:male,female,unknown',
           'address'              => 'required|string',
