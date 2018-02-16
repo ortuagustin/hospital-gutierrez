@@ -44,12 +44,16 @@
             @slot('url') {{ route('patients.index') }} @endslot
         @endcomponent
 
-        @component('components.home.menu-item-tile')
+    </div>
+
+    <div class="tile">
+
+        @component('components.home.auth-menu-item-tile', ['ability' => 'view', 'args' => \App\Report::class ])
             @slot('type') is-info @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Reports @endslot
             @slot('subtitle') View the Hospital statistics @endslot
-            @slot('url') # @endslot
+            @slot('url') {{ route('reports.index') }} @endslot
         @endcomponent
 
     </div>
