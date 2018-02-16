@@ -1,4 +1,5 @@
-<nav class="navbar">
+<nav class="navbar is-primary is-fixed-top">
+
     <div class="navbar-brand">
         <a class="navbar-item is-active" href="{{ route('home') }}">
             {!! icon('fas fa-home fa-2x') !!}
@@ -31,10 +32,11 @@
         </div>
 
     </div>
+    
 </nav>
 
 @section('scripts')
     @parent
-    
+
     <script src="/js/navbar.js"></script>
 @endsection

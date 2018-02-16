@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css">
+    <link rel="stylesheet" href="/css/app.css">
     @yield('styles')
 
     <!-- Scripts -->
@@ -22,11 +24,9 @@
 </head>
 
 <body>
-    <section class="hero is-primary is-small">
-        <div class="hero-head">
-            @include('nav._navbar')
-        </div>
+    @include('nav._navbar')
 
+    <section class="hero is-primary is-small">
         <div class="hero-body">
             <div class="container has-text-centered">
                 @hasSection('hero-body-content')
@@ -41,11 +41,11 @@
         @includeWhen(Auth::check(), 'nav._footer')
     </section>
 
-    <section class="section">
+    <section class="section" id="wrapper">
         @yield('content')
     </section>
 
-    <footer class="footer" style="padding-bottom: 0;">
+    <footer class="footer" id="footer">
         @include('layouts._footer')
     </footer>
 
