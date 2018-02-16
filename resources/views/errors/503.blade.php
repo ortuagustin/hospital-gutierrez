@@ -1,10 +1,8 @@
 @extends('layouts.master')
 
-@section('styles')
-    @parent
-
+@push('styles')
     <link rel="stylesheet" href="/css/503.css">
-@endsection
+@endpush
 
 @section('content')
     <div class="container has-text-centered">

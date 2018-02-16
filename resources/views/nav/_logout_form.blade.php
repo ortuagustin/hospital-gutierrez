@@ -6,8 +6,6 @@
     {{ csrf_field() }}
 </form>
 
-@section('scripts')
-    @parent
-
+@push('scripts')
     <script src="/js/logout_form.js"></script>
-@endsection
+@endpush

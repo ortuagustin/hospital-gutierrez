@@ -1,4 +1,4 @@
-<nav class="navbar is-primary is-fixed-top">
+<nav class="navbar is-primary is-transparent is-fixed-top">
 
     <div class="navbar-brand">
         <a class="navbar-item is-active" href="{{ route('home') }}">
@@ -14,7 +14,7 @@
 
     </div>
 
-    <div id="navbar-menu" class="navbar-menu">
+    <div class="navbar-menu" id="navbar-menu">
 
         <div class="navbar-end">
             @if (Auth::guest())
@@ -32,11 +32,9 @@
         </div>
 
     </div>
-    
+
 </nav>
 
-@section('scripts')
-    @parent
-
+@push('scripts')
     <script src="/js/navbar.js"></script>
-@endsection
+@endpush

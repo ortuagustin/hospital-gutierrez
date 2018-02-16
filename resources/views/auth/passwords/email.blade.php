@@ -1,10 +1,8 @@
 @extends('layouts.master')
 
-@section('styles')
-    @parent
-
+@push('styles')
     <link rel="stylesheet" href="/css/passwords.email.css">
-@endsection
+@endpush
 
 @section('content')
 
