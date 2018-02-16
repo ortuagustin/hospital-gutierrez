@@ -6,6 +6,8 @@ use App\MedicalRecord;
 use App\Patient;
 use App\Policies\MedicalRecordsPolicy;
 use App\Policies\PatientsPolicy;
+use App\Policies\ReportsPolicy;
+use App\Report;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -22,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Patient::class       => PatientsPolicy::class,
         MedicalRecord::class => MedicalRecordsPolicy::class,
+        Report::class        => ReportsPolicy::class,
     ];
 
     /**

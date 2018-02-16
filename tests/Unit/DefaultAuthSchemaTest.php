@@ -174,7 +174,8 @@ class DefaultAuthSchemaTest extends TestCase
     {
         return array_merge(
             $this->permissions_for_resource('Patients', 'Delete'),
-            $this->permissions_for_resource('MedicalRecords', 'Delete')
+            $this->permissions_for_resource('MedicalRecords', 'Delete'),
+            $this->permissions_for_resource('Reports', 'Delete|Create|Update')
         );
     }
 

@@ -10,6 +10,14 @@ use App\Report;
 class ReportsController extends Controller
 {
     /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Report::class);
+    }
+    
+    /**
      * Display all available reports
      *
      * @return \Illuminate\Http\Response

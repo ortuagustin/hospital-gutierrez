@@ -82,8 +82,9 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
      */
     protected function grantAccessToMedics(Role $role)
     {
-        return $this->grantPermissions($role, 'Patients')
-                    ->grantPermissions($role, 'MedicalRecords');
+        return $this->grantPermissions($role, 'Patients', 'Delete')
+                    ->grantPermissions($role, 'MedicalRecords', 'Delete')
+                    ->grantPermissions($role, 'Reports', 'Delete|Create|Update');
     }
 
     /**
@@ -93,20 +94,21 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
      */
     protected function grantAccessToRecepcionist(Role $role)
     {
-        return $this->grantPermissions($role, 'Patients');
+        return $this->grantPermissions($role, 'Patients', 'Delete');
     }
 
     /**
      * Addds all permissions to the Role for the given resource, except Delete
      * @param \App\Role $role
-     * @param string    $resource
+     * @param string  $resource
+     * @param string  $except [filter for actions]
      * @return $this
      */
-    protected function grantPermissions(Role $role, $resource)
+    protected function grantPermissions(Role $role, $resource, $except = '')
     {
         $permissions = Permission::where('name', 'like', "$resource%")->get()
-        ->reject(function ($value, $key) {
-            return preg_match('/Delete/i', $value->name);
+        ->reject(function ($value, $key) use ($except) {
+            return preg_match("/$except/i", $value->name);
         });
 
         $role->permissions()->attach($permissions);

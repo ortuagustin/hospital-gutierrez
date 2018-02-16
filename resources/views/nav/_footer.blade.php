@@ -5,6 +5,10 @@
                 <li> {!! link_to('Patients', 'patients.index', []) !!} </li>
             @endcan
 
+            @can ('view', \App\Report::class)
+                <li> {!! link_to('Reports', 'reports.index', []) !!} </li>
+            @endcan
+
             @can ('admin')
                 <li> {!! link_to('Users', 'users.index', []) !!} </li>
                 <li> {!! link_to('Roles', 'roles.index', []) !!} </li>
