@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Patient;
+use Carbon\Carbon;
+
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,7 +27,7 @@ class Appointment extends Model
      * @var array
      */
     protected $dates = [
-            'date', 'created_at', 'updated_at',
+        'date', 'created_at', 'updated_at',
     ];
 
     /**
@@ -44,5 +46,31 @@ class Appointment extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * Returns an array with the times when appointment are allowed
+     * @return array
+     */
+    public static function allowed_times()
+    {
+        $times = [];
+        for ($i = 8; $i <= 20; $i++) {
+            $times[] = sprintf("%02d:00", $i);
+            $times[] = sprintf("%02d:30", $i);
+        }
+
+        array_pop($times); // 20:30 is not allowed
+        return $times;
+    }
+
+    /**
+     * Returns true if the given time is allowed
+     * @param Carbon $time
+     * @return bool
+     */
+    public static function is_allowed_time(Carbon $time)
+    {
+        return in_array($time->format('H:i'), static::allowed_times());
     }
 }

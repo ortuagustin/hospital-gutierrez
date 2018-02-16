@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Appointment;
+
 use Carbon\Carbon;
 use Tests\Helpers\AppointmentTestHelper;
 use Tests\Helpers\PatientTestHelper;
@@ -11,6 +13,61 @@ class AppointmentTest extends TestCase
 {
     use AppointmentTestHelper;
     use PatientTestHelper;
+
+    /** @test */
+    public function it_returns_allowed_times()
+    {
+        $allowed_times = [
+            '08:00',
+            '08:30',
+            '09:00',
+            '09:30',
+            '10:00',
+            '10:30',
+            '11:00',
+            '11:30',
+            '12:00',
+            '12:30',
+            '13:00',
+            '13:30',
+            '14:00',
+            '14:30',
+            '15:00',
+            '15:30',
+            '16:00',
+            '16:30',
+            '17:00',
+            '17:30',
+            '18:00',
+            '18:30',
+            '19:00',
+            '19:30',
+            '20:00',
+        ];
+
+        $this->assertEquals($allowed_times, Appointment::allowed_times());
+    }
+
+    /** @test */
+    public function it_returns_true_when_validating_valid_time()
+    {
+        $this->assertTrue(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 8)));
+        $this->assertTrue(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 8, 30)));
+        $this->assertTrue(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 19, 30)));
+        $this->assertTrue(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 20)));
+    }
+
+    /** @test */
+    public function it_returns_false_when_validating_invalid_time()
+    {
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 6)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 6, 30)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 7)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 7, 30)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 20, 30)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 21)));
+        $this->assertFalse(Appointment::is_allowed_time(Carbon::create(2018, 1, 1, 22)));
+    }
 
     /** @test */
     public function it_returns_carbon_date()
