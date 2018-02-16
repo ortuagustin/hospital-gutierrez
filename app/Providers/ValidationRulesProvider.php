@@ -22,6 +22,7 @@ class ValidationRulesProvider extends ServiceProvider
         Validator::extend('foreign_water_type', 'App\Rules\ForeignWaterTypeRule@validate');
         Validator::extend('foreign_heating_type', 'App\Rules\ForeignHeatingTypeRule@validate');
         Validator::extend('foreign_medical_insurance', 'App\Rules\ForeignMedicalInsuranceRule@validate');
+        Validator::extend('appointment_time', 'App\Rules\AppointmentTimeRule@validate');
     }
 
     /**

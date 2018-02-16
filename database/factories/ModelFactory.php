@@ -11,6 +11,8 @@
 |
 */
 
+use Carbon\Carbon;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -48,7 +50,7 @@ $factory->define(App\Appointment::class, function (Faker\Generator $faker, $attr
 
     return [
         'patient_id'     => $patient_id,
-        'date'           => $faker->dateTime(),
+        'date'           => Carbon::create(null, null, null, 10, 0, 0),
     ];
 });
 

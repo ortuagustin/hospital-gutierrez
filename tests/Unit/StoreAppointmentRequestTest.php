@@ -4,6 +4,8 @@ namespace Tests\Unit;
 
 use App\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
+
+use Carbon\Carbon;
 use Tests\Helpers\AppointmentTestHelper;
 use Tests\Helpers\PatientTestHelper;
 
@@ -48,15 +50,32 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
     {
         $appointment = $this->createAppointment();
         $validator = $this->passingValidator(['date' => $appointment->date]);
-
         $this->assertValidationRuleFailed($validator, 'date', $appointment->date->toDateString(), 'Unique');
     }
 
     /** @test */
     public function it_does_not_allow_out_of_range_time()
     {
-        // TODO: write this test
-        $this->markTestIncomplete();
+        foreach ($this->invalid_times() as $date) {
+            $validator = $this->passingValidator(['date' => $date]);
+            $this->assertValidationRuleFailed($validator, 'date', $date, 'AppointmentTime');
+        }
+    }
+
+    /**
+     * Returns an array of Carbon dates that are considered to be invalid
+     * @return array
+     */
+    protected function invalid_times()
+    {
+        $times = [];
+        for ($i = 0; $i <= 7; $i++) {
+            $times[] = Carbon::create(2018, 1, 1, $i);
+            $times[] = Carbon::create(2018, 1, 1, $i, 12);
+            $times[] = Carbon::create(2018, 1, 1, $i, 47);
+        }
+
+        return $times;
     }
 
     /**
