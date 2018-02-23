@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">

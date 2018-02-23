@@ -1,4 +1,4 @@
-<nav class="navbar is-primary is-transparent is-fixed-top">
+<nav class="navbar is-primary">
 
     <div class="navbar-brand">
         <a class="navbar-item is-active" href="{{ route('home') }}">
