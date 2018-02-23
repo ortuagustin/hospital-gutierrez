@@ -6,12 +6,14 @@ new Vue({
 
   data() {
     return {
-      loginForm: {}
+      loginForm: {},
+      registerForm: {}
     };
   },
 
   mounted() {
     this.loginForm = this.$refs.loginForm;
+    this.registerForm = this.$refs.registerForm;
   },
 
   components: {
@@ -21,6 +23,10 @@ new Vue({
   methods: {
     showLoginForm() {
       this.loginForm.show();
+    },
+
+    showRegisterForm() {
+      this.registerForm.show();
     }
   }
 });

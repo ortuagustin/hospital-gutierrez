@@ -115,11 +115,13 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
   data: function data() {
     return {
-      loginForm: {}
+      loginForm: {},
+      registerForm: {}
     };
   },
   mounted: function mounted() {
     this.loginForm = this.$refs.loginForm;
+    this.registerForm = this.$refs.registerForm;
   },
 
 
@@ -130,6 +132,9 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   methods: {
     showLoginForm: function showLoginForm() {
       this.loginForm.show();
+    },
+    showRegisterForm: function showRegisterForm() {
+      this.registerForm.show();
     }
   }
 });

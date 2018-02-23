@@ -15,11 +15,17 @@
     </div>
 
     <div class="navbar-menu" id="navbar-menu">
-
         <div class="navbar-end">
             @if (Auth::guest())
-                {!! link_to('Login', 'login', [], 'navbar-item') !!}
-                {!! link_to('Register', 'register', [], 'navbar-item') !!}
+                <modal ref="loginForm" v-cloak>
+                    @include('auth._login_form')
+                </modal>
+                <a class="navbar-item" @click="showLoginForm">Login</a>
+
+                <modal ref="registerForm" v-cloak>
+                    @include('auth._register_form')
+                </modal>
+                <a class="navbar-item" @click="showRegisterForm">Register</a>
             @else
                 <div class="navbar-item">
                     <p>
