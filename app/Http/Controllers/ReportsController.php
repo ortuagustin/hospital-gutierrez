@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Report;
-
 /**
  * Handles the System Reports
  */
 class ReportsController extends Controller
 {
     /**
+     * All the system available Reports
+     *
+     * @var array
+     */
+    protected $reports = [];
+
+    /**
      * @inheritDoc
      */
     public function __construct()
     {
-        $this->authorizeResource(Report::class);
+        $this->reports = [];
     }
-    
+
     /**
      * Display all available reports
      *
@@ -24,19 +29,26 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
-
         return view('reports/index', compact('reports'));
     }
 
     /**
-     * Display the specified Report
+     * Returns the JSON data for the specified Report
      *
-     * @param  Report  $report
+     * @param  string  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show($report)
     {
-        return view('reports/show', compact('report'));
+        return response()->json([
+            'labels'   => ["Sleeping", "Designing"],
+            'datasets' => [
+                [
+                    'data'            => [20, 40],
+                    'label'           => 'something',
+                    'backgroundColor' => '#1fc8db',
+                ],
+            ],
+        ]);
     }
 }

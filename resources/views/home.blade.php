@@ -48,7 +48,7 @@
 
     <div class="tile">
 
-        @component('components.home.auth-menu-item-tile', ['ability' => 'view', 'args' => \App\Report::class ])
+        @component('components.home.auth-menu-item-tile', ['ability' => 'admin', 'args' => '' ])
             @slot('type') is-info @endslot
             @slot('icon') fas fa-user fa-5x @endslot
             @slot('title') Reports @endslot

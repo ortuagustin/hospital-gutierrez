@@ -83,8 +83,7 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     protected function grantAccessToMedics(Role $role)
     {
         return $this->grantPermissions($role, 'Patients', 'Delete')
-                    ->grantPermissions($role, 'MedicalRecords', 'Delete')
-                    ->grantPermissions($role, 'Reports', 'Delete|Create|Update');
+                    ->grantPermissions($role, 'MedicalRecords', 'Delete');
     }
 
     /**
@@ -107,9 +106,9 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     protected function grantPermissions(Role $role, $resource, $except = '')
     {
         $permissions = Permission::where('name', 'like', "$resource%")->get()
-        ->reject(function ($value, $key) use ($except) {
-            return preg_match("/$except/i", $value->name);
-        });
+            ->reject(function ($value, $key) use ($except) {
+                return preg_match("/$except/i", $value->name);
+            });
 
         $role->permissions()->attach($permissions);
 

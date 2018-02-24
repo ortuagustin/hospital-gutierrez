@@ -5,7 +5,7 @@
                 <li> {!! link_to('Patients', 'patients.index', []) !!} </li>
             @endcan
 
-            @can ('view', \App\Report::class)
+            @can ('reports')
                 <li> {!! link_to('Reports', 'reports.index', []) !!} </li>
             @endcan
 

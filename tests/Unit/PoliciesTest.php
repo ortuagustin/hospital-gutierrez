@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Policies\MedicalRecordsPolicy;
 use App\Policies\PatientsPolicy;
-use App\Policies\ReportsPolicy;
 use Tests\Helpers\PermissionTestHelper;
 use Tests\Helpers\RoleTestHelper;
 use Tests\Helpers\UserTestHelper;
@@ -89,13 +88,6 @@ class PoliciesTest extends TestCase
             $this->assertFalse($policy->update($this->guestUser), "It should not be able to Update --> {$policyClass}");
             $this->assertFalse($policy->delete($this->guestUser), "It should not be able to Delete --> {$policyClass}");
         }
-    }
-
-    /** @test */
-    public function medic_role_can_view_reports()
-    {
-        $policy = new ReportsPolicy();
-        $this->assertTrue($policy->view($this->medicUser), 'It should be able to View Reports');
     }
 
     /** @test */
@@ -215,7 +207,6 @@ class PoliciesTest extends TestCase
     {
         $this->policies[] = new PatientsPolicy();
         $this->policies[] = new MedicalRecordsPolicy();
-        $this->policies[] = new ReportsPolicy();
     }
 
     /** @before */
@@ -230,8 +221,6 @@ class PoliciesTest extends TestCase
     protected function setUpMedicUser()
     {
         $role = $this->createRole('Medic');
-
-        $role->permissions()->attach($this->createPermission("Reports-{$this->actionView}"));
 
         $role->permissions()->attach($this->createPermission("Patients-{$this->actionView}"));
         $role->permissions()->attach($this->createPermission("Patients-{$this->actionUpdate}"));
