@@ -187,6 +187,7 @@ return [
         App\Providers\DefaultApplicationSettingsProvider::class,
         App\Providers\PasswordResetServiceProvider::class,
         App\Providers\PatientsViewComposerProvider::class,
+        App\Providers\ReportsRepositoryProvider::class,
 
     ],
 
