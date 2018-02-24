@@ -10,10 +10,9 @@ use App\Contracts\ReportsRepositoryInterface;
 class ReportsController extends Controller
 {
     /**
-     *
      * @var ReportsRepositoryInterface
      */
-    protected $reportsRepository = [];
+    protected $reportsRepository;
 
     /**
      * @inheritDoc
