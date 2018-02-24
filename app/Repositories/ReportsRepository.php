@@ -54,7 +54,15 @@ class ReportsRepository implements ReportsRepositoryInterface
      */
     public function names()
     {
-        return array_keys($this->reports);
+        return array_keys($this->all());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function all()
+    {
+        return $this->reports;
     }
 
     /**

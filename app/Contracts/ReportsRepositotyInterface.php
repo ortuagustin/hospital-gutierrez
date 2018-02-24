@@ -27,4 +27,10 @@ interface ReportsRepositoryInterface
      * @return array
      */
     public function names();
+
+    /**
+     * Returns an array with all the registered reports
+     * @return array
+     */
+    public function all();
 }
