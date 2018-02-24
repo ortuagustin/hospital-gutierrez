@@ -10,6 +10,13 @@ use App\Contracts\ReportsRepositoryInterface;
 class ReportsRepository implements ReportsRepositoryInterface
 {
     /**
+     * Represents a null (empty) report
+     *
+     * @var array
+     */
+    protected $nullReport = [];
+
+    /**
      * @var array
      */
     protected $reports = [];
@@ -19,7 +26,9 @@ class ReportsRepository implements ReportsRepositoryInterface
      */
     public function __construct(array $reports = [])
     {
-        $this->reports = $reports;
+        foreach ($reports as $report) {
+            $this->reports[$report->name()] = $report;
+        }
     }
 
     /**
@@ -27,7 +36,7 @@ class ReportsRepository implements ReportsRepositoryInterface
      */
     public function getReport($name)
     {
-        return $this->reports[$name];
+        return $this->hasReport($name) ? $this->reports[$name] : $this->nullReport;
     }
 
     /**
@@ -46,5 +55,16 @@ class ReportsRepository implements ReportsRepositoryInterface
     public function names()
     {
         return array_keys($this->reports);
+    }
+
+    /**
+     * Returns wether the report exists in the repository
+     *
+     * @param string $name
+     * @return bool
+     */
+    private function hasReport($name)
+    {
+        return array_key_exists($name, $this->reports);
     }
 }
