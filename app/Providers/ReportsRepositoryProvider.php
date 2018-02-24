@@ -42,6 +42,30 @@ class ReportsRepositoryProvider extends ServiceProvider
 
         $reports[] = $test;
 
+        $test = new GraphReport('test1');
+        $test->labels = ['Sleeping', 'Designing'];
+        $test->options = ['responsive' => false];
+        $test->datasets = [
+            [
+                'data'            => [20, 40],
+                'backgroundColor' => ['red', 'blue'],
+            ],
+        ];
+
+        $reports[] = $test;
+
+        $test = new GraphReport('test2');
+        $test->labels = ['Sleeping', 'Designing'];
+        $test->options = ['responsive' => false];
+        $test->datasets = [
+            [
+                'data'            => [20, 40],
+                'backgroundColor' => ['red', 'blue'],
+            ],
+        ];
+
+        $reports[] = $test;
+
         $this->app->bind(ReportsRepositoryInterface::class, function ($app) use ($reports) {
             return new ReportsRepository($reports);
         });

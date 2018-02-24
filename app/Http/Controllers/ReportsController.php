@@ -29,7 +29,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $reports = $this->reportsRepository->names();
+        $reports = collect($this->reportsRepository->all());
 
         return view('reports/index', compact('reports'));
     }
