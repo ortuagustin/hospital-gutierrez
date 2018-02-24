@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Modal from './components/Modal.vue';
-import PieChart from './components/PieChart.js';
+import PieChart from './components/PieChart.vue';
+import BarChart from './components/BarChart.vue';
+import LineChart from './components/LineChart.vue';
 
 new Vue({
   el: '#app',
@@ -19,7 +21,9 @@ new Vue({
 
   components: {
     Modal,
-    PieChart
+    PieChart,
+    LineChart,
+    BarChart
   },
 
   methods: {
