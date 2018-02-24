@@ -29920,7 +29920,7 @@ if (false) {
 
     mounted: function mounted() {
         __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.endpoint).then(function (response) {
-            this.renderChart(response.data, this.options);
+            this.renderChart(response.data.chart, response.data.options);
         }.bind(this));
     }
 });

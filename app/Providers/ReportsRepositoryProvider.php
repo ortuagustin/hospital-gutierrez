@@ -3,9 +3,13 @@
 namespace App\Providers;
 
 use App\Contracts\ReportsRepositoryInterface;
+use App\GraphReport;
 use App\Repositories\ReportsRepository;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Registers an implementation for the ReportsRepositoryInterface
+ */
 class ReportsRepositoryProvider extends ServiceProvider
 {
     /**
@@ -24,6 +28,20 @@ class ReportsRepositoryProvider extends ServiceProvider
      */
     public function register()
     {
+        $reports = [];
+
+        $test = new GraphReport('test');
+        $test->labels = ['Sleeping', 'Designing'];
+        $test->options = ['responsive' => false];
+        $test->datasets = [
+            [
+                'data'            => [20, 40],
+                'backgroundColor' => ['red', 'blue'],
+            ],
+        ];
+
+        $reports[] = $test;
+
         $this->app->bind(ReportsRepositoryInterface::class, function ($app) use ($reports) {
             return new ReportsRepository($reports);
         });
