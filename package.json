@@ -11,8 +11,10 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "chart.js": "^2.7.1",
     "cross-env": "^5.0.1",
     "laravel-mix": "^1.7.2",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-chartjs": "^3.2.1"
   }
 }
