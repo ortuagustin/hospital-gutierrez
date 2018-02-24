@@ -10,7 +10,7 @@ interface ReportsRepositoryInterface
     /**
      * Returns the report data and options
      * @param string $name
-     * @return void
+     * @return \JsonSerializable
      */
     public function getReport($name);
 
