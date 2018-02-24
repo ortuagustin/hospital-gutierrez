@@ -14,7 +14,7 @@ export default {
     mounted() {
         axios.get(this.endpoint).then(
             function(response) {
-                this.renderChart(response.data, this.options);
+                this.renderChart(response.data.chart, response.data.options);
             }.bind(this)
         );
     }
