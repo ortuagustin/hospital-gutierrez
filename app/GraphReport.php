@@ -50,6 +50,14 @@ class GraphReport implements JsonSerializable
     }
 
     /**
+     * Returns a route to the graph
+     */
+    public function endpoint()
+    {
+        return route('reports.show', $this->name(), false);
+    }
+
+    /**
      * @inheritDoc
      */
     public function jsonSerialize()
