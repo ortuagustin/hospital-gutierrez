@@ -59,3 +59,16 @@ class PatientsPerHomeTypeChart extends PatientsChart
         $this->repository = resolve(HomeTypesRepositoryInterface::class);
     }
 }
+
+class PatientsPerWaterTypeChart extends PatientsChart
+{
+    protected $group_by = 'water_type_id';
+
+    /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->repository = resolve(WaterTypesRepositoryInterface::class);
+    }
+}
