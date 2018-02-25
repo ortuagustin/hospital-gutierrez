@@ -98,3 +98,16 @@ class PatientsPerDocTypeChart extends PatientsChart
         $this->repository = resolve(DocTypesRepositoryInterface::class);
     }
 }
+
+class PatientsPerMedicalInsuranceChart extends PatientsChart
+{
+    protected $group_by = 'medical_insurance_id';
+
+    /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->repository = resolve(MedicalInsurancesRepositoryInterface::class);
+    }
+}
