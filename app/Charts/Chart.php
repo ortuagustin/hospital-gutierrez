@@ -16,17 +16,6 @@ abstract class Chart implements JsonSerializable
     private $name = null;
 
     /**
-     * @var array
-     */
-    protected $colours = [
-        'red',
-        'orange',
-        'royalblue',
-        'green',
-        'moneygreen',
-    ];
-
-    /**
      * Labels that the chart will display
      *
      * @var array
@@ -107,7 +96,10 @@ abstract class Chart implements JsonSerializable
      */
     protected function backgroundColours($labelCount)
     {
-        return array_slice($this->colours, 0, $labelCount);
+        $colours = Colours::all();
+        shuffle($colours);
+
+        return array_slice($colours, 0, $labelCount);
     }
 
     /**
