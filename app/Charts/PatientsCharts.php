@@ -85,3 +85,16 @@ class PatientsPerHeatingTypeChart extends PatientsChart
         $this->repository = resolve(HeatingTypesRepositoryInterface::class);
     }
 }
+
+class PatientsPerDocTypeChart extends PatientsChart
+{
+    protected $group_by = 'doc_type_id';
+
+    /**
+     * @inheritDoc
+     */
+    public function __construct()
+    {
+        $this->repository = resolve(DocTypesRepositoryInterface::class);
+    }
+}
