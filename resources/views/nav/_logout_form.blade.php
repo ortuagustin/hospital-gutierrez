@@ -7,5 +7,5 @@
 </form>
 
 @push('scripts')
-    <script src="/js/logout_form.js"></script>
+    <script src="{{ asset('js/logout_form.js') }}"></script>
 @endpush

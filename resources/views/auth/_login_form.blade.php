@@ -3,7 +3,7 @@
     <p class="subtitle has-text-grey">Please login to proceed.</p>
 
     <div id="login-box" class="box">
-        <figure id="login-avatar" class="avatar"> <img src="logo.png"> </figure>
+        <figure id="login-avatar" class="avatar"> <img src="{{ asset('logo.png') }}"> </figure>
 
         <form method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}

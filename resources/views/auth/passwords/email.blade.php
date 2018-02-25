@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('styles')
-    <link rel="stylesheet" href="/css/passwords.email.css">
+    <link rel="stylesheet" href="{{ asset('css/passwords.email.css') }}">
 @endpush
 
 @section('content')

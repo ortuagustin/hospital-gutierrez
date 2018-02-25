@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('styles')
-    <link rel="stylesheet" href="/css/503.css">
+    <link rel="stylesheet" href="{{ asset('css/503.css') }}">
 @endpush
 
 @section('content')
