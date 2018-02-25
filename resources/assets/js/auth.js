@@ -1,12 +1,7 @@
 import Vue from 'vue';
 import Modal from './components/Modal.vue';
-import PieChart from './components/PieChart.vue';
-import BarChart from './components/BarChart.vue';
-import LineChart from './components/LineChart.vue';
 
-new Vue({
-  el: '#app',
-
+const auth = new Vue({
   data() {
     return {
       loginForm: {},
@@ -20,10 +15,7 @@ new Vue({
   },
 
   components: {
-    Modal,
-    PieChart,
-    LineChart,
-    BarChart
+    Modal
   },
 
   methods: {
@@ -36,3 +28,7 @@ new Vue({
     }
   }
 });
+
+if (document.getElementById('auth')) {
+  auth.$mount('#auth');
+}

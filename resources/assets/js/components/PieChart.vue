@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PieChart from '../PieChartImpl.js';
+import PieChart from '../charts/PieChartImpl.js';
 
 export default {
   props: {

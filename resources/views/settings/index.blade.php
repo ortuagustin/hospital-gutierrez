@@ -12,21 +12,14 @@
 
         <table class="table is-striped is-narrow is-fullwidth">
 
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Value</th>
-                    <th></th>
-                </tr>
-            </thead>
+            <thead></thead>
 
             <tbody>
                 @foreach ($settings as $setting)
                     <tr>
-                        @include('settings._form', ['$setting' => $setting])
+                        @include('settings._form', ['setting' => $setting])
                     </tr>
                 @endforeach
-
             </tbody>
 
         </table>

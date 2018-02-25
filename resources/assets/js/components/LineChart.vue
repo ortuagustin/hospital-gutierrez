@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import LineChart from '../LineChartImpl.js';
+import LineChart from '../charts/LineChartImpl.js';
 
 export default {
   props: {

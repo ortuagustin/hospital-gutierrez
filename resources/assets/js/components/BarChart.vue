@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BarChart from '../BarChartImpl.js';
+import BarChart from '../charts/BarChartImpl.js';
 
 export default {
   props: {
