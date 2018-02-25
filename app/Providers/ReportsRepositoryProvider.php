@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Charts\PatientsPerHeatingTypeChart;
 use App\Charts\PatientsPerHomeTypeChart;
 use App\Charts\PatientsPerWaterTypeChart;
 use App\Contracts\ReportsRepositoryInterface;
@@ -23,6 +24,7 @@ class ReportsRepositoryProvider extends ServiceProvider
         $reports = [];
         $reports[] = new PatientsPerHomeTypeChart();
         $reports[] = new PatientsPerWaterTypeChart();
+        $reports[] = new PatientsPerHeatingTypeChart();
 
         $this->app->bind(ReportsRepositoryInterface::class, function ($app) use ($reports) {
             return new ReportsRepository($reports);
