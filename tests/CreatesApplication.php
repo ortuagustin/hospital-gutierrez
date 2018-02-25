@@ -2,8 +2,13 @@
 
 namespace Tests;
 
+use App\Contracts\DocTypesRepositoryInterface;
+use App\Contracts\HeatingTypesRepositoryInterface;
+use App\Contracts\HomeTypesRepositoryInterface;
+use App\Contracts\MedicalInsuranceTypesRepositoryInterface;
+use App\Contracts\WaterTypesRepositoryInterface;
 use Illuminate\Contracts\Console\Kernel;
-use Tests\Feature\Fakes\FakeReferenceDataRepository;
+use Tests\Fakes\FakeReferenceDataRepository;
 
 trait CreatesApplication
 {
@@ -17,11 +22,11 @@ trait CreatesApplication
         $app = require __DIR__.'/../bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
-        $app->bind(\App\Contracts\DocTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
-        $app->bind(\App\Contracts\HomeTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
-        $app->bind(\App\Contracts\HeatingTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
-        $app->bind(\App\Contracts\WaterTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
-        $app->bind(\App\Contracts\MedicalInsuranceTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
+        $app->bind(DocTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
+        $app->bind(HomeTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
+        $app->bind(HeatingTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
+        $app->bind(WaterTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
+        $app->bind(MedicalInsuranceTypesRepositoryInterface::class, FakeReferenceDataRepository::class);
 
         return $app;
     }
