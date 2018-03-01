@@ -16,7 +16,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController', ['only' => ['index']]);
         Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
-        Route::resource('user.roles', 'UserRolesController', ['only' => ['destroy']]);
+        Route::delete('user/{user}/roles/{role}', 'UserRolesController@destroy')->name('user.roles.destroy');
+        Route::patch('user/{user}/roles', 'UserRolesController@update')->name('user.roles.update');
         Route::get('/settings/reset', 'SettingsController@reset')->name('settings.reset');
         Route::resource('settings', 'SettingsController', ['only' => ['index', 'store']]);
     });

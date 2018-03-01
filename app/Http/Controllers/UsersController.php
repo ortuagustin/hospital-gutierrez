@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 
 /**
@@ -29,7 +30,9 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('users/show', compact('user'));
+        $roles = Role::all();
+
+        return view('users/show', compact('user', 'roles'));
     }
 
     /**
