@@ -52,6 +52,32 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function it_can_sync_its_roles_relationship()
+    {
+        $user = $this->createUser();
+        $user->roles()->attach($admin_role = $this->createRole('Admin'));
+        $user->roles()->attach($guest_role = $this->createRole('Guest'));
+        $medic_role = $this->createRole('Medic');
+
+        $user->roles()->sync($medic_role);
+
+        $this->assertEquals(1, $user->roles()->count());
+        $this->assertTrue($user->hasNotRole($admin_role));
+        $this->assertTrue($user->hasNotRole($guest_role));
+        $this->assertTrue($user->hasRole($medic_role));
+
+        $user->roles()->sync([
+            $medic_role->id,
+            $admin_role->id,
+        ]);
+
+        $this->assertEquals(2, $user->roles()->count());
+        $this->assertTrue($user->hasNotRole($guest_role));
+        $this->assertTrue($user->hasRole($admin_role));
+        $this->assertTrue($user->hasRole($medic_role));
+    }
+
+    /** @test */
     public function it_returns_roles_separated_by_comma()
     {
         $user = $this->createUser();
