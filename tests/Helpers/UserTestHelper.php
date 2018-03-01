@@ -2,6 +2,7 @@
 
 namespace Tests\Helpers;
 
+use App\Role;
 use App\User;
 
 /**
@@ -17,5 +18,18 @@ trait UserTestHelper
     protected function createUser(array $overrides = [])
     {
         return factory(User::class)->create($overrides);
+    }
+
+    /**
+     * Saves a new User with Admin Role to the database and returns it
+     * @param array $overrides
+     * @return User
+     */
+    protected function createAdminUser(array $overrides = [])
+    {
+        $user = $this->createUser($overrides);
+        $user->roles()->attach(Role::firstOrCreate(['name' => 'Admin']));
+
+        return $user;
     }
 }
