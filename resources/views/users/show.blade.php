@@ -30,8 +30,7 @@
                         <th>{{ $role->id }}</th>
                         <td>{{ $role->name }}</td>
                         <td> {!! link_to_with_icon('fas fa-info-circle fa-2x', 'roles.show', $role, '', 'has-text-info') !!} </td>
-                        {{-- TODO: delete the role relationship with the user --}}
-                        {{-- <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', '', [$user, $role]) !!} </td> --}}
+                        <td> {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'user.roles.destroy', [$user, $role]) !!} </td>
                     </tr>
                 @endforeach
             </tbody>

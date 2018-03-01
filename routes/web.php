@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController', ['only' => ['index']]);
         Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
+        Route::resource('user.roles', 'UserRolesController', ['only' => ['destroy']]);
         Route::get('/settings/reset', 'SettingsController@reset')->name('settings.reset');
         Route::resource('settings', 'SettingsController', ['only' => ['index', 'store']]);
     });
