@@ -233,16 +233,17 @@ class Patient extends Model
     public function toSearchableArray()
     {
         return [
-            'id'                  => $this->id,
-            'full_name'           => $this->full_name,
-            'dni'                 => $this->dni,
-            'gender'              => $this->gender,
-            'age'                 => $this->age,
-            'doc_type'            => $this->docType->value(),
-            'home_type'           => $this->homeType->value(),
-            'water_type'          => $this->waterType->value(),
-            'heating_type'        => $this->HeatingType->value(),
-            'medical_insurance'   => $this->medicalInsurance->value(),
+            'id'                => $this->id,
+            'full_name'         => $this->full_name,
+            'dni'               => $this->dni,
+            'gender'            => $this->gender,
+            'age'               => $this->age,
+            'path'              => $this->path(),
+            'doc_type'          => $this->docType->value(),
+            'home_type'         => $this->homeType->value(),
+            'water_type'        => $this->waterType->value(),
+            'heating_type'      => $this->HeatingType->value(),
+            'medical_insurance' => $this->medicalInsurance->value(),
         ];
     }
 

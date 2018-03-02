@@ -257,16 +257,17 @@ class PatientTest extends TestCase
         ]);
 
         $expected = [
-            'id'                  => $patient->id,
-            'full_name'           => $patient->full_name,
-            'dni'                 => $patient->dni,
-            'gender'              => $patient->gender,
-            'age'                 => $patient->age,
-            'doc_type'            => 'DNI',
-            'home_type'           => 'Flat',
-            'water_type'          => 'Water Well',
-            'heating_type'        => 'Electrical',
-            'medical_insurance'   => 'IOMA',
+            'id'                => $patient->id,
+            'full_name'         => $patient->full_name,
+            'dni'               => $patient->dni,
+            'gender'            => $patient->gender,
+            'age'               => $patient->age,
+            'path'              => $patient->path(),
+            'doc_type'          => 'DNI',
+            'home_type'         => 'Flat',
+            'water_type'        => 'Water Well',
+            'heating_type'      => 'Electrical',
+            'medical_insurance' => 'IOMA',
         ];
 
         $this->assertEquals($expected, $patient->toSearchableArray());
