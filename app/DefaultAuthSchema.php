@@ -3,8 +3,6 @@
 namespace App;
 
 use App\Contracts\DefaultAuthSchemaInterface;
-use App\Permission;
-use App\Role;
 
 /**
  * Generates the default authorization schema for the application;

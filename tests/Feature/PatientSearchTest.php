@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\Patient;
-use PhpParser\Node\Stmt\Finally_;
-use Tests\Feature\FeatureTest;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\PatientTestHelper;
 

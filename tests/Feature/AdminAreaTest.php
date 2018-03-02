@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\ApplicationSetting;
-use Tests\Feature\FeatureTest;
 use Tests\Helpers\ApplicationSettingTestHelper;
 
 class AdminAreaTest extends FeatureTest

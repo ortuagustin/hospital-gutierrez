@@ -6,7 +6,6 @@ use App\ApplicationSetting;
 use App\Contracts\DefaultApplicationSettingsInterface;
 use App\DefaultApplicationSettings;
 use Tests\Helpers\ApplicationSettingTestHelper;
-use Tests\Unit\TestCase;
 
 class DefaultApplicationSettingsTest extends TestCase
 {

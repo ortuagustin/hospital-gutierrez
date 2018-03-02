@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
-use Tests\Unit\TestCase;
 
 class PatientTest extends TestCase
 {

@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use SebastianBergmann\CodeCoverage\Exception;
 use Tests\CreatesApplication;
 use Tests\Helpers\UserTestHelper;
 use Tests\RunsMigrations;
