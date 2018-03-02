@@ -38,6 +38,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_dispatch_event_if_registration_fails()
     {
+        $this->withExceptionHandling();
         Event::fake();
         $user_attributes = $this->getRegistrationFields(['email' => 'invalid-email']);
         $this->submitRegistrationForm($user_attributes);
@@ -47,6 +48,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_register_a_user_if_any_field_validation_fails()
     {
+        $this->withExceptionHandling();
         $this->submitRegistrationForm([]);
         $this->assertEquals(User::count(), 0);
     }
@@ -54,6 +56,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_invalid_email()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields(['email' => 'invalid-email']);
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response);
@@ -62,6 +65,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_empty_email()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields(['email' => '']);
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response);
@@ -70,6 +74,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_empty_user_name()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields(['name' => '']);
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response);
@@ -78,6 +83,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_empty_password()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields(['password' => '']);
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response);
@@ -86,6 +92,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_password_shorter_than_four_chars()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields(['password' => '123']);
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response);
@@ -94,6 +101,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_use_existing_username()
     {
+        $this->withExceptionHandling();
         $this->createUser(['name' => 'test']);
         $user_attributes = $this->getRegistrationFields(['name' => 'test']);
         $response = $this->submitRegistrationForm($user_attributes);
@@ -103,6 +111,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_allow_use_existing_email()
     {
+        $this->withExceptionHandling();
         $this->createUser(['email' => 'test@example.com']);
         $user_attributes = $this->getRegistrationFields(['email' => 'test@example.com']);
         $response = $this->submitRegistrationForm($user_attributes);
@@ -112,6 +121,7 @@ class AuthenticationTest extends FeatureTest
     /** @test */
     public function it_does_not_register_the_user_if_the_password_confirmation_does_not_match()
     {
+        $this->withExceptionHandling();
         $user_attributes = $this->getRegistrationFields() + ['password_confirmation' => 'whatever'];
         $response = $this->submitRegistrationForm($user_attributes);
         $this->assertRegistrationFailed($response, 0);
