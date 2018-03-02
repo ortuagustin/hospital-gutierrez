@@ -9,7 +9,7 @@ class PatientsSearchController extends Controller
 {
     public function index(Request $request)
     {
-        $patients = Patient::search($request['q'])->orderBy('name')->paginate(setting('records_per_page', '15'));
+        $patients = Patient::search($request['q'])->paginate(setting('records_per_page', '15'));
 
         if ($request->wantsJson()) {
             return $patients;
