@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ApplicationSetting;
 use App\Contracts\DefaultApplicationSettingsInterface;
 use App\Http\Requests\StoreApplicationSettingRequest;
+use Illuminate\Http\Request;
 
 /**
  * Handles request related to ApplicationSetting model.
@@ -16,7 +17,7 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $settings = ApplicationSetting::all();
 
@@ -32,6 +33,10 @@ class SettingsController extends Controller
     public function store(StoreApplicationSettingRequest $request)
     {
         $request->save();
+
+        if (request()->wantsJson()) {
+            return response(['Updated succesfuly'], 200);
+        }
 
         return redirect()->route('settings.index');
     }
