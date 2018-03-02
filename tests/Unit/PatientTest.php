@@ -271,4 +271,11 @@ class PatientTest extends TestCase
 
         $this->assertEquals($expected, $patient->toSearchableArray());
     }
+
+    /** @test */
+    public function it_returns_non_absoulte_url_path()
+    {
+        $patient = $this->createPatient(['id' => 1]);
+        $this->assertEquals('/patients/1', $patient->path());
+    }
 }

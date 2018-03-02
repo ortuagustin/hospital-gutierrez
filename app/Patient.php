@@ -245,4 +245,14 @@ class Patient extends Model
             'medical_insurance'   => $this->medicalInsurance->value(),
         ];
     }
+
+    /**
+     * Return a path to the Patient model
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return route('patients.show', $this, false);
+    }
 }
