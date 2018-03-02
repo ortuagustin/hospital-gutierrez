@@ -7,6 +7,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('patients/search', 'PatientsSearchController@index');
     Route::resource('patients', 'PatientsController');
     Route::resource('patients.medical_records', 'MedicalRecordsController', ['except' => ['edit', 'update']]);
     Route::resource('reports', 'ReportsController', ['only' => ['index', 'show']]);
