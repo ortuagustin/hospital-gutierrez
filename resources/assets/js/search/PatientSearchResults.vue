@@ -2,11 +2,7 @@
 <div>
     <ais-results>
         <template slot-scope="{ result }">
-            <p>
-                <a :href="result.path" class="is-size-5">
-                    <ais-highlight :result="result" :attribute-name="attributeName"></ais-highlight>
-                </a>
-            </p>
+            <slot :patient="result"></slot>
         </template>
     </ais-results>
 
@@ -23,8 +19,6 @@ import Results from "vue-instantsearch";
 import ResultsPerPageSelector from "vue-instantsearch";
 
 export default {
-  props: ["attributeName"],
-
   components: { Results }
 };
 </script>

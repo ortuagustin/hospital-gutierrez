@@ -54078,17 +54078,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["attributeName"],
-
   components: { Results: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */] }
 });
 
@@ -54109,23 +54103,7 @@ var render = function() {
             key: "default",
             fn: function(ref) {
               var result = ref.result
-              return [
-                _c("p", [
-                  _c(
-                    "a",
-                    { staticClass: "is-size-5", attrs: { href: result.path } },
-                    [
-                      _c("ais-highlight", {
-                        attrs: {
-                          result: result,
-                          "attribute-name": _vm.attributeName
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ]
+              return [_vm._t("default", null, { patient: result })]
             }
           }
         ])

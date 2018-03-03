@@ -28,7 +28,11 @@
                 </div>
 
                 <div class="column">
-                    <patient-search-results attribute-name="full_name"></patient-search-results>
+                    <patient-search-results>
+                        <template slot-scope="{ patient }">
+                            @include('patients._search_result')
+                        </template>
+                    </patient-search-results>
                 </div>
             </div>
         </ais-index>
