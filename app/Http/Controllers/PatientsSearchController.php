@@ -9,12 +9,10 @@ class PatientsSearchController extends Controller
 {
     public function index(Request $request)
     {
-        $patients = Patient::search($request['q'])->paginate(setting('records_per_page', '15'));
-
         if ($request->wantsJson()) {
-            return $patients;
+            return Patient::search($request['q'])->paginate(setting('records_per_page', '15'));
         }
 
-        return view('patients/index', compact('patients'));
+        return view('patients/search');
     }
 }
