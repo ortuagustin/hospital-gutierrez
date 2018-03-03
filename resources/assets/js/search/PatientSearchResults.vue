@@ -16,10 +16,10 @@
 
 <script>
 import Results from "vue-instantsearch";
-import ResultsPerPageSelector from "vue-instantsearch";
+import NoResults from "vue-instantsearch";
 
 export default {
-  components: { Results }
+  components: { NoResults, Results }
 };
 </script>
 

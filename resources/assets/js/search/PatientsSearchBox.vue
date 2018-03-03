@@ -23,8 +23,10 @@
 </template>
 
 <script>
+import Input from "vue-instantsearch";
 import SearchBox from "vue-instantsearch";
 import PoweredBy from "vue-instantsearch";
+import ResultsPerPageSelector from "vue-instantsearch";
 
 export default {
   props: {
@@ -33,7 +35,7 @@ export default {
     }
   },
 
-  components: { SearchBox, PoweredBy },
+  components: { Input, SearchBox, PoweredBy, ResultsPerPageSelector },
 
   methods: {
     options() {
