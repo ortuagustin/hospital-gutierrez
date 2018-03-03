@@ -4,7 +4,7 @@ import UserRoleSelect from './components/UserRoleSelect.vue';
 import SearchTypeFilter from './search/SearchTypeFilter.vue';
 import PatientSearchResults from './search/PatientSearchResults.vue';
 import SearchAgeFilter from './search/SearchAgeFilter.vue';
-import PatientSearchBox from './search/PatientSearchBox.vue';
+import PatientsSearchBox from './search/PatientsSearchBox.vue';
 import ClearSearchFilters from './search/ClearSearchFilters.vue';
 
 Vue.use(InstantSearch);
@@ -15,7 +15,7 @@ const app = new Vue({
         SearchTypeFilter,
         PatientSearchResults,
         SearchAgeFilter,
-        PatientSearchBox,
+        PatientsSearchBox,
         ClearSearchFilters
     },
 });

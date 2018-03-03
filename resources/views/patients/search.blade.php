@@ -30,9 +30,9 @@
         >
             <div class="columns">
                 <div class="column is-two-fifths">
-
-                    <ais-search-box class="box"></ais-search-box>
-
+                    <clear-search-filters></clear-search-filters>
+                    <patients-search-box></patients-search-box>
+                    <search-age-filter></search-age-filter>
                     <search-type-filter attribute-name="medical_insurance">Filter by Medical Insurance</search-type-filter>
                     <search-type-filter attribute-name="doc_type">Filter by Doc Type</search-type-filter>
                     <search-type-filter attribute-name="home_type">Filter by Home Type</search-type-filter>
