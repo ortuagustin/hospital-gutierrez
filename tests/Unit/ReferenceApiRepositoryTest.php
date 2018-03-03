@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Models\ReferenceModel;
 use App\Repositories\DocTypesRepository;
-use Tests\Unit\TestCase;
 
 class ReferenceApiRepository extends TestCase
 {

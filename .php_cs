@@ -34,6 +34,7 @@ return PhpCsFixer\Config::create()
         'blank_line_before_return'              => true,
         'unary_operator_spaces'                 => true,
         'phpdoc_indent'                         => true,
+        'no_unused_imports'                     => true,
 
     ])
     ->setFinder($finder);

@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Tests\Helpers\RoleTestHelper;
 use Tests\Helpers\UserTestHelper;
-use Tests\Unit\TestCase;
 
 class UserTest extends TestCase
 {

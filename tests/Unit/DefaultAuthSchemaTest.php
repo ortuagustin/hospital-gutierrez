@@ -7,7 +7,6 @@ use App\Permission;
 use App\Role;
 use Tests\Helpers\PermissionTestHelper;
 use Tests\Helpers\RoleTestHelper;
-use Tests\Unit\TestCase;
 
 class DefaultAuthSchemaTest extends TestCase
 {

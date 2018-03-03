@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Tests\Feature\FeatureTest;
 use Tests\Helpers\RoleTestHelper;
 use Tests\Helpers\UserTestHelper;
 

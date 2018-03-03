@@ -79,6 +79,23 @@ function link_to_with_icon($icon, $route_name, $route_args = [], $text = '', $ic
         </p>";
 }
 
+function back_link($text = 'Back', $icon = 'fas fa-arrow-left fa-2x', $icon_class = 'has-text-info', $button_class = '')
+{
+    $url = URL::previous();
+    $button_class = 'button is-white' . $button_class;
+    $icon_class = 'icon ' . $icon_class;
+
+    return
+        "<p class='field'>
+            <a class='$button_class' href=$url>
+                <span class='$icon_class'>
+                    <i class='$icon'></i>
+                </span>
+                <span>&nbsp;$text</span>
+            </a>
+        </p>";
+}
+
 /**
  * Returns an HTML hyperlink tag that links to the given named route.
  * The a tag contains a child <i> tag with an icon.

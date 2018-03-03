@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
-use Tests\Unit\TestCase;
 
 class PatientTest extends TestCase
 {
@@ -237,5 +236,48 @@ class PatientTest extends TestCase
         $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$old_medical_insurance, $new_medical_insurance]);
         $patient->medicalInsurance = $new_medical_insurance;
         $this->assertSame($patient->medicalInsurance, $new_medical_insurance);
+    }
+
+    /** @test */
+    public function it_returns_searchable_attributes()
+    {
+        $this->swapRepository(MedicalInsurancesRepositoryInterface::class, [$this->makeReferenceModel(1, 'IOMA')]);
+        $this->swapRepository(DocTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'DNI')]);
+        $this->swapRepository(HomeTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Flat')]);
+        $this->swapRepository(WaterTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Water Well')]);
+        $this->swapRepository(HeatingTypesRepositoryInterface::class, [$this->makeReferenceModel(1, 'Electrical')]);
+
+        $patient = $this->createPatient([
+            'doc_type_id'            => 1,
+            'home_type_id'           => 1,
+            'water_type_id'          => 1,
+            'heating_type_id'        => 1,
+            'medical_insurance_id'   => 1,
+        ]);
+
+        $expected = [
+            'id'                => $patient->id,
+            'full_name'         => $patient->full_name,
+            'dni'               => $patient->dni,
+            'gender'            => $patient->gender,
+            'age'               => $patient->age,
+            'path'              => $patient->path(),
+            'address'           => $patient->address,
+            'phone'             => $patient->phone,
+            'doc_type'          => 'DNI',
+            'home_type'         => 'Flat',
+            'water_type'        => 'Water Well',
+            'heating_type'      => 'Electrical',
+            'medical_insurance' => 'IOMA',
+        ];
+
+        $this->assertEquals($expected, $patient->toSearchableArray());
+    }
+
+    /** @test */
+    public function it_returns_non_absoulte_url_path()
+    {
+        $patient = $this->createPatient(['id' => 1]);
+        $this->assertEquals('/patients/1', $patient->path());
     }
 }

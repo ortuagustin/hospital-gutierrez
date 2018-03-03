@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
 use Tests\Helpers\UserTestHelper;
-use Tests\Unit\TestCase;
 
 class MedicalRecordTest extends TestCase
 {

@@ -5,13 +5,14 @@ namespace App;
 use App\Contracts\InteractsWithReferenceModels;
 use App\Helpers\CalculatesAge;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * A Model that represents a Patient
  */
 class Patient extends Model
 {
-    use InteractsWithReferenceModels;
+    use InteractsWithReferenceModels, Searchable;
     use CalculatesAge { age as calculate_age; }
 
     /**
@@ -222,5 +223,39 @@ class Patient extends Model
     public function setMedicalInsuranceAttribute(\App\Models\ReferenceModel $value)
     {
         $this->medical_insurance_id = $value->id();
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'id'                => $this->id,
+            'full_name'         => $this->full_name,
+            'dni'               => $this->dni,
+            'gender'            => $this->gender,
+            'age'               => $this->age,
+            'path'              => $this->path(),
+            'address'           => $this->address,
+            'phone'             => $this->phone,
+            'doc_type'          => $this->docType->value(),
+            'home_type'         => $this->homeType->value(),
+            'water_type'        => $this->waterType->value(),
+            'heating_type'      => $this->HeatingType->value(),
+            'medical_insurance' => $this->medicalInsurance->value(),
+        ];
+    }
+
+    /**
+     * Return a path to the Patient model
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return route('patients.show', $this, false);
     }
 }

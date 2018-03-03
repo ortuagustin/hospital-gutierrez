@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Validator;
 use Tests\Helpers\TestsModel;
-use Tests\Unit\TestCase;
 
 /**
  * Base TestCase for FormRequest objects

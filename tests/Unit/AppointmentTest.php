@@ -7,7 +7,6 @@ use App\Appointment;
 use Carbon\Carbon;
 use Tests\Helpers\AppointmentTestHelper;
 use Tests\Helpers\PatientTestHelper;
-use Tests\Unit\TestCase;
 
 class AppointmentTest extends TestCase
 {

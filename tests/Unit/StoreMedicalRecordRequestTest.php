@@ -6,7 +6,6 @@ use App\Http\Requests\StoreMedicalRecordRequest;
 use App\MedicalRecord;
 use Tests\Helpers\PatientTestHelper;
 use Tests\Helpers\UserTestHelper;
-use Tests\Unit\FormRequestTestCase;
 
 class StoreMedicalRecordRequestTest extends FormRequestTestCase
 {

@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\ApplicationSetting;
 use Tests\Helpers\ApplicationSettingTestHelper;
-use Tests\Unit\TestCase;
 
 class ApplicationSettingTest extends TestCase
 {
