@@ -1,6 +1,6 @@
 <template>
 <p class="field">
-    <ais-clear class="button is-medium is-primary is-outlined">
+    <ais-clear class="button is-medium is-info is-outlined">
         <span>Clear filters</span>
             <span class="icon">
             <i class="fas fa-times"></i>

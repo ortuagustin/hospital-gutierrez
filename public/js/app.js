@@ -54539,17 +54539,13 @@ var render = function() {
     "p",
     { staticClass: "field" },
     [
-      _c(
-        "ais-clear",
-        { staticClass: "button is-medium is-primary is-outlined" },
-        [
-          _c("span", [_vm._v("Clear filters")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "icon" }, [
-            _c("i", { staticClass: "fas fa-times" })
-          ])
-        ]
-      )
+      _c("ais-clear", { staticClass: "button is-medium is-info is-outlined" }, [
+        _c("span", [_vm._v("Clear filters")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-times" })
+        ])
+      ])
     ],
     1
   )
