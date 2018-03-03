@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="title is-3 has-text-grey">Patient Search</h1>
 
-    @include('patients._list_header')
+    @component('patients._list_header') @endcomponent
 
     <div id="app">
         <ais-index

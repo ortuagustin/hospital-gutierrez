@@ -1,7 +1,12 @@
 <div class="box level">
     <div class="level-left">
-        {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
+        <div class="level-item">
+            {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
+        </div>
+
+        {{ $slot }}
     </div>
+
 
     @can ('create', \App\Patient::class)
         <div class="level-right">

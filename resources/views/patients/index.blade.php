@@ -3,7 +3,11 @@
 @section('content')
     <h1 class="title is-3 has-text-grey">Patient List</h1>
 
-    @include('patients._list_header')
+    @component('patients._list_header')
+        <div class="level-item">
+            {!! link_to_with_icon('fas fa-search fa-2x', 'patients.search', [], 'Advanced Search...', 'has-text-info') !!}
+        </div>
+    @endcomponent
 
     <div class="box">
 

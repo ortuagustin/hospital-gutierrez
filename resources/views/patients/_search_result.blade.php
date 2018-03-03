@@ -1,7 +1,7 @@
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
-      <a :href="patient.path" class="is-size-5">
+      <a :href="patient.path" class="is-size-5 is-uppercase">
         <ais-highlight :result="patient" attribute-name="full_name"></ais-highlight>
       </a>
     </p>
