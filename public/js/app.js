@@ -40567,6 +40567,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_PatientSearchResults_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__search_PatientSearchResults_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__search_SearchAgeFilter_vue__ = __webpack_require__(577);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__search_SearchAgeFilter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__search_SearchAgeFilter_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__search_PatientSearchBox_vue__ = __webpack_require__(582);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__search_PatientSearchBox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__search_PatientSearchBox_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__search_ClearSearchFilters_vue__ = __webpack_require__(585);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__search_ClearSearchFilters_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__search_ClearSearchFilters_vue__);
+
+
 
 
 
@@ -40577,7 +40583,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_instantsearch__["a" /* default */]);
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-    components: { UserRoleSelect: __WEBPACK_IMPORTED_MODULE_2__components_UserRoleSelect_vue___default.a, SearchTypeFilter: __WEBPACK_IMPORTED_MODULE_3__search_SearchTypeFilter_vue___default.a, PatientSearchResults: __WEBPACK_IMPORTED_MODULE_4__search_PatientSearchResults_vue___default.a, SearchAgeFilter: __WEBPACK_IMPORTED_MODULE_5__search_SearchAgeFilter_vue___default.a }
+    components: {
+        UserRoleSelect: __WEBPACK_IMPORTED_MODULE_2__components_UserRoleSelect_vue___default.a,
+        SearchTypeFilter: __WEBPACK_IMPORTED_MODULE_3__search_SearchTypeFilter_vue___default.a,
+        PatientSearchResults: __WEBPACK_IMPORTED_MODULE_4__search_PatientSearchResults_vue___default.a,
+        SearchAgeFilter: __WEBPACK_IMPORTED_MODULE_5__search_SearchAgeFilter_vue___default.a,
+        PatientSearchBox: __WEBPACK_IMPORTED_MODULE_6__search_PatientSearchBox_vue___default.a,
+        ClearSearchFilters: __WEBPACK_IMPORTED_MODULE_7__search_ClearSearchFilters_vue___default.a
+    }
 });
 
 if (document.getElementById('app')) {
@@ -68167,6 +68180,241 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-33d97aba", module.exports)
+  }
+}
+
+/***/ }),
+/* 582 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(19)
+/* script */
+var __vue_script__ = __webpack_require__(583)
+/* template */
+var __vue_template__ = __webpack_require__(584)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/search/PatientSearchBox.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4ef3f463", Component.options)
+  } else {
+    hotAPI.reload("data-v-4ef3f463", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 583 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(68);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { SearchBox: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */], PoweredBy: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */] }
+});
+
+/***/ }),
+/* 584 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "box" },
+    [
+      _c(
+        "p",
+        { staticClass: "field" },
+        [
+          _c(
+            "ais-search-box",
+            [
+              _c("ais-input", {
+                staticClass: "input",
+                attrs: {
+                  autofocus: "true",
+                  type: "search",
+                  placeholder: "Search patients..."
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("ais-powered-by")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4ef3f463", module.exports)
+  }
+}
+
+/***/ }),
+/* 585 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(19)
+/* script */
+var __vue_script__ = __webpack_require__(586)
+/* template */
+var __vue_template__ = __webpack_require__(587)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/search/ClearSearchFilters.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-43b6bf8b", Component.options)
+  } else {
+    hotAPI.reload("data-v-43b6bf8b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 586 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(68);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Clear: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */] }
+});
+
+/***/ }),
+/* 587 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "p",
+    { staticClass: "field" },
+    [
+      _c(
+        "ais-clear",
+        { staticClass: "button is-medium is-primary is-outlined" },
+        [
+          _c("span", [_vm._v("Clear filters")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon" }, [
+            _c("i", { staticClass: "fas fa-times" })
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-43b6bf8b", module.exports)
   }
 }
 
