@@ -9,7 +9,7 @@
   >
 
       <template slot="header">
-          <p class="title is-4 has-text-info is-uppercase">
+          <p class="title is-5 has-text-info is-uppercase">
             <slot></slot>
           </p>
       </template>
