@@ -262,6 +262,8 @@ class PatientTest extends TestCase
             'gender'            => $patient->gender,
             'age'               => $patient->age,
             'path'              => $patient->path(),
+            'address'           => $patient->address,
+            'phone'             => $patient->phone,
             'doc_type'          => 'DNI',
             'home_type'         => 'Flat',
             'water_type'        => 'Water Well',

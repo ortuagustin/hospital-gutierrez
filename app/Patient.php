@@ -239,6 +239,8 @@ class Patient extends Model
             'gender'            => $this->gender,
             'age'               => $this->age,
             'path'              => $this->path(),
+            'address'           => $this->address,
+            'phone'             => $this->phone,
             'doc_type'          => $this->docType->value(),
             'home_type'         => $this->homeType->value(),
             'water_type'        => $this->waterType->value(),
