@@ -20,6 +20,7 @@
 
 <script>
 import Results from "vue-instantsearch";
+import ResultsPerPageSelector from "vue-instantsearch";
 
 export default {
   props: ["attributeName"],

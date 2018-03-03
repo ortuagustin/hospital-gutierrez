@@ -5373,140 +5373,6 @@ module.exports = g;
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(22),
-    getRawTag = __webpack_require__(320),
-    objectToString = __webpack_require__(321);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayMap = __webpack_require__(15),
-    baseIteratee = __webpack_require__(9),
-    baseMap = __webpack_require__(130),
-    isArray = __webpack_require__(3);
-
-/**
- * Creates an array of values by running each element in `collection` thru
- * `iteratee`. The iteratee is invoked with three arguments:
- * (value, index|key, collection).
- *
- * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
- *
- * The guarded methods are:
- * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
- * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
- * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
- * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- * @example
- *
- * function square(n) {
- *   return n * n;
- * }
- *
- * _.map([4, 8], square);
- * // => [16, 64]
- *
- * _.map({ 'a': 4, 'b': 8 }, square);
- * // => [16, 64] (iteration order is not guaranteed)
- *
- * var users = [
- *   { 'user': 'barney' },
- *   { 'user': 'fred' }
- * ];
- *
- * // The `_.property` iteratee shorthand.
- * _.map(users, 'user');
- * // => ['barney', 'fred']
- */
-function map(collection, iteratee) {
-  var func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, baseIteratee(iteratee, 3));
-}
-
-module.exports = map;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {};
-module.exports.Arc = __webpack_require__(539);
-module.exports.Line = __webpack_require__(540);
-module.exports.Point = __webpack_require__(541);
-module.exports.Rectangle = __webpack_require__(542);
-
-
-/***/ }),
-/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7720,6 +7586,140 @@ var InstantSearch = {
 
 
 /***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(22),
+    getRawTag = __webpack_require__(320),
+    objectToString = __webpack_require__(321);
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(16),
+    baseIteratee = __webpack_require__(9),
+    baseMap = __webpack_require__(130),
+    isArray = __webpack_require__(3);
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {};
+module.exports.Arc = __webpack_require__(539);
+module.exports.Line = __webpack_require__(540);
+module.exports.Point = __webpack_require__(541);
+module.exports.Rectangle = __webpack_require__(542);
+
+
+/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7813,7 +7813,7 @@ module.exports = Symbol;
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isObject = __webpack_require__(6);
 
 /** `Object#toString` result references. */
@@ -8494,7 +8494,7 @@ var DataView = __webpack_require__(372),
     Promise = __webpack_require__(373),
     Set = __webpack_require__(374),
     WeakMap = __webpack_require__(125),
-    baseGetTag = __webpack_require__(14),
+    baseGetTag = __webpack_require__(15),
     toSource = __webpack_require__(108);
 
 /** `Object#toString` result references. */
@@ -8553,7 +8553,7 @@ module.exports = getTag;
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isObjectLike = __webpack_require__(5);
 
 /** `Object#toString` result references. */
@@ -8839,7 +8839,7 @@ module.exports = isEmpty;
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isArray = __webpack_require__(3),
     isObjectLike = __webpack_require__(5);
 
@@ -21055,7 +21055,7 @@ var intersection = __webpack_require__(325);
 var forOwn = __webpack_require__(355);
 var forEach = __webpack_require__(26);
 var filter = __webpack_require__(79);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var reduce = __webpack_require__(41);
 var omit = __webpack_require__(131);
 var indexOf = __webpack_require__(64);
@@ -23193,7 +23193,7 @@ module.exports = toString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(22),
-    arrayMap = __webpack_require__(15),
+    arrayMap = __webpack_require__(16),
     isArray = __webpack_require__(3),
     isSymbol = __webpack_require__(40);
 
@@ -23326,7 +23326,7 @@ module.exports = cloneArrayBuffer;
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     getPrototype = __webpack_require__(87),
     isObjectLike = __webpack_require__(5);
 
@@ -25258,7 +25258,7 @@ module.exports = baseMap;
 /* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(15),
+var arrayMap = __webpack_require__(16),
     baseClone = __webpack_require__(387),
     baseUnset = __webpack_require__(403),
     castPath = __webpack_require__(27),
@@ -25553,7 +25553,7 @@ module.exports = flatten;
 /* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isObjectLike = __webpack_require__(5);
 
 /** `Object#toString` result references. */
@@ -25836,7 +25836,7 @@ var get = __webpack_require__(128);
 var sumBy = __webpack_require__(428);
 var find = __webpack_require__(65);
 var includes = __webpack_require__(430);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var orderBy = __webpack_require__(148);
 
 var defaults = __webpack_require__(91);
@@ -28044,7 +28044,7 @@ var qs = __webpack_require__(466);
 var bind = __webpack_require__(469);
 var forEach = __webpack_require__(26);
 var pick = __webpack_require__(470);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var mapKeys = __webpack_require__(472);
 var mapValues = __webpack_require__(473);
 var isString = __webpack_require__(46);
@@ -40558,7 +40558,7 @@ module.exports = __webpack_require__(523);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_instantsearch__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserRoleSelect_vue__ = __webpack_require__(475);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserRoleSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserRoleSelect_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search_SearchTypeFilter_vue__ = __webpack_require__(497);
@@ -44672,7 +44672,7 @@ var events = __webpack_require__(162);
 var flatten = __webpack_require__(139);
 var forEach = __webpack_require__(26);
 var isEmpty = __webpack_require__(45);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 
 var url = __webpack_require__(163);
 var version = __webpack_require__(166);
@@ -46072,7 +46072,7 @@ module.exports = baseTimes;
 /* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isObjectLike = __webpack_require__(5);
 
 /** `Object#toString` result references. */
@@ -46200,7 +46200,7 @@ module.exports = stubFalse;
 /* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(14),
+var baseGetTag = __webpack_require__(15),
     isLength = __webpack_require__(72),
     isObjectLike = __webpack_require__(5);
 
@@ -46278,7 +46278,7 @@ module.exports = nativeKeys;
 /* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(15),
+var arrayMap = __webpack_require__(16),
     baseIntersection = __webpack_require__(326),
     baseRest = __webpack_require__(25),
     castArrayLikeObject = __webpack_require__(354);
@@ -46317,7 +46317,7 @@ module.exports = intersection;
 var SetCache = __webpack_require__(107),
     arrayIncludes = __webpack_require__(109),
     arrayIncludesWith = __webpack_require__(352),
-    arrayMap = __webpack_require__(15),
+    arrayMap = __webpack_require__(16),
     baseUnary = __webpack_require__(36),
     cacheHas = __webpack_require__(111);
 
@@ -49759,7 +49759,7 @@ module.exports = createAssigner;
 "use strict";
 
 
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var isArray = __webpack_require__(3);
 var isNumber = __webpack_require__(140);
 var isString = __webpack_require__(46);
@@ -49787,7 +49787,7 @@ module.exports = valToNumber;
 
 var forEach = __webpack_require__(26);
 var filter = __webpack_require__(79);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var isEmpty = __webpack_require__(45);
 var indexOf = __webpack_require__(64);
 
@@ -50218,7 +50218,7 @@ module.exports = values;
 /* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(15);
+var arrayMap = __webpack_require__(16);
 
 /**
  * The base implementation of `_.values` and `_.valuesIn` which creates an
@@ -50243,7 +50243,7 @@ module.exports = baseValues;
 /* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(15),
+var arrayMap = __webpack_require__(16),
     baseIteratee = __webpack_require__(9),
     baseMap = __webpack_require__(130),
     baseSortBy = __webpack_require__(434),
@@ -51280,7 +51280,7 @@ module.exports = baseClamp;
 module.exports = generateTrees;
 
 var last = __webpack_require__(136);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var reduce = __webpack_require__(41);
 var orderBy = __webpack_require__(148);
 var trim = __webpack_require__(143);
@@ -51406,7 +51406,7 @@ function formatHierarchicalFacetValue(hierarchicalSeparator, currentRefinement) 
 /* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(15),
+var arrayMap = __webpack_require__(16),
     baseIteratee = __webpack_require__(9),
     basePickBy = __webpack_require__(160),
     getAllKeysIn = __webpack_require__(88);
@@ -51590,7 +51590,7 @@ if (typeof Object.create === 'function') {
 
 
 var forEach = __webpack_require__(26);
-var map = __webpack_require__(16);
+var map = __webpack_require__(17);
 var reduce = __webpack_require__(41);
 var merge = __webpack_require__(92);
 var isArray = __webpack_require__(3);
@@ -53891,7 +53891,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(14);
 //
 //
 //
@@ -54061,7 +54061,7 @@ exports.push([module.i, "\n.ais-highlight > em {\n  background: yellow;\n  font-
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(14);
 //
 //
 //
@@ -54082,6 +54082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -54215,7 +54216,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(14);
 //
 //
 //
@@ -54336,7 +54337,18 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54355,7 +54367,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { SearchBox: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */], PoweredBy: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */] }
+  props: {
+    attributePerPage: {
+      default: 100
+    }
+  },
+
+  components: { SearchBox: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */], PoweredBy: __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__["a" /* default */] },
+
+  methods: {
+    options: function options() {
+      return [15, 30, 50, Number(this.attributePerPage)].filter(function (elem, index, self) {
+        return index === self.indexOf(elem);
+      }).sort();
+    }
+  }
 });
 
 /***/ }),
@@ -54370,27 +54396,47 @@ var render = function() {
     "div",
     { staticClass: "box" },
     [
-      _c(
-        "p",
-        { staticClass: "field" },
-        [
-          _c(
-            "ais-search-box",
-            [
-              _c("ais-input", {
-                staticClass: "input",
-                attrs: {
-                  autofocus: "true",
-                  type: "search",
-                  placeholder: "Search patients..."
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
+      _c("div", { staticClass: "field" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c(
+              "ais-search-box",
+              [
+                _c("ais-input", {
+                  staticClass: "input",
+                  attrs: {
+                    autofocus: "true",
+                    type: "search",
+                    placeholder: "Search patients..."
+                  }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Results per page:")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control" }),
+        _c(
+          "div",
+          { staticClass: "select" },
+          [
+            _c("ais-results-per-page-selector", {
+              attrs: { options: _vm.options() }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("p")
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -54462,7 +54508,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_instantsearch__ = __webpack_require__(14);
 //
 //
 //
@@ -55096,7 +55142,7 @@ __webpack_require__(534)(Chart);
 
 Chart.defaults = __webpack_require__(2);
 Chart.Element = __webpack_require__(8);
-Chart.elements = __webpack_require__(17);
+Chart.elements = __webpack_require__(18);
 Chart.Interaction = __webpack_require__(173);
 Chart.platform = __webpack_require__(174);
 
@@ -65124,7 +65170,7 @@ webpackContext.id = 559;
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('bar', {
@@ -65552,7 +65598,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('bubble', {
@@ -65739,7 +65785,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('doughnut', {
@@ -66045,7 +66091,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('line', {
@@ -66385,7 +66431,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('polarArea', {
@@ -66614,7 +66660,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('radar', {
@@ -66966,7 +67012,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(17);
+var elements = __webpack_require__(18);
 var helpers = __webpack_require__(1);
 
 defaults._set('global', {

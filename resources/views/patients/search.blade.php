@@ -27,11 +27,14 @@
             api-key="{{ config('scout.algolia.key') }}"
             index-name="patients"
             query="{{ request('q') }}"
+            :query-parameters="{
+                hitsPerPage: {{ setting('records_per_page') }}
+            }"
         >
             <div class="columns">
                 <div class="column is-two-fifths">
                     <clear-search-filters></clear-search-filters>
-                    <patients-search-box></patients-search-box>
+                    <patients-search-box attribute-per-page="{{ setting('records_per_page') }}"></patients-search-box>
                     <search-age-filter></search-age-filter>
                     <search-type-filter attribute-name="medical_insurance">Filter by Medical Insurance</search-type-filter>
                     <search-type-filter attribute-name="doc_type">Filter by Doc Type</search-type-filter>
