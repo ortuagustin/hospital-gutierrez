@@ -10,7 +10,7 @@
 
         <div class="level-left">
 
-            <div class="level-item">{!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.index', [], 'Back to Patients', 'has-text-info') !!}</div>
+            <div class="level-item"> {!! back_link() !!} </div>
 
             <div class="level-item">
                 {!! link_to_with_icon('fas fa-user fa-2x', 'patients.show', $patient, "Back to $patient->full_name", 'has-text-primary') !!}
