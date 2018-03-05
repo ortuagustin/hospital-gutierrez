@@ -1,32 +1,12 @@
 import Vue from 'vue';
-import Modal from './components/Modal.vue';
+import VModal from 'vue-js-modal';
+import Login from './components/Login';
+import Register from './components/Register';
+
+Vue.use(VModal);
 
 const auth = new Vue({
-  data() {
-    return {
-      loginForm: {},
-      registerForm: {}
-    };
-  },
-
-  mounted() {
-    this.loginForm = this.$refs.loginForm;
-    this.registerForm = this.$refs.registerForm;
-  },
-
-  components: {
-    Modal
-  },
-
-  methods: {
-    showLoginForm() {
-      this.loginForm.show();
-    },
-
-    showRegisterForm() {
-      this.registerForm.show();
-    }
-  }
+  components: { VModal, Login, Register }
 });
 
 if (document.getElementById('auth')) {

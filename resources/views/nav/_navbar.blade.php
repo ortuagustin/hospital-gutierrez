@@ -1,4 +1,4 @@
-<nav id="auth" class="navbar is-primary">
+<nav class="navbar is-primary">
 
     <div class="navbar-brand">
         <a class="navbar-item is-active" href="{{ route('home') }}">
@@ -14,29 +14,10 @@
 
     </div>
 
-    <div class="navbar-menu" id="navbar-menu">
-        <div class="navbar-end">
-            @if (Auth::guest())
-                <modal ref="loginForm" v-cloak>
-                    @include('auth._login_form')
-                </modal>
-                <a class="navbar-item" @click="showLoginForm">Login</a>
-
-                <modal ref="registerForm" v-cloak>
-                    @include('auth._register_form')
-                </modal>
-                <a class="navbar-item" @click="showRegisterForm">Register</a>
-            @else
-                <div class="navbar-item">
-                    <p>
-                        {!! icon('fas fa-user fa-lg') !!}
-                         Welcome, {{ Auth::user()->name }}
-                    </p>
-                </div>
-                @include('nav._logout_form')
-            @endif
+    <div class="navbar-menu" id="auth">
+        <div class="navbar-end" v-cloak>
+            @include('auth._modals')
         </div>
-
     </div>
 
 </nav>
