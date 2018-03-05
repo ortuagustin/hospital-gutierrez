@@ -4,21 +4,7 @@ import BarChart from './components/BarChart.vue';
 import LineChart from './components/LineChart.vue';
 
 const charts = new Vue({
-  components: {
-    PieChart,
-    LineChart,
-    BarChart
-  },
-
-  methods: {
-    showLoginForm() {
-      this.loginForm.show();
-    },
-
-    showRegisterForm() {
-      this.registerForm.show();
-    }
-  }
+  components: { PieChart, LineChart, BarChart }
 });
 
 if (document.getElementById('charts')) {

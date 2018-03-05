@@ -6,20 +6,19 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import vSelect from 'vue-select';
-import axios from "axios";
+import Vue from "vue";
+import vSelect from "vue-select";
 
 export default {
-  props: ['user', 'roles'],
+  props: ["user", "roles"],
 
   components: { vSelect },
 
   data() {
     return {
-      selected: '',
+      selected: "",
       initializing: true
-    }
+    };
   },
 
   created() {
@@ -27,25 +26,24 @@ export default {
   },
 
   methods: {
-    selected_roles()  {
+    selected_roles() {
       return {
         roles: this.selected.map(each => each.id)
-      }
+      };
     },
 
     changed(values) {
-
       if (this.initializing) {
         this.initializing = false;
         return;
       }
 
-      axios.patch(`/user/${this.user.id}/roles`, this.selected_roles())
-          .then(function(response) {
-              console.log(response);
-          }.bind(this)
+      axios.patch(`/user/${this.user.id}/roles`, this.selected_roles()).then(
+        function(response) {
+          console.log(response);
+        }.bind(this)
       );
     }
   }
-}
+};
 </script>
