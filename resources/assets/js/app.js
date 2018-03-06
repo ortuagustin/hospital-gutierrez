@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Buefy from 'buefy';
 import Toast from 'buefy/src/components/toast';
+import Dialog from 'buefy/src/components/dialog';
 import axios from 'axios';
 import InstantSearch from 'vue-instantsearch';
 import VModal from 'vue-js-modal';
@@ -18,6 +19,7 @@ import BarChart from './components/BarChart.vue';
 import LineChart from './components/LineChart.vue';
 import SettingInput from './components/SettingInput.vue';
 import SettingCheckbox from './components/SettingCheckbox.vue';
+import SettingsReset from './components/SettingsReset.vue';
 import Flash from './components/Flash.vue';
 import Navbar from './components/Navbar.vue';
 
@@ -57,6 +59,7 @@ Vue.use(InstantSearch);
 Vue.use(VModal);
 
 Vue.prototype.$toast = Toast;
+Vue.prototype.$dialog = Dialog;
 
 const app = new Vue({
   el: "#app",
@@ -77,6 +80,7 @@ const app = new Vue({
     BarChart,
     SettingInput,
     SettingCheckbox,
+    SettingsReset,
     Flash,
     Navbar
   }

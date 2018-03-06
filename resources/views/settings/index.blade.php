@@ -18,7 +18,7 @@
             @endunless
         @endforeach
 
-        {!! link_to('Reset ALL to default values', 'settings.reset', [], 'button is-danger') !!}
+        <settings-reset class="button is-danger" route="{{ route('settings.reset') }}">Reset all to default values</settings-reset>
     </div>
 
 @endsection
