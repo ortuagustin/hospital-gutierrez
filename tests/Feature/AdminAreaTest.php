@@ -62,4 +62,22 @@ class AdminAreaTest extends FeatureTest
              ->postJson(route('settings.store'))
              ->assertStatus(403);
     }
+
+    /** @test */
+    public function admin_users_may_reset_settings_to_defaults()
+    {
+        $this->signInAdmin();
+
+        $this->deleteJson(route('settings.reset'))
+             ->assertStatus(200);
+    }
+
+    /** @test */
+    public function non_admin_users_cannot_reset_settings_to_defaults()
+    {
+        $this->withExceptionHandling()
+             ->signIn()
+             ->deleteJson(route('settings.reset'))
+             ->assertStatus(403);
+    }
 }
