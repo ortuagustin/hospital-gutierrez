@@ -26,23 +26,25 @@ export default {
   },
 
   methods: {
-    selected_roles() {
-      return {
-        roles: this.selected.map(each => each.id)
-      };
-    },
-
     changed(values) {
       if (this.initializing) {
         this.initializing = false;
         return;
       }
 
-      axios.patch(`/user/${this.user.id}/roles`, this.selected_roles()).then(
-        function(response) {
-          console.log(response);
-        }.bind(this)
-      );
+      axios
+        .patch(this.url(), this.selected_roles())
+        .then(() => flash("Updated User roles"));
+    },
+
+    selected_roles() {
+      return {
+        roles: this.selected.map(each => each.id)
+      };
+    },
+
+    url() {
+      return `/user/${this.user.id}/roles`;
     }
   }
 };
