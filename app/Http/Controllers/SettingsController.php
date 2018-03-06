@@ -35,12 +35,14 @@ class SettingsController extends Controller
         $setting = $request->save();
 
         if (request()->wantsJson()) {
+            if ($setting->reloads) {
+                $this->flash("Updated $setting->human_name");
+            }
+
             return response()->json(['Updated succesfuly']);
         }
 
-        return redirect()
-            ->route('settings.index')
-            ->with('flash', "Updated $setting->human_name");
+        return redirect(route('settings.index'));
     }
 
     /**
@@ -53,7 +55,7 @@ class SettingsController extends Controller
     {
         $default_settings->resetToDefault();
 
-        request()->session()->flash('flash', 'All settings reset to defaults!');
+        $this->flash('All settings reset to defaults!');
 
         if (request()->wantsJson()) {
             return response()->json(['All settings reset to defaults!']);
