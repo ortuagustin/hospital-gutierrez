@@ -16,6 +16,7 @@ import BarChart from './components/BarChart.vue';
 import LineChart from './components/LineChart.vue';
 import SettingInput from './components/SettingInput.vue';
 import SettingCheckbox from './components/SettingCheckbox.vue';
+import Flash from './components/Flash.vue';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -43,6 +44,12 @@ if (token) {
   );
 }
 
+window.events = new Vue();
+
+window.flash = function(message, type = 'is-success') {
+  window.events.$emit('flash', { message, type });
+};
+
 Vue.use(InstantSearch);
 Vue.use(VModal);
 
@@ -64,6 +71,7 @@ const app = new Vue({
     LineChart,
     BarChart,
     SettingInput,
-    SettingCheckbox
+    SettingCheckbox,
+    Flash
   },
 });

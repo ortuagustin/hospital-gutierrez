@@ -49,6 +49,8 @@
         <footer class="footer" id="footer">
             @include('layouts._footer')
         </footer>
+
+        <flash message="{{ session('flash') }}"></flash>
     </div>
 
     <!-- Scripts -->
