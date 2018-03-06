@@ -31,6 +31,18 @@ class LoginController extends Controller
     }
 
     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return redirect('/')
+            ->with('flash', 'Please, login to continue.')
+            ->with('flash-type', 'is-danger');
+    }
+
+    /**
      * Get the needed authorization credentials from the request.
      *
      * @param \Illuminate\Http\Request $request
