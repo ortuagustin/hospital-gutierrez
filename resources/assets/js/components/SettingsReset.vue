@@ -1,5 +1,5 @@
 <template>
-  <button href="#" @click="reset">
+  <button href="#" @click="clicked">
     <slot></slot>
   </button>
 </template>
@@ -20,6 +20,15 @@ export default {
   },
 
   methods: {
+    clicked() {
+      this.confirm(
+        "Continue?",
+        "This will reset all settings to defaults!",
+        "is-danger",
+        this.reset
+      );
+    },
+
     reset() {
       this.loading = true;
 
@@ -33,6 +42,19 @@ export default {
           this.loading = false;
           flash("An error occurred!", "is-danger");
         });
+    },
+
+    confirm(title, message, type, onConfirm, onCancel) {
+      this.$dialog.confirm({
+        title,
+        message,
+        onConfirm,
+        onCancel,
+        type,
+        hasIcon: true,
+        iconPack: "fas",
+        size: "is-medium"
+      });
     }
   }
 };
