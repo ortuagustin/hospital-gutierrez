@@ -20,6 +20,7 @@ class CreateApplicationSettingsTable extends Migration
             $table->string('key');
             $table->string('value');
             $table->string('input_type');
+            $table->boolean('reloads')->default(false);
             $table->primary('key');
             $table->timestamps();
         });

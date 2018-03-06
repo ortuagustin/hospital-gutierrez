@@ -59,6 +59,7 @@ $factory->define(App\ApplicationSetting::class, function (Faker\Generator $faker
         'key'        => $faker->unique()->slug,
         'value'      => $faker->unique()->isbn10,
         'input_type' => 'text',
+        'reloads'    => false,
     ];
 });
 

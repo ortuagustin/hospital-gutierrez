@@ -12,7 +12,7 @@ class ApplicationSetting extends Model
      * @var array
      */
     protected $fillable = [
-        'key', 'value', 'input_type',
+        'key', 'value', 'input_type', 'reloads',
     ];
 
     /**
@@ -28,6 +28,25 @@ class ApplicationSetting extends Model
      * @var string
      */
     protected $keyType = 'string';
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'human_name',
+    ];
+
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'reloads' => 'boolean',
+    ];
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -56,9 +75,10 @@ class ApplicationSetting extends Model
      * @param string $key
      * @param string $value
      * @param string $input_type
+     * @param bool $reloads
      * @return \App\ApplicationSetting
      */
-    public static function put($key, $value, $input_type = 'text')
+    public static function put($key, $value, $input_type = 'text', $reloads = false)
     {
         if (static::exists($key)) {
             $setting = ApplicationSetting::find($key);
@@ -69,7 +89,10 @@ class ApplicationSetting extends Model
         }
 
         return static::create([
-            'key' => $key, 'value' => $value, 'input_type' => $input_type,
+            'key'        => $key,
+            'value'      => $value,
+            'input_type' => $input_type,
+            'reloads'    => $reloads,
         ]);
     }
 

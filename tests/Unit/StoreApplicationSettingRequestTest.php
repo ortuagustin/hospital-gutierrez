@@ -10,7 +10,7 @@ class StoreApplicationSettingRequestTest extends FormRequestTestCase
     /** @test */
     public function it_does_not_allow_empty_fields()
     {
-        $this->assertFieldsRequired(['input_type']);
+        $this->assertFieldsRequired(['input_type', 'reloads']);
     }
 
     /** @test */
@@ -65,9 +65,8 @@ class StoreApplicationSettingRequestTest extends FormRequestTestCase
     {
         $setting = $this->createModel(['key' => 'key', 'value' => 'value']);
         $setting->value = 'updated-value';
-        $changed_fields = $setting->toArray();
-        $this->createFormRequest($changed_fields)->save();
-        $this->assertDatabaseHas('application_settings', $changed_fields);
+        $this->createFormRequest($setting->toArray())->save();
+        $this->assertDatabaseHas('application_settings', ['key' => $setting->key, 'value' => $setting->value]);
         $this->assertEquals(ApplicationSetting::count(), 1);
         $this->assertEquals('key', $setting->key);
         $this->assertEquals('updated-value', $setting->value);

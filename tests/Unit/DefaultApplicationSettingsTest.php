@@ -20,11 +20,21 @@ class DefaultApplicationSettingsTest extends TestCase
     public function it_creates_all_settings_when_resetting_to_default()
     {
         $this->settings_resetter->resetToDefault();
+
         $this->assertTrue(ApplicationSetting::exists('title'));
+        $this->assertTrue(ApplicationSetting::find('title')->reloads, 'Title should reload');
+
         $this->assertTrue(ApplicationSetting::exists('description'));
+        $this->assertTrue(ApplicationSetting::find('description')->reloads, 'Description should reload');
+
         $this->assertTrue(ApplicationSetting::exists('contact_email'));
+        $this->assertFalse(ApplicationSetting::find('contact_email')->reloads, 'Contact email should not reload');
+
         $this->assertTrue(ApplicationSetting::exists('records_per_page'));
+        $this->assertFalse(ApplicationSetting::find('records_per_page')->reloads, 'Records per page should not reload');
+
         $this->assertTrue(ApplicationSetting::exists('maintenance'));
+        $this->assertFalse(ApplicationSetting::find('maintenance')->reloads, 'Maintenance should reload');
     }
 
     /** @test */
