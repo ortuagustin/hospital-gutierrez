@@ -14,7 +14,7 @@
 
     </div>
 
-    <div class="navbar-menu" id="auth">
+    <div class="navbar-menu">
         <div class="navbar-end" v-cloak>
             @include('auth._modals')
         </div>

@@ -7,7 +7,7 @@
     {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
 
 
-    <div class="box" id="settings">
+    <div class="box">
         @foreach ($settings as $setting)
             @unless ($setting->input_type == 'checkbox')
                 <setting-input :setting="{{ $setting }}" route="{{ route('settings.store') }}"></setting-input>

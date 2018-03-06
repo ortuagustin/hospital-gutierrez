@@ -24,30 +24,32 @@
 </head>
 
 <body>
-    @include('nav._navbar')
+    <div id="app">
+        @include('nav._navbar')
 
-    <section class="hero is-primary is-small">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                @hasSection('hero-body-content')
-                    @yield('hero-body-content')
-                @else
-                    <h1 class="title">{{ setting('title') }}</h1>
-                    <h2 class="subtitle">{{ setting('description') }}</h2>
-                @endif
+        <section class="hero is-primary is-small">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    @hasSection('hero-body-content')
+                        @yield('hero-body-content')
+                    @else
+                        <h1 class="title">{{ setting('title') }}</h1>
+                        <h2 class="subtitle">{{ setting('description') }}</h2>
+                    @endif
+                </div>
             </div>
-        </div>
 
-        @includeWhen(Auth::check(), 'nav._footer')
-    </section>
+            @includeWhen(Auth::check(), 'nav._footer')
+        </section>
 
-    <section class="section" id="wrapper">
-        @yield('content')
-    </section>
+        <section class="section" id="wrapper">
+            @yield('content')
+        </section>
 
-    <footer class="footer" id="footer">
-        @include('layouts._footer')
-    </footer>
+        <footer class="footer" id="footer">
+            @include('layouts._footer')
+        </footer>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
