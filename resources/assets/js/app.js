@@ -17,6 +17,7 @@ import LineChart from './components/LineChart.vue';
 import SettingInput from './components/SettingInput.vue';
 import SettingCheckbox from './components/SettingCheckbox.vue';
 import Flash from './components/Flash.vue';
+import Navbar from './components/Navbar.vue';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -72,6 +73,7 @@ const app = new Vue({
     BarChart,
     SettingInput,
     SettingCheckbox,
-    Flash
-  },
+    Flash,
+    Navbar
+  }
 });
