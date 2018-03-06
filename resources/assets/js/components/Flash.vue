@@ -1,5 +1,5 @@
 <template>
-<div class="flash notification" :class="this.type" v-if="visible">
+<div class="flash notification" :class="kind" v-if="visible">
   <button class="delete" @click="visible = false"></button>
 
   <span v-text="body"></span>
@@ -8,12 +8,27 @@
 
 <script>
 export default {
-  props: ["message"],
+  props: {
+    message: {
+      type: String,
+      default: ""
+    },
+
+    type: {
+      type: String,
+      default: "is-success"
+    }
+  },
+
+  computed: {
+    kind: () => {
+      return this.type || "is-success";
+    }
+  },
 
   data() {
     return {
       body: this.message,
-      type: "",
       visible: false
     };
   },
