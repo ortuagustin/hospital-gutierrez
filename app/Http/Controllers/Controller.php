@@ -34,4 +34,18 @@ class Controller extends BaseController
         // this allows to only have the Request parameter in controllers
         return array_merge($this->resourceMethodsWithoutModelsTrait(), ['update']);
     }
+
+    /**
+     * Flashes to the request session
+     *
+     * @param mixed $value
+     * @param string $key
+     * @return $this
+     */
+    protected function flash($value, $key = 'flash')
+    {
+        request()->session()->flash($key, $value);
+
+        return $this;
+    }
 }
