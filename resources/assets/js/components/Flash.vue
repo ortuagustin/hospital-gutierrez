@@ -14,21 +14,22 @@ export default {
       default: ""
     },
 
-    type: {
+    dataType: {
       type: String,
       default: "is-success"
     }
   },
 
   computed: {
-    kind: () => {
-      return this.type || "is-success";
+    kind: function() {
+      return this.type;
     }
   },
 
   data() {
     return {
       body: this.message,
+      type: this.dataType,
       visible: false
     };
   },

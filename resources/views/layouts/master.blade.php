@@ -50,7 +50,7 @@
             @include('layouts._footer')
         </footer>
 
-        <flash message="{{ session('flash') }}" type="{{ session('flash-type') }}"></flash>
+        <flash message="{{ session('flash') }}" data-type="{{ session('flash-type') }}"></flash>
     </div>
 
     <!-- Scripts -->
