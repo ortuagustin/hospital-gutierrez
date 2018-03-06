@@ -1,15 +1,11 @@
 <template>
-<div class="flash notification" :class="kind" v-if="visible">
-  <button class="delete" @click="visible = false"></button>
 
-  <span v-text="body"></span>
-</div>
 </template>
 
 <script>
 export default {
   props: {
-    message: {
+    dataMessage: {
       type: String,
       default: ""
     },
@@ -20,23 +16,16 @@ export default {
     }
   },
 
-  computed: {
-    kind: function() {
-      return this.type;
-    }
-  },
-
   data() {
     return {
-      body: this.message,
-      type: this.dataType,
-      visible: false
+      message: this.dataMessage,
+      type: this.dataType
     };
   },
 
-  created() {
+  mounted() {
     if (this.message) {
-      this.flash();
+      this.flash(this);
     }
 
     window.events.$on("flash", data => this.flash(data));
@@ -44,28 +33,15 @@ export default {
 
   methods: {
     flash(data) {
-      if (data) {
-        this.body = data.message;
-        this.type = data.type;
-      }
+      this.$toast.open({
+        message: data.message,
+        type: data.type || "is-success",
+        queue: false
+      });
 
-      this.visible = true;
-      this.hide();
-    },
-
-    hide() {
-      setTimeout(() => {
-        this.visible = false;
-      }, 3000);
+      this.message = "";
+      this.type = "";
     }
   }
 };
 </script>
-
-<style>
-.flash {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-}
-</style>

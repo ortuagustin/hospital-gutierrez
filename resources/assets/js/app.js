@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import Buefy from 'buefy'
+import Buefy from 'buefy';
+import Toast from 'buefy/src/components/toast';
 import axios from 'axios';
 import InstantSearch from 'vue-instantsearch';
 import VModal from 'vue-js-modal';
@@ -19,8 +20,6 @@ import SettingInput from './components/SettingInput.vue';
 import SettingCheckbox from './components/SettingCheckbox.vue';
 import Flash from './components/Flash.vue';
 import Navbar from './components/Navbar.vue';
-
-import 'buefy/lib/buefy.css'
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -56,6 +55,8 @@ window.flash = function(message, type = 'is-success') {
 
 Vue.use(InstantSearch);
 Vue.use(VModal);
+
+Vue.prototype.$toast = Toast;
 
 const app = new Vue({
   el: "#app",

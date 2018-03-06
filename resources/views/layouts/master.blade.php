@@ -13,7 +13,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @stack('styles')
@@ -50,7 +49,7 @@
             @include('layouts._footer')
         </footer>
 
-        <flash message="{{ session('flash') }}" data-type="{{ session('flash-type') }}"></flash>
+        <flash data-message="{{ session('flash') }}" data-type="{{ session('flash-type') }}"></flash>
     </div>
 
     <!-- Scripts -->
