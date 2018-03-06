@@ -65,9 +65,9 @@ export default {
     },
 
     reload() {
-      if (this.setting.reloads) {
-        location.reload();
-      }
+      this.setting.reloads
+        ? location.reload()
+        : flash(`Updated ${this.setting.human_name}`);
     }
   }
 };

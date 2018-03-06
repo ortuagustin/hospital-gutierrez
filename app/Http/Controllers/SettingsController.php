@@ -32,13 +32,15 @@ class SettingsController extends Controller
      */
     public function store(StoreApplicationSettingRequest $request)
     {
-        $request->save();
+        $setting = $request->save();
 
         if (request()->wantsJson()) {
             return response(['Updated succesfuly'], 200);
         }
 
-        return redirect()->route('settings.index');
+        return redirect()
+            ->route('settings.index')
+            ->with('flash', "Updated $setting->human_name");
     }
 
     /**
@@ -51,6 +53,8 @@ class SettingsController extends Controller
     {
         $default_settings->resetToDefault();
 
-        return redirect()->route('settings.index');
+        return redirect()
+            ->route('settings.index')
+            ->with('flash', 'All settings reset to defaults!');
     }
 }
