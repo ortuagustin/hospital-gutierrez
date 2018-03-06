@@ -34,6 +34,8 @@ class SettingsController extends Controller
     {
         $setting = $request->save();
 
+        $this->flash("Updated $setting->human_name");
+
         if (request()->wantsJson()) {
             if ($setting->reloads) {
                 $this->flash("Updated $setting->human_name");
