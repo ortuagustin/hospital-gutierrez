@@ -6,26 +6,19 @@
 
     {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
 
-    @include('layouts._errors')
 
-    <div class="box">
-
-        <table class="table is-striped is-narrow is-fullwidth">
-
-            <thead></thead>
-
-            <tbody>
-                @foreach ($settings as $setting)
-                    <tr>
-                        @include('settings._form', ['setting' => $setting])
-                    </tr>
-                @endforeach
-            </tbody>
-
-        </table>
+    <div class="box" id="settings">
+        @foreach ($settings as $setting)
+            @unless ($setting->input_type == 'checkbox')
+                <setting-input :setting="{{ $setting }}" route="{{ route('settings.store') }}"></setting-input>
+            @else
+                <setting-checkbox :setting="{{ $setting }}" route="{{ route('settings.store') }}">
+                    Check to put site on maintenance mode; only Admins will be allowed to browse.
+                </setting-checkbox>
+            @endunless
+        @endforeach
 
         {!! link_to('Reset ALL to default values', 'settings.reset', [], 'button is-danger') !!}
     </div>
-
 
 @endsection
