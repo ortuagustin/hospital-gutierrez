@@ -40,7 +40,7 @@ export default {
     hide() {
       setTimeout(() => {
         this.visible = false;
-      }, 5000);
+      }, 3000);
     }
   }
 };
