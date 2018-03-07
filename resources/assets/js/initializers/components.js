@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Navbar from '../components/Navbar.vue';
-import Table from '../components/Table.vue';
 import TableRow from '../components/TableRow.vue';
 import Flash from '../components/Flash.vue';
 import Login from '../components/Login.vue';
@@ -13,7 +12,6 @@ import SettingCheckbox from '../components/SettingCheckbox.vue';
 import SettingsReset from '../components/SettingsReset.vue';
 
 Vue.component('navbar', Navbar);
-Vue.component('vue-table', Table);
 Vue.component('vue-table-row', TableRow);
 Vue.component('flash', Flash);
 Vue.component('login', Login);

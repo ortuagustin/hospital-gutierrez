@@ -1,9 +1,9 @@
 <table class="table is-striped is-narrow">
-    <template name="header">
+    <thead>
         @include('patients.table._header')
-    </template>
+    </thead>
 
-    <template name="body">
+    <tbody>
          @include('patients.table._body')
-    </template>
+    </tbody>
 </table>
