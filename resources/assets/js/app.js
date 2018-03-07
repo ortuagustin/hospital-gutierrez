@@ -7,7 +7,6 @@ import './initializers/charts.js';
 import './initializers/algolia.js';
 import './initializers/buefy.js';
 
-
 const app = new Vue({
   el: "#app",
 });
