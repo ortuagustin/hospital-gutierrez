@@ -57,7 +57,7 @@
                         @endcan
 
                         @can ('delete', $patient)
-                            <td>{!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient) !!}</td>
+                            <td> <delete-button route="{{route('patients.destroy', $patient) }}"></delete-button> </td>
                         @endcan
                     </tr>
                 @endforeach
