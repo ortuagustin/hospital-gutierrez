@@ -1,5 +1,5 @@
 @foreach ($patients as $patient)
-    <vue-table-row @removed="flash('removed')">
+    <vue-table-row>
         <template>
             <th>{{ $patient->id }}</th>
             <td>{{ $patient->name }}</td>
