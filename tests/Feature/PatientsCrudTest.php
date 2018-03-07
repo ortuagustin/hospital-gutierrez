@@ -36,4 +36,27 @@ class PatientsCrudTestTest extends FeatureTest
 
         $this->assertEquals(Patient::count(), 1, 'There should be one Patient');
     }
+
+    /** @test */
+    public function authorized_users_can_list_patients()
+    {
+        $this->createPatients(3);
+
+        $this->assertEquals(Patient::count(), 3, 'There should be three Patients in the Database');
+
+        $response = $this->signInAdmin()
+                        ->getJson(route('patients.index'))
+                        ->assertSuccessful()
+                        ->json();
+
+        $this->assertCount(3, $response['data'], 'There should be three Patients in the response');
+    }
+
+    /** @test */
+    public function unauthorized_users_cannot_list_patients()
+    {
+        $this->withExceptionHandling()
+              ->get(route('patients.index'))
+              ->assertRedirect(route('login'));
+    }
 }

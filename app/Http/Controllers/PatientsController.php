@@ -27,6 +27,10 @@ class PatientsController extends Controller
     {
         $patients = Patient::orderBy('name')->paginate(setting('records_per_page', '15'));
 
+        if (request()->wantsJson()) {
+            return $patients;
+        }
+
         return view('patients/index', compact('patients'));
     }
 
