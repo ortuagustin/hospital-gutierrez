@@ -42,19 +42,6 @@ export default {
           this.loading = false;
           flash("An error occurred!", "is-danger");
         });
-    },
-
-    confirm(title, message, type, onConfirm, onCancel) {
-      this.$dialog.confirm({
-        title,
-        message,
-        onConfirm,
-        onCancel,
-        type,
-        hasIcon: true,
-        iconPack: "fas",
-        size: "is-medium"
-      });
     }
   }
 };

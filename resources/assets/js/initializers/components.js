@@ -1,0 +1,20 @@
+import Vue from 'vue';
+import Flash from '../components/Flash.vue';
+import Navbar from '../components/Navbar.vue';
+import Login from '../components/Login';
+import Register from '../components/Register';
+import Logout from '../components/Logout';
+import UserRoleSelect from '../components/UserRoleSelect.vue';
+import SettingInput from '../components/SettingInput.vue';
+import SettingCheckbox from '../components/SettingCheckbox.vue';
+import SettingsReset from '../components/SettingsReset.vue';
+
+Vue.component('navbar', Navbar);
+Vue.component('flash', Flash);
+Vue.component('login', Login);
+Vue.component('register', Register);
+Vue.component('logout', Logout);
+Vue.component('user-role-select', UserRoleSelect);
+Vue.component('setting-input', SettingInput);
+Vue.component('setting-checkbox', SettingCheckbox);
+Vue.component('settings-reset', SettingsReset);
