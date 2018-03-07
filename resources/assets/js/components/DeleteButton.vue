@@ -19,21 +19,39 @@ export default {
       default: false
     },
 
+    flashesOnDelete: {
+      required: false,
+      type: Boolean,
+      default: true
+    },
+
+    flashMessage: {
+      required: false,
+      type: String,
+      default: "Deleted!"
+    },
+
     route: {
       required: true,
       type: String
     },
 
-    title: {
+    promptTitle: {
       required: false,
       type: String,
       default: "Continue?"
     },
 
-    message: {
+    promptMessage: {
       required: false,
       type: String,
       default: "This will delete the record"
+    },
+
+    promptType: {
+      required: false,
+      type: String,
+      default: "is-danger"
     }
   },
 
@@ -45,7 +63,12 @@ export default {
 
   methods: {
     clicked() {
-      this.confirm(this.title, this.message, "is-danger", this.delete);
+      this.confirm(
+        this.promptTitle,
+        this.promptMessage,
+        this.promptType,
+        this.delete
+      );
     },
 
     delete() {
@@ -54,15 +77,23 @@ export default {
       axios
         .delete(this.route)
         .then(() => {
-          this.loading = false;
-
-          if (this.removesParentOnDelete) {
-            $(this.$parent.$el).fadeOut();
-          }
+          this.deleted();
         })
         .catch(error => {
           this.loading = false;
         });
+    },
+
+    deleted() {
+      this.loading = false;
+
+      if (this.flashesOnDelete) {
+        flash(this.flashMessage);
+      }
+
+      if (this.removesParentOnDelete) {
+        $(this.$parent.$el).fadeOut();
+      }
     }
   }
 };
