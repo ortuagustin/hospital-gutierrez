@@ -19,7 +19,7 @@
     </div>
 
     <div class="control">
-        {!! link_to('Cancel', 'patients.index', [], 'button is-danger is-outlined') !!}
+        {!! link_to('Cancel', 'roles.index', [], 'button is-danger is-outlined') !!}
     </div>
 
 </div>
