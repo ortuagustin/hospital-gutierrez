@@ -1,11 +1,15 @@
-<div class="card">
-  <header class="card-header">
+<b-collapse class="card" :open="false">
+  <div slot="trigger" slot-scope="props" class="card-header">
     <p class="card-header-title">
       <a :href="patient.path" class="is-size-5 is-uppercase">
         <ais-highlight :result="patient" attribute-name="full_name"></ais-highlight>
       </a>
     </p>
-  </header>
+
+    <a class="card-header-icon">
+        <b-icon pack="fas" :icon="props.open ? 'angle-up' : 'angle-down'"></b-icon>
+    </a>
+  </div>
 
   <div class="card-content">
       <div class="content">
@@ -34,4 +38,4 @@
         <a :href="patient.path + '/edit'" class="card-footer-item">Edit</a>
     @endcan
   </footer>
-</div>
+</b-collapse>
