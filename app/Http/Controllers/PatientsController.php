@@ -100,6 +100,10 @@ class PatientsController extends Controller
     {
         $patient->delete();
 
+        if (request()->wantsJson()) {
+            return response()->json(['Deleted succesfuly']);
+        }
+
         return redirect()->route('patients.index');
     }
 }
