@@ -13,6 +13,12 @@
 <script>
 export default {
   props: {
+    removesParentOnDelete: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
     route: {
       required: true,
       type: String
@@ -49,11 +55,13 @@ export default {
         .delete(this.route)
         .then(() => {
           this.loading = false;
-          this.$emit("deleted");
+
+          if (this.removesParentOnDelete) {
+            $(this.$parent.$el).fadeOut();
+          }
         })
         .catch(error => {
           this.loading = false;
-          this.$emit("failed", error);
         });
     }
   }
