@@ -45,6 +45,7 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $this->validateRequest($request);
+
         Role::create($request->all());
 
         return redirect()->route('roles.index');
@@ -85,6 +86,7 @@ class RolesController extends Controller
     public function update(Request $request, Role $role)
     {
         $this->validateRequest($request);
+
         $role->update($request->all());
 
         return redirect()->route('roles.index');
