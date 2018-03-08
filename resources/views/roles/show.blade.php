@@ -8,9 +8,7 @@
     <h2 class="subtitle">Permissions</h2>
 
     <div class="box">
-
         <table class="table is-striped is-narrow">
-
             <thead>
                 <tr>
                     <th><abbr title="Number">#</abbr></th>
@@ -28,8 +26,6 @@
                     </tr>
                 @endforeach
             </tbody>
-
         </table>
-
     </div>
 @endsection

@@ -18,6 +18,5 @@
         @auth
             <p class="subtitle is-5">Please contact an Administrator for details</p>
         @endauth
-
     </div>
 @endsection

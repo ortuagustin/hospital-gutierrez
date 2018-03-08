@@ -6,11 +6,8 @@
     {!! back_link() !!}
 
     <form method="POST" action={{ route('patients.update', $patient) }}>
-
         {{ method_field('PATCH') }}
 
-        @include('patients._form', [
-            'submitButtonText' => 'Update Patient',
-        ])
+        @include('patients._form', ['submitButtonText' => 'Update Patient'])
     </form>
 @endsection

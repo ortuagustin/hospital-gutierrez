@@ -1,7 +1,7 @@
 @foreach ($roles as $role)
     <tr is="vue-table-row">
         <th>{{ $role->id }}</th>
-        <td>{{ $role->name }}</td>
+        <td v-pre>{{ $role->name }}</td>
         <td> {!! link_to_with_icon('fas fa-info-circle fa-2x', 'roles.show', $role->id, '', 'has-text-info') !!} </td>
         <td> {!! link_to_with_icon('fas fa-edit fa-2x', 'roles.edit', $role, '', 'has-text-dark') !!} </td>
 

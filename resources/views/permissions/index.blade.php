@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
     <h1 class="title is-3 has-text-grey">Permissions List</h1>
 
     <div class="box">
@@ -11,9 +10,7 @@
     {{ $permissions->links('pagination._header') }}
 
     <div class="box">
-
         <table class="table is-striped is-narrow is-fullwidth">
-
             <thead>
                 <tr>
                     <th>ID</th>
@@ -29,11 +26,8 @@
                     </tr>
                 @endforeach
             </tbody>
-
         </table>
-
     </div>
 
     {{ $permissions->links('pagination._footer') }}
-
 @endsection

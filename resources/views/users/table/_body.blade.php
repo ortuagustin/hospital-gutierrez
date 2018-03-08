@@ -1,9 +1,9 @@
 @foreach ($users as $user)
     <tr is="vue-table-row">
         <th>{{ $user->id }}</th>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->roles_names() }}</td>
+        <td v-pre>{{ $user->name }}</td>
+        <td v-pre>{{ $user->email }}</td>
+        <td v-pre>{{ $user->roles_names() }}</td>
         <td> {!! link_to_with_icon('fas fa-info-circle fa-2x', 'users.show', $user->id, '', 'has-text-info') !!} </td>
 
         @if (Auth::id() != $user->id)

@@ -11,7 +11,6 @@
 @endif
 
 <ul class="pagination-list">
-
     {{-- Pagination Elements --}}
     @foreach ($elements as $element)
         {{-- "Three Dots" Separator --}}
@@ -30,5 +29,4 @@
             @endforeach
         @endif
     @endforeach
-
 </ul>

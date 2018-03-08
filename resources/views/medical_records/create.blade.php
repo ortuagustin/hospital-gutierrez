@@ -5,8 +5,6 @@
 
     <form method="POST" action={{ route('patients.medical_records.store', [$patient]) }}>
 
-        @include('medical_records._form', [
-            'submitButtonText' => 'Create Medical Record',
-        ])
+        @include('medical_records._form', ['submitButtonText' => 'Create Medical Record'])
     </form>
 @endsection

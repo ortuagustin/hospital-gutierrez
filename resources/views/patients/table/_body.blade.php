@@ -1,14 +1,14 @@
 @foreach ($patients as $patient)
     <tr is="vue-table-row">
         <th>{{ $patient->id }}</th>
-        <td>{{ $patient->name }}</td>
-        <td>{{ $patient->last_name }}</td>
-        <td>{{ $patient->document }}</td>
-        <th>{{ $patient->birth_date->toDateString() }}</th>
-        <td>{{ $patient->gender }}</td>
-        <td>{{ $patient->medicalInsurance->value() }}</td>
-        <td>{{ $patient->address }}</td>
-        <td>{{ $patient->phone }}</td>
+        <td v-pre>{{ $patient->name }}</td>
+        <td v-pre>{{ $patient->last_name }}</td>
+        <td v-pre>{{ $patient->document }}</td>
+        <td v-pre>{{ $patient->birth_date->toDateString() }}</td>
+        <td v-pre>{{ $patient->gender }}</td>
+        <td v-pre>{{ $patient->medicalInsurance->value() }}</td>
+        <td v-pre>{{ $patient->address }}</td>
+        <td v-pre>{{ $patient->phone }}</td>
         <td>{!! link_to_with_icon('fas fa-info-circle fa-2x', 'patients.show', $patient->id, '', 'has-text-info') !!}</td>
 
         @can ('update', $patient)

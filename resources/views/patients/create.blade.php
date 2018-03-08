@@ -7,8 +7,6 @@
 
     <form method="POST" action={{ route('patients.store') }}>
 
-        @include('patients._form', [
-            'submitButtonText' => 'Create Patient',
-        ])
+        @include('patients._form', ['submitButtonText' => 'Create Patient'])
     </form>
 @endsection

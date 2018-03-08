@@ -1,4 +1,3 @@
-
 @if ($value)
     {!! icon('fas fa-check', 'has-text-success') !!}
 @else

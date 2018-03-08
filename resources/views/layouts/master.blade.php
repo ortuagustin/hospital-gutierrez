@@ -32,8 +32,8 @@
                     @hasSection('hero-body-content')
                         @yield('hero-body-content')
                     @else
-                        <h1 class="title">{{ setting('title') }}</h1>
-                        <h2 class="subtitle">{{ setting('description') }}</h2>
+                        <h1 class="title" v-pre>{{ setting('title') }}</h1>
+                        <h2 class="subtitle" v-pre>{{ setting('description') }}</h2>
                     @endif
                 </div>
             </div>

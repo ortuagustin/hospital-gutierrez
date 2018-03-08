@@ -3,14 +3,12 @@
 {{ csrf_field() }}
 
 <div class="box">
-
     <div class="field is-horizontal">
         <div class="field-label">
             <label class="field-label has-text-weight-bold has-text-grey">Names / Gender</label>
         </div>
 
         <div class="field-body">
-
             <div class="field">
                 <p class="control has-icons-left">
                     <input class="input" type="text" name="last_name" value="{{ old('last_name', $patient->last_name) }}" placeholder="The Patient's last name" autofocus>
@@ -41,7 +39,6 @@
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'gender'])
             </div>
-
         </div>
     </div>
 
@@ -107,9 +104,7 @@
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'dni'])
             </div>
-
         </div>
-
     </div>
 
     <div class="field is-horizontal">
@@ -136,16 +131,13 @@
         </div>
     </div>
 
-
     <div class="field is-horizontal">
         <div class="field-label">
             <label class="field-label has-text-weight-bold has-text-grey"></label>
         </div>
 
         <div class="field-body">
-
             <div class="field">
-
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Medical Insurance</label>
@@ -159,11 +151,9 @@
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'medical_insurance_id'])
                 </div>
-
             </div>
 
             <div class="field">
-
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Home Type</label>
@@ -177,11 +167,9 @@
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'home_type_id'])
                 </div>
-
             </div>
 
             <div class="field">
-
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Water Type</label>
@@ -195,7 +183,6 @@
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'water_type_id'])
                 </div>
-
             </div>
 
             <div class="field">
@@ -213,11 +200,8 @@
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'heating_type_id'])
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     {{-- adds spacing, do NOT remove --}}
@@ -251,11 +235,8 @@
                      Has Refrigerator?
                 @endcomponent
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <div class="box">

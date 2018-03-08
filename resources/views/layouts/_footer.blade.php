@@ -1,5 +1,4 @@
 <div class="level">
-
     <div class="level-item has-text-centered">
         <div>
             <a href="https://laravel.com">{!! icon('fab fa-laravel fa-4x', 'has-text-danger') !!}
@@ -53,5 +52,4 @@
             <p class="heading">Trabajo de promoci&oacute;n</p>
         </div>
     </div>
-
 </div>

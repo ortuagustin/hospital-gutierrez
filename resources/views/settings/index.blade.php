@@ -1,11 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-
     <h1 class="title is-3 has-text-grey">System Settings</h1>
 
     {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'home', [], 'Back to Home', 'has-text-info') !!}
-
 
     <div class="box">
         @foreach ($settings as $setting)
@@ -20,5 +18,4 @@
 
         <settings-reset class="button is-danger" route="{{ route('settings.reset') }}">Reset all to default values</settings-reset>
     </div>
-
 @endsection
