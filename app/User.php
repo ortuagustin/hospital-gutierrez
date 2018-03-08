@@ -33,7 +33,19 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $with = ['roles'];
+    protected $with = [
+        'roles',
+    ];
+
+    /* @inheritDoc */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->medicalRecords()->delete();
+        });
+    }
 
     /**
      * The Medical Records created by this User

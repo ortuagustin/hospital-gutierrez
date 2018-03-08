@@ -19,4 +19,16 @@ trait MedicalRecordTestHelper
     {
         return factory(MedicalRecord::class)->create($overrides);
     }
+
+    /**
+     * Saves a collection of new Medical Records to the database and returns it
+     * @param int $amount
+     * @param array $overrides
+     *
+     * @return Illuminate\Support\Collection
+     */
+    protected function createMedicalRecords($amount = 2, array $overrides = [])
+    {
+        return factory(MedicalRecord::class, $amount)->create($overrides);
+    }
 }

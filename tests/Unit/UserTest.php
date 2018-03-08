@@ -2,13 +2,14 @@
 
 namespace Tests\Unit;
 
+use App\MedicalRecord;
+use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\RoleTestHelper;
 use Tests\Helpers\UserTestHelper;
 
 class UserTest extends TestCase
 {
-    use UserTestHelper;
-    use RoleTestHelper;
+    use UserTestHelper, RoleTestHelper, MedicalRecordTestHelper;
 
     /** @test */
     public function it_has_many_roles()
@@ -118,5 +119,17 @@ class UserTest extends TestCase
         $user->roles()->attach($this->createRole('Guest'));
 
         $this->assertEquals('Admin, Medic, Receptionist, ...', $user->roles_names());
+    }
+
+    /** @test */
+    public function it_deletes_related_medical_records_when_destroyed()
+    {
+        $user = $this->createUser();
+        $this->createMedicalRecords(5, ['user_id' => $user->id]);
+
+        $this->assertEquals(5, MedicalRecord::count());
+
+        $user->delete();
+        $this->assertEquals(0, MedicalRecord::count());
     }
 }
