@@ -12,6 +12,7 @@ trait PatientTestHelper
     /**
      * Saves a new Patient to the database and returns it
      * @param array $overrides
+     *
      * @return Patient
      */
     protected function createPatient(array $overrides = [])
@@ -23,6 +24,7 @@ trait PatientTestHelper
      * Saves a collection of new Patients to the database and returns it
      * @param int $amount
      * @param array $overrides
+     *
      * @return Illuminate\Support\Collection
      */
     protected function createPatients($amount = 2, array $overrides = [])

@@ -13,6 +13,7 @@ trait UserTestHelper
     /**
      * Saves a new User to the database and returns it
      * @param array $overrides
+     *
      * @return User
      */
     protected function createUser(array $overrides = [])
@@ -23,6 +24,7 @@ trait UserTestHelper
     /**
      * Saves a new User with Admin Role to the database and returns it
      * @param array $overrides
+     *
      * @return User
      */
     protected function createAdminUser(array $overrides = [])

@@ -12,6 +12,7 @@ trait MedicalRecordTestHelper
     /**
      * Saves a new MedicalRecord to the database and returns it
      * @param array $overrides
+     *
      * @return MedicalRecord
      */
     protected function createMedicalRecord(array $overrides = [])
