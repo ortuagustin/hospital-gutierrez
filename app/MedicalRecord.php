@@ -37,6 +37,7 @@ class MedicalRecord extends Model
 
     /**
      * The User that created this Medical Record
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -46,6 +47,7 @@ class MedicalRecord extends Model
 
     /**
      * The Patient that is the owner of this Medical Record
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function patient()
@@ -55,6 +57,7 @@ class MedicalRecord extends Model
 
     /**
      * Returns the name of the User who created the record
+     *
      * @return string
      */
     public function user_name()
@@ -64,6 +67,7 @@ class MedicalRecord extends Model
 
     /**
      * Returns the name of the User who created the record
+     *
      * @return string
      */
     public function getUserNameAttribute()
@@ -73,6 +77,7 @@ class MedicalRecord extends Model
 
     /**
      * Returns the age of the Patient when the control took place
+     *
      * @return int
      */
     public function patient_age()
@@ -82,6 +87,7 @@ class MedicalRecord extends Model
 
     /**
      * Returns the age of the Patient when the control took place
+     *
      * @return int
      */
     public function getPatientAgeAttribute()
