@@ -17,7 +17,13 @@ class PatientSeachTest extends FeatureTest
              ->signIn();
 
         try {
-            $this->createPatients(2);
+            $this->createPatients(2, [
+                'doc_type_id'            => 1,
+                'home_type_id'           => 1,
+                'water_type_id'          => 1,
+                'heating_type_id'        => 1,
+                'medical_insurance_id'   => 1,
+            ]);
 
             $this->createPatients(2, [
                 'name'                   => 'foo-bar-baz',

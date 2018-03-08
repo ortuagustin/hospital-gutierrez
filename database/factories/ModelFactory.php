@@ -27,11 +27,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
-      'doc_type_id'          => 1,
-      'home_type_id'         => 1,
-      'heating_type_id'      => 1,
-      'water_type_id'        => 1,
-      'medical_insurance_id' => 1,
+      'doc_type_id'          => $faker->numberBetween(1, 4),
+      'home_type_id'         => $faker->numberBetween(1, 3),
+      'heating_type_id'      => $faker->numberBetween(1, 3),
+      'water_type_id'        => $faker->numberBetween(1, 2),
+      'medical_insurance_id' => $faker->numberBetween(1, 3),
       'name'                 => $faker->unique()->name,
       'last_name'            => $faker->unique()->name,
       'dni'                  => $faker->unique()->numerify('########'),
