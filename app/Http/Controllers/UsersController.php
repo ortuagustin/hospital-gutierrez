@@ -45,6 +45,10 @@ class UsersController extends Controller
     {
         User::destroy($id);
 
+        if (request()->wantsJson()) {
+            return response()->json(['Deleted succesfuly']);
+        }
+
         return redirect()->route('users.index');
     }
 }
