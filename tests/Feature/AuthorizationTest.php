@@ -8,9 +8,7 @@ use Tests\Helpers\UserTestHelper;
 
 class UserAuthorizationTest extends FeatureTest
 {
-    use RoleTestHelper;
-    use UserTestHelper;
-    use PermissionTestHelper;
+    use RoleTestHelper, UserTestHelper, PermissionTestHelper;
 
     /** @test */
     public function it_has_permission_through_one_role()

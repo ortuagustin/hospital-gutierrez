@@ -18,12 +18,14 @@ abstract class ModelPolicy
 
     /**
      * The name of the Model that the Policy refers to
+     *
      * @var string
      */
     private $modelName = null;
 
     /**
      * Should return the name of the Model that the Policy handles
+     *
      * @return string
      */
     protected function modelName()
@@ -43,6 +45,7 @@ abstract class ModelPolicy
      *
      * @param  \App\User  $user
      * @param string $ability
+     *
      * @return bool
      */
     public function before($user, $ability)
@@ -67,6 +70,7 @@ abstract class ModelPolicy
      * Determine whether the User can view the resource.
      *
      * @param  \App\User  $user
+     *
      * @return bool
      */
     public function view(User $user)
@@ -78,6 +82,7 @@ abstract class ModelPolicy
      * Determine whether the User can create resources.
      *
      * @param  \App\User  $user
+     *
      * @return bool
      */
     public function create(User $user)
@@ -89,6 +94,7 @@ abstract class ModelPolicy
      * Determine whether the User can update the resource.
      *
      * @param  \App\User  $user
+     *
      * @return bool
      */
     public function update(User $user)
@@ -100,6 +106,7 @@ abstract class ModelPolicy
      * Determine whether the User can delete the resource.
      *
      * @param  \App\User  $user
+     *
      * @return bool
      */
     public function delete(User $user)

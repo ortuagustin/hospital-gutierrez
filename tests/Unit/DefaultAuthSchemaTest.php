@@ -10,8 +10,7 @@ use Tests\Helpers\RoleTestHelper;
 
 class DefaultAuthSchemaTest extends TestCase
 {
-    use PermissionTestHelper;
-    use RoleTestHelper;
+    use PermissionTestHelper, RoleTestHelper;
 
     /**
      * @var \App\DefaultAuthSchema
@@ -98,6 +97,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Checks wether the Roles in the DB are the default
+     *
      * @return $this
      */
     protected function assertDefaultRoles()
@@ -111,6 +111,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Checks wether the Permissions in the DB are the default
+     *
      * @return $this
      */
     protected function assertDefaultPermissions()
@@ -124,6 +125,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Checks wether the Default Roles have been assigned the Default Permissiosn
+     *
      * @return $this
      */
     protected function assertDefaultPermissionSchema()
@@ -149,6 +151,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the system permissions (Resource-Action convention) for the Admin Role
+     *
      * @return array
      */
     protected function admin_default_permissions()
@@ -158,6 +161,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the system permissions (Resource-Action convention) for the Receptionist Role
+     *
      * @return array
      */
     protected function recepcionist_default_permissions()
@@ -167,6 +171,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the system permissions (Resource-Action convention) for the Medic Role
+     *
      * @return array
      */
     protected function medic_default_permissions()
@@ -179,6 +184,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the system permissions (Resource-Action convention) for the Guest Role
+     *
      * @return array
      */
     protected function guest_default_permissions()
@@ -190,6 +196,7 @@ class DefaultAuthSchemaTest extends TestCase
      * Returns all the permissions for the resource (Resource-Action convention)
      * @param string  $resource
      * @param string  $except [filter for actions]
+     *
      * @return array
      */
     protected function permissions_for_resource($resource, $except = '')
@@ -206,6 +213,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the system permissions (Resource-Action convention)
+     *
      * @return array
      */
     protected function default_permissions()
@@ -222,6 +230,7 @@ class DefaultAuthSchemaTest extends TestCase
 
     /**
      * Returns all the roles
+     *
      * @return array
      */
     protected function default_roles()

@@ -10,6 +10,7 @@ trait InteractsWithReferenceModels
 {
     /**
      * Repository for DocType Models
+     *
      * @return DocTypesRepositoryInterface
      */
     private function docTypes()
@@ -19,6 +20,7 @@ trait InteractsWithReferenceModels
 
     /**
      * Repository for HomeType Models
+     *
      * @return HomeTypesRepositoryInterface
      */
     private function homeTypes()
@@ -28,6 +30,7 @@ trait InteractsWithReferenceModels
 
     /**
      * Repository for HeatingType Models
+     *
      * @return HeatingTypesRepositoryInterface
      */
     private function heatingsTypes()
@@ -37,6 +40,7 @@ trait InteractsWithReferenceModels
 
     /**
      * Repository for WaterType Models
+     *
      * @return WaterTypesRepositoryInterface
      */
     private function waterTypes()
@@ -46,6 +50,7 @@ trait InteractsWithReferenceModels
 
     /**
      * Repository for MedicalInsurance Models
+     *
      * @return MedicalInsurancesRepositoryInterface
      */
     private function medicalInsurances()

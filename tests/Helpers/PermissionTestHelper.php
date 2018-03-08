@@ -12,6 +12,7 @@ trait PermissionTestHelper
     /**
      * Saves a new Permission to the database and returns it
      * @param string $name
+     *
      * @return Permission
      */
     protected function createPermission($name)

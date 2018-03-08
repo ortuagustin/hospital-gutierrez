@@ -10,9 +10,7 @@ use Tests\Helpers\UserTestHelper;
 
 class PoliciesTest extends TestCase
 {
-    use UserTestHelper;
-    use PermissionTestHelper;
-    use RoleTestHelper;
+    use UserTestHelper, PermissionTestHelper, RoleTestHelper;
 
     /**
      * @var string
@@ -36,30 +34,35 @@ class PoliciesTest extends TestCase
 
     /**
      * The application policies under test
+     *
      * @var array
      */
     protected $policies = [];
 
     /**
      * A User with the Guest Role, that hasn't any Permission at all
+     *
      * @var \App\User
      */
     protected $guestUser;
 
     /**
      * A User with the Admin Role, that has full access to every Action on any Resource
+     *
      * @var \App\User
      */
     protected $adminUser;
 
     /**
      * A User with the Medic Role, that has limited access privileges
+     *
      * @var \App\User
      */
     protected $medicUser;
 
     /**
      * A User with the Recepcionist Role, that has limited access privileges
+     *
      * @var \App\User
      */
     protected $receptionistUser;

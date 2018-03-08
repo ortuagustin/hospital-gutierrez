@@ -26,6 +26,7 @@ class UsersController extends Controller
      * Display the specified User
      *
      * @param  User  $user
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -39,6 +40,7 @@ class UsersController extends Controller
      * Remove the specified User from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

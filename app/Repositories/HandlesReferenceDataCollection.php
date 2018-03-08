@@ -13,6 +13,7 @@ trait HandlesReferenceDataCollection
     /**
      * Returns wether the given key exists in the Repository
      * @param int $id
+     *
      * @return bool
      */
     public function contains($id)
@@ -25,6 +26,7 @@ trait HandlesReferenceDataCollection
     /**
      * Returns wether the given key exists in the Repository
      * @param int $id
+     *
      * @return ReferenceModel
      */
     public function get($id)

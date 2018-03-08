@@ -27,6 +27,7 @@ abstract class ForeignRule
      * @param mixed $value
      * @param mixed $parameters
      * @param Validator $validator
+     *
      * @return bool
      */
     public function validate($attribute, $value, $parameters, Validator $validator)

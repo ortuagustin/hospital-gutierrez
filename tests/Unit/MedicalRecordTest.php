@@ -9,11 +9,8 @@ use Tests\Helpers\UserTestHelper;
 
 class MedicalRecordTest extends TestCase
 {
-    use MedicalRecordTestHelper;
-    use UserTestHelper;
-    use PatientTestHelper;
-
-    /** @test */
+    use MedicalRecordTestHelper, UserTestHelper, PatientTestHelper;
+    /**@test */
     public function it_returns_carbon_date()
     {
         $medical_record = $this->createMedicalRecord();

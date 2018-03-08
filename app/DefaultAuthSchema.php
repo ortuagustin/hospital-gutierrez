@@ -63,6 +63,7 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     /**
      * Admins has access to everything
      * @param \App\Role $role
+     *
      * @return $this
      */
     protected function grantAccessToAdmin(Role $role)
@@ -76,6 +77,7 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     /**
      * Medics can create, update and view Patients and MedicalRecords
      * @param \App\Role $role
+     *
      * @return $this
      */
     protected function grantAccessToMedics(Role $role)
@@ -87,6 +89,7 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
     /**
      * Recepcionists can only create, update and view Patients
      * @param \App\Role $role
+     *
      * @return $this
      */
     protected function grantAccessToRecepcionist(Role $role)
@@ -99,6 +102,7 @@ class DefaultAuthSchema implements DefaultAuthSchemaInterface
      * @param \App\Role $role
      * @param string  $resource
      * @param string  $except [filter for actions]
+     *
      * @return $this
      */
     protected function grantPermissions(Role $role, $resource, $except = '')

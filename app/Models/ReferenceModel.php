@@ -30,6 +30,7 @@ class ReferenceModel
 
     /**
      * Returns the key of the ReferenceModel
+     *
      * @return int
      */
     public function key()
@@ -39,6 +40,7 @@ class ReferenceModel
 
     /**
      * Returns the id. This is an alias for the key() method
+     *
      * @return int
      */
     public function id()
@@ -48,6 +50,7 @@ class ReferenceModel
 
     /**
      * Returns the value of the ReferenceModel
+     *
      * @return string
      */
     public function value()

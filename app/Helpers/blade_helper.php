@@ -7,6 +7,7 @@ use App\ApplicationSetting;
  *
  * @param  string  $key
  * @param  string  $default
+ *
  * @return string
  */
 function setting($key, $default = null)
@@ -19,6 +20,7 @@ function setting($key, $default = null)
  *
  * @param  string        $icon          the icon to display
  * @param  string        $icon_class    additional classes for the icon itself
+ *
  * @return string
  */
 function icon($icon, $icon_class = '')
@@ -39,6 +41,7 @@ function icon($icon, $icon_class = '')
  * @param  string  $route_args  arguments for the named route
  * @param  string  $text        display value of the link
  * @param  string  $class       class of the "a" tag
+ *
  * @return string
  */
 function link_to($text, $route_name, $route_args, $class = '')
@@ -60,6 +63,7 @@ function link_to($text, $route_name, $route_args, $class = '')
  * @param  string        $text          display value of the link
  * @param  string        $icon_class  additional classes for the icon itself
  * @param  string        $button_class  additional classes for the icon container
+ *
  * @return string
  */
 function link_to_with_icon($icon, $route_name, $route_args = [], $text = '', $icon_class = '', $button_class = '')
@@ -108,6 +112,7 @@ function back_link($text = 'Back', $icon = 'fas fa-arrow-left fa-2x', $icon_clas
  * @param  string        $text          display value of the link
  * @param  string        $icon_class  additional classes for the icon itself
  * @param  string        $button_class  additional classes for the icon container
+ *
  * @return string
  */
 function link_button_with_icon($icon, $route_name, $route_args = [], $text = '', $icon_class = '', $button_class = '')
@@ -137,6 +142,7 @@ function link_button_with_icon($icon, $route_name, $route_args = [], $text = '',
  * @param  string  $route_name     a named route
  * @param  string  $route_args     arguments for the named route
  * @param  string  $text           display value of the link
+ *
  * @return string
  */
 function delete_link_with_icon($icon, $route_name, $route_args, $text = '')
@@ -175,6 +181,7 @@ function delete_link_with_icon($icon, $route_name, $route_args, $text = '')
  * @param  string  $text          display value of the link
  * @param  string  $icon_class    additional classes for the icon itself
  * @param  string  $button_class  additional classes for the icon container
+ *
  * @return string
  */
 function delete_button_with_icon($icon, $route_name, $route_args, $text = '', $icon_class = '', $button_class = 'has-text-danger')

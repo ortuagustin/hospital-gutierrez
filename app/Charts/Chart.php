@@ -11,6 +11,7 @@ abstract class Chart implements JsonSerializable
 {
     /**
      * The name of the Chart
+     *
      * @var string
      */
     private $name = null;

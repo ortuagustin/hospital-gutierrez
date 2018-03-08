@@ -25,6 +25,7 @@ class MedicalRecordsController extends Controller
      * Display a listing of the Medical Records of the given Patient
      *
      * @param Patient $patient
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient)
@@ -38,6 +39,7 @@ class MedicalRecordsController extends Controller
      * Show the form for creating a new Medical Record for the given Patient
      *
      * @param  Patient $patient
+     *
      * @return \Illuminate\Http\Response
      */
     public function create(Patient $patient)
@@ -50,6 +52,7 @@ class MedicalRecordsController extends Controller
      *
      * @param int $patient_id
      * @param  \App\Http\Requests\StoreMedicalRecordRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store($patient_id, StoreMedicalRecordRequest $request)
@@ -64,6 +67,7 @@ class MedicalRecordsController extends Controller
      *
      * @param  Patient $patient
      * @param  MedicalRecord  $medical_record
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Patient $patient, MedicalRecord $medical_record)
@@ -76,6 +80,7 @@ class MedicalRecordsController extends Controller
      *
      * @param int $patient_id
      * @param  MedicalRecord  $medical_record
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($patient_id, MedicalRecord $medical_record)

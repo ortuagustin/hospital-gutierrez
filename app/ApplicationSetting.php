@@ -60,6 +60,7 @@ class ApplicationSetting extends Model
      *
      * @param string $key
      * @param string $default
+     *
      * @return string
      */
     public static function value($key, $default = null)
@@ -76,6 +77,7 @@ class ApplicationSetting extends Model
      * @param string $value
      * @param string $input_type
      * @param bool $reloads
+     *
      * @return \App\ApplicationSetting
      */
     public static function put($key, $value, $input_type = 'text', $reloads = false)
@@ -100,6 +102,7 @@ class ApplicationSetting extends Model
      * Returns true if a setting with the given key exists; false otherwise
      *
      * @param string $key
+     *
      * @return bool
      */
     public static function exists($key)
@@ -111,6 +114,7 @@ class ApplicationSetting extends Model
      * Returns true if a setting with the given key does NOT exists; false otherwise
      *
      * @param string $key
+     *
      * @return bool
      */
     public static function missing($key)

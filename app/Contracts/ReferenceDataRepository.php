@@ -12,20 +12,25 @@ interface ReferenceDataRepositoryInterface
 {
     /**
      * Returns wether the given key exists in the Repository
+     *
      * @param int $key
+     *
      * @return bool
      */
     public function contains($key);
 
     /**
      * Returns wether the given key exists in the Repository
+     *
      * @param int $key
+     *
      * @return ReferenceModel
      */
     public function get($key);
 
     /**
      * Returns an array with all the models in the repository
+     *
      * @return Collection
      */
     public function all();

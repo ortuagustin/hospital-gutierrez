@@ -33,6 +33,7 @@ class CheckForMaintenanceMode
      * Create a new middleware instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
+     *
      * @return void
      */
     public function __construct(Application $app)
@@ -46,6 +47,7 @@ class CheckForMaintenanceMode
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -99,6 +101,7 @@ class CheckForMaintenanceMode
      * Returns wether the request should ignore the middleware
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return bool
      */
     protected function shouldPassThrough($request)
@@ -125,6 +128,7 @@ class CheckForMaintenanceMode
      * Determine if the request has a URI that should pass through CSRF verification.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return bool
      */
     protected function inExceptArray($request)
@@ -146,6 +150,7 @@ class CheckForMaintenanceMode
      * Returns wether the request is whitelisted when application is down for maintenance
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return bool
      */
     protected function isWhitelisted($request)

@@ -25,6 +25,7 @@ class Role extends Model
 
     /**
      * The Users that have this Role assigned
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
@@ -34,6 +35,7 @@ class Role extends Model
 
     /**
      * A Role can have many Permissions
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function permissions()

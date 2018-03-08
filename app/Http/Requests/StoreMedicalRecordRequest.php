@@ -12,12 +12,14 @@ class StoreMedicalRecordRequest extends FormRequest
 {
     /**
      * This will hold the persisted MedicalRecord Moel instance only if the saved property is true
+     *
      * @var MedicalRecord
      */
     private $medicalRecord = null;
 
     /**
      * True if the save method was succesful
+     *
      * @var bool
      */
     private $saved = false;

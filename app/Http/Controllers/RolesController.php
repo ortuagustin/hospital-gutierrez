@@ -39,6 +39,7 @@ class RolesController extends Controller
      * Store a newly created Role in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +54,7 @@ class RolesController extends Controller
      * Display the specified Role
      *
      * @param  Role  $role
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Role $role)
@@ -64,6 +66,7 @@ class RolesController extends Controller
      * Show the form for editing the specified Role
      *
      * @param  Role  $role
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
@@ -76,6 +79,7 @@ class RolesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  Role  $role
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Role $role)
@@ -90,6 +94,7 @@ class RolesController extends Controller
      * Remove the specified Role from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -107,6 +112,7 @@ class RolesController extends Controller
      * Resets all roles and permissions to default
      *
      * @param DefaultAuthSchemaInterface $auth_schema
+     *
      * @return \Illuminate\Http\Response
      */
     public function reset(DefaultAuthSchemaInterface $auth_schema)
@@ -120,6 +126,7 @@ class RolesController extends Controller
      * Runs the validation rules agains the given Request
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return void
      */
     protected function validateRequest(Request $request)

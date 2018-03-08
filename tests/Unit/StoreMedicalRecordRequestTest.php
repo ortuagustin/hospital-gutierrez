@@ -9,8 +9,7 @@ use Tests\Helpers\UserTestHelper;
 
 class StoreMedicalRecordRequestTest extends FormRequestTestCase
 {
-    use PatientTestHelper;
-    use UserTestHelper;
+    use PatientTestHelper, UserTestHelper;
 
     /** @test */
     public function it_does_not_allow_empty_fields()
@@ -135,6 +134,7 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
 
     /**
      * Returns boolean fields of the Medical Record Model
+     *
      * @return array
      */
     protected function modelBooleanFields()
@@ -148,6 +148,7 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
 
     /**
      * Returns numeric fields of the Medical Record Model
+     *
      * @return array
      */
     protected function modelNumericFields()
@@ -162,6 +163,7 @@ class StoreMedicalRecordRequestTest extends FormRequestTestCase
 
     /**
      * Returns observation fields of the Medical Record Model
+     *
      * @return array
      */
     protected function observationFields()

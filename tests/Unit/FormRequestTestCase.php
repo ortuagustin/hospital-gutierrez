@@ -16,6 +16,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Asserts that the validator fails when the given field contains special characters
      * @param string $field
+     *
      * @return $this
      */
     protected function assertFieldDoesNotAllowSpecialChars($field)
@@ -32,6 +33,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Asserts that the validator fails when the given fields are empty
      * @param array $except fields that should not be checked
+     *
      * @return $this
      */
     protected function assertFieldsRequired(array $except = [])
@@ -48,6 +50,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Asserts that the validator fails when the given field is empty
      * @param string $field
+     *
      * @return $this
      */
     protected function assertFieldRequired($field)
@@ -61,6 +64,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Runs the given validator and expects that all the validation rules passes
      * @param Validator $validator
+     *
      * @return $this
      */
     protected function assertValidationPasses(Validator $validator)
@@ -76,6 +80,7 @@ abstract class FormRequestTestCase extends TestCase
      * validator, such as: fields that failed, the rules that every field failed, error messages, and field values
      * @param Validator $validator
      * @param string $message
+     *
      * @return string
      */
     protected function getValidatorAssertMessage(Validator $validator, $message = '')
@@ -94,6 +99,7 @@ abstract class FormRequestTestCase extends TestCase
      * @param mixed $value
      * @param string $field
      * @param string $rule
+     *
      * @return $this
      */
     protected function assertValidationRuleFailed(Validator $validator, $field, $value, $rule)
@@ -109,6 +115,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Returns a validator for the FormRequest
      * @param array $input
+     *
      * @return Validator
      */
     private function validator(array $input = [])
@@ -122,6 +129,7 @@ abstract class FormRequestTestCase extends TestCase
      * This allows to test scenarios where the validation should fail for
      * a controlled set of fields
      * @param array $overrides
+     *
      * @return Validator
      */
     protected function passingValidator(array $overrides = [])
@@ -131,6 +139,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Returns the validation validationRules for the FormRequest
+     *
      * @return array
      */
     protected function validationRules()
@@ -151,6 +160,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Creates an instance of formRequestUnderTestClass
      * @param array $input
+     *
      * @return \Illuminate\Foundation\Http\FormRequest
      */
     protected function createFormRequest(array $input = [])
@@ -166,6 +176,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Returns an array with every boolean value that is considered valid
+     *
      * @return array
      */
     protected function validBooleanValues()
@@ -176,6 +187,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Returns an array with some characters that are considered 'special' and thus,
      * they are blacklisted for some fields like names
+     *
      * @return array
      */
     protected function blacklistedCharacters()

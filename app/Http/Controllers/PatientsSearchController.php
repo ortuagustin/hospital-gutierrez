@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PatientsSearchController extends Controller
 {
+    /**
+     * Display a filtered listing of patients
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         if ($request->wantsJson()) {

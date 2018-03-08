@@ -28,6 +28,7 @@ class SettingsController extends Controller
      * Store a newly created ApplicationSetting in storage.
      *
      * @param  StoreApplicationSettingRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreApplicationSettingRequest $request)
@@ -51,6 +52,7 @@ class SettingsController extends Controller
      * Resets all settings to default values
      *
      * @param DefaultApplicationSettingsInterface $default_settings
+     *
      * @return \Illuminate\Http\Response
      */
     public function reset(DefaultApplicationSettingsInterface $default_settings)

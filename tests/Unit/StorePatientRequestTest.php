@@ -264,6 +264,7 @@ class StorePatientRequestTest extends FormRequestTestCase
 
     /**
      * Returns boolean fields of the Patient Model
+     *
      * @return array
      */
     protected function modelBooleanFields()
@@ -273,6 +274,7 @@ class StorePatientRequestTest extends FormRequestTestCase
 
     /**
      * Returns "_id" (a.k.a foreign keys) fields of the Patient Model
+     *
      * @return array
      */
     protected function modelIdFields()

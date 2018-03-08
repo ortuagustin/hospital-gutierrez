@@ -9,7 +9,5 @@ use Tests\RunsMigrations;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
-    use RunsMigrations;
-    use DatabaseTransactions;
+    use CreatesApplication, RunsMigrations, DatabaseTransactions;
 }

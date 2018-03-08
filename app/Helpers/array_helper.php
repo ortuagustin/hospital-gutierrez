@@ -6,6 +6,7 @@
  *
  * @param  array  $array
  * @param  string|array  $keys
+ *
  * @return bool
  */
 function array_has_not($array, $keys)
@@ -19,6 +20,7 @@ function array_has_not($array, $keys)
  * @param  array  $array
  * @param  int  $index
  * @param  mixed  $default
+ *
  * @return mixed
  */
 function array_get_index(array $array, $index, $default)

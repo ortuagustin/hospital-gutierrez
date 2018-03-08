@@ -12,6 +12,7 @@ trait RoleTestHelper
     /**
      * Saves a new Role to the database and returns it
      * @param string $name
+     *
      * @return Role
      */
     protected function createRole($name)

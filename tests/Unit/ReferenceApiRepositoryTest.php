@@ -9,18 +9,21 @@ class ReferenceApiRepository extends TestCase
 {
     /**
      * The repository under test
+     *
      * @var array
      */
     protected $repository;
 
     /**
      * Sample JSON response with one element
+     *
      * @var string
      */
     protected $one_element_json = '[{"id":"1","nombre":"DNI"}]';
 
     /**
      * Sample JSON response with many elements
+     *
      * @var string
      */
     protected $many_elements_json = '[{"id":"1","nombre":"DNI"},{"id":"2","nombre":"LC"},{"id":"3","nombre":"CI"},{"id":"4","nombre":"LE"}]';

@@ -69,6 +69,7 @@ class ReportsRepository implements ReportsRepositoryInterface
      * Returns wether the report exists in the repository
      *
      * @param string $name
+     *
      * @return bool
      */
     private function hasReport($name)

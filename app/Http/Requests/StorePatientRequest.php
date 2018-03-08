@@ -13,6 +13,7 @@ class StorePatientRequest extends FormRequest
 {
     /**
      * This will hold the persisted Patient Moel instance only if the saved property is true
+     *
      * @var Patient
      */
     private $patient = null;

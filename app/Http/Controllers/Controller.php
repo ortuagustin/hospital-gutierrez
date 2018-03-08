@@ -40,6 +40,7 @@ class Controller extends BaseController
      *
      * @param mixed $value
      * @param string $key
+     *
      * @return $this
      */
     protected function flash($value, $key = 'flash')

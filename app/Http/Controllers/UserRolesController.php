@@ -16,6 +16,8 @@ class UserRolesController extends Controller
      *
      * @param User $user
      * @param Role $role
+     *
+     * @return \Illuminate\Http\Response
      */
     public function destroy(User $user, Role $role)
     {
@@ -29,6 +31,8 @@ class UserRolesController extends Controller
      *
      * @param Request  $request
      * @param User  $user
+     *
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
     {

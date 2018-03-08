@@ -10,8 +10,7 @@ use Tests\Helpers\PatientTestHelper;
 
 class AppointmentTest extends TestCase
 {
-    use AppointmentTestHelper;
-    use PatientTestHelper;
+    use AppointmentTestHelper, PatientTestHelper;
 
     /** @test */
     public function it_returns_allowed_times()

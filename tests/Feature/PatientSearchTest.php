@@ -39,7 +39,7 @@ class PatientSeachTest extends FeatureTest
                 $results = $this->getJson('/patients/search?q=foo')->json()['data'];
             } while (empty($results));
 
-            $this->assertCount(2, $results, 'The search by Algolia should return 2 matches, but it may be a false-negative due to Algolia needing to reindex');
+            $this->assertCount(2, $results, 'The search by Algolia shoureTld return 2 matches, but it may be a false-negative due to Algolia needing to reindex');
         } finally {
             Patient::all()->unsearchable();
         }
@@ -59,6 +59,7 @@ class PatientSeachTest extends FeatureTest
 
     /**
      * Sets the Scout Driver to Algolia and some necesary mocks
+     *
      * @return $this
      */
     protected function withAlgolia()

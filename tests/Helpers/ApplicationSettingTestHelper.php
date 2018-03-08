@@ -10,6 +10,7 @@ trait ApplicationSettingTestHelper
      * @param string $key
      * @param string $value
      * @param string $input_type
+     *
      * @return \App\ApplicationSetting
      */
     public function createSetting($key, $value, $input_type = 'text')

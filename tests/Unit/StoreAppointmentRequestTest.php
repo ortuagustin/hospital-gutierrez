@@ -14,8 +14,7 @@ use Tests\Helpers\PatientTestHelper;
  */
 class StoreAppointmentRequestTest extends FormRequestTestCase
 {
-    use AppointmentTestHelper;
-    use PatientTestHelper;
+    use AppointmentTestHelper, PatientTestHelper;
 
     /** @test */
     public function it_does_not_allow_empty_fields()
@@ -64,6 +63,7 @@ class StoreAppointmentRequestTest extends FormRequestTestCase
 
     /**
      * Returns an array of Carbon dates that are considered to be invalid
+     *
      * @return array
      */
     protected function invalid_times()

@@ -11,6 +11,7 @@ class PasswordBrokerManager extends BasePasswordBrokerManager
      *
      * @param  string  $name
      * @throws \InvalidArgumentException
+     *
      * @return \App\Auth\PasswordBroker
      *
      */

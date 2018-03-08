@@ -38,6 +38,7 @@ class ReportsController extends Controller
      * Returns the JSON data for the specified Report
      *
      * @param  string  $reportName
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($reportName)

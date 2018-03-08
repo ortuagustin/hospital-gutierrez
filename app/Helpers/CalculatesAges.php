@@ -15,6 +15,7 @@ trait CalculatesAge
      *
      * @param Carbon      $birth_date
      * @param Carbon|null $on
+     *
      * @return int
      */
     public function age(Carbon $birth_date, Carbon $on = null)
