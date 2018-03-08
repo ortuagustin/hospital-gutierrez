@@ -10,7 +10,7 @@ class PatientsCrudTestTest extends FeatureTest
     use PatientTestHelper;
 
     /** @test */
-    public function authorized_users_can_delete_a_patient()
+    public function authorized_users_can_delete_patients()
     {
         $patient = $this->createPatient();
 
@@ -24,7 +24,7 @@ class PatientsCrudTestTest extends FeatureTest
     }
 
     /** @test */
-    public function unauthorized_users_can_delete_a_patient()
+    public function unauthorized_users_cannot_delete_patients()
     {
         $patient = $this->createPatient();
 
