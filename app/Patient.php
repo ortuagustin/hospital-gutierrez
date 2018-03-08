@@ -56,6 +56,16 @@ class Patient extends Model
         'medicalRecords',
     ];
 
+    /* @inheritDoc */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($patient) {
+            $patient->appointments()->delete();
+        });
+    }
+
     /**
      * Returns the Patient's Age
      * @return int
@@ -133,6 +143,16 @@ class Patient extends Model
     public function medicalRecords()
     {
         return $this->hasMany(MedicalRecord::class);
+    }
+
+    /**
+     * The Appointments of the Patient
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 
     /**

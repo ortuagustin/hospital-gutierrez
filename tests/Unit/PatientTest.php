@@ -13,12 +13,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\Helpers\FakeReferenceDataTestHelper;
 use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
+use App\Appointment;
+use Tests\Helpers\AppointmentTestHelper;
 
 class PatientTest extends TestCase
 {
-    use PatientTestHelper;
-    use MedicalRecordTestHelper;
-    use FakeReferenceDataTestHelper;
+    use PatientTestHelper, MedicalRecordTestHelper, AppointmentTestHelper, FakeReferenceDataTestHelper;
 
     /** @test */
     public function it_returns_boolean_for_field_has_refrigerator()
@@ -279,5 +279,25 @@ class PatientTest extends TestCase
     {
         $patient = $this->createPatient(['id' => 1]);
         $this->assertEquals('/patients/1', $patient->path());
+    }
+
+    /** @test */
+    public function it_has_many_appointments()
+    {
+        $patient = $this->createPatient();
+        $this->assertNotNull($patient->appointments());
+        $this->assertInstanceOf(HasMany::class, $patient->appointments());
+    }
+
+    /** @test */
+    public function it_deletes_related_appointments_when_destroyed()
+    {
+        $patient = $this->createPatient();
+        $this->createAppointments(5, ['patient_id' => $patient->id]);
+
+        $this->assertEquals(5, Appointment::count());
+
+        $patient->delete();
+        $this->assertEquals(0, Appointment::count());
     }
 }
