@@ -37,6 +37,7 @@ class User extends Authenticatable
 
     /**
      * The Medical Records created by this User
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function medicalRecords()
@@ -55,6 +56,7 @@ class User extends Authenticatable
     /**
      * Returns a comma separated list of the User Roles
      * If there are more than 3 Roles, it will append ', ...'
+     *
      * @return string
      */
     public function roles_names()
@@ -71,6 +73,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the 'Admin' Role
      * @param string $adminRoleName
+     *
      * @return bool
      */
     public function isAdmin($adminRoleName = null)
@@ -83,6 +86,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User does not have the 'Admin' Role
      * @param string $adminRoleName
+     *
      * @return bool
      */
     public function isNotAdmin($adminRoleName = null)
@@ -93,6 +97,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Role
      * @param Role|int|string $role Can be a Role Model, Role Name, or the Role Id
+     *
      * @return bool
      */
     public function hasRole($role)
@@ -107,6 +112,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User hasn't the given Role
      * @param Role|int|string $role Can be a Role Model, Role Name, or the Role Id
+     *
      * @return bool
      */
     public function hasNotRole($role)
@@ -117,6 +123,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Permission
      * @param Permission|int|string $permission Can be a Permission Model, Permission Name, or the Permission Id
+     *
      * @return bool
      */
     public function hasPermission($permission)
@@ -135,6 +142,8 @@ class User extends Authenticatable
     /**
      * Returns True if the User hasn't the given Permission
      * @param Permission|int $permission Can be a Permission Model or the Permission Id
+     *
+     * @return bool
      */
     public function hasNotPermission($permission)
     {
@@ -143,6 +152,7 @@ class User extends Authenticatable
 
     /**
      * Returns all the User Permissions.
+     *
      * @return Collection
      */
     public function permissions()
@@ -161,6 +171,7 @@ class User extends Authenticatable
 
     /**
      * Returns all the User Permissions.
+     *
      * @return Collection
      */
     public function getPermissionsAttribute()
@@ -171,6 +182,8 @@ class User extends Authenticatable
     /**
      * Returns the Id of the given Permission
      * @param Permission|int $permission Can be a Permission Model or the Permission Id
+     *
+     * @return int
      */
     protected function permissionId($permission)
     {
@@ -180,6 +193,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Permission
      * @param int $permission_id
+     *
      * @return bool
      */
     protected function hasPermissionById($permission_id)
@@ -192,6 +206,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Permission
      * @param string $permission_name
+     *
      * @return bool
      */
     protected function hasPermissionByName($permission_name)
@@ -204,6 +219,8 @@ class User extends Authenticatable
     /**
      * Returns the Id of the given Role
      * @param Role|int $role Can be a Role Model or the Role Id
+     *
+     * @return int
      */
     protected function roleId($role)
     {
@@ -213,6 +230,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Role
      * @param int $role_id
+     *
      * @return bool
      */
     protected function hasRoleById($role_id)
@@ -223,6 +241,7 @@ class User extends Authenticatable
     /**
      * Returns True if the User has the given Role
      * @param string $role_name
+     *
      * @return bool
      */
     protected function hasRoleByName($role_name)
