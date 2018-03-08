@@ -64,6 +64,10 @@ class Patient extends Model
         static::deleting(function ($patient) {
             $patient->appointments()->delete();
         });
+
+        static::deleting(function ($patient) {
+            $patient->medicalRecords()->delete();
+        });
     }
 
     /**

@@ -15,6 +15,7 @@ use Tests\Helpers\MedicalRecordTestHelper;
 use Tests\Helpers\PatientTestHelper;
 use App\Appointment;
 use Tests\Helpers\AppointmentTestHelper;
+use App\MedicalRecord;
 
 class PatientTest extends TestCase
 {
@@ -95,11 +96,23 @@ class PatientTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_relation_with_medical_record()
+    public function it_has_many_medical_records()
     {
         $patient = $this->createPatient();
         $this->assertNotNull($patient->medicalRecords());
         $this->assertInstanceOf(HasMany::class, $patient->medicalRecords());
+    }
+
+    /** @test */
+    public function it_deletes_related_medical_records_when_destroyed()
+    {
+        $patient = $this->createPatient();
+        $this->createMedicalRecords(5, ['patient_id' => $patient->id]);
+
+        $this->assertEquals(5, MedicalRecord::count());
+
+        $patient->delete();
+        $this->assertEquals(0, MedicalRecord::count());
     }
 
     /** @test */
