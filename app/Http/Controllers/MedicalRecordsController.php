@@ -87,6 +87,10 @@ class MedicalRecordsController extends Controller
     {
         $medical_record->delete();
 
+        if (request()->wantsJson()) {
+            return response()->json(['Deleted succesfuly']);
+        }
+
         return redirect()->route('patients.medical_records.index', $patient_id);
     }
 }
