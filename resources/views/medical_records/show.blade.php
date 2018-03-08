@@ -42,19 +42,5 @@
         <div class="box">
             <p> <strong>General Observations:</strong> {{ $medical_record->observaciones }} </p>
         </div>
-
-        <div class="box">
-            <div class="field is-grouped is-grouped-centered">
-                <p class="control">
-                    {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.medical_records.index', $patient, 'Back to Medical Records', 'has-text-info') !!}
-                </p>
-
-                @can ('delete', $medical_record)
-                    <p class="control">
-                        {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.medical_records.destroy', [$patient, $medical_record], 'Delete Medical Record', 'has-text-danger') !!}
-                    </p>
-                @endcan
-            </div>
-        </div>
     </div>
 @endsection

@@ -30,12 +30,6 @@
                         {!! link_to_with_icon('fas fa-edit fa-2x', 'patients.edit', $patient, 'Edit Patient') !!}
                     </p>
                 @endcan
-
-                @can ('delete', $patient)
-                    <p class="control">
-                        {!! delete_link_with_icon('fas fa-trash-alt fa-2x', 'patients.destroy', $patient, 'Delete Patient', 'has-text-danger') !!}
-                    </p>
-                @endcan
             </div>
         </div>
     </div>
