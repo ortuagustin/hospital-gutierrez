@@ -68,6 +68,7 @@ class Patient extends Model
 
     /**
      * Returns the Patient's Age
+     *
      * @return int
      */
     public function age()
@@ -77,6 +78,7 @@ class Patient extends Model
 
     /**
      * Returns the Patient's Age
+     *
      * @return int
      */
     public function getAgeAttribute()
@@ -86,6 +88,7 @@ class Patient extends Model
 
     /**
      * Returns the birth day followed by the Patient's age
+     *
      * @return string
      */
     public function birth_date_with_age()
@@ -95,6 +98,7 @@ class Patient extends Model
 
     /**
      * Returns the birth day followed by the Patient's age
+     *
      * @return string
      */
     public function getBirthDateWithAgeAttribute()
@@ -138,6 +142,7 @@ class Patient extends Model
 
     /**
      * The Medical Records assigned to the Patient
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function medicalRecords()
@@ -157,6 +162,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Document Type
+     *
      * @return \App\Models\ReferenceModel
      */
     public function getDocTypeAttribute()
@@ -166,6 +172,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Home Type
+     *
      * @return \App\Models\ReferenceModel
      */
     public function getHomeTypeAttribute()
@@ -175,6 +182,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Heating Type
+     *
      * @return \App\Models\ReferenceModel
      */
     public function getHeatingTypeAttribute()
@@ -184,6 +192,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Water Type
+     *
      * @return \App\Models\ReferenceModel
      */
     public function getWaterTypeAttribute()
@@ -193,6 +202,7 @@ class Patient extends Model
 
     /**
      * Returns the associated Medical Insurance
+     *
      * @return \App\Models\ReferenceModel
      */
     public function getMedicalInsuranceAttribute()
@@ -202,6 +212,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
+     *
      * @param \App\Models\ReferenceModel $value
      */
     public function setDocTypeAttribute(\App\Models\ReferenceModel $value)
@@ -211,6 +222,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
+     *
      * @param \App\Models\ReferenceModel $value
      */
     public function setHomeTypeAttribute(\App\Models\ReferenceModel $value)
@@ -220,6 +232,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
+     *
      * @param \App\Models\ReferenceModel $value
      */
     public function setHeatingTypeAttribute(\App\Models\ReferenceModel $value)
@@ -229,6 +242,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
+     *
      * @param \App\Models\ReferenceModel $value
      */
     public function setWaterTypeAttribute(\App\Models\ReferenceModel $value)
@@ -238,6 +252,7 @@ class Patient extends Model
 
     /**
      * Sets the associated Medical Insurance
+     *
      * @param \App\Models\ReferenceModel $value
      */
     public function setMedicalInsuranceAttribute(\App\Models\ReferenceModel $value)

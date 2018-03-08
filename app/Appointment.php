@@ -31,6 +31,7 @@ class Appointment extends Model
 
     /**
      * Returns the time portion of the Appointment
+     *
      * @return string
      */
     public function getTimeAttribute()
@@ -40,6 +41,7 @@ class Appointment extends Model
 
     /**
      * Get the Patient record associated with the Appointment.
+     *
      * @return Patient
      */
     public function patient()
@@ -49,6 +51,7 @@ class Appointment extends Model
 
     /**
      * Returns an array with the times when appointment are allowed
+     *
      * @return array
      */
     public static function allowed_times()
@@ -66,6 +69,7 @@ class Appointment extends Model
     /**
      * Returns true if the given time is allowed
      * @param Carbon $time
+     *
      * @return bool
      */
     public static function is_allowed_time(Carbon $time)
