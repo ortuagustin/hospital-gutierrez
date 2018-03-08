@@ -10,7 +10,9 @@
         <h2 class="subtitle">We'll be back soon!</h2>
 
         @guest
-            <p class="subtitle is-5">If you're an Administrator, you may log in and {!!link_to('access the site', 'login', []) !!}</p>
+            <p class="subtitle is-5">
+                If you're an Administrator, you may log in and <a @click="$modal.show('login')">access the site</a>
+                </p>
         @endguest
 
         @auth

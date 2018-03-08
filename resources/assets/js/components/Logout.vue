@@ -8,7 +8,17 @@
 export default {
   methods: {
     logout() {
-      axios.post("/logout").then(() => location.reload());
+      /** ignore errors because when site is down, it will respond with a 503 error
+       *  this leads to duplciated logic on both then and catch methods..
+       */
+      axios
+        .post("/logout", {
+          validateStatus: () => {
+            return true;
+          }
+        })
+        .then(() => location.reload())
+        .catch(() => location.reload());
     }
   }
 };
