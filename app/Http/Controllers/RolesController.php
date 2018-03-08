@@ -96,6 +96,10 @@ class RolesController extends Controller
     {
         Role::destroy($id);
 
+        if (request()->wantsJson()) {
+            return response()->json(['Deleted succesfuly']);
+        }
+
         return redirect()->route('roles.index');
     }
 
