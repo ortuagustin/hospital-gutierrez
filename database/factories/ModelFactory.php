@@ -50,7 +50,14 @@ $factory->define(App\Appointment::class, function (Faker\Generator $faker, $attr
 
     return [
         'patient_id'     => $patient_id,
-        'date'           => Carbon::create(null, null, null, 10, 0, 0),
+        'date'           => Carbon::create(
+                                    $faker->numberBetween(2000, 2030),
+                                    $faker->numberBetween(1, 12),
+                                    $faker->numberBetween(1, 25),
+                                    $faker->numberBetween(8, 20),
+                                    0,
+                                    0
+                                ),
     ];
 });
 
