@@ -123,6 +123,36 @@ class ApplicationSetting extends Model
     }
 
     /**
+     * Returns wether the application is on maintenance state
+     *
+     * @return bool
+     */
+    public static function onMaintenance()
+    {
+        return (bool) static::value('maintenance');
+    }
+
+    /**
+     * Puts the application ON maintenance state
+     *
+     * @return void
+     */
+    public static function putOnMaintenance()
+    {
+        static::put('maintenance', 1);
+    }
+
+    /**
+     * Puts the application OFF maintenance state
+     *
+     * @return void
+     */
+    public static function putOffMaintenance()
+    {
+        static::put('maintenance', 0);
+    }
+
+    /**
      * Returns the humanized name of the setting.
      * It will remove underscores, and dashes, and capitalize the key
      *

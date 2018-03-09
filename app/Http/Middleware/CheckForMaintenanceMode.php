@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\ApplicationSetting;
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
@@ -70,7 +71,7 @@ class CheckForMaintenanceMode
      */
     protected function checkMaintenanceModeSetting()
     {
-        setting('maintenance', '0')? $this->ensureDown() : $this->ensureUp();
+        ApplicationSetting::onMaintenance() ? $this->ensureDown() : $this->ensureUp();
     }
 
     /**

@@ -80,4 +80,38 @@ class AdminAreaTest extends FeatureTest
              ->deleteJson(route('settings.reset'))
              ->assertStatus(403);
     }
+
+    /** @test */
+    public function it_puts_the_application_on_maintenance_state()
+    {
+        $this->assertFalse(ApplicationSetting::onMaintenance());
+
+        $this->signInAdmin();
+
+        $response = $this->postJson(route('settings.store'), [
+            'key'   => 'maintenance',
+            'value' => '1',
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertTrue(ApplicationSetting::onMaintenance());
+    }
+
+    /** @test */
+    public function it_takes_the_application_off_maintenance_state()
+    {
+        ApplicationSetting::putOnMaintenance();
+
+        $this->assertTrue(ApplicationSetting::onMaintenance());
+
+        $this->signInAdmin();
+
+        $response = $this->postJson(route('settings.store'), [
+            'key'   => 'maintenance',
+            'value' => '0',
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertFalse(ApplicationSetting::onMaintenance());
+    }
 }

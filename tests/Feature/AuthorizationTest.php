@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\ApplicationSetting;
 use Tests\Helpers\PermissionTestHelper;
 use Tests\Helpers\RoleTestHelper;
 use Tests\Helpers\UserTestHelper;
@@ -211,5 +212,28 @@ class UserAuthorizationTest extends FeatureTest
         $user->roles()->attach($Guest_role);
         $this->assertFalse($user->isAdmin(), 'It should not be Admin');
         $this->assertTrue($user->isNotAdmin(), 'It should not be Admin');
+    }
+
+    /** @test */
+    public function service_is_unavailable_for_normal_users_if_on_maintenance_state()
+    {
+        ApplicationSetting::putOnMaintenance();
+
+        $this->signIn();
+
+        $this->withExceptionHandling()
+             ->get('/patients')
+             ->assertStatus(503);
+    }
+
+    /** @test */
+    public function service_is_available_for_admins_if_on_maintenance_state()
+    {
+        ApplicationSetting::putOnMaintenance();
+
+        $this->signInAdmin();
+
+        $this->get('/patients')
+             ->assertSuccessful();
     }
 }
