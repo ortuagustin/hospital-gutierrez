@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Appointment;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAppointmentRequest;
+use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -25,13 +25,38 @@ class ApointmentsController extends Controller
         return $appointments->map->time;
     }
 
-    public function store(StoreAppointmentRequest $request)
+    public function store(Request $request)
     {
-        $appointment = Appointment::create([
-            'patient_id' => $request->patient_id,
-            'date'       => Carbon::parse($request->date),
-        ]);
+        $this->validateRequest($request);
+
+        $patient = Patient::where('dni', $request->dni)->firstOrFail();
+
+        $appointment = $patient->scheduleAppointment(Carbon::parse($request->date));
 
         return response()->json($appointment, 200);
+    }
+
+    /**
+     * Runs the validation rules agains the given Request
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return void
+     */
+    protected function validateRequest(Request $request)
+    {
+        return $this->validate($request, $this->getValidationRules());
+    }
+
+    /**
+     * Returns an array with the rules that the validator should use when executed
+     *
+     * @return array
+     */
+    protected function getValidationRules()
+    {
+        return [
+            'dni'  => 'required|exists:patients,dni',
+            'date' => 'required|unique:appointments|appointment_time', ];
     }
 }
