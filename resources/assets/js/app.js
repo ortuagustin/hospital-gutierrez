@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import './initializers/axios.js';
+import './initializers/moment.js';
 import './initializers/events.js';
 import './initializers/modal.js';
 import './initializers/components.js';
