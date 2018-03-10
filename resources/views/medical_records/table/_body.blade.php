@@ -6,9 +6,9 @@
         <td> {{ $medical_record->talla }} </td>
         <th> {{ $medical_record->percentilo_cefalico }} </th>
         <td> {{ $medical_record->percentilo_perimetro_cefalico }} </td>
-        <td> @include ('layouts._centered-check', ['value' => $medical_record->vacunas_completas ]) </td>
-        <td> @include ('layouts._centered-check', ['value' => $medical_record->maduracion_acorde ]) </td>
-        <td> @include ('layouts._centered-check', ['value' => $medical_record->examen_fisico_normal ]) </td>
+        <td> {!! centered_check_icon($medical_record->vacunas_completas) !!} </td>
+        <td> {!! centered_check_icon($medical_record->maduracion_acorde) !!} </td>
+        <td> {!! centered_check_icon($medical_record->examen_fisico_normal) !!} </td>
         <td v-pre> {{ $medical_record->user_name }} </td>
 
         @can ('view', $medical_record)

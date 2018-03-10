@@ -16,6 +16,30 @@ function setting($key, $default = null)
 }
 
 /**
+ * Returns a check icon based on the given boolean value
+ *
+ * @param  bool  $value
+ *
+ * @return string
+ */
+function check_icon($value)
+{
+    return $value ? icon('fas fa-check', 'has-text-success') : icon('fas fa-times', 'has-text-danger');
+}
+
+/**
+ * Returns a check icon based on the given boolean value
+ *
+ * @param  bool  $value
+ *
+ * @return string
+ */
+function centered_check_icon($value)
+{
+    return '<p class=has-text-centered>' . check_icon($value) . '</p>';
+}
+
+/**
  * Returns an icon element
  *
  * @param  string        $icon          the icon to display

@@ -21,17 +21,17 @@
         </div>
 
         <div class="box">
-            <div> <strong>Vaccines OK?:</strong> @include('layouts._check', ['value' => $medical_record->vacunas_completas])</div>
+            <div> <strong>Vaccines OK?:</strong> {!! check_icon($medical_record->vacunas_completas) !!}</div>
             <div> <strong>Vaccines Observations:</strong> {{ $medical_record->vacunas_observaciones }} </div>
         </div>
 
         <div class="box">
-            <strong>Rippening OK?:</strong> @include('layouts._check', ['value' => $medical_record->maduracion_acorde])
+            <div> <strong>Rippening OK?:</strong> {!! check_icon($medical_record->maduracion_acorde) !!} </div>
             <p> <strong>Rippening Observations:</strong> {{ $medical_record->maduracion_observaciones }} </p>
         </div>
 
         <div class="box">
-            <strong>Physical Test OK?:</strong> @include('layouts._check', ['value' => $medical_record->examen_fisico_normal])
+            <div> <strong>Physical Test OK?:</strong> {!! check_icon($medical_record->examen_fisico_normal) !!} </div>
             <p> <strong>Physical Test Observations:</strong> {{ $medical_record->examen_fisico_observaciones }} </p>
         </div>
 
