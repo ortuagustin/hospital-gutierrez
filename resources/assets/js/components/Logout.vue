@@ -17,8 +17,8 @@ export default {
             return true;
           }
         })
-        .then(() => location.reload())
-        .catch(() => location.reload());
+        .then(() => location.replace("/"))
+        .catch(() => location.replace("/"));
     }
   }
 };
