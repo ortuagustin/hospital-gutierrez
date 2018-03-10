@@ -11,6 +11,7 @@ import SettingInput from '../components/SettingInput.vue';
 import SettingCheckbox from '../components/SettingCheckbox.vue';
 import SettingsReset from '../components/SettingsReset.vue';
 import DatePicker from '../components/DatePicker.vue';
+import Select from '../components/Select.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('vue-table-row', TableRow);
@@ -24,3 +25,4 @@ Vue.component('setting-input', SettingInput);
 Vue.component('setting-checkbox', SettingCheckbox);
 Vue.component('settings-reset', SettingsReset);
 Vue.component('datepicker', DatePicker);
+Vue.component('vue-select', Select);
