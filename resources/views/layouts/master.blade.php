@@ -25,7 +25,7 @@
             @yield('content')
         </section>
 
-        <flash data-message="{{ session('flash') }}" data-type="{{ session('flash-type') }}"></flash>
+        <flash data-message="{{ session()->pull('flash') }}" data-type="{{ session()->pull('flash-type') }}"></flash>
     </div>
 
     <footer class="footer" id="footer">
