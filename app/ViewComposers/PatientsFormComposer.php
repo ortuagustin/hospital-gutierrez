@@ -40,6 +40,11 @@ class PatientsFormComposer
     private $water_types_repository;
 
     /**
+     * @var Collection
+     */
+    private $genders;
+
+    /**
      * @param DocTypesRepositoryInterface          $doc_types_repository
      * @param HeatingTypesRepositoryInterface      $heating_types_repository
      * @param HomeTypesRepositoryInterface         $home_types_repository
@@ -58,6 +63,16 @@ class PatientsFormComposer
         $this->home_types_repository = $home_types_repository;
         $this->medical_insurances_repository = $medical_insurances_repository;
         $this->water_types_repository = $water_types_repository;
+        $this->genders = collect([$this->createGender('male'), $this->createGender('female')]);
+    }
+
+    private function createGender($name)
+    {
+        return [
+            'key'   => $name,
+            'id'    => $name,
+            'value' => ucfirst($name),
+        ];
     }
 
     /**
@@ -75,6 +90,7 @@ class PatientsFormComposer
             'home_types'         => $this->home_types_repository->all(),
             'medical_insurances' => $this->medical_insurances_repository->all(),
             'water_types'        => $this->water_types_repository->all(),
+            'genders'            => $this->genders,
         ]);
     }
 }
