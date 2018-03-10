@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/503.css') }}">
-@endpush
-
 @section('content')
     <div class="container has-text-centered">
         <h1 class="title">Sorry, We're under Maintenance</h1>
