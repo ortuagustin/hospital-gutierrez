@@ -10,7 +10,8 @@
         "fzaninotto/faker": "~1.4",
         "laravel/framework": "5.4.*",
         "laravel/scout": "^3.0",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "longman/telegram-bot": "^0.52.0"
     },
     "require-dev": {
         "laracasts/generators": "^1.1",
