@@ -45,11 +45,4 @@
             </a>
         </div>
     </div>
-
-    <div class="level-item has-text-centered">
-        <div>
-            <p class="title is-4">Proyecto de Software 2017</p>
-            <p class="heading">Trabajo de promoci&oacute;n</p>
-        </div>
-    </div>
 </div>
