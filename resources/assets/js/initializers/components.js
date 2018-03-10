@@ -10,6 +10,7 @@ import UserRoleSelect from '../components/UserRoleSelect.vue';
 import SettingInput from '../components/SettingInput.vue';
 import SettingCheckbox from '../components/SettingCheckbox.vue';
 import SettingsReset from '../components/SettingsReset.vue';
+import DatePicker from '../components/DatePicker.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('vue-table-row', TableRow);
@@ -22,3 +23,4 @@ Vue.component('user-role-select', UserRoleSelect);
 Vue.component('setting-input', SettingInput);
 Vue.component('setting-checkbox', SettingCheckbox);
 Vue.component('settings-reset', SettingsReset);
+Vue.component('datepicker', DatePicker);
