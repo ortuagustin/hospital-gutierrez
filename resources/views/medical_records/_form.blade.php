@@ -22,12 +22,9 @@
             <label class="field-label has-text-weight-bold has-text-grey">Date</label>
 
             <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="date" name="fecha" value="{{ old('fecha', \Carbon\Carbon::today()->toDateString()) }}">
-                    {!! icon('fas fa-clock', 'is-small is-left') !!}
-                </p>
-
-                @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'fecha'])
+                <datepicker field-name="fecha" data-date="{{ old('fecha', \Carbon\Carbon::today()->toDateString()) }}">
+                    @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'fecha'])
+                </datepicker>
             </div>
         </div>
     </div>

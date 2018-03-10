@@ -113,14 +113,9 @@
         </div>
 
         <div class="field-body">
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input id="birth_date" name="birth_date" class="input" type="date" placeholder="Birth Date">
-                    {!! icon('fas fa-clock', 'is-small is-left') !!}
-                </p>
-
+            <datepicker field-name="birth_date" data-date="{{ old('birth_date', $patient->birth_date) }}">
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'birth_date'])
-            </div>
+            </datepicker>
         </div>
     </div>
 
@@ -257,8 +252,6 @@
 
 <script>
 $(document).ready(function(){
-    var date = "{{ old('birth_date', $patient->birth_date) }}";
-    document.getElementById('birth_date').value = moment(date).format('YYYY-MM-DD');
     document.getElementById('gender').value = "{{ old('gender', $patient->gender) }}";
     document.getElementById('doc_type_id').value = "{{ old('doc_type_id', $patient->doc_type_id) }}";
     document.getElementById('medical_insurance_id').value = "{{ old('medical_insurance_id', $patient->medical_insurance_id) }}";
