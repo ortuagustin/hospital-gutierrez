@@ -15,6 +15,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Asserts that the validator fails when the given field contains special characters
+     *
      * @param string $field
      *
      * @return $this
@@ -32,6 +33,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Asserts that the validator fails when the given fields are empty
+     *
      * @param array $except fields that should not be checked
      *
      * @return $this
@@ -49,6 +51,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Asserts that the validator fails when the given field is empty
+     *
      * @param string $field
      *
      * @return $this
@@ -63,6 +66,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Runs the given validator and expects that all the validation rules passes
+     *
      * @param Validator $validator
      *
      * @return $this
@@ -78,6 +82,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Returns a descriptive message with all the validations information from the given
      * validator, such as: fields that failed, the rules that every field failed, error messages, and field values
+     *
      * @param Validator $validator
      * @param string $message
      *
@@ -95,6 +100,7 @@ abstract class FormRequestTestCase extends TestCase
     /**
      * Runs the given Validator and checks that it fails;
      * also, check that the given rule is in the failed array of the Validator
+     *
      * @param Validator $validator
      * @param mixed $value
      * @param string $field
@@ -114,6 +120,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Returns a validator for the FormRequest
+     *
      * @param array $input
      *
      * @return Validator
@@ -128,6 +135,7 @@ abstract class FormRequestTestCase extends TestCase
      * unless user supplies custom overriden fields
      * This allows to test scenarios where the validation should fail for
      * a controlled set of fields
+     *
      * @param array $overrides
      *
      * @return Validator
@@ -159,6 +167,7 @@ abstract class FormRequestTestCase extends TestCase
 
     /**
      * Creates an instance of formRequestUnderTestClass
+     *
      * @param array $input
      *
      * @return \Illuminate\Foundation\Http\FormRequest
