@@ -91,6 +91,16 @@ class AppointmentTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_formatted_date()
+    {
+        $appointment = $this->createAppointmentAt(8, 30, 10, 5, 2018);
+        $this->assertEquals('10-5-2018', $appointment->formatted_date);
+
+        $appointment = $this->createAppointmentAt(8, 30, 1, 12, 2018);
+        $this->assertEquals('1-12-2018', $appointment->formatted_date);
+    }
+
+    /** @test */
     public function it_stores_expected_time()
     {
         $time = '16:30';

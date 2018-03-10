@@ -30,13 +30,23 @@ class Appointment extends Model
     ];
 
     /**
-     * Returns the time portion of the Appointment
+     * Returns the time of the Appointment, formatted as hh:mm
      *
      * @return string
      */
     public function getTimeAttribute()
     {
         return $this->date->format('H:i');
+    }
+
+    /**
+     * Returns date of the Appointment, formatted as dd-mm-yyyy
+     *
+     * @return string
+     */
+    public function getFormattedDateAttribute()
+    {
+        return $this->date->format('j-n-Y');
     }
 
     /**
@@ -47,6 +57,17 @@ class Appointment extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * Scope a query to only include appointments scheduled at a given date
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeScheduledAt($builder, Carbon $date)
+    {
+        return $builder->whereDate('date', '=', $date->format('Y-m-d'));
     }
 
     /**

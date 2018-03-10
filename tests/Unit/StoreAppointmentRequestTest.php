@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
-
 use Carbon\Carbon;
 use Tests\Helpers\AppointmentTestHelper;
 use Tests\Helpers\PatientTestHelper;
