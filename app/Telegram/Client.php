@@ -6,8 +6,13 @@ use Illuminate\Support\Facades\Log;
 use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Telegram;
 
-class TelegramWebhook
+class Client
 {
+    public static function webhookUrl()
+    {
+        return config('telegram.bot_hook_url');
+    }
+
     /**
      * Delete any assigned webhook
      *
@@ -16,7 +21,7 @@ class TelegramWebhook
     public static function deleteWebhook()
     {
         try {
-            return static::telegram()->deleteWebhook();
+            return static::instance()->deleteWebhook();
         } catch (TelegramException $e) {
             Log::error($e->getMessage());
         }
@@ -30,9 +35,11 @@ class TelegramWebhook
     public static function setWebhook()
     {
         try {
-            return static::telegram()->setWebhook(config('TELEGRAM_BOT_HOOK_URL'));
+            return static::instance()->setWebhook(url(static::webhookUrl()));
         } catch (TelegramException $e) {
             Log::error($e->getMessage());
+
+            return $e;
         }
     }
 
@@ -41,8 +48,8 @@ class TelegramWebhook
      *
      * @return \Longman\TelegramBot\Telegram
      */
-    protected static function telegram()
+    public static function instance()
     {
-        return new Telegram(config('TELEGRAM_BOT_API_KEY'), config('TELEGRAM_BOT_API_KEY'));
+        return new Telegram(config('telegram.key'), config('telegram.bot_username'));
     }
 }
