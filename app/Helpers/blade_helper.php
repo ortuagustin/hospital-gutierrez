@@ -15,6 +15,16 @@ function setting($key, $default = null)
     return ApplicationSetting::value($key, $default);
 }
 
+function onMaintenance()
+{
+    return ApplicationSetting::onMaintenance();
+}
+
+function notOnMaintenance()
+{
+    return ! onMaintenance();
+}
+
 /**
  * Returns a check icon based on the given boolean value
  *

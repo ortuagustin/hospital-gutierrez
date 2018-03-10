@@ -88,7 +88,7 @@
 
             <div class="buttons is-centered">
                 <button type="submit" class="button is-info is-medium" :class="loading ? 'is-loading' : ''" :disabled="loading">Register</button>
-                <span class="button is-medium" @click="login">Have an account?</span>
+                <button class="button is-medium" @click="login">Have an account?</button>
             </div>
         </form>
     </modal>

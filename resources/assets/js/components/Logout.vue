@@ -12,11 +12,7 @@ export default {
        *  this leads to duplciated logic on both then and catch methods..
        */
       axios
-        .post("/logout", {
-          validateStatus: () => {
-            return true;
-          }
-        })
+        .post("/logout")
         .then(() => location.replace("/"))
         .catch(() => location.replace("/"));
     }

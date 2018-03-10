@@ -47,8 +47,8 @@
                 </br>
 
                 <div class="buttons is-centered">
-                    <button type="submit" class="button is-info is-medium" :class="loading ? 'is-loading' : ''":disabled="cantSendLogin()">Login</button>
-                    <span class="button is-medium" @click="register">Register</span>
+                    <button type="submit" class="button is-info is-medium" :class="loading ? 'is-loading' : ''" :disabled="cantSendLogin()">Login</button>
+                    <button class="button is-medium" @click="register" :disabled="{{ json_encode(onMaintenance()) }}">Register</button>
                 </div>
 
                 <div class="message is-danger" v-if="feedback">

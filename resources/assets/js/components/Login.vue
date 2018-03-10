@@ -18,10 +18,17 @@ export default {
 
       axios
         .post("/login", this.form)
-        .then(() => location.reload())
+        .then(() => location.replace("/"))
         .catch(error => {
           this.loading = false;
-          this.feedback = error.response.data["email"];
+
+          if (error.response.status == 422) {
+            this.feedback = error.response.data["email"];
+          }
+
+          if (error.response.status == 503) {
+            location.replace("/");
+          }
         });
     },
 

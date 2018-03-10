@@ -27,7 +27,7 @@ class CheckForMaintenanceMode
      * @var array
      */
     protected $except = [
-        'login', 'logout', 'password/*',
+        'login', 'logout',
     ];
 
     /**
@@ -60,6 +60,13 @@ class CheckForMaintenanceMode
         }
 
         $data = json_decode(file_get_contents($this->app->storagePath().'/framework/down'), true);
+
+        if ($request->wantsJson()) {
+            request()->session()->flash('flash', 'Service unavailable; only Admins may log in');
+            request()->session()->flash('flash-type', 'is-danger');
+
+            return response()->json(['error' => 'Service unavailable; only Admins may log in'], 503);
+        }
 
         throw new MaintenanceModeException($data['time'], $data['retry'], $data['message']);
     }
@@ -126,7 +133,7 @@ class CheckForMaintenanceMode
     }
 
     /**
-     * Determine if the request has a URI that should pass through CSRF verification.
+     * Determine if the request has a URI that should pass through.
      *
      * @param  \Illuminate\Http\Request  $request
      *
