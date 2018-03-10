@@ -313,4 +313,22 @@ class PatientTest extends TestCase
         $patient->delete();
         $this->assertEquals(0, Appointment::count());
     }
+
+    /** @test */
+    public function it_can_schedule_an_appointment()
+    {
+        $patient = $this->createPatient();
+        $date = Carbon::create(2018, 1, 1, 8, 0);
+        $this->assertEquals(0, $patient->appointments()->count());
+
+        $appointment = $patient->scheduleAppointment($date);
+
+        $this->assertNotNull($appointment);
+        $this->assertInstanceOf(Appointment::class, $appointment);
+        $this->assertEquals(1, Appointment::count());
+        $this->assertEquals(1, $patient->appointments()->count());
+        $this->assertEquals($patient->id, $appointment->patient_id);
+        $this->assertEquals($date, $appointment->date);
+        $this->assertEquals($appointment->id, $patient->appointments()->first()->id);
+    }
 }
