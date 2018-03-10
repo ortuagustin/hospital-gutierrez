@@ -189,6 +189,7 @@ return [
         App\Providers\PasswordResetServiceProvider::class,
         App\Providers\PatientsViewComposerProvider::class,
         App\Providers\ReportsRepositoryProvider::class,
+        App\Providers\TelegramBotServiceProvider::class,
 
     ],
 
