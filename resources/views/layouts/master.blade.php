@@ -40,16 +40,16 @@
             @includeWhen(Auth::check(), 'nav._footer')
         </section>
 
-        <section class="section" id="wrapper">
+        <section class="section">
             @yield('content')
         </section>
 
-        <footer class="footer" id="footer">
-            @include('layouts._footer')
-        </footer>
-
         <flash data-message="{{ session('flash') }}" data-type="{{ session('flash-type') }}"></flash>
     </div>
+
+    <footer class="footer" id="footer">
+        @include('layouts._footer')
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
