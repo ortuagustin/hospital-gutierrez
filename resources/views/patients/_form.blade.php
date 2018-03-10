@@ -29,12 +29,12 @@
 
             <div class="field is-narrow">
                 <p class="control">
-                    <div class="select">
-                        <select id="gender" name="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
+                    <vue-select
+                        name="gender"
+                        :items="{{ $genders }}"
+                        data-selected="{{ old('gender', $patient->gender) }}"
+                    >
+                    </vue-select>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'gender'])
@@ -85,12 +85,12 @@
 
             <div class="field is-narrow">
                 <p class="control">
-                    <div class="select">
-                        @include('patients.inputs.select', [
-                            'name' => "doc_type_id",
-                            'values' => $doc_types
-                        ])
-                    </div>
+                    <vue-select
+                        name="doc_type_id"
+                        :items="{{ $doc_types }}"
+                        data-selected="{{ old('doc_type_id', $patient->doc_type_id) }}"
+                    >
+                    </vue-select>
                 </p>
 
                 @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'doc_type_id'])
@@ -136,12 +136,14 @@
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Medical Insurance</label>
-                        <div class="select">
-                            @include('patients.inputs.select', [
-                                'name' => "medical_insurance_id",
-                                'values' => $medical_insurances
-                            ])
-                        </div>
+                        <p class="control">
+                            <vue-select
+                                name="medical_insurance_id"
+                                :items="{{ $medical_insurances }}"
+                                data-selected="{{ old('medical_insurance_id', $patient->medical_insurance_id) }}"
+                            >
+                            </vue-select>
+                        </p>
                     </p>
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'medical_insurance_id'])
@@ -152,12 +154,13 @@
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Home Type</label>
-                        <div class="select">
-                            @include('patients.inputs.select', [
-                                'name' => "home_type_id",
-                                'values' => $home_types
-                            ])
-                        </div>
+
+                        <vue-select
+                            name="home_type_id"
+                            :items="{{ $home_types }}"
+                            data-selected="{{ old('home_type_id', $patient->home_type_id) }}"
+                        >
+                        </vue-select>
                     </p>
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'home_type_id'])
@@ -168,12 +171,13 @@
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Water Type</label>
-                        <div class="select">
-                            @include('patients.inputs.select', [
-                                'name' => "water_type_id",
-                                'values' => $water_types
-                            ])
-                        </div>
+
+                        <vue-select
+                            name="water_type_id"
+                            :items="{{ $water_types }}"
+                            data-selected="{{ old('water_type_id', $patient->water_type_id) }}"
+                        >
+                        </vue-select>
                     </p>
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'water_type_id'])
@@ -185,12 +189,13 @@
                 <div class="field is-narrow">
                     <p class="control">
                         <label class="label has-text-weight-bold has-text-grey">Heating Type</label>
-                        <div class="select">
-                            @include('patients.inputs.select', [
-                                'name' => "heating_type_id",
-                                'values' => $heating_types
-                            ])
-                        </div>
+
+                        <vue-select
+                            name="heating_type_id"
+                            :items="{{ $heating_types }}"
+                            data-selected="{{ old('heating_type_id', $patient->heating_type_id) }}"
+                        >
+                        </vue-select>
                     </p>
 
                     @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'heating_type_id'])
@@ -249,14 +254,3 @@
         </div>
     </div>
 </div>
-
-<script>
-$(document).ready(function(){
-    document.getElementById('gender').value = "{{ old('gender', $patient->gender) }}";
-    document.getElementById('doc_type_id').value = "{{ old('doc_type_id', $patient->doc_type_id) }}";
-    document.getElementById('medical_insurance_id').value = "{{ old('medical_insurance_id', $patient->medical_insurance_id) }}";
-    document.getElementById('home_type_id').value = "{{ old('home_type_id', $patient->home_type_id) }}";
-    document.getElementById('heating_type_id').value = "{{ old('heating_type_id', $patient->heating_type_id) }}";
-    document.getElementById('water_type_id').value = "{{ old('water_type_id', $patient->water_type_id) }}";
-});
-</script>
