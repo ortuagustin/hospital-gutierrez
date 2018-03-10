@@ -6,7 +6,7 @@ namespace App\Models;
  *  A Model that is external to the system
  *  They consist in simple key-value pairs
  */
-class ReferenceModel
+class ReferenceModel implements \JsonSerializable
 {
     /**
      * @var int
@@ -56,5 +56,17 @@ class ReferenceModel
     public function value()
     {
         return $this->value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id'     => $this->id(),
+            'key'    => $this->key(),
+            'value'  => $this->value(),
+        ];
     }
 }
