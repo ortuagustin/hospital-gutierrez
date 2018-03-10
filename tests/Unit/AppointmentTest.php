@@ -16,31 +16,31 @@ class AppointmentTest extends TestCase
     public function it_returns_allowed_times()
     {
         $allowed_times = [
-            '08:00:00',
-            '08:30:00',
-            '09:00:00',
-            '09:30:00',
-            '10:00:00',
-            '10:30:00',
-            '11:00:00',
-            '11:30:00',
-            '12:00:00',
-            '12:30:00',
-            '13:00:00',
-            '13:30:00',
-            '14:00:00',
-            '14:30:00',
-            '15:00:00',
-            '15:30:00',
-            '16:00:00',
-            '16:30:00',
-            '17:00:00',
-            '17:30:00',
-            '18:00:00',
-            '18:30:00',
-            '19:00:00',
-            '19:30:00',
-            '20:00:00',
+            '08:00',
+            '08:30',
+            '09:00',
+            '09:30',
+            '10:00',
+            '10:30',
+            '11:00',
+            '11:30',
+            '12:00',
+            '12:30',
+            '13:00',
+            '13:30',
+            '14:00',
+            '14:30',
+            '15:00',
+            '15:30',
+            '16:00',
+            '16:30',
+            '17:00',
+            '17:30',
+            '18:00',
+            '18:30',
+            '19:00',
+            '19:30',
+            '20:00',
         ];
 
         $this->assertEquals($allowed_times, Appointment::allowed_times());
@@ -93,7 +93,7 @@ class AppointmentTest extends TestCase
     /** @test */
     public function it_stores_expected_time()
     {
-        $time = '16:30:00';
+        $time = '16:30';
         $dateTime = Carbon::createFromTime(16, 30, 0);
         $appointment = $this->createAppointment(['date' => $dateTime]);
         $this->assertEquals($time, $appointment->time);

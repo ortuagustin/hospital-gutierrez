@@ -36,7 +36,7 @@ class Appointment extends Model
      */
     public function getTimeAttribute()
     {
-        return $this->date->toTimeString();
+        return $this->date->format('H:i');
     }
 
     /**
@@ -58,8 +58,8 @@ class Appointment extends Model
     {
         $times = [];
         for ($i = 8; $i <= 20; $i++) {
-            $times[] = sprintf("%02d:00:00", $i);
-            $times[] = sprintf("%02d:30:00", $i);
+            $times[] = sprintf("%02d:00", $i);
+            $times[] = sprintf("%02d:30", $i);
         }
 
         array_pop($times); // 20:30 is not allowed
@@ -74,6 +74,6 @@ class Appointment extends Model
      */
     public static function is_allowed_time(Carbon $time)
     {
-        return in_array($time->toTimeString(), static::allowed_times());
+        return in_array($time->format('H:i'), static::allowed_times());
     }
 }
