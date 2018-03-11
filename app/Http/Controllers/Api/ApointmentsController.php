@@ -33,7 +33,25 @@ class ApointmentsController extends Controller
 
         $appointment = $patient->scheduleAppointment(Carbon::parse($request->date));
 
-        return response()->json($appointment, 200);
+        $data = [
+            'appointment' => $appointment,
+            'message'     => $this->appointedMessage($appointment, $request->dni),
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    /**
+     * Returns a message confirming that the appointment was succesful
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $dni
+     *
+     * @return string
+     */
+    protected function appointedMessage(Appointment $appointment, $dni)
+    {
+        return "Te confirmamos el turno nro $appointment->id para $dni, a las $appointment->time del dia $appointment->formatted_date";
     }
 
     /**

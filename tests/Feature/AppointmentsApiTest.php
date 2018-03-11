@@ -56,7 +56,7 @@ class AppointmentsApiTest extends FeatureTest
         $response = $this->postJson('/api/turnos', [
             'dni'        => $patient->dni,
             'date'       => '25-10-2018 08:00',
-          ]);
+        ]);
 
         $response->assertSuccessful();
         $this->assertAppointmentScheduled($patient, '25-10-2018', '08:00');
@@ -71,7 +71,7 @@ class AppointmentsApiTest extends FeatureTest
         $response = $this->postJson('/api/turnos', [
             'dni'        => $patient->dni,
             'date'       => '1-1-2018 08:30',
-          ]);
+        ]);
 
         $response->assertSuccessful();
         $this->assertAppointmentScheduled($patient, '1-1-2018', '08:30');
@@ -84,5 +84,18 @@ class AppointmentsApiTest extends FeatureTest
         $this->assertEquals($patient->id, $appointment->patient_id);
         $this->assertEquals($date, $appointment->formatted_date);
         $this->assertEquals($time, $appointment->time);
+    }
+
+    /** @test */
+    public function it_returns_message_attribute_in_the_response_when_appointment_is_successfully_scheduled()
+    {
+        $patient = $this->createPatient(['dni' => '37058719']);
+
+        $response = $this->postJson('/api/turnos', [
+            'dni'        => $patient->dni,
+            'date'       => '1-1-2018 08:30',
+        ]);
+
+        $this->assertEquals('Te confirmamos el turno nro 1 para 37058719, a las 08:30 del dia 1-1-2018', $response->json()['message']);
     }
 }
