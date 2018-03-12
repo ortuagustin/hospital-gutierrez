@@ -4,6 +4,7 @@ namespace App;
 
 use App\Contracts\InteractsWithReferenceModels;
 use App\Helpers\CalculatesAge;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
@@ -162,6 +163,13 @@ class Patient extends Model
     public function appointments()
     {
         return $this->hasMany(Appointment::class);
+    }
+
+    public function scheduleAppointment(Carbon $date)
+    {
+        return $this->appointments()->create([
+            'date' => $date,
+            ]);
     }
 
     /**
