@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Appointment;
+use App\Patient;
 use Tests\Helpers\AppointmentTestHelper;
 use Tests\Helpers\PatientTestHelper;
 
@@ -53,18 +54,12 @@ class AppointmentsApiTest extends FeatureTest
         $this->assertEquals(0, Appointment::count());
 
         $response = $this->postJson('/api/turnos', [
-            'patient_id' => $patient->id,
+            'dni'        => $patient->dni,
             'date'       => '25-10-2018 08:00',
-          ]);
+        ]);
 
         $response->assertSuccessful();
-
-        $this->assertEquals(1, Appointment::count());
-
-        $appointment = Appointment::first();
-        $this->assertEquals($patient->id, $appointment->patient_id);
-        $this->assertEquals('08:00', $appointment->time);
-        $this->assertEquals('25-10-2018', $appointment->formatted_date);
+        $this->assertAppointmentScheduled($patient, '25-10-2018', '08:00');
     }
 
     /** @test */
@@ -74,17 +69,33 @@ class AppointmentsApiTest extends FeatureTest
         $this->assertEquals(0, Appointment::count());
 
         $response = $this->postJson('/api/turnos', [
-            'patient_id' => $patient->id,
+            'dni'        => $patient->dni,
             'date'       => '1-1-2018 08:30',
-          ]);
+        ]);
 
         $response->assertSuccessful();
+        $this->assertAppointmentScheduled($patient, '1-1-2018', '08:30');
+    }
 
+    protected function assertAppointmentScheduled(Patient $patient, $date, $time)
+    {
         $this->assertEquals(1, Appointment::count());
-
         $appointment = Appointment::first();
         $this->assertEquals($patient->id, $appointment->patient_id);
-        $this->assertEquals('08:30', $appointment->time);
-        $this->assertEquals('1-1-2018', $appointment->formatted_date);
+        $this->assertEquals($date, $appointment->formatted_date);
+        $this->assertEquals($time, $appointment->time);
+    }
+
+    /** @test */
+    public function it_returns_message_attribute_in_the_response_when_appointment_is_successfully_scheduled()
+    {
+        $patient = $this->createPatient(['dni' => '37058719']);
+
+        $response = $this->postJson('/api/turnos', [
+            'dni'        => $patient->dni,
+            'date'       => '1-1-2018 08:30',
+        ]);
+
+        $this->assertEquals('Te confirmamos el turno nro 1 para 37058719, a las 08:30 del dia 1-1-2018', $response->json()['message']);
     }
 }
