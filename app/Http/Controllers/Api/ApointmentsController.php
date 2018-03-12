@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Appointment;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAppointmentRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -25,7 +24,7 @@ class ApointmentsController extends Controller
         return $appointments->map->time;
     }
 
-    public function store(StoreAppointmentRequest $request)
+    public function store(Request $request)
     {
         $appointment = Appointment::create([
             'patient_id' => $request->patient_id,
