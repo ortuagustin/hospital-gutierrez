@@ -38,7 +38,6 @@ class ApplicationSetting extends Model
         'human_name',
     ];
 
-
     /**
      * The attributes that should be cast to native types.
      *
