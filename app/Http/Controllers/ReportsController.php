@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\ReportsRepositoryInterface;
 
-/**
- * Handles the System Reports
- */
-class ReportsController extends Controller
+abstract class ReportsController extends Controller
 {
     /**
      * @var ReportsRepositoryInterface
@@ -20,29 +17,5 @@ class ReportsController extends Controller
     public function __construct(ReportsRepositoryInterface $reports)
     {
         $this->reportsRepository = $reports;
-    }
-
-    /**
-     * Display all available reports
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $reports = collect($this->reportsRepository->all());
-
-        return view('reports/index', compact('reports'));
-    }
-
-    /**
-     * Returns the JSON data for the specified Report
-     *
-     * @param  string  $reportName
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($reportName)
-    {
-        return response()->json($this->reportsRepository->getReport($reportName));
     }
 }
