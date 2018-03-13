@@ -15,6 +15,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('patients', 'PatientsController');
     Route::resource('patients.medical_records', 'MedicalRecordsController', ['except' => ['edit', 'update']]);
     Route::resource('reports', 'DemographicReportsController', ['only' => ['index', 'show']]);
+    Route::get('patients/{patient}/reports', 'PatientsReportsController@index')->name('patients.reports');
+    Route::get('patients/{patient}/reports/{report}', 'PatientsReportsController@show');
 
     Route::middleware('can:admin')->group(function () {
         Route::get('roles/reset', 'RolesController@reset')->name('roles.reset');

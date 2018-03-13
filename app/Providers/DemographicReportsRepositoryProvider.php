@@ -12,7 +12,7 @@ use App\Repositories\DemographicReportsRepository;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Registers an implementation for the ReportsRepositoryInterface
+ * Registers an implementation for the DemographicReportsRepositoryInterface
  */
 class DemographicReportsRepositoryProvider extends ServiceProvider
 {
