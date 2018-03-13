@@ -29,10 +29,5 @@ class AppServiceProvider extends ServiceProvider
         if (env('REDIRECT_HTTPS')) {
             $this->app['request']->server->set('HTTPS', true);
         }
-
-        if ($this->app->environment() == 'local') {
-            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-            $this->app->register('Sven\ArtisanView\ArtisanViewServiceProvider');
-        }
     }
 }
