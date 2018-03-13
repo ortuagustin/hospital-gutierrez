@@ -84,7 +84,7 @@ class AppointmentTest extends TestCase
     /** @test */
     public function it_stores_expected_date()
     {
-        $dateTime = Carbon::now();
+        $dateTime = Carbon::createFromDate(2018, 1, 1);
         $appointment = $this->createAppointment(['date' => $dateTime]);
         $this->assertInstanceOf(Carbon::class, $appointment->date);
         $this->assertEquals($dateTime, $appointment->date);
