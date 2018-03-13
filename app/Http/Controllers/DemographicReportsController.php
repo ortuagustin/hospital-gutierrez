@@ -2,8 +2,23 @@
 
 namespace App\Http\Controllers;
 
-class DemographicReportsController extends ReportsController
+use App\Contracts\DemographicReportsRepositoryInterface;
+
+class DemographicReportsController extends Controller
 {
+    /**
+     * @var DemographicReportsRepositoryInterface
+     */
+    protected $reportsRepository;
+
+    /**
+     * @inheritDoc
+     */
+    public function __construct(DemographicReportsRepositoryInterface $reports)
+    {
+        $this->reportsRepository = $reports;
+    }
+
     /**
      * Display all available reports
      *

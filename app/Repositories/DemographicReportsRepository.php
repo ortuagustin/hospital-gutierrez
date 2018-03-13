@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Contracts\ReportsRepositoryInterface;
+use App\Contracts\DemographicReportsRepositoryInterface;
 
 /**
  * @inheritDoc
  */
-class ReportsRepository implements ReportsRepositoryInterface
+class DemographicReportsRepository implements DemographicReportsRepositoryInterface
 {
     /**
      * Represents a null (empty) report

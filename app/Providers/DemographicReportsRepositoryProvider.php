@@ -7,14 +7,14 @@ use App\Charts\PatientsPerHeatingTypeChart;
 use App\Charts\PatientsPerHomeTypeChart;
 use App\Charts\PatientsPerMedicalInsuranceChart;
 use App\Charts\PatientsPerWaterTypeChart;
-use App\Contracts\ReportsRepositoryInterface;
-use App\Repositories\ReportsRepository;
+use App\Contracts\DemographicReportsRepositoryInterface;
+use App\Repositories\DemographicReportsRepository;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Registers an implementation for the ReportsRepositoryInterface
  */
-class ReportsRepositoryProvider extends ServiceProvider
+class DemographicReportsRepositoryProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -30,8 +30,8 @@ class ReportsRepositoryProvider extends ServiceProvider
         $reports[] = new PatientsPerDocTypeChart();
         $reports[] = new PatientsPerMedicalInsuranceChart();
 
-        $this->app->bind(ReportsRepositoryInterface::class, function ($app) use ($reports) {
-            return new ReportsRepository($reports);
+        $this->app->bind(DemographicReportsRepositoryInterface::class, function ($app) use ($reports) {
+            return new DemographicReportsRepository($reports);
         });
     }
 

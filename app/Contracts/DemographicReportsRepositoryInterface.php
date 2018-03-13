@@ -3,9 +3,9 @@
 namespace App\Contracts;
 
 /**
- * Holds all the available reports
+ * Holds all the available demographic reports
  */
-interface ReportsRepositoryInterface
+interface DemographicReportsRepositoryInterface
 {
     /**
      * Returns the report data and options
