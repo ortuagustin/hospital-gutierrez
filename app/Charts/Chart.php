@@ -17,16 +17,23 @@ abstract class Chart implements JsonSerializable
     private $name = null;
 
     /**
+     * Wether the chart is responsive or not (on rendering)
+     *
+     * @var boolean
+     */
+    protected $isResponsive = false;
+
+    /**
      * Labels that the chart will display
      *
-     * @var array
+     * @return array
      */
     abstract protected function labels();
 
     /**
      * Data that the chart will display
      *
-     * @var array
+     * @return array
      */
     abstract protected function data();
 
@@ -41,7 +48,7 @@ abstract class Chart implements JsonSerializable
     /**
      * The name of the chart
      *
-     * @var string
+     * @return string
      */
     public function name()
     {
@@ -56,7 +63,7 @@ abstract class Chart implements JsonSerializable
     /**
      * The title of the chart
      *
-     * @var string
+     * @return string
      */
     public function title()
     {
@@ -71,14 +78,14 @@ abstract class Chart implements JsonSerializable
     public function options()
     {
         return [
-            'responsive' => false,
+            'responsive'  => $this->isResponsive,
         ];
     }
 
     /**
      * Dataset that the chart will display
      *
-     * @var array
+     * @return array
      */
     protected function datasets()
     {
@@ -94,6 +101,8 @@ abstract class Chart implements JsonSerializable
      * Returns an array where each element is a colour for each label
      *
      * @param int $labelCount
+     *
+     * @return array
      */
     protected function backgroundColours($labelCount)
     {
