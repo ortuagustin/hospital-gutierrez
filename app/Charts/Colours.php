@@ -113,4 +113,11 @@ class Colours
           "YellowGreen",
       ];
     }
+
+    public static function random()
+    {
+        $index = array_rand(static::all());
+
+        return static::all()[$index];
+    }
 }
