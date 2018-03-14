@@ -9,11 +9,4 @@ use App\Contracts\DemographicReportsRepositoryInterface;
  */
 class DemographicReportsRepository extends ReportsRepository implements DemographicReportsRepositoryInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public function getReport($name)
-    {
-        return $this->hasReport($name) ? $this->reports[$name] : $this->nullReport;
-    }
 }

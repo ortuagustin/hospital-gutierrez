@@ -8,6 +8,15 @@ namespace App\Contracts;
 interface ReportsRepositoryInterface
 {
     /**
+     * Returns the report data and options
+     *
+     * @param string $name
+     *
+     * @return \JsonSerializable
+     */
+    public function getReport($name);
+
+    /**
      * Adds the given report to the repository
      *
      * @param string $name

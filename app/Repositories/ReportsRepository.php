@@ -34,6 +34,14 @@ abstract class ReportsRepository implements ReportsRepositoryInterface
     /**
      * @inheritDoc
      */
+    public function getReport($name)
+    {
+        return $this->hasReport($name) ? $this->reports[$name] : $this->nullReport;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function addReport($name, $report)
     {
         $this->reports[$name] = $report;

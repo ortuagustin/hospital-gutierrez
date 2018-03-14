@@ -7,12 +7,4 @@ namespace App\Contracts;
  */
 interface DemographicReportsRepositoryInterface extends ReportsRepositoryInterface
 {
-    /**
-     * Returns the report data and options
-     *
-     * @param string $name
-     *
-     * @return \JsonSerializable
-     */
-    public function getReport($name);
 }
