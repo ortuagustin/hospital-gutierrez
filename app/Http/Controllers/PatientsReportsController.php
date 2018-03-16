@@ -29,11 +29,15 @@ class PatientsReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Patient $patient)
     {
         $reports = collect($this->reportsRepository->all());
 
-        return view('reports/patients/index', compact('reports'));
+        if ($request->wantsJson()) {
+            return response()->json($reports->values());
+        }
+
+        return view('reports/patients/index', compact('reports', 'patient'));
     }
 
     /**
