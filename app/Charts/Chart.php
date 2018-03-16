@@ -118,12 +118,13 @@ abstract class Chart implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'chart' => [
+            'endpoint' => $this->endpoint(),
+            'title'    => $this->title(),
+            'options'  => $this->options(),
+            'chart'    => [
                 'labels'   => $this->labels(),
                 'datasets' => $this->datasets(),
             ],
-
-            'options'  => $this->options(),
         ];
     }
 }
