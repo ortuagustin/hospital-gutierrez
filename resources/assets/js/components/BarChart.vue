@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <p class="title" v-text="title"> </p>
+    <p class="title" v-if="title" v-text="title"> </p>
     <bar-chart :endpoint="endpoint"></bar-chart>
   </div>
 </template>
 
 <script>
-import BarChart from '../charts/BarChartImpl.js';
+import BarChart from "../charts/BarChartImpl.js";
 
 export default {
   props: {
@@ -17,10 +17,10 @@ export default {
 
     title: {
       type: String,
-      required: true
+      default: ""
     }
   },
 
   components: { BarChart }
-}
+};
 </script>

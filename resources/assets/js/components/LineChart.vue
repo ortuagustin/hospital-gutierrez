@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p class="title" v-text="title"> </p>
+    <p class="title" v-if="title" v-text="title"> </p>
     <line-chart :endpoint="endpoint" :width="width" :height="height"></line-chart>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
 
     title: {
       type: String,
-      required: true
+      default: ""
     },
 
     height: {
