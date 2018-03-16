@@ -12,6 +12,8 @@ import SettingCheckbox from '../components/SettingCheckbox.vue';
 import SettingsReset from '../components/SettingsReset.vue';
 import DatePicker from '../components/DatePicker.vue';
 import Select from '../components/Select.vue';
+import ReportSelect from '../components/ReportSelect.vue';
+import ReportView from '../components/ReportView.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('vue-table-row', TableRow);
@@ -26,3 +28,5 @@ Vue.component('setting-checkbox', SettingCheckbox);
 Vue.component('settings-reset', SettingsReset);
 Vue.component('datepicker', DatePicker);
 Vue.component('vue-select', Select);
+Vue.component('vue-report-select', ReportSelect);
+Vue.component('vue-report-view', ReportView);
