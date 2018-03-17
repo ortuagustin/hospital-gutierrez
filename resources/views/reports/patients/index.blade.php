@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! back_link() !!}
+    {!! link_to_with_icon('fas fa-arrow-left fa-2x', 'patients.index', [], 'Back', 'has-text-info') !!}
 
     <div class="box">
         <p class="title is-3 has-text-grey"> {{ $patient->full_name }} </p>
