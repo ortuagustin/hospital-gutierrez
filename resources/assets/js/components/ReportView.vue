@@ -1,9 +1,11 @@
 <template>
   <div>
-      <div class="field box">
+      <div class="field">
           <p class="control">
               <vue-report-select :endpoint="endpoint" @input="changed"></vue-report-select>
           </p>
+
+          <hr>
       </div>
 
       <div>
