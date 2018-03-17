@@ -11,10 +11,22 @@ export default {
   extends: Pie,
 
   mounted() {
-    axios.get(this.endpoint).then(
-      function(response) {
-        this.renderChart(response.data.chart, response.data.options);
-      }.bind(this)
-    );
+    this.render(this.endpoint);
+  },
+
+  watch: {
+    endpoint: function(value) {
+      this.render(value)
+    }
+  },
+
+  methods: {
+    render(url) {
+      axios.get(url).then(
+        function(response) {
+          this.renderChart(response.data.chart, response.data.options);
+        }.bind(this)
+      );
+    }
   }
 };
