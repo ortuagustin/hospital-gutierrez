@@ -1,4 +1,5 @@
-import { Line } from "vue-chartjs";
+import { Line, mixins } from "vue-chartjs";
+const { reactiveData } = mixins
 
 export default {
   props: {
@@ -10,21 +11,30 @@ export default {
 
   extends: Line,
 
+  mixins: [reactiveData],
+
+  data() {
+    return {
+      options: []
+    }
+  },
+
   mounted() {
-    this.render(this.endpoint);
+    this.fetch(this.endpoint)
   },
 
   watch: {
-    endpoint: function(value) {
-      this.render(value)
+    endpoint: function(url) {
+      this.fetch(url)
     }
   },
 
   methods: {
-    render(url) {
+    fetch(url) {
       axios.get(url).then(
         function(response) {
-          this.renderChart(response.data.chart, response.data.options);
+          this.options = response.data.options;
+          this.chartData = response.data.chart;
         }.bind(this)
       );
     }
