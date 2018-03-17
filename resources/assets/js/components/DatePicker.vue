@@ -21,8 +21,8 @@ export default {
 
   data() {
     return {
-      date: new Date(moment(this.dataDate).format()),
-      inputDate: this.dataDate
+      date: null,
+      inputDate: null
     };
   },
 
@@ -37,6 +37,12 @@ export default {
       return value => {
         return moment(value).format("DD/MM/YYYY");
       };
+    }
+  },
+
+  mounted() {
+    if (this.dataDate != "") {
+      this.date = new Date(moment(this.dataDate).format());
     }
   }
 };
