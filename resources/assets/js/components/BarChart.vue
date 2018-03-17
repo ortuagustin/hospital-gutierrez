@@ -1,26 +1,21 @@
 <template>
   <div class="container">
-    <p class="title" v-if="title" v-text="title"> </p>
-    <bar-chart :endpoint="endpoint"></bar-chart>
+    <p class="title" v-if="title" v-text="title"></p>
+
+    <vue-export-chart-button @click="downloadAsPdf"></vue-export-chart-button>
+
+    <bar-chart ref="chart" :endpoint="endpoint"></bar-chart>
   </div>
 </template>
 
 <script>
 import BarChart from "../charts/BarChartImpl.js";
+import ExportChartButton from "./ExportChartButton.vue";
+import ContainsChart from "../charts/ContainsChart.js";
 
 export default {
-  props: {
-    endpoint: {
-      type: String,
-      required: true
-    },
+  mixins: [ContainsChart],
 
-    title: {
-      type: String,
-      default: ""
-    }
-  },
-
-  components: { BarChart }
+  components: { BarChart, ExportChartButton }
 };
 </script>
