@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Charts\ClinicalHistoryChart;
+use App\Charts\WeightGrowthReportChart;
 use App\Contracts\PatientsReportsRepositoryInterface;
 use App\Repositories\PatientsReportsRepository;
 use Illuminate\Support\ServiceProvider;
@@ -20,8 +20,7 @@ class PatientsReportsRepositoryProvider extends ServiceProvider
     public function boot()
     {
         $reports = [];
-        $reports[] = new ClinicalHistoryChart();
-
+        $reports[] = new WeightGrowthReportChart();
 
         $this->app->bind(PatientsReportsRepositoryInterface::class, function ($app) use ($reports) {
             return new PatientsReportsRepository($reports);
