@@ -1,9 +1,9 @@
 <b-collapse class="card" :open="false">
   <div slot="trigger" slot-scope="props" class="card-header">
     <p class="card-header-title">
-      <a :href="patient.path" class="is-size-5 is-uppercase">
+      <span class="has-text-link is-size-5 is-uppercase">
         <ais-highlight :result="patient" attribute-name="full_name"></ais-highlight>
-      </a>
+      </span>
     </p>
 
     <a class="card-header-icon">
