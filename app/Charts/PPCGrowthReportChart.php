@@ -5,6 +5,12 @@ namespace App\Charts;
 class PPCGrowthReportChart extends ClinicalHistoryChart
 {
     /** @inheritDoc */
+    protected function data()
+    {
+        return $this->clinical_history()->map->percentilo_perimetro_cefalico->toArray();
+    }
+
+    /** @inheritDoc */
     protected function girlsStaticDatasets()
     {
         return [

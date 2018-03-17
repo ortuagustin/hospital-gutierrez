@@ -99,12 +99,6 @@ abstract class ClinicalHistoryChart extends Chart
         return $this->weeksArray();
     }
 
-    /** @inheritDoc */
-    protected function data()
-    {
-        return [];
-    }
-
     protected function clinical_history()
     {
         return $this->patient()->medicalRecords;

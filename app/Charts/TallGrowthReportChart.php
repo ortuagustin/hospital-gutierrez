@@ -11,6 +11,18 @@ class TallGrowthReportChart extends ClinicalHistoryChart
     }
 
     /** @inheritDoc */
+    protected function data()
+    {
+        $data = [];
+
+        $this->clinical_history()->each(function ($item) use ($data) {
+            $data[] = $item->talla;
+        });
+
+        return $data;
+    }
+
+    /** @inheritDoc */
     protected function girlsStaticDatasets()
     {
         return [

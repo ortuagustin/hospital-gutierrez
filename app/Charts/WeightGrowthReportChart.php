@@ -5,6 +5,12 @@ namespace App\Charts;
 class WeightGrowthReportChart extends ClinicalHistoryChart
 {
     /** @inheritDoc */
+    protected function data()
+    {
+        return $this->clinical_history()->map->peso->toArray();
+    }
+
+    /** @inheritDoc */
     protected function girlsStaticDatasets()
     {
         return [
