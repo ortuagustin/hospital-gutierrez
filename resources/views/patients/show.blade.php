@@ -19,6 +19,10 @@
 
         <div class="box">
             <div class="field is-grouped is-grouped-centered">
+                <p class="control">
+                    {!! link_to_with_icon('fas fa-chart-line fa-2x', 'patients.reports', $patient->id, 'Reports', 'has-text-success') !!}
+                </p>
+
                 @can ('view', \App\MedicalRecord::class)
                     <p class="control">
                         {!! link_to_with_icon('fas fa-clock fa-2x', 'patients.medical_records.index', $patient->id, 'View Medical Records', 'has-text-info') !!}

@@ -10,6 +10,7 @@
         <td v-pre>{{ $patient->address }}</td>
         <td v-pre>{{ $patient->phone }}</td>
         <td>{!! link_to_with_icon('fas fa-info-circle fa-2x', 'patients.show', $patient->id, '', 'has-text-info') !!}</td>
+        <td>{!! link_to_with_icon('fas fa-chart-line fa-2x', 'patients.reports', $patient->id, '', 'has-text-success') !!}</td>
 
         @can ('update', $patient)
             <td>{!! link_to_with_icon('fas fa-edit fa-2x', 'patients.edit', $patient, '', 'has-text-dark') !!}</td>

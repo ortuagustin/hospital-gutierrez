@@ -9,6 +9,7 @@
     <th>Address</th>
     <th>Phone</th>
     <th>Details</th>
+    <th>Reports</th>
 
     @can ('update', \App\Patient::class)
         <th>Edit</th>

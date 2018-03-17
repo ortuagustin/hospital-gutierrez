@@ -103,7 +103,7 @@ function link_to($text, $route_name, $route_args, $class = '')
 function link_to_with_icon($icon, $route_name, $route_args = [], $text = '', $icon_class = '', $button_class = '')
 {
     $url = route($route_name, $route_args);
-    $button_class = 'button is-white' . $button_class;
+    $button_class = 'button is-white ' . $button_class;
     $icon_class = 'icon ' . $icon_class;
 
     return
@@ -120,7 +120,7 @@ function link_to_with_icon($icon, $route_name, $route_args = [], $text = '', $ic
 function back_link($text = 'Back', $icon = 'fas fa-arrow-left fa-2x', $icon_class = 'has-text-info', $button_class = '')
 {
     $url = URL::previous();
-    $button_class = 'button is-white' . $button_class;
+    $button_class = 'button is-white ' . $button_class;
     $icon_class = 'icon ' . $icon_class;
 
     return

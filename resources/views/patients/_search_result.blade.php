@@ -29,9 +29,10 @@
 
   <footer class="card-footer">
     <a :href="patient.path" class="card-footer-item">View</a>
+    <a :href="patient.path + '/reports'" class="card-footer-item">Reports</a>
 
     @can ('view', \App\MedicalRecord::class)
-      <a :href="patient.path + '/medical_records'" class="card-footer-item">View Medical Records</a>
+      <a :href="patient.path + '/medical_records'" class="card-footer-item">Medical Records</a>
     @endcan
 
     @can ('update', \App\Patient::class)
