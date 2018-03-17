@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Charts\PPCGrowthReportChart;
+use App\Charts\TallGrowthReportChart;
 use App\Charts\WeightGrowthReportChart;
 use App\Contracts\PatientsReportsRepositoryInterface;
 use App\Repositories\PatientsReportsRepository;
@@ -23,6 +24,7 @@ class PatientsReportsRepositoryProvider extends ServiceProvider
         $reports = [];
         $reports[] = new WeightGrowthReportChart();
         $reports[] = new PPCGrowthReportChart();
+        $reports[] = new TallGrowthReportChart();
 
         $this->app->bind(PatientsReportsRepositoryInterface::class, function ($app) use ($reports) {
             return new PatientsReportsRepository($reports);
