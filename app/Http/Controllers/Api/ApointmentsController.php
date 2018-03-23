@@ -20,7 +20,11 @@ class ApointmentsController extends Controller
             return response()->json($validator->getMessageBag()->first(), 422);
         }
 
-        return Appointment::available_at(Carbon::parse($date));
+        try {
+            return Appointment::available_at(Carbon::parse($date));
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     public function store(Request $request)
