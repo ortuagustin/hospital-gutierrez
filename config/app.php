@@ -190,6 +190,7 @@ return [
         App\Providers\PatientsViewComposerProvider::class,
         App\Providers\DemographicReportsRepositoryProvider::class,
         App\Providers\PatientsReportsRepositoryProvider::class,
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
     ],
 
@@ -239,6 +240,7 @@ return [
         'URL'          => Illuminate\Support\Facades\URL::class,
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
+        'Telegram'     => Telegram\Bot\Laravel\Facades\Telegram::class,
 
     ],
 
