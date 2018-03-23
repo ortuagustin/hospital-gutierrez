@@ -63,11 +63,39 @@ class Appointment extends Model
      * Scope a query to only include appointments scheduled at a given date
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Carbon\Carbon $date
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduledAt($builder, Carbon $date)
     {
         return $builder->whereDate('date', '=', $date->format('Y-m-d'));
+    }
+
+    /**
+     * Returns a collection of the times available for appointments at the given date
+     *
+     * @param \Carbon\Carbon $date
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public static function available_at(Carbon $date)
+    {
+        return collect(static::allowed_times())
+                    ->diff(static::appointed_times_at($date))
+                    ->values();
+    }
+
+    /**
+     * Returns a collection of the times of the appointments at the given date
+     *
+     * @param \Carbon\Carbon $date
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public static function appointed_times_at(Carbon $date)
+    {
+        return static::scheduledAt($date)->get()->map->time;
     }
 
     /**
@@ -84,6 +112,7 @@ class Appointment extends Model
         }
 
         array_pop($times); // 20:30 is not allowed
+        
         return $times;
     }
 
