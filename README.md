@@ -31,7 +31,7 @@ Entre sus características, se encuentran:
 
 #### Demo
 
-Ésta aplicación fue desplegada a la plataforma [Heroku](http://heroku.com), podés verla siguiendo [este link](http://ortu-agustin-proyecto.herokuapp.com/). 
+Ésta aplicación fue desplegada a la plataforma [Heroku](http://heroku.com), podés verla siguiendo [este link](https://ortu-agustin-proyecto.herokuapp.com/). 
 
 Esta precargada con algunos datos ficticios para poder probar la aplicación.
 
