@@ -2,6 +2,8 @@
 
 namespace App\Telegram\Commands;
 
+use App\AppointmentsApi;
+use App\Contracts\AppointmentsApiInterface;
 use Telegram\Bot\Commands\Command;
 
 class AppointmentsCommand extends Command
@@ -11,9 +13,9 @@ class AppointmentsCommand extends Command
      */
     private $api;
 
-    public function __construct(AppointmentsApiInterface $api)
+    public function __construct()
     {
-        $this->api = $api;
+        $this->api = new AppointmentsApi();
     }
 
     /**
@@ -26,13 +28,13 @@ class AppointmentsCommand extends Command
      */
     protected $description = 'dd-mm-aaaa: Devuelve los turnos disponibles para la fecha indicada';
 
-    protected function getAvailableAppointments($arguments)
+    protected function getAvailableAppointments($date)
     {
         $response = $this->api->available_at($date);
 
         $answer = json_decode($response);
 
-        return empty($answer) ? 'Los turnos disponibles son: ' . implode(" | ", $answer) : 'No hay turnos disponibles :(';
+        return empty($answer) ? 'No hay turnos disponibles :(' : 'Los turnos disponibles son: ' . implode(" | ", $answer);
     }
 
     /**
