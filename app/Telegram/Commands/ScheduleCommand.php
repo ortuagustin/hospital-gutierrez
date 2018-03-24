@@ -6,7 +6,7 @@ use App\AppointmentsApi;
 use App\Contracts\AppointmentsApiInterface;
 use Telegram\Bot\Commands\Command;
 
-class AppointmentsCommand extends Command
+class ScheduleCommand extends Command
 {
     /**
      * @var AppointmentsApiInterface
@@ -21,15 +21,17 @@ class AppointmentsCommand extends Command
     /**
      * @var string command name
      */
-    protected $name = 'turnos';
+    protected $name = 'reservar';
 
     /**
      * @var string command description
      */
-    protected $description = 'dd-mm-aaaa: Devuelve los turnos disponibles para la fecha indicada';
+    protected $description = 'dni dd-mm-aaaa hh-mm: Permite reservar un turno para un paciente indicando su dni, la fecha y la hora. Retorna un identificador único de turno.';
 
-    public function getAvailableAppointments($date)
+    public function scheduleAppointment($arguments)
     {
+        $strs = explode(' ', $arguments);
+
         try {
             $response = $this->api->schedule($strs[0], "$strs[1] $strs[2]");
         } catch (\Exception $e) {
@@ -38,7 +40,7 @@ class AppointmentsCommand extends Command
 
         $answer = json_decode($response->getContent());
 
-        return empty($answer) ? 'No hay turnos disponibles :(' : 'Los turnos disponibles son: ' . implode(" | ", $answer);
+        return $answer->message;
     }
 
     /**
@@ -46,6 +48,6 @@ class AppointmentsCommand extends Command
      */
     public function handle($arguments)
     {
-        $this->replyWithMessage(['text' => $this->getAvailableAppointments($arguments)]);
+        $this->replyWithMessage(['text' => $this->scheduleAppointment($arguments)]);
     }
 }

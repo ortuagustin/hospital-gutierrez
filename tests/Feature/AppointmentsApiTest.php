@@ -70,6 +70,7 @@ class AppointmentsApiTest extends FeatureTest
     public function it_returns_422_unprocessable_entity_when_date_format_is_incorrect()
     {
         $this->withExceptionHandling();
+
         $this->getJson('/api/turnos/2018')->assertStatus(422);
         $this->getJson('/api/turnos/01-05-2018')->assertStatus(422);
         $this->getJson('/api/turnos/01-5-2018')->assertStatus(422);
@@ -110,15 +111,6 @@ class AppointmentsApiTest extends FeatureTest
         $this->assertAppointmentScheduled($patient, '1-1-2018', '08:30');
     }
 
-    protected function assertAppointmentScheduled(Patient $patient, $date, $time)
-    {
-        $this->assertEquals(1, Appointment::count());
-        $appointment = Appointment::first();
-        $this->assertEquals($patient->id, $appointment->patient_id);
-        $this->assertEquals($date, $appointment->formatted_date);
-        $this->assertEquals($time, $appointment->time);
-    }
-
     /** @test */
     public function it_returns_message_attribute_in_the_response_when_appointment_is_successfully_scheduled()
     {
@@ -130,5 +122,32 @@ class AppointmentsApiTest extends FeatureTest
         ]);
 
         $this->assertEquals('Te confirmamos el turno nro 1 para 37058719, a las 08:30 del dia 1-1-2018', $response->json()['message']);
+    }
+
+    /** @test */
+    public function it_returns_message_error_in_the_response_when_appointment_is_duplicated()
+    {
+        $patient = $this->createPatient(['dni' => '37058719']);
+
+        $this->postJson('/api/turnos', [
+            'dni'        => $patient->dni,
+            'date'       => '1-1-2018 08:30',
+        ]);
+
+        $response = $this->postJson('/api/turnos', [
+            'dni'        => $patient->dni,
+            'date'       => '1-1-2018 08:30',
+        ]);
+
+        $this->assertEquals('The date has already been taken.', $response->json()['message']);
+    }
+
+    protected function assertAppointmentScheduled(Patient $patient, $date, $time)
+    {
+        $this->assertEquals(1, Appointment::count());
+        $appointment = Appointment::first();
+        $this->assertEquals($patient->id, $appointment->patient_id);
+        $this->assertEquals($date, $appointment->formatted_date);
+        $this->assertEquals($time, $appointment->time);
     }
 }

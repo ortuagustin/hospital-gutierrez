@@ -17,27 +17,27 @@ class AppointmentsApi implements AppointmentsApiInterface
             return response()->json($validator->getMessageBag()->first(), 422);
         }
 
-        try {
-            return Appointment::available_at(Carbon::parse($date));
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
+        return response()->json(Appointment::available_at(Carbon::parse($date)), 200);
     }
 
     public function schedule($dni, $date)
     {
+        $date = Carbon::parse($date);
+
         $validator = validator(['dni' => $dni, 'date' => $date], [
             'dni'  => 'required|exists:patients,dni',
             'date' => 'required|unique:appointments|appointment_time',
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->getMessageBag()->first(), 422);
+            return response()->json([
+                'message' => $validator->getMessageBag()->first(),
+            ], 422);
         }
 
         $patient = Patient::where('dni', $dni)->firstOrFail();
 
-        $appointment = $patient->scheduleAppointment(Carbon::parse($date));
+        $appointment = $patient->scheduleAppointment($date);
 
         $data = [
             'appointment' => $appointment,
