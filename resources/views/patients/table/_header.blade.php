@@ -4,7 +4,6 @@
     <th>Last Name</th>
     <th>Identification</th>
     <th>Birth Date</th>
-    <th>Gender</th>
     <th>Medical Insurance</th>
     <th>Address</th>
     <th>Phone</th>

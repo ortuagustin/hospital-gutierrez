@@ -5,7 +5,6 @@
         <td v-pre>{{ $patient->last_name }}</td>
         <td v-pre>{{ $patient->document }}</td>
         <td v-pre>{{ $patient->birth_date->toDateString() }}</td>
-        <td v-pre>{{ $patient->gender }}</td>
         <td v-pre>{{ $patient->medicalInsurance->value() }}</td>
         <td v-pre>{{ $patient->address }}</td>
         <td v-pre>{{ $patient->phone }}</td>
