@@ -121,7 +121,7 @@ class AppointmentsApiTest extends FeatureTest
             'date'       => '1-1-2018 08:30',
         ]);
 
-        $this->assertEquals('Te confirmamos el turno nro 1 para 37058719, a las 08:30 del dia 1-1-2018', $response->json()['message']);
+        $this->assertEquals('Scheduled Appointment # 1 for Patient 37058719, at 1-1-2018 08:30', $response->json()['message']);
     }
 
     /** @test */

@@ -57,6 +57,6 @@ class AppointmentsApi implements AppointmentsApiInterface
      */
     protected function appointedMessage(Appointment $appointment, $dni)
     {
-        return "Te confirmamos el turno nro $appointment->id para $dni, a las $appointment->time del dia $appointment->formatted_date";
+        return "Scheduled Appointment # $appointment->id for Patient $dni, at $appointment->formatted_date $appointment->time";
     }
 }
