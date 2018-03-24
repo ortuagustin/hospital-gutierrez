@@ -2,32 +2,6 @@
 
 @section('content')
     <div class="tile is-ancestor">
-        <div class="tile is-vertical">
-            @component('components.home.child-tile')
-                @slot('type') is-success @endslot
-                @slot('title') Need assistance? @endslot
-                @slot('subtitle') <a href="mailto:{{ setting('contact_email') }}">Send us an email</a> @endslot
-            @endcomponent
-
-            @component('components.home.child-tile')
-                @slot('type') is-light @endslot
-                @slot('title') Wide Column @endslot
-                @slot('subtitle') With Some Content @endslot
-
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p>
-            @endcomponent
-
-            @component('components.home.child-tile')
-                @slot('type') is-white @endslot
-                @slot('title') Wide Column @endslot
-                @slot('subtitle') With Some Content @endslot
-
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <p>
-            @endcomponent
-        </div>
-    </div>
-
-    <div class="tile is-ancestor">
         <div class="tile">
             @component('components.home.auth-menu-item-tile', ['ability' => 'view', 'args' => \App\Patient::class ])
                 @slot('type') is-success @endslot
@@ -81,6 +55,16 @@
                 @slot('title') Admin Area @endslot
                 @slot('subtitle') Manage system settings @endslot
                 @slot('url') {{ route('settings.index') }} @endslot
+            @endcomponent
+        </div>
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            @component('components.home.child-tile')
+                @slot('type') is-success @endslot
+                @slot('title') Need assistance? @endslot
+                @slot('subtitle') <a href="mailto:{{ setting('contact_email') }}">Send us an email</a> @endslot
             @endcomponent
         </div>
     </div>
