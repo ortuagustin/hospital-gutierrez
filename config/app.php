@@ -190,6 +190,7 @@ return [
         App\Providers\PatientsViewComposerProvider::class,
         App\Providers\DemographicReportsRepositoryProvider::class,
         App\Providers\PatientsReportsRepositoryProvider::class,
+        App\Providers\AppointmentsApiProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
     ],
