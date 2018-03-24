@@ -6,7 +6,15 @@ use Telegram\Bot\Commands\Command;
 
 class AppointmentsCommand extends Command
 {
-    use SendsRequests;
+    /**
+     * @var AppointmentsApiInterface
+     */
+    private $api;
+
+    public function __construct(AppointmentsApiInterface $api)
+    {
+        $this->api = $api;
+    }
 
     /**
      * @var string command name
@@ -20,15 +28,11 @@ class AppointmentsCommand extends Command
 
     protected function getAvailableAppointments($arguments)
     {
-        $response = $this->get("/api/turnos/$arguments");
+        $response = $this->api->available_at($date);
 
-        if ($response->getStatusCode() == 200) {
-            $answer = json_decode($response->getBody()->getContents());
+        $answer = json_decode($response);
 
-            return 'Los turnos disponibles son: ' . implode(" | ", $answer);
-        }
-
-        return 'No hay turnos disponibles :(';
+        return empty($answer) ? 'Los turnos disponibles son: ' . implode(" | ", $answer) : 'No hay turnos disponibles :(';
     }
 
     /**

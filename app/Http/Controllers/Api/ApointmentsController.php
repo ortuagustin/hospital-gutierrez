@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 
 class ApointmentsController extends Controller
 {
-    /** @var AppointmentsApiInterface */
+    /**
+     * @var AppointmentsApiInterface
+     */
     private $api;
 
     public function __construct(AppointmentsApiInterface $api)
