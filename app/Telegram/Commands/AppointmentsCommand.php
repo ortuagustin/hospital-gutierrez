@@ -31,7 +31,7 @@ class AppointmentsCommand extends Command
     public function getAvailableAppointments($date)
     {
         try {
-            $response = $this->api->schedule($strs[0], "$strs[1] $strs[2]");
+            $response = $this->api->available_at($date);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
